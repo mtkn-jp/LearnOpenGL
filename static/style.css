@@ -1,0 +1,283 @@
+body {
+	color: #111;
+	background-color: #eee;
+	margin: 0px;
+	padding: 0px;
+	background-image: url('img/header_repeat2.png');
+	background-repeat: repeat-x;
+}
+
+img.translation {
+	float: left;
+	margin: 0px;
+	padding: 0px;
+	margin-right: 10px;
+	margin-top: -5px;
+}
+
+#content {
+	/*width: 850px;*/
+	float: left;
+}
+
+#disqus_thread {
+	width: 850px;
+	float: right;
+	margin-top: 30px;
+	display: none;
+}
+
+warning {
+	display:block;
+	margin:20px;
+	padding:15px;
+	background-color: #FFD2D2;
+	color: #444;
+	border-radius: 5px;
+	border: 2px solid #E0B3B3;
+}
+
+note {
+	display:block;
+	margin:20px;
+	padding:15px;
+	background-color: #D8F5D8;
+	color: #444;
+	border-radius: 5px;
+	border: 2px solid #AFDFAF;
+}
+
+author {
+	display:block;
+	margin:10px;
+	margin-top: 15px;
+	padding:10px;
+	background-color: #eee;
+	color: #444;
+	border-radius: 2px;
+	border: 2px solid #ccc;
+}
+
+function {
+	cursor: pointer;
+	border-bottom: 1px solid #c1c1c1;
+}
+
+def {
+	color: green;
+}
+
+fun {
+	font-family: "Courier New", Courier, monospace;
+	color: #822;
+}
+
+var {
+	font-style: normal;
+	font-family: "Courier New", Courier, monospace;
+	color: #227;
+}
+
+p code {
+	
+}
+
+pre code {
+	color: rgb(214, 210, 205);
+	background-color: rgb(32, 35, 36);
+	background-image: none;
+	border-color: rgb(67, 73, 76);
+	display: block;
+	background: #282B2E;
+	padding: 5px;
+	padding-left: 15px;
+	border-radius: 7px;
+	border: 3px solid #bbb;
+}
+
+indepth strong.indepth_header {
+	display: block;
+	width: 100%;
+	text-align: center;
+	cursor: pointer;    
+	color: #333;
+}
+
+indepth {
+	display:block;
+	margin:20px;
+	padding: 10px;
+	background-color: #BDF;
+	color: #444;
+	border-radius: 5px;
+	border: 3px dotted #9BD;    
+}
+
+indepth p {
+	padding: 15px;
+	display: none;
+}
+
+indepth img {
+	display: none;
+}
+
+img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 7px;
+	border: 3px solid #bbb;
+}
+
+img.clean {
+	border: 0px;
+	border-radius: 0px;
+}
+
+img.no_radius {
+	border-radius: 0px;
+}
+
+img.left {
+	float: left;
+	margin: 10px;
+	border: 2px solid #bbb;
+	border-radius: 3px;
+	margin-right: 20px;
+}
+
+img.right {
+	float: right;
+	margin: 10px;
+	margin-left: 20px;
+}
+
+img.small {
+	width: 150px;
+	height: auto;
+}
+
+img.medium {
+	width: 300px;
+	height: auto;
+}
+
+img.large {
+	width: 500px;
+	height: auto;
+}
+
+img.book {
+	margin-left: 100px;
+	margin-right: 50px;
+	height: 200px;
+	width: auto;
+	#margin-top: -5px;
+}
+
+video {
+	position:relative;
+	display: block;
+	margin: 0px;
+	padding: 0px;
+}
+
+video.clean {
+	border: 0px;
+}
+
+.video {
+	position:relative;
+	cursor: pointer;
+	background-image: url('img/start_video.png');
+	width: 600px;
+	height: 450px;
+	margin: 0px;
+	padding: 0px;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 3px;
+	border: 3px solid #bbb;
+}
+
+.paused video {
+	position:relative;
+	z-index: -1;
+}
+
+
+audio {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* == TABLES == */
+table, td {
+	border-bottom: 1px solid #AAA;
+	border-top: 1px solid #AAA;
+}
+
+th {
+	border-bottom: 2px solid #888;
+}
+
+table {
+	border-collapse: collapse;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+th, td {
+	padding: 6px;
+}
+
+tr:nth-child(even) {
+	background-color: #DDD;
+}
+
+pre code function  {
+	text-decoration: none;
+	border-bottom: 1px solid #343434;
+}
+
+#hover {
+	display: none;
+	position: absolute;
+	color: #222;
+	width: 600px;
+	border-radius: 5px;
+	border: 5px dotted #ccc;
+	background-color: #eee;
+	background-image: url('img/header_repeat2.png');
+	background-repeat: repeat-x;
+	opacity:0.95;
+	filter:alpha(opacity=95); /* For IE8 and earlier */
+	padding: 10px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	font-size: 14px;
+}
+/* Elements */
+h1 {
+	color: #303236;
+	margin-bottom: -10px;
+}
+
+h2 {
+	/*color: #394666;*/
+	color: #37425d;
+	font-size: 22px;
+	margin-bottom: -10px;
+}
+
+h3 {
+	color: #633739;
+	margin-bottom: -10px;
+}
+
+a {
+	color: #58A;
+}

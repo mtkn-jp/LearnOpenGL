@@ -1,0 +1,299 @@
+
+
+<!DOCTYPE html>
+<html lang="ja"> 
+<head>
+    <meta charset="utf-8"/>
+    <title>LearnOpenGL - Creating a window</title>	<!--<title>Learn OpenGL, extensive tutorial resource for learning Modern OpenGL</title>-->
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico"  />
+    <meta name="description" content="Learn OpenGL . com provides good and clear modern 3.3+ OpenGL tutorials with clear examples. A great resource to learn modern OpenGL aimed at beginners.">
+</head>
+<body>
+    <div id="content">
+    <h1 id="content-title">Creating a window</h1>
+    <h1 id="content-title">ウィンドウの作成</h1>
+<h1 id="content-url" style='display:none;'>Getting-started/Creating-a-window</h1>
+<p>
+	The first thing we need to do before we start creating stunning graphics is to create an OpenGL context and an application window to draw in. However, those operations are specific per operating system and OpenGL purposefully tries to abstract itself from these operations. This means we have to create a window, define a context, and handle user input all by ourselves.
+</p>
+<p>
+さまざまなグラフィックを作成する前に、OpenGLのコンテクストとアプリケーションのウィンドウを作成する必要があります。しかしこの作業はOSによってまちまちであり、OpenGLはこういった作業から自身を抽象化しようとしています。つまりわれわれはウィンドウの作成やコンテクストの定義、あるいはユーザーからの入力の処理といった作業を自分自身でおこなわなければなりません。
+</p>
+
+<p>
+  Luckily, there are quite a few libraries out there that provide the functionality we seek, some specifically aimed at OpenGL. Those libraries save us all the operation-system specific work and give us a window and an OpenGL context to render in. Some of the more popular libraries are GLUT, SDL, SFML and GLFW. On LearnOpenGL we will be using <strong>GLFW</strong>. Feel free to use any of the other libraries, the setup for most is similar to GLFW's setup.
+</p>
+<p>
+ありがたいことに、我々の目的にあった機能を提供するライブラリがたくさんあり、なかにはOpenGLに特化したものもあります。こういったライブラリを利用することで、OSごとに違うコードを用意しなくてもウィンドウやコンテクストを作成することが可能です。有名なライブラリにはGLUT、SDL、SFML、そしてGLFW等があります。本書では<strong>GLFW</strong>を利用します。しかし他のどのライブラリを使ってもかまいません。セットアップ方法はだいたい同じです。
+</p>
+
+<h2> GLFW </h2>
+<p>
+  GLFW is a library, written in C, specifically targeted at OpenGL. GLFW gives us the bare necessities required for rendering goodies to the screen. It allows us to create an OpenGL context, define window parameters, and handle user input, which is plenty enough for our purposes. 
+</p>
+<p>
+GLFWはOpenGLに特化したC言語製のライブラリです。GLFWはスクリーンにいいものを描画するために必要な最低限のものを提供します。GLFWにより、コンテクストの作成、ウィンドウにかかる変数の定義、ユーザーからの入力の処理が可能になり、われわれの目的には十分です。
+</p>
+
+<p>
+  The focus of this and the next chapter is to get GLFW up and running, making sure it properly creates an OpenGL context and that it displays a simple window for us to mess around in. This chapter takes a step-by-step approach in retrieving, building and linking the GLFW library. We'll use Microsoft Visual Studio 2019 IDE as of this writing (note that the process is the same on the more recent visual studio versions). If you're not using Visual Studio (or an older version) don't worry, the process will be similar on most other IDEs.
+</p>
+<p>
+この章と次の章ではGLFWを動作させ、コンテクストの作成や簡単なウィンドウの表示が適切にできているか確認します。この章ではGLFWライブラリをダウンロード、コンパイルしリンクする方法を順番に見ていきます。MicrosoftのVisual Studio 2019 IDEを利用します（もっと新しいバージョンのvisual studioでもやりかたは同じです）。あなたがVisual Studioの古いバージョンや他のIDEを使う場合でも、だいたい同じ方法で動作します。
+</p>
+
+<h2>Building GLFW</h2>
+<h2>GLFWのビルド</h2>
+<p>
+  GLFW can be obtained from their webpage's <a href="http://www.glfw.org/download.html" target="_blank">download</a> page. GLFW already has pre-compiled binaries and header files for Visual Studio 2012 up to 2019, but for completeness' sake we will compile GLFW ourselves from the source code. This is to give you a feel for the process of compiling open-source libraries yourself as not every library will have pre-compiled binaries available. So let's download the <em>Source package</em>.
+</p>
+<p>
+GLFWはこの<a href="http://www.glfw.org/download.html" target="_blank">ダウンドード</a>ページから入手できます。GLFWはVisual Studio 2012から2019ではあらかじめコンパイルされたバイナリも利用できますが、完全性のために自分達でコンパイルすることにします。オープンソースのライブラリによってはバイナリは用意されていないことがあるので、ライブラリをコンパイルすることに慣れておいたほうがいいからです。それでは<em>ソースパッケージ</em>をダウンロードしましょう。
+</p>
+
+<warning>
+  We'll be building all libraries as 64-bit binaries so make sure to get the 64-bit binaries if you're using their pre-compiled binaries. 
+</warning>
+<warning>
+われわれはすべてのライブラリを64bit用にコンパイルします。コンパイル済のバイナリーをダウンロードする場合、64bit用のものであることを確認してください。
+</warning>
+
+<p>
+  Once you've downloaded the source package, extract it and open its content. We are only interested in a few items:
+</p>
+<p>
+ダウンロードしたソースパッケージを解凍します。我々が利用するのは以下のものだけです:
+</p>
+  <ul>
+    <li>The resulting library from compilation.</li>
+    <li>The <strong>include</strong> folder.</li>
+  </ul>
+  <ul>
+    <li>ライブラリをコンパイルしたもの。</li>
+    <li><strong>include</strong>フォルダ。</li>
+  </ul>
+
+<p>
+  Compiling the library from the source code guarantees that the resulting library is perfectly tailored for your CPU/OS, a luxury pre-compiled binaries don't always provide (sometimes, pre-compiled binaries are not available for your system). The problem with providing source code to the open world however is that not everyone uses the same IDE or build system for developing their application, which means the project/solution files provided may not be compatible with other people's setup. 
+  So people then have to setup their own project/solution with the given .c/.cpp and .h/.hpp files, which is cumbersome. Exactly for those reasons there is a tool called CMake.
+</p>
+<p>
+ライブラリをソースからビルドした場合、あなたのCPUやOSに完全に適合することが保証されます。これはコンパイル済のバイナリではあじわえない贅沢です（場合によってはあなたのシステムで動作するバイナリが提供されていないこともあります）。オープンソースの世界でソースコードを提供することの問題は、すべてのユーザーがアプリケーションを開発するうえでおなじIDEやビルドシステムを利用していないことです。だれかのプロジェクトやソリューションが他のひとの環境で動作しない可能性があるということです。
+</p>
+
+<h3>CMake</h3>
+<p>
+  CMake is a tool that can generate project/solution files of the user's choice (e.g. Visual Studio, Code::Blocks, Eclipse) from a collection of source code files using pre-defined CMake scripts. This allows us to generate a Visual Studio 2019 project file from GLFW's source package which we can use to compile the library. First we need to download and install CMake which can be downloaded on their <a href="http://www.cmake.org/cmake/resources/software.html" target="_blank">download</a> page. 
+</p>
+<p>
+CMakeはソースコードとあらかじめ用意しておいたCMakeのスクリプトから、任意のIDE（例えばVisual Studio、Code::Blocks、Eclipse等）のプロジェクトやソリューションのファイルを作成するツールです。これを使えば、GLFWのソースパッケージからVisual Studio 2019のプロジェクトファイルを作成することができ、さらにプロジェクトファイルをコンパイルしてライブラリを作成することができます。
+</p>
+
+<p>
+  Once CMake is installed you can choose to run CMake from the command line or through their GUI. Since we're not trying to overcomplicate things we're going to use the GUI. CMake requires a source code folder and a destination folder for the binaries. For the source code folder we're going to choose the root folder of the downloaded GLFW source package and for the build folder we're creating a new directory <em>build</em> and then select that directory. 
+</p>
+<p>
+CMakeはコマンドラインからでもGUIを通してでも、好きな方法で利用できます。こみいった話をさけるため、ここではGUIを利用します。CMakeを利用するには、ソースコードのフォルダとコンパイルしてできあがったバイナリ用のフォルダのふたつのフォルダが必要です。ソースコードのフォルダとしてGLFWをダウンロードしたフォルダを選び、バイナリ用には<em>build</em>というフォルダを新しく作成することにしましょう。
+</p>
+
+<img src="/img/getting-started/cmake.png" width="800px" alt="Image of CMake's logo"/>
+
+<p>
+  Once the source and destination folders have been set, click the <code>Configure</code> button so CMake can read the required settings and the source code. We then have to choose the generator for the project and since we're using Visual Studio 2019 we will choose the <code>Visual Studio 16</code> option (Visual Studio 2019 is also known as Visual Studio 16). CMake will then display the possible build options to configure the resulting library. We can leave them to their default values and click <code>Configure</code> again to store the settings. Once the settings have been set, we click <code>Generate</code> and the resulting project files will be generated in your <code>build</code> folder.
+</p>
+<p>
+ソースコード用およびバイナリ用のフォルダを設定したら、<code>Configure</code>ボタンをクリックしてCMakeに設定とソースコードを読み込みます。次にジェネレータの項目を設定します。我々が利用するのはVisual Studio 2019なので<code>Visual Studio 16</code>を選んでください(Visual Studio 2019はVisual Studio 16とも呼ばれます）。そうすればCMakeが選択可能なビルドオプションを表示します。ここではデフォルトのままにしておいてかまいません。設定を保存するために再度<code>Configure</code>をクリックしてください。設定完了後、<code>Generate</code>をクリックすれば<code>build</code>フォルダにプロジェクトファイルが作成されます。
+</p>
+
+<h3>Compilation</h3>
+<h3>コンパイル</h3>
+<p>
+  In the <code>build</code> folder a file named <code>GLFW.sln</code> can now be found and we open it with Visual Studio 2019. Since CMake generated a project file that already contains the proper configuration settings we only have to build the solution. CMake should've automatically configured the solution so it compiles to a 64-bit library; now hit build solution. This will give us a compiled library file that can be found in <code>build/src/Debug</code> named <code>glfw3.lib</code>.</p>
+<p>
+<code>build</code>フォルダに<code>GLFW.sln</code>というファイルがあるはずですので、Visual Studio 2019で開いてください。CMakeが作成したプロジェクトファイルには必要な設定がすべて含まれているので、あとはソリューションをビルドすればいいだけです。64bitのライブラリをコンパイルするようにCMakeが自動的に設定してくれています。build solutionを押しましょう。さすればライブラリはコンパイルされ、<code>build/src/Debug</code>というフォルダに<code>glfw3.lib</code>なるファイルが出現するでしょう。
+</p>
+
+<p>
+  Once we generated the library we need to make sure the IDE knows where to find the library and the include files for our OpenGL program. There are two common approaches in doing this:
+  <ol>
+    <li> We find the <code>/lib</code> and <code>/include</code> folders of the IDE/compiler and add the content of GLFW's <code>include</code> folder to the IDE's <code>/include</code> folder and similarly add <code>glfw3.lib</code> to the IDE's <code>/lib</code> folder. This works, but it's is not the recommended approach. It's hard to keep track of your library and include files and a new installation of your IDE/compiler results in you having to do this process all over again. </li>
+    <li>
+      Another approach (and recommended) is to create a new set of directories at a location of your choice that contains all the header files/libraries from third party libraries to which you can refer to from your IDE/compiler. You could, for instance, create a single folder that contains a <code>Libs</code> and <code>Include</code> folder where we store all our library and header files respectively for OpenGL projects. Now all the third party libraries are organized within a single location (that can be shared across multiple computers). The requirement is, however, that each time we create a new project we have to tell the IDE where to find those directories.
+    </li>
+  </ol>
+  Once the required files are stored at a location of your choice, we can start creating our first OpenGL GLFW project.
+</p>
+<p>
+ライブラリをコンパイルしたら、IDEにそのありかを伝えねばなりません。それには二通りの方法があります:
+	<ol>
+		<li>IDEやコンパイラの<code>/lib</code>と<code>/include</code>のフォルダを見つけ、そこに<code>glfw3.lib</code>とGLFWの<code>include</code>をそれぞれ追加する方法。これは機能はしますがおすすめはできません。追加したライブラリやインクルードファイルを覚えておくのが大変ですし、新しいIDEやコンパイラをインストールするたびに同じ作業を繰り返すはめになります。</li>
+		<li>IDEやコンパイラがみつけられる場所に新しいフォルダを作成し、その中にサードパーティー製のライブラリに関するすべてのヘッダーファイルとライブラリファイルを集める方法。こちらの方法がおすすめです。例えば<code>Libs</code>と<code>Include</code>というフォルダを作り、OpenGLのプロジェクトで使うライブラリとヘッダーファイルをすべてここにおいておきます。こうすればサードパーティー製のライブラリが一つの場所にまとめられます（この場所を複数のコンピュータで共有することも可能です）。こちらの方法では、新しいプロジェクトを作成するたびにIDEにライブラリのある場所を教える必要があります。
+		</li>
+	</ol>
+	必要なファイルを参照できる場所に配置できれば、いよいよGLFWを利用したOpenGLのプロジェクトを作成できます。
+</p>
+
+<h2>Our first project</h2>
+<h2>最初のプロジェクト</h2>
+<p>
+  First, let's open up Visual Studio and create a new project. Choose C++ if multiple options are given and take the <code>Empty Project</code> (don't forget to give your project a suitable name). Since we're going to be doing everything in 64-bit and the project defaults to 32-bit, we'll need to change the dropdown at the top next to Debug from x86 to x64:
+</p>
+<p>
+まずはVisual Studioを立ちあげて新しいプロジェクトを作成しましょう。選択肢があればC++と<code>Empty Project</code>を選び、プロジェクトに適切な名前を付けてください。デフォルトは32bitになっていますが我々は64bitで開発しますので、いちばん上にあるDebugの隣のドロップダウンをx64からx86に変更してください:
+</p>
+
+<img src="/img/getting-started/x64.png" alt="Image of how to switch from x86 to x64"/>。
+
+<p>
+  Once that's done, we now have a workspace to create our very first OpenGL application!
+  これでOpenGLのアプリケーションを作る下準備は完了です。
+</p>
+
+
+<h2>Linking</h2>
+<h2>リンク</h2>
+<p>
+  In order for the project to use GLFW we need to <def>link</def> the library with our project. This can be done by specifying we want to use <code>glfw3.lib</code> in the linker settings, but our project does not yet know where to find <code>glfw3.lib</code> since we store our third party libraries in a different directory. We thus need to add this directory to the project first.
+プロジェクトがGLFWを利用するにはライブラリをプロジェクトに<def>リンク</def>する必要があります。これには<code>glfw3.lib</code>を使うようリンカを設定すればいいのですが、先程サードパーティー製のライブラリを別のディレクトリに入れたので、プロジェクトはどこに<code>glfw3.lib</code>があるのかを知りません。プロジェクトにこのディレクトリの場所を追加する必要があります。
+</p>
+
+<p>
+  We can tell the IDE to take this directory into account when it needs to look for library and include files. Right-click the project name in the solution explorer and then go to <code>VC++ Directories</code> as seen in the image below:
+  われわれはIDEに、ライブラリやインクルードファイルが必要なときにわれわれのディレクトリも探すように伝えることができます。ソリューションエクスプローラにおいてプロジェクト名を右クリックし<code>VC++ Directories</code>を選択してください:
+</p>
+
+<img src="/img/getting-started/vc_directories.png" width="600px" alt="Image of Visual Studio's VC++ Directories configuration"/>。
+
+<p>
+  From there on out you can add your own directories to let the project know where to search. This can be done by manually inserting it into the text or clicking the appropriate location string and selecting the <code>&lt;Edit..&gt;</code> option. Do this for both the <code>Library Directories</code> and <code>Include Directories</code>: 
+  ここからわれわれのディレクトリをプロジェクトに伝えることができます。直接テキストに入力してもいいですし、しかる場所をクリックして<code>&lt;Edit..&gt;</code>を選択してもかまいません。<code>ライブラリのディレクトリ</code>と<code>インクルードディレクトリ</code>の両方を登録してください:
+</p>
+
+<img src="/img/getting-started/include_directories.png" width="600px" alt="Image of Visual Studio's Include Directories configuration"/>。
+
+<p>
+  Here you can add as many extra directories as you'd like and from that point on the IDE will also search those directorie when searching for library and header files. As soon as your <code>Include</code> folder from GLFW is included, you will be able to find all the header files for GLFW by including <code>&lt;GLFW/..&gt;</code>. The same applies for the library directories.
+ここですきなだけディレクトリを追加でき、IDEはライブラリやヘッダファイルが必要なときに追加したディレクトリも検索してくれます。GLFWの<code>インクルード</code>フォルダを追加すれば<code>&lt;GLFW/..&gt;</code>をインクルードすることでGLFWのヘッダーファイルを利用することができます。
+</p>
+
+<p>
+  Since VS can now find all the required files we can finally link GLFW to the project by going to the <code>Linker</code> tab and <code>Input</code>:
+  必要なファイルをVisual Studioが見つけられるようになったので、ようやくGLFWをプロジェクトにリンクできます。<code>Linker</code>タブの中の<code>Input</code>を選択してください:
+</p>
+
+<img src="/img/getting-started/linker_input.png" width="600px" alt="Image of Visual Studio's link configuration"/>。
+
+<p>
+  To then link to a library you'd have to specify the name of the library to the linker. Since the library name is <code>glfw3.lib</code>, we add that to the <code>Additional Dependencies</code> field (either manually or using the <code>&lt;Edit..&gt;</code> option) and from that point on GLFW will be linked when we compile. In addition to GLFW we should also add a link entry to the OpenGL library, but this may differ per operating system:
+ライブラリをリンクするために、こんどはリンカにライブラリ名を伝える必要があります。ライブラリ名は<code>glfw3.lib</code>なので、この名前を<code>Additional Dependencies</code>に追加します（手入力でも<code>&lt;Edit..&gt;</code>からでもかまいません）。これでコンパイル時にGLFWがリンクされるようになりました。GLFWに加えて、OpenGLのライブラリもリンクしなければなりませんが、これはOSによってすこし違います:
+</p>
+
+<h3>OpenGL library on Windows</h3>
+<h3>WindowsにおけるOpenGLライブラリ</h3>
+<p>
+  If you're on Windows the OpenGL library <code>opengl32.lib</code> comes with the Microsoft SDK, which is installed by default when you install Visual Studio. Since this chapter uses the VS compiler and is on windows we add <code>opengl32.lib</code> to the linker settings. Note that the 64-bit equivalent of the OpenGL library is called <code>opengl32.lib</code>, just like the 32-bit equivalent, which is a bit of an unfortunate name.
+WindowsユーザーはいますぐLinuxかBSDにのりかえてください。OpenGLのライブラリは<code>opengl32.lib</code>とよばれ、Microsoft SDKに付属しています。MicrosoftSDKはVisual Studioに標準で搭載されています。この章ではVisual Studioのコンパイラを利用し、Windows上で作業を行なっているのでリンカの設定に<code>opengl32.lib</code>を追加しましょう。まぎらわしいことに64bit用のライブラリは32bitライブラリであるかのようなへんてこな名前をしていますので注意してください。
+</p>
+
+<h3>OpenGL library on Linux</h3>
+<h3>LinuxにおけるOpenGLライブラリ</h3>
+<p>
+  On Linux systems you need to link to the <code>libGL.so</code> library by adding <code>-lGL</code> to your linker settings. If you can't find the library you probably need to install any of the Mesa, NVidia or AMD dev packages.
+Linuxでは<code>libGL.so</code>をリンクするためにリンカの設定に<code>-lGL</code>を追加してください。ライブラリが見つからない場合、Mesa、NVidiaあるいはAMDの開発用パッケージをインストールしてください。
+</p>
+
+<p>
+  Then, once you've added both the GLFW and OpenGL library to the linker settings you can include the header files for GLFW as follows:
+GLFWとOpenGLライブラリをリンカの設定に追加したら、GLFWのヘッダーファイルをインクルードできます:
+</p>
+
+<pre><code>
+#include &lt;GLFW\glfw3.h&gt;
+</code></pre>。
+
+<note>
+  For Linux users compiling with GCC, the following command line options may help you compile the project: <code>-lglfw3 -lGL -lX11 -lpthread -lXrandr -lXi -ldl</code>. Not correctly linking the corresponding libraries will generate many <em>undefined reference</em> errors.
+GCCを利用しているLinuxユーザーは以下のコマンドラインオプションが便利です: <code>-lglfw3 -lGL -lX11 -lpthread -lXrandr -lXi -ldl</code>。リンクがうまくいっていないと、大量の<em>undefined reference</em>エラーがでます。
+</note>
+
+<p>
+  This concludes the setup and configuration of GLFW.
+  以上でGLFWの設定は完了です。
+</p>
+
+<h2>GLAD</h2>
+<p>
+	We're still not quite there yet, since there is one other thing we still need to do. Because OpenGL is only really a standard/specification it is up to the driver manufacturer to implement the specification to a driver that the specific graphics card supports. Since there are many different versions of OpenGL drivers, the location of most of its functions is not known at compile-time and needs to be queried at run-time. It is then the task of the developer to retrieve the location of the functions he/she needs and store them in function pointers for later use. Retrieving those locations is <a href="https://www.khronos.org/opengl/wiki/Load_OpenGL_Functions" target="_blank">OS-specific</a>. In Windows it looks something like this:
+まだです。もうひとつだけやり残したことがあります。OpenGLはただの規格であり仕様であるため、各グラフィックカードがサポートするドライバにおいて、その仕様をどのように実装するかはドライバの作成者に任されています。OpenGLのドライバはたくさんあるので、関数の場所はほとんどコンパイル時にはわからず、実行時に要求されます。そのため必要な関数の場所を割り出し、その関数へのポインタとして保存するのは開発者の仕事なのです。この仕事は<a href="https://www.khronos.org/opengl/wiki/Load_OpenGL_Functions" target="_blank">OSによってまちまち</a>です。Windowsでは以下のようにします:
+</p>
+
+<pre><code>
+// define the function's prototype
+// 関数のプロトタイプ宣言
+typedef void (*GL_GENBUFFERS) (GLsizei, GLuint*);
+// find the function and assign it to a function pointer
+// 関数を見つけ、ポインタを割り当て
+GL_GENBUFFERS <function id='12'>glGenBuffers</function>  = (GL_GENBUFFERS)wglGetProcAddress("<function id='12'>glGenBuffers</function>");
+// function can now be called as normal
+// 上の作業により関数は普通に呼び出せる
+unsigned int buffer;
+<function id='12'>glGenBuffers</function>(1, &buffer);
+</code></pre>
+
+  <p>
+    As you can see the code looks complex and it's a cumbersome process to do this for each function you may need that is not yet declared. Thankfully, there are libraries for this purpose as well where <strong>GLAD</strong> is a popular and up-to-date library.
+    ごらんのように必要な関数ごとにいちいちこれを行うのはかったるいです。ありがたいことにこの仕事を肩代りしてくれるライブラリがあります。<strong>GLAD</strong>はそのようなライブラリのなかでも人気があり常に更新されています。
+  </p>
+
+<h3>Setting up GLAD</h3>
+<h3>GLADの設定</h3>
+  <p>
+    GLAD is an <a href="https://github.com/Dav1dde/glad" target="_blank">open source</a> library that manages all that cumbersome work we talked about. GLAD has a slightly different configuration setup than most common open source libraries. GLAD uses a <a href="http://glad.dav1d.de/" target="_blank">web service</a> where we can tell GLAD for which version of OpenGL we'd like to define and load all relevant OpenGL functions according to that version. 
+  GLADは<a href="https://github.com/Dav1dde/glad" target="_blank">オープンソース</a>のライブラリで、上記のような面倒な作業を行ってくれるものです。GLADは他の多くのオープンソースなライブラリとは少し違った方法でセットアップします。GLADは<a href="http://glad.dav1d.de/" target="_blank">ウェブサービス</a>を利用しています。利用したいOpenGLのバージョンをGLADに伝えれば、そのバージョンの関数を全てロードできるようになります。
+  </p>
+
+<p>
+  Go to the GLAD <a href="http://glad.dav1d.de/" target="_blank">web service</a>, make sure the language is set to C++, and in the API section select an OpenGL version of at least 3.3 (which is what we'll be using; higher versions are fine as well). Also make sure the profile is set to <em>Core</em> and that the <em>Generate a loader</em> option is ticked. Ignore the extensions (for now) and click <em>Generate</em> to produce the resulting library files.
+GLADの<a href="http://glad.dav1d.de/" target="_blank">ウェブサービス</a>に行き、言語がC++になっていることを確認し、APIの部分でOpenGLのバージョンから3.3以上のものを選択してください（3.3は本書で使うバージョンですが、もっと新しいバージョンでもかまいません）。また、profileが<em>Core</em>であることおよび、<em>Generate a loader</em>オプションにチェックが入っていることも確認してください。extentionはとりあえず無視してかまいませんので、<em>Generate</em>をクリックしてライブラリを作成してください。
+</p>
+
+<p>
+  GLAD by now should have provided you a zip file containing two include folders, and a single <code>glad.c</code> file. Copy both include folders (<code>glad</code> and <code>KHR</code>) into your include(s) directoy (or add an extra item pointing to these folders), and add the <code>glad.c</code> file to your project.
+  そうすれば二つのインクルードフォルダとひとつの<code>glad.c</code>ファイルが入ったzipファイルがダウンロードできます。これらのフォルダー（<code>glad</code>と<code>KHR</code>）をあなたのインクルードディレクトリ（またはこれらのフォルダを指したほかのもの）へコピーし、<code>glad.c</code>ファイルをプロジェクトに追加してください。
+</p>
+
+<p>
+  After the previous steps, you should be able to add the following include directive above your file:
+  以上により、あなたのファイルの冒頭にインクルードディレクティブを追加できます:
+</p>
+
+<pre><code>
+#include &lt;glad/glad.h&gt; 
+</code></pre>
+
+<p>
+  Hitting the compile button shouldn't give you any errors, at which point we're set to go for the <a href="https://learnopengl.com/Getting-started/Hello-Window" target="_blank">next</a> chapter where we'll discuss how we can actually use GLFW and GLAD to configure an OpenGL context and spawn a window. Be sure to check that all your include and library directories are correct and that the library names in the linker settings match the corresponding libraries. 
+  コンパイルボタンを押してエラーがでなければ、<a href="https://learnopengl.com/Getting-started/Hello-Window" target="_blank">次の</a>章に進むことができます。次の章では実際にGLFWとGLADを用いてOpenGLのコンテクストを設定し、ウィンドを作ります。すべてのインクルードおよびライブラリディレクトリが正しく、リンカの設定にあるライブラリ名が実際のライブラリ名と対応していることを確認してください。
+</p>
+
+<h2>Additional resources</h2>
+<h2>参考</h2>
+<ul>
+  <li><a href="http://www.glfw.org/docs/latest/window_guide.html" target="_blank">GLFW: Window Guide</a>: official GLFW guide on setting up and configuring a GLFW window.</li>
+  <li><a href="http://www.glfw.org/docs/latest/window_guide.html" target="_blank">GLFW: Window Guide</a>: GLFWのセットアップおよびウィンドウの設定に関する公式ガイド</li>
+  <li><a href="http://www.opengl-tutorial.org/miscellaneous/building-your-own-c-application/" target="_blank">Building applications</a>: provides great info about the compilation/linking process of your application and a large list of possible errors (plus solutions) that may come up.</li>
+  <li><a href="http://www.opengl-tutorial.org/miscellaneous/building-your-own-c-application/" target="_blank">Building applications</a>: コンパイルおよびリンクに関する情報と予想されるエラーとその解決法</li>
+  <li><a href="http://wiki.codeblocks.org/index.php?title=Using_GLFW_with_Code::Blocks" target="_blank">GLFW with Code::Blocks</a>: building GLFW in Code::Blocks IDE.</li>
+  <li><a href="http://wiki.codeblocks.org/index.php?title=Using_GLFW_with_Code::Blocks" target="_blank">GLFW with Code::Blocks</a>: Code::BlocksにおけるGLFWのビルド方法</li>
+  <li><a href="http://www.cmake.org/runningcmake/" target="_blank">Running CMake</a>: short overview of how to run CMake on both Windows and Linux.</li>
+  <li><a href="http://www.cmake.org/runningcmake/" target="_blank">Running CMake</a>: WindowsとLinux両方におけるCMakeの概要</li>
+  <li><a href="https://learnopengl.com/demo/autotools_tutorial.txt" target="_blank">Writing a build system under Linux</a>: an autotools tutorial by Wouter Verholst on how to write a build system in Linux.</li>
+  <li><a href="https://learnopengl.com/demo/autotools_tutorial.txt" target="_blank">Writing a build system under Linux</a>: Wouter Verholstによるautotoolsのチュートリアル: Linuxにおけるビルドシステムの書き方</li>
+  <li><a href="https://github.com/Polytonic/Glitter" target="_blank">Polytonic/Glitter</a>: a simple boilerplate project that comes pre-configured with all relevant libraries; great for if you want a sample project without the hassle of having to compile all the libraries yourself.</li>
+  <li><a href="https://github.com/Polytonic/Glitter" target="_blank">Polytonic/Glitter</a>: 必要なライブラリがあらかじめ設定された、雛形のようなプロジェクト; ライブラリを自分でコンパイルしないですむサンプルプロジェクトがほしい場合に最適</li>
+</ul>
+       
+
+    </div>
+</body>
+</html>
