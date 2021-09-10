@@ -89,17 +89,21 @@ OpenGLにおいてあらゆることは三次元空間上でおこります。�
 
 <p>
   After all the corresponding color values have been determined, the final object will then pass through one more stage that we call the <def>alpha test</def> and <def>blending</def> stage. This stage checks the corresponding depth (and stencil) value (we'll get to those later) of the fragment and uses those to check if the resulting fragment is in front or behind other objects and should be discarded accordingly. The stage also checks for <def>alpha</def> values (alpha values define the opacity of an object) and <def>blends</def> the objects accordingly. So even if a pixel output color is calculated in the fragment shader, the final pixel color could still be something entirely different when rendering multiple triangles.
+すべての色が決定されたあと、出力されたオブジェクトは<def>アルファテスト</def>および<def>ブレンディング</def>ステージとよばれるもうひとつのステージで処理されます。フラグメントの深度およびステンシル値（あとで詳しく見ます）がチェックされ、フラグメントどうしの前後関係を確認し、表示すべきかどうかを決定します。このステージで<def>アルファ</def>値（物体の透明度）も確認され、その値に応じてオブジェクトが<def>ブレンド</def>されます。そのためフラグメントシェーダーによってピクセルの色が計算されても、複数の三角形を描画する場合、その出力値が実際に表示されるものとまったく違ったものになる可能性があります。
 </p>
 
 <p>
   As you can see, the graphics pipeline is quite a complex whole and contains many configurable parts. However, for almost all the cases we only have to work with the vertex and fragment shader. The geometry shader is optional and usually left to its default shader. There is also the tessellation stage and transform feedback loop that we haven't depicted here, but that's something for later. 
+ここまで見てきたようにグラフィックスパイプラインは設定可能な部分を多く含み、全体として非常に複雑です。しかし基本的には頂点シェーダーとフラグメントシェーダー以外をさわることはありません。ジオメトリシェーダーは通常デフォルトのシェーダーのままにしておきます。この他にもテッセレーションステージや変換フィードバックループといったものもありますが、それらについては後で説明します。
 </p>
 
 <p>
   In modern OpenGL we are <strong>required</strong> to define at least a vertex and fragment shader of our own (there are no default vertex/fragment shaders on the GPU). For this reason it is often quite difficult to start learning modern OpenGL since a great deal of knowledge is required before being able to render your first triangle. Once you do get to finally render your triangle at the end  of this chapter you will end up knowing a lot more about graphics programming.
+現在のOpenGLではすくなくとも頂点シェーダーとフラグメントシェーダーは自分で用意することが<strong>必要</strong>です（デフォルトのシェーダーは存在しません）。そのため初学者が初めて三角形を表示させるために要求される知識量が多くなり、これがOpenGLの学習を難しくしている要因です。この章を読み、最初の三角形を描画することができたときには、グラフィックプログラミングに関して多くの知識を得ていることでしょう。
 </p>
 
 <h2>Vertex input</h2>
+<h2>頂点の入力</h2>
 <p>
    To start drawing something we have to first give OpenGL some input vertex data. OpenGL is a 3D graphics library so all coordinates that we specify in OpenGL are in 3D (<code>x</code>, <code>y</code> and <code>z</code> coordinate). OpenGL doesn't simply transform <strong>all</strong> your 3D coordinates to 2D pixels on your screen; OpenGL only processes 3D coordinates when they're in a specific range between <code>-1.0</code> and <code>1.0</code> on all 3 axes (<code>x</code>, <code>y</code> and <code>z</code>). All coordinates within this so called <def>normalized device coordinates</def> range will end up visible on your screen (and all coordinates outside this region won't). 
 </p>
@@ -712,21 +716,5 @@ unsigned int EBO;
        
 
     </div>
-    
-    <div id="hover">
-        HI
-    </div>
-   <!-- 728x90/320x50 sticky footer -->
-<div id="waldo-tag-6196"></div>
-
-   <div id="disqus_thread"></div>
-
-    
-
-
-</div> <!-- container div -->
-
-
-</div> <!-- super container div -->
 </body>
 </html>
