@@ -268,6 +268,7 @@ void main()
 <h2>シェーダーのコンパイル</h2>
 <p>
   We take the source code for the vertex shader and store it in a const C string at the top of the code file for now: 
+それではコードの一番上にC言語のの文字列定数として頂点シェーダーのソースコードを記述しましょう:
 </p>
 
 <pre><code>
@@ -281,6 +282,7 @@ const char *vertexShaderSource = "#version 330 core\n"
 
 <p>
   In order for OpenGL to use the shader it has to dynamically compile it at run-time from its source code. The first thing we need to do is create a shader object, again referenced by an ID. So we store the vertex shader as an <code>unsigned int</code> and create the shader with <fun><function id='37'>glCreateShader</function></fun>:
+OpenGLがシェーダーを利用するには実行時にソースコード内から動的にコンパイルする必要があります。まずはじめにこれまたIDにより参照されるシェーダーオブジェクトを作成しないといけません。頂点シェーダーを<code>unsigned int</code>として保存し、シェーダーを<fun><function id='37'>glCreateShader</function></fun>により作成します:
 </p>
 
 <pre><code>
@@ -290,10 +292,12 @@ vertexShader = <function id='37'>glCreateShader</function>(GL_VERTEX_SHADER);
 
 <p>
   We provide the type of shader we want to create as an argument to <fun><function id='37'>glCreateShader</function></fun>. Since we're creating a vertex shader we pass in <var>GL_VERTEX_SHADER</var>.
+作成するシェーダーの種類は<fun><function id='37'>glCreateShader</function></fun>の引数で指定します。今回作成するのは頂点シェーダーなので、<var>GL_VERTEX_SHADER</var>を渡します。
 </p>
 
 <p>
   Next we attach the shader source code to the shader object and compile the shader:
+次にシェーダーのソースコードをシェーダーオブジェクトに割り当てコンパイルします:
 </p>
 
 <pre class="cpp"><code>
@@ -303,11 +307,13 @@ vertexShader = <function id='37'>glCreateShader</function>(GL_VERTEX_SHADER);
 
 <p>
   The <fun><function id='42'>glShaderSource</function></fun> function takes the shader object to compile to as its first argument. The second argument specifies how many strings we're passing as source code, which is only one. The third parameter is the actual source code of the vertex shader and we can leave the 4th parameter to <code>NULL</code>.
+<fun><function id='42'>glShaderSource</function></fun>はコンパイルするシェーダーオブジェクトを最初の引数にとります。二つ目の引数はソースコードとしていくつの文字列を渡すかを指定します。ここでは一つだけなので1を指定します。三番目は頂点シェーダーのソースコードそのもので、四番目は<code>NULL</code>のままで大丈夫です。
 </p>
 
 <note>
   <p>
     You probably want to check if compilation was successful after the call to <fun><function id='38'>glCompileShader</function></fun> and if not, what errors were found so you can fix those. Checking for compile-time errors is accomplished as follows:
+<fun><function id='38'>glCompileShader</function></fun>を呼び出した後、コンパイルが通ったかどうか、どのようなエラーが発生したか確認したいものです。コンパイル時のエラーの確認は以下のようにできます:
   </p>
   
 <pre class="cpp"><code>
@@ -318,6 +324,7 @@ char infoLog[512];
   
 <p>
    First we define an integer to indicate success and a storage container for the error messages (if any). Then we check if compilation was successful with <fun><function id='39'>glGetShaderiv</function></fun>. If compilation failed, we should retrieve the error message with <fun><function id='40'>glGetShaderInfoLog</function></fun> and print the error message.
+はじめに成功したかどうかを格納するための整数と、エラーメッセージがでた場合にそれを格納するための変数を宣言します。その後<fun><function id='39'>glGetShaderiv</function></fun>によりコンパイルが成功したかどうか確認します。失敗していた場合、<fun><function id='40'>glGetShaderInfoLog</function></fun>を用いてエラーメッセージを取り出し、表示するようにします。
   </p>
   
 <pre><code>
@@ -331,15 +338,19 @@ if(!success)
 
 <p>
   If no errors were detected while compiling the vertex shader it is now compiled.
+エラーが出なければシェーダーのコンパイルは成功です。
 </p>
 
 <h2>Fragment shader</h2>
+<h2>フラグメントシェーダー</h2>
 <p>
   The fragment shader is the second and final shader we're going to create for rendering a triangle. The fragment shader is all about calculating the color output of your pixels. To keep things simple the fragment shader will always output an orange-ish color.
+フラグメントシェーダーは三角形を描画するために作成する二つ目にして最後のシェーダーです。フラグメントシェーダーはピクセルの色を計算するためのシェーダーです。ここでは簡単のためにフラグメントシェーダーは常にオレンジ色を出力するようにします。
 </p>
 
 <note>
   Colors in computer graphics are represented as an array of 4 values: the red, green, blue and alpha (opacity) component, commonly abbreviated to RGBA. When defining a color in OpenGL or GLSL we set the strength of each component to a value between <code>0.0</code> and <code>1.0</code>. If, for example, we would set red to <code>1.0</code> and green to <code>1.0</code> we would get a mixture of both colors and get the color yellow. Given those 3 color components we can generate over 16 million different colors!
+コンピュータグラフィックスにおいて、色は4つの数値で表現されます。赤、緑、青、アルファ（透明度）の4つで、一般的にRGBAと略記されます。OpenGLやGLSLにおいて色を定義する場合、それぞれの要素を<code>0.0</code>と<code>1.0</code>のあいだの数値で表現します。例えば赤を<code>1.0</code>、緑を<code>1.0</code>にした場合、赤と緑をまぜた色である黄色が得られます。3色の組み合わせにより、160万色以上を表現できます。
 </note>
 
 <pre><code>
@@ -354,10 +365,12 @@ void main()
 
 <p>
   The fragment shader only requires one output variable and that is a vector of size 4 that defines the final color output that we should calculate ourselves. We can declare output values with the <code>out</code> keyword, that we here promptly named <var>FragColor</var>. Next we simply assign a <code>vec4</code> to the color output as an orange color with an alpha value of <code>1.0</code> (<code>1.0</code> being completely opaque).
+フラグメントシェーダーに必要な出力は最終的な色を決定する四次元ベクトルだけです。このベクトルはわれわれ自身で計算しなければいけません。出力値は<code>out</code>で指定でき、ここでは<var>FragColor</var>という名前にしています。続いて単に<code>vec4</code>にアルファ値が<code>1.0</code>のオレンジ色を割り当てます（アルファ値<code>1.0</code>は完全に不透明であることを意味します）。
 </p>
 
 <p>
   The process for compiling a fragment shader is similar to the vertex shader, although this time we use the <var>GL_FRAGMENT_SHADER</var> constant as the shader type:
+フラグメントシェーダーのコンパイルは頂点シェーダーとほぼ同じです。ただし今回はシェーダーの種類として<var>GL_FRAGMENT_SHADER</var>を指定します:
 </p>
 
 <pre class="cpp"><code>
@@ -369,18 +382,22 @@ fragmentShader = <function id='37'>glCreateShader</function>(GL_FRAGMENT_SHADER)
 
 <p>
   Both the shaders are now compiled and the only thing left to do is link both shader objects into a <def>shader program</def> that we can use for rendering. Make sure to check for compile errors here as well!
+これでシェーダーはどちらもコンパイルできたので最後に、描画に利用する<def>シェーダープログラム</def>にふたつのシェーダーをリンクします。ここでもコンパイルエラーを確認してください。
 </p>
 
 <h3>Shader program</h3>
+<h3>シェーダープログラム</h3>
 <p>
  A shader program object is the final linked version of multiple shaders combined. To use the recently compiled shaders we have to <def>link</def> them to a shader program object and then activate this shader program when rendering objects. The activated shader program's shaders will be used when we issue render calls. 
+シェーダープログラムオブジェクトは複数のシェーダーをリンクしたものです。今コンパイルしたシェーダーを利用するにはそれらをシェーダープログラムオブジェクトにリンクして描画時にこのプログラムをアクティベートする必要があります。アクティブなシェーダープログラムのシェーダーが描画命令を実行する際に利用されます。
 </p>
 
 <p>
   When linking the shaders into a program it links the outputs of each shader to the inputs of the next shader. This is also where you'll get linking errors if your outputs and inputs do not match. </p>
-
+シェーダーをひとつのプログラムとしてリンクする際、各シェーダーの出力が次のシェーダーの入力に繋がれます。この出力と入力が合致しないと、リンクエラーが発生します。
 <p>
   Creating a program object is easy:
+プログラムオブジェクトの作成は簡単です:
 </p>
 
 <pre><code>
@@ -390,6 +407,7 @@ shaderProgram = <function id='36'>glCreateProgram</function>();
 
 <p>
   The <fun><function id='36'>glCreateProgram</function></fun> function creates a program and returns the ID reference to the newly created program object. Now we need to attach the previously compiled shaders to the program object and then link them with <fun><function id='35'>glLinkProgram</function></fun>:
+<fun><function id='36'>glCreateProgram</function></fun>はプログラムを作成し、そのプログラムオブジェクトを参照するIDを返します。次に、先程コンパイルしたシェーダーを今作ったプログラムオブジェクトに関連付け、<fun><function id='35'>glLinkProgram</function></fun>によりリンクします:
 </p>
 
 <pre><code>
@@ -400,10 +418,12 @@ shaderProgram = <function id='36'>glCreateProgram</function>();
 
 <p>
   The code should be pretty self-explanatory, we attach the shaders to the program and link them via <fun><function id='35'>glLinkProgram</function></fun>. 
+このコードは見たままのことを行います。シェーダーをプログラムに関連付け、<fun><function id='35'>glLinkProgram</function></fun>によりリンクします。
 </p>
 
 <note>
   Just like shader compilation we can also check if linking a shader program failed and retrieve the corresponding log. However, instead of using <fun><function id='39'>glGetShaderiv</function></fun> and <fun><function id='40'>glGetShaderInfoLog</function></fun> we now use:
+シェーダーのコンパイルと同様、シェーダープログラムのリンクが成功したかどうか、そのログとともに確かめることができます。ただし今回使う関数は<fun><function id='39'>glGetShaderiv</function></fun>と<fun><function id='40'>glGetShaderInfoLog</function></fun>ではなく以下のものです:
 
 <pre class="cpp"><code>
 <function id='41'>glGetProgramiv</function>(shaderProgram, GL_LINK_STATUS, &success);
@@ -416,6 +436,7 @@ if(!success) {
 
 <p>
   The result is a program object that we can activate by calling <fun><function id='28'>glUseProgram</function></fun> with the newly created program object as its argument:
+こうして得られたプログラムオブジェクトはそれ自身を<fun><function id='28'>glUseProgram</function></fun>の第一引数に渡すことでアクティベートできます:
 </p>
 
 <pre><code>
@@ -424,10 +445,12 @@ if(!success) {
 
 <p>
   Every shader and rendering call after <fun><function id='28'>glUseProgram</function></fun> will now use this program object (and thus the shaders).
+<fun><function id='28'>glUseProgram</function></fun>の呼び出し以降、シェーダーや描画命令はこのプログラムオブジェクトおよびシェーダーを利用します。
 </p>
 
 <p>
   Oh yeah, and don't forget to delete the shader objects once we've linked them into the program object; we no longer need them anymore:
+これでよし。プログラムオブジェクトにリンクし終ったシェーダーオブジェクトはもう必要ないので忘れずに削除してください:
 </p>
 
 <pre><code>
@@ -437,28 +460,37 @@ if(!success) {
 
 <p>
   Right now we sent the input vertex data to the GPU and instructed the GPU how it should process the vertex data within a vertex and fragment shader. We're almost there, but not quite yet. OpenGL does not yet know how it should interpret the vertex data in memory and how it should connect the vertex data to the vertex shader's attributes. We'll be nice and tell OpenGL how to do that.
+これで、頂点データをGPUに送信し、頂点シェーダーとフラグメントシェーダーにおいてそのデータの処理方法を指定できました。ゴールまであと一歩です。OpenGLはメモリ内の頂点データをどのように解釈し、頂点シェーダーの属性にどう対応させるかをまだ知りません。OpenGLにその方法を教えてあげましょう。
 </p>
 
 <h2>Linking Vertex Attributes</h2>
+<h2>頂点属性のリンク</h2>
 <p>
   The vertex shader allows us to specify any input we want in the form of vertex attributes and while this allows for great flexibility, it does mean we have to manually specify what part of our input data goes to which vertex attribute in the vertex shader. This means we have to specify how OpenGL should interpret the vertex data before rendering.
+頂点シェーダーに対して頂点属性をどのようなかたちで渡すかは自由です。そのため非常に柔軟性が高い一方、入力となるデータが頂点シェーダーにおいてどのように頂点属性に対応するのかを自分の手で設定しなければなりません。描画の前に、OpenGLがどのように頂点データを解釈するのか指定しなければならないということです。
 </p>
 
 <p>
   Our vertex buffer data is formatted as follows:
+われわれの頂点バッファデータは以下のような形式です:
 </p>
 
 <img src="/img/getting-started/vertex_attribute_pointer.png" class="clean" alt="Vertex attribte pointer setup of OpenGL VBO"/>
 
   <ul>
     <li>The position data is stored as 32-bit (4 byte) floating point values.</li>
+    <li>位置データは32ビット（4バイト）の浮動小数点数です。</li>
     <li>Each position is composed of 3 of those values.</li>
+    <li>それぞれの位置データは3つの数値からなります。</li>
     <li>There is no space (or other values) between each set of 3 values. The values are <def>tightly packed</def> in the array.</li>
+    <li>位置データどうしの間には隙間や他のデータはありません。数値はデータ列中で<def>稠密</def>です。</li>
     <li>The first value in the data is at the beginning of the buffer.</li>
+    <li>データ中の一番目の数値はバッファの先頭に位置します。</li>
   </ul>
   
 <p>
    With this knowledge we can tell OpenGL how it should interpret the vertex data (per vertex attribute) using <fun><function id='30'>glVertexAttribPointer</function></fun>:
+以上の情報を基にOpenGLが頂点データを（頂点属性ごとに）どのように解釈するか、<fun><function id='30'>glVertexAttribPointer</function></fun>により指定します:
 </p>
 
 <pre class="cpp"><code>
