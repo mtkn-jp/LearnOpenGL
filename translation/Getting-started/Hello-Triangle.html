@@ -500,16 +500,20 @@ if(!success) {
 
 <p>
   The function <fun><function id='30'>glVertexAttribPointer</function></fun> has quite a few parameters so let's carefully walk through them:
+<fun><function id='30'>glVertexAttribPointer</function></fun>はたくさんの引数を取るので丁寧に見ていきましょう:
 </p>
   
   <ul>
     <li>The first parameter specifies which vertex attribute we want to configure. Remember that we specified the location of the <var>position</var> vertex attribute in the vertex shader with <code>layout (location = 0)</code>. This sets the location of the vertex attribute to <code>0</code> and since we want to pass data to this vertex attribute, we pass in <code>0</code>.</li>
-    
+    <li>最初の引数はどの頂点属性を設定するのかを指定します。頂点シェーダーにおいて<var>位置</var>属性を<code>layout (location = 0)</code>によって設定したのを思いだしてください。このとき頂点属性の位置を<code>0</code>にしており、この頂点属性にデータを渡したいので、このひとつめの引数は<code>0</code>にします。</li>
     <li>The next argument specifies the size of the vertex attribute. The vertex attribute is a <code>vec3</code> so it is composed of <code>3</code> values.</li>
+    <li>次の引数は頂点属性のサイズです。今回の頂点属性は<code>vec3</code>であり<code>3</code>つの数値からなります。</li>
     
     <li>The third argument specifies the type of the data which is <var>GL_FLOAT</var> (a <code>vec*</code> in GLSL consists of floating point values).</li>
+    <li>三番目の引数ではデータの型を指定します。ここでは<var>GL_FLOAT</var>です（GLSLにおいて<code>vec*</code>は浮動小数点数からなります）。</li>
     
     <li>The next argument specifies if we want the data to be normalized. If we're inputting integer data types (int, byte) and we've set this to <var>GL_TRUE</var>, the integer data is normalized to <code>0</code> (or <code>-1</code> for signed data) and <code>1</code> when converted to float. This is not relevant for us so we'll leave this at <var>GL_FALSE</var>.</li>
+    <li>次の引数はデータを正規化するかどうか指定します。データ型が整数（intやbyte）であり、かつこの引数を<var>GL_TRUE</var>にした場合、整数のデータは浮動小数点数に変換される際に<code>0</code>（符号付きの場合は<code>-1</code>）と<code>1</code>の間に納まるように正規化されます。今回は関係ありませんので<var>GL_FALSE</var>にしておきます。</li>
     
     <li>The fifth argument is known as the <def>stride</def> and tells us the space between consecutive vertex attributes. Since the next set of position data is located exactly 3 times the size of a <code>float</code> away we specify that value as the stride. Note that since we know that the array is tightly packed (there is no space between the next vertex attribute value) we could've also specified the stride as <code>0</code> to let OpenGL determine the stride (this only works when values are tightly packed). Whenever we have more vertex attributes we have to carefully define the spacing between each vertex attribute but we'll get to see more examples of that later on.</li>
  
