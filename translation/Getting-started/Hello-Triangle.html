@@ -584,6 +584,7 @@ VAOは以下のものを保持します:
 
 <p>
   The process to generate a VAO looks similar to that of a VBO:
+VAOの作成はVBOと同様です:
 </p>
 
 <pre class="cpp"><code>
@@ -593,16 +594,21 @@ unsigned int VAO;
 
 <p>
   To use a VAO all you have to do is bind the VAO using <fun><function id='27'>glBindVertexArray</function></fun>. From that point on we should bind/configure the corresponding VBO(s) and attribute pointer(s) and then unbind the VAO for later use. As soon as we want to draw an object, we simply bind the VAO with the preferred settings before drawing the object and that is it. In code this would look a bit like this:
+VAOを利用するために必要なのは<fun><function id='27'>glBindVertexArray</function></fun>によりVAOを紐付けることだけです。この後、対応するVBOや属性ポインタの紐付けや設定を行い、後々の利用にそなえてVAOの紐付けを解除します。ある物体を描画したい場合、描画の前にその物体の設定を保持したVAOを紐付けるだけで十分です。以上をコードに落し込むとこのようになります:
 </p>
 
 <pre><code>
 // ..:: Initialization code (done once (unless your object frequently changes)) :: ..
+// ..:: 初期化のコード（描画する物体を頻繁に変更しないのであれば一度だけ）::..
 // 1. bind Vertex Array Object
+// 1. VAOを紐付け
 <function id='27'>glBindVertexArray</function>(VAO);
 // 2. copy our vertices array in a buffer for OpenGL to use
+// 2. 頂点配列をバッファにコピー
 <function id='32'>glBindBuffer</function>(GL_ARRAY_BUFFER, VBO);
 <function id='31'>glBufferData</function>(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 // 3. then set our vertex attributes pointers
+// 3. 頂点属性のポインタを設定
 <function id='30'>glVertexAttribPointer</function>(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 <function id='29'><function id='60'>glEnable</function>VertexAttribArray</function>(0);  
 
@@ -610,7 +616,9 @@ unsigned int VAO;
 [...]
 
 // ..:: Drawing code (in render loop) :: ..
+// ..:: 描画命令（描画ループ内）::..
 // 4. draw the object
+// 4. 描画
 <function id='28'>glUseProgram</function>(shaderProgram);
 <function id='27'>glBindVertexArray</function>(VAO);
 someOpenGLFunctionThatDrawsOurTriangle();   
@@ -618,11 +626,14 @@ someOpenGLFunctionThatDrawsOurTriangle();
 
 <p>
   And that is it! Everything we did the last few million pages led up to this moment, a VAO that stores our vertex attribute configuration and which VBO to use. Usually when you have multiple objects you want to draw, you first generate/configure all the VAOs (and thus the required VBO and attribute pointers) and store those for later use. The moment we want to draw one of our objects, we take the corresponding VAO, bind it, then draw the object and unbind the VAO again.
+やりました。ここまでの数千ページに及ぶ努力がこの瞬間実を結びました。VAOが頂点属性の設定や描画に利用するVBOの情報を保持しています。複数の物体を描画したい場合は通常、まずそれぞれの物体に対してVAO（とそれに必要なVBOや属性のポインタ）を作成、設定し利用に供えて保存しておきます。そして描画が必要になった時、描画したい物体のVAOを紐付け、描画し、最後に紐付けを解除します。
 </p>
 
 <h3>The triangle we've all been waiting for</h3>
+<h3>待ち侘びた三角形</h3>
 <p>
   To draw our objects of choice, OpenGL provides us with the <fun><function id='1'>glDrawArrays</function></fun> function that draws primitives using the currently active shader, the previously defined vertex attribute configuration and with the VBO's vertex data (indirectly bound via the VAO).
+好きなものを描画するために、OpenGLには<fun><function id='1'>glDrawArrays</function></fun>という関数が用意されています。この関数は、現在有効化されているシェーダー、以前定義した頂点属性の設定およびVBO（VAOを通して間接的に紐付けられたもの）を用いてプリミティブ（基本図形）を描きます。
 </p>
 
 <pre class="cpp"><code>
@@ -633,20 +644,24 @@ someOpenGLFunctionThatDrawsOurTriangle();
 
 <p>
   The <fun><function id='1'>glDrawArrays</function></fun> function takes as its first argument the OpenGL primitive type we would like to draw. Since I said at the start we wanted to draw a triangle, and I don't like lying to you, we pass in <var>GL_TRIANGLES</var>. The second argument specifies the starting index of the vertex array we'd like to draw; we just leave this at <code>0</code>. The last argument specifies how many vertices we want to draw, which is <code>3</code> (we only render 1 triangle from our data, which is exactly 3 vertices long).
+<fun><function id='1'>glDrawArrays</function></fun>はひとつ目の引数に描きたいOpenGLのプリミティブをとります。冒頭で三角形を描画すると言い、嘘をつきたくないので、ここでは<var>GL_TRIANGLES</var>を渡します。ふたつ目の引数は頂点配列の何番目の頂点から描きはじめるかを指定します。ここでは<code>0</code>にしておきましょう。最後の引数はいくつの頂点を描くかを指定します。ひとつの三角形を描きたいので<code>3</code>を渡します。
 </p>
 
 <p>
   Now try to compile the code and work your way backwards if any errors popped up. As soon as your application compiles, you should see the following result:
+それではコンパイルしてください。なにかエラーがでれば戻って確認してください。コンパイルが完了すれば、以下のような結果が見えるはずです。
 </p>
 
 <img src="/img/getting-started/hellotriangle.png" width="600px" class="clean" alt="An image of a basic triangle rendered in modern OpenGL" />
 
 <p>
   The source code for the complete program can be found  <a href="/code_viewer_gh.php?code=src/1.getting_started/2.1.hello_triangle/hello_triangle.cpp" target="_blank">here</a> .
+完全なソースコードは<a href="/code_viewer_gh.php?code=src/1.getting_started/2.1.hello_triangle/hello_triangle.cpp" target="_blank">ここ</a>から確認できます。
 </p>
 
 <p>
   If your output does not look the same you probably did something wrong along the way so check the complete source code and see if you missed anything.
+なにか別のものが表示されたのであれば、途中でなにか間違えているはずですので、完全なソースコードと比較してください。
 </p>
 
 <h2> Element Buffer Objects </h2>
