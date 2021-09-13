@@ -8,24 +8,27 @@
     <div id="content">
     <h1 id="content-title">OpenGL</h1>
 <h1 id="content-url" style='display:none;'>Getting-started/OpenGL</h1>
-<p>学習をはじめる前にOpenGLとは何かを確認しておきましょう。OpenGLとはグラフィックや画像を操作するための関数を多数提供するAPI(<def>Application Programming Interface</def>)だと考えられています。しかしOpenGLそのものはAPIではなく、<a href="http://www.khronos.org/" target="_blank">Khronos Group</a>により開発及びメンテナンスされている仕様です。</p>
+<p>学習をはじめる前にOpenGLとは何かを確認しておきましょう。OpenGLとはグラフィックや画像を操作するための関数を多数提供するAPI（<def>アプリケーションプログラミングインターフェース</def>）だと考えられています。しかしOpenGLそのものはAPIではなく、<a href="http://www.khronos.org/" target="_blank">Khronos Group</a>により開発及びメンテナンスされている仕様です。</p>
 
 <img src="/img/getting-started/opengl.jpg" class="right" alt="Image of OpenGL's logo"/>
 
 <p>
 OpenGLの仕様は各関数がどのようにふるまい、どのような結果を残し、あるいどんな出力を返すのかを正確に規定しています。これらの関数をどのようにして仕様どおりに機能させるかは、開発者の<em>実装</em>に任されています。OpenGLの仕様は実装についての詳細を規定していないので、得られる結果が仕様通りである（つまりユーザーから見て同じである）限り、様々な実装が可能です。
+</p>
 
 <p>
 OpenGLのライブラリを開発しているのは、おもにグラフィックカードの製造者です。あなたが購入したグラフィックカードはその製品（あるいはそのシリーズ）に特化したOpenGLのバージョンをサポートしています。AppleのシステムではOpenGLのライブラリはApple自身によりメンテナンスされており、Linuxにおいてはグラフィックカードの製造者によるライブラリや、趣味の開発者によるものもあります。つまりOpenGLがおかしな挙動をする場合はたいていグラフィックカードの製造者（またはライブラリの開発に関わった誰か）のミスです。
 </p>
 
 <note>
-ほとんどの実装はグラフィックカードの製造者によるものなので、バグが見付かった場合はビデオカードのドライバをアップデートすることでたいてい解決します。最新のドライバは最新のOpenGL［の実装］をサポートしているからです。グラフィックドライバをときどきアップデートするべき理由のひとつです。
+ほとんどの実装はグラフィックカードの製造者によるものなので、バグが見付かった場合はビデオカードのドライバをアップデートすることでたいてい解決します。最新のドライバにはそのグラフィックカードがサポートする最新のOpenGLが含まれているからです。グラフィックドライバをときどきアップデートするべき理由のひとつです。
 </note>
 
 <p>
 KhronosはすべてのOpenGLのバージョンの仕様に関するドキュメントを公開しています。興味がある読者はこれからみなさんが利用するバージョン3.3の仕様を<a href="https://www.opengl.org/registry/doc/glspec33.core.20100311.withchanges.pdf" target="_blank">ここ</a>で確認できます。このページはOpenGLの詳細を理解するのに非常に役立ちます（実装ではなく結果ばかりが記述されていることを確認してください）。OpenGLの仕様は関数の<strong>正確な</strong>ふるまいを確認する文献としても重要です。
 </p>
+
+<h1>unko</h1>
 
 <h2>Core-profileとImmediate mode</h2>
 <p>
