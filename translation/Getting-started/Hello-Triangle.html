@@ -813,22 +813,32 @@ VAOは、<fun><function id='32'>glBindBuffer</function></fun>のターゲット�
 </p>
   
 <h2>Additional resources</h2>
+<h2>参考</h2>
 <ul>
     <li><a href="http://antongerdelan.net/opengl/hellotriangle.html" target="_blank">antongerdelan.net/hellotriangle</a>: Anton Gerdelan's take on rendering the first triangle.</li>
+    <li><a href="http://antongerdelan.net/opengl/hellotriangle.html" target="_blank">antongerdelan.net/hellotriangle</a>: Anton Gerdelanによる最初の三角形のチュートリアル。</li>
   <li><a href="https://open.gl/drawing" target="_blank">open.gl/drawing</a>: Alexander Overvoorde's take on rendering the first triangle.</li>
+  <li><a href="https://open.gl/drawing" target="_blank">open.gl/drawing</a>: Alexander Overvoordeによる最初の三角形のチュートリアル。 </li>
   <li><a href="http://antongerdelan.net/opengl/vertexbuffers.html" target="_blank">antongerdelan.net/vertexbuffers</a>: some extra insights into vertex buffer objects.</li>
+  <li><a href="http://antongerdelan.net/opengl/vertexbuffers.html" target="_blank">antongerdelan.net/vertexbuffers</a>: VBOに関するさらなる情報。</li>
   <li><a href="https://learnopengl.com/In-Practice/Debugging" target="_blank">learnopengl.com/In-Practice/Debugging</a>: there are a lot of steps involved in this chapter; if you're stuck it may be worthwhile to read a bit on debugging in OpenGL (up until the debug output section).</li>
+  <li><a href="https://learnopengl.com/In-Practice/Debugging" target="_blank">learnopengl.com/In-Practice/Debugging</a>: この節にはたくさんのステップがありました。どこかで嵌った場合、OpenGLのデバッグについて少し確認するのがいいでしょう（デバッグ情報の出力の節まで読んでみてください）。</li>
 </ul>
 
 <h1>Exercises</h1>
+<h1>演習</h1>
 <p>
   To really get a good grasp of the concepts discussed a few exercises were set up. It is advised to work through them before continuing to the next subject to make sure you get a good grasp of what's going on.
+ここまで説明してきた概念をより深く理解するために演習問題を用意しました。なにが起こっているのかきちんと理解するために、次の話題に進む前にこの演習問題を解くことをおすすめします。
 </p>
 
 <ol>
   <li>Try to draw 2 triangles next to each other using <fun><function id='1'>glDrawArrays</function></fun> by adding more vertices to your data:  <a href="/code_viewer_gh.php?code=src/1.getting_started/2.3.hello_triangle_exercise1/hello_triangle_exercise1.cpp" target="_blank">solution</a>.</li>
+  <li>頂点を追加し、<fun><function id='1'>glDrawArrays</function></fun>を使って二つの三角形を隣り合わせに描いてください: <a href="/code_viewer_gh.php?code=src/1.getting_started/2.3.hello_triangle_exercise1/hello_triangle_exercise1.cpp" target="_blank">回答</a>。</li>
   <li>Now create the same 2 triangles using two different VAOs and VBOs for their data:  <a href="/code_viewer_gh.php?code=src/1.getting_started/2.4.hello_triangle_exercise2/hello_triangle_exercise2.cpp" target="_blank">solution</a>.</li>
+  <li>同じく二つの三角形を、それぞれのVAOとVBOを用意して描いてください:  <a href="/code_viewer_gh.php?code=src/1.getting_started/2.4.hello_triangle_exercise2/hello_triangle_exercise2.cpp" target="_blank">回答</a>。</li>
   <li>Create two shader programs where the second program uses a different fragment shader that outputs the color yellow; draw both triangles again where one outputs the color yellow:  <a href="/code_viewer_gh.php?code=src/1.getting_started/2.5.hello_triangle_exercise3/hello_triangle_exercise3.cpp" target="_blank">solution</a>.</li>
+  <li>二つのシェーダープログラムを作成し、二つ目のプログラムのフラグメントシェーダーは黄色を出力するようにしてください。そして今回も二つの三角形を、片方は黄色になるように描いてください。:  <a href="/code_viewer_gh.php?code=src/1.getting_started/2.5.hello_triangle_exercise3/hello_triangle_exercise3.cpp" target="_blank">回答</a>.</li>
 </ol>
  
        
