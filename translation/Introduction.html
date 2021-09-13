@@ -15,37 +15,37 @@
 <h1 id="content-url" style='display:none;'>Introduction</h1>
 <p>
 	Since you came here you probably want to learn the inner workings of computer graphics and do all the stuff the cool kids do by yourself. Doing things by yourself is extremely fun and resourceful and gives you a great understanding of graphics programming. However, there are a few  items that need to be taken into consideration before starting your journey.
-ここに来たあなたはコンピュータグラフィックスの内部に興味があり、クールなガキンチョがやっているようなことを自身の手で行いたいと考えていることでしょう。グラフィックプログラミングを自身の手で行うことはとても楽しく、好奇心を刺激されるものであり、またグラフィックプログラミングに関する深い理解がえられます。しかし旅にでかける前に考慮すべきことがいくつかあります。
+ここに来たあなたはコンピュータグラフィックスの内部に興味があり、イケてるエンジニアがやっているようなことを自身の手ででも行いたいと考えていることでしょう。グラフィックプログラミングを自身の手で行うことはとても楽しく、頭脳を刺激されるものであり、またグラフィックプログラミングに関する深い理解が得られます。しかし旅に出掛ける前に考慮すべきことがいくつかあります。
 </p>
 
 <h2>Prerequisites</h2>
 <h2>前提知識</h2>
 <p>
 	Since OpenGL is a graphics API and not a platform of its own, it requires a language to operate in and the language of choice is <code>C++</code>. Therefore a decent knowledge of the <code>C++</code> programming language is required for these chapters. However, I will try to explain most of the concepts used, including advanced <code>C++</code> topics where required so it is not required to be an expert in <code>C++</code>, but you should be able to write more than just a <code>'Hello World'</code> program. If you don't have much experience with <code>C++</code> I can recommend the free tutorials at <a href="http://www.learncpp.com" target="_blank">www.learncpp.com</a>.
-今日のOpenGLはグラフィックAPIであり、プラットフォームではありません。そのためOpenGLを操作するためのプログラミング言語が必要です。本書ではそのような言語として<code>C++</code>を用います。そのため本書を読むにあたって<code>C++</code>の十分な知識が必要です。ときには<code>C++</code>の発展的な手法を用います。しかし可能な限り基本となる考え方は説明しますので、<code>C++</code>のエキスパートである必要はありません。ただし<code>'Hello World'</code>を出力するプログラムを書けるだけでは不十分です。<code>C++</code>の経験が不十分であれば、<a href="http://www.learncpp.com" target="_blank">www.learncpp.com</a>で利用できる無料のチュートリアルがおすすめです。
+今日のOpenGLはグラフィックスAPIであり、プラットフォームではありません。そのためOpenGLを操作するためのプログラミング言語が必要です。本書ではそのような言語として<code>C++</code>を用います。そのため本書を読むにあたって<code>C++</code>の十分な知識が必要です。ときには<code>C++</code>の発展的な手法を用います。しかし可能な限り基本となる考え方は説明しますので、<code>C++</code>のエキスパートである必要はありません。ただし<code>'Hello World'</code>を出力するプログラムを書けるだけでは不十分です。<code>C++</code>の経験が不十分であれば、<a href="http://www.learncpp.com" target="_blank">www.learncpp.com</a>で利用できる無料のチュートリアルがおすすめです。
 </p>
 
 <p>
 	Also, we will be using some math (linear algebra, geometry, and trigonometry) along the way and I will try to explain all the required concepts of the math required. However, I'm not a mathematician by heart so even though my explanations may be easy to understand, they will most likely be incomplete. So where necessary I will provide pointers to good resources that explain the material in a more complete fashion. Don't be scared about the mathematical knowledge required before starting your journey into OpenGL; almost all the concepts can be understood with a basic mathematical background and I will try to keep the mathematics to a minimum where possible. Most of the functionality doesn't even require you to understand all the math as long as you know how to use it.
-加えて数学も利用します。線形代数、幾何学、三角関数といったものです。これらの数学についても、必要な概念はできるだけ説明するようにします。ただ私は数学者ではないので、私の説明が理解しやすかったとしても、その説明は数学的に完全なものではないかもしれません。そのため必要におうじてより完全な説明がされている情報源を紹介するようにします。OpenGLの旅にでかけるまえに数学をおそれないでください。ほとんどの概念は基本的な数学の知識があれば理解できます。また、数学の利用は最小限にとどめるように努力します。ほとんどの場合、使い方さえ知っていれば、数学の中身を理解する必要はありません。
+加えて数学も利用します。線形代数、幾何学、三角関数といったものです。これらの数学についても、必要な概念はできるだけ説明するようにします。ただし私は数学者ではありません。私の説明が理解しやすかったとしても、その説明は数学的に完全なものではないかもしれません。そのため必要に応じてより完全な説明がされている情報源を提供するようにします。OpenGLの旅に出掛けていない段階で数学に恐れをなさないでください。ほとんどの概念は基本的な数学の知識があれば理解できますし、数学の利用自体も最小限にとどめるように努力します。ほとんどの場合、使い方だけ知っていれば、数学の中身を理解する必要さえありません。
 </p>
 
 <h2>Structure</h2>
 <h2>本書の構成</h2>
 <p>
 	LearnOpenGL is broken down into a number of general sections. Each section contains several chapters that each explain different concepts in large detail. Each of the chapters can be found at the menu to your left. The concepts are taught in a linear fashion (so it is advised to start from the top to the bottom, unless otherwise instructed) where each chapter explains the background theory and the practical aspects. 
-本書はいくつかの章におおまかに分けられます。各章は個々の概念を詳細に解説した節により構成されます。各節は左のメニューから見つけることができます。個々の概念は順番に解説していますので、特に断りがなければ前から順番に読むことを推奨します）。各節では背景となる理屈と実際の利用法を説明します。
+本書はいくつかの章におおまかに分けられます。各章は個々の概念を詳細に解説した節により構成されます。各節は左のメニューから見つけることができます。個々の概念は順番に解説していますので、特に断りがなければ前から順番に読むことを推奨します。各節では背景となる理屈と実際の利用法を説明します。
 </p>
 
 <p>
   To make the concepts easier to follow, and give them some added structure, the book contains <em>boxes</em>, <em>code blocks</em>, <em>color hints</em> and <em>function references</em>.
-本書の流れを構造化し、追跡しやすくするため、いくつかの<em>ボックス</em>、<em>コードブロック</em>、<em>色付き文字</em>そして<em>関数の照会</em>を使います。
+本書を視覚的に見やすくし、話の流れを追跡しやすくするため、いくつかの<em>ボックス</em>、<em>コードブロック</em>、<em>色付き文字</em>そして<em>関数の照会</em>を用います。
 </p>
 
 <h3>Boxes</h3>
 <h3>ボックス</h3>
 <note><strong>Green</strong> boxes encompasses some notes or useful features/hints about OpenGL or the subject at hand.</note>
-<note><strong>緑</strong>のボックスはOpenGLについてあるいはその場所で議論している話題についてのメモや有用な特性/ヒントを含みます。</note>
+<note><strong>緑</strong>のボックスはOpenGLについてあるいはその場所で議論している話題についてのメモや有用な特性、ヒントを含みます。</note>
 <warning><strong>Red</strong> boxes will contain warnings or other features you have to be extra careful with.</warning>
 <warning><strong>赤</strong>のボックスは警告や、十分な注意をはらうべき特性を含みます。</warning>
 
@@ -53,7 +53,7 @@
 <h3>コード</h3>
 <p>
 	You will find plenty of small pieces of code in the website that are located in dark-gray boxes with syntax-highlighted code as you can see below:
-本書ではたくさんのコードがでてきますが、それらは以下のような深い灰色のボックスに、シンタックスハイライトがつけられて記述されています:
+本書にはたくさんのコードがでてきますが、それらは以下のような深い灰色のボックスに、シンタックスハイライトがつけられて記述されています:
 </p>
 
 <pre><code>
@@ -65,7 +65,7 @@
 
   <p>
     Since these provide only snippets of code, wherever necessary I will provide a link to the entire source code required for a given subject.
-このようなコードは断片であるため、必要におうじてコード全体が記述されているリンクを貼っておきます。
+このようなコードは断片であるため、必要に応じてコード全体が記述されているリンクを貼っておきます。
 </p>
 
 <h3>Color hints</h3>
@@ -88,7 +88,7 @@
 <h3>OpenGL関数の照会</h3>
 <p>
 	A particularly well appreciated feature of LearnOpenGL is the ability to review most of OpenGL's functions wherever they show up in the content. Whenever a function is found in the content that is documented at the website, the function will show up with a slightly noticeable underline. You can hover the mouse over the function and after a small interval, a pop-up window will show relevant information about this function including a nice overview of what the function actually does. Hover your mouse over <fun><function id='60'>glEnable</function></fun> to see it in action.
-この本の、ひろく受けいれられている特徴として、OpenGLの関数をいつでも照会できることがあげられます。文中の関数にはよく見ると下線が引かれています。ポインタを関数の上にあわせてしばらくすると、ポップアップがでて関数の情報が表示されます。こちらの関数<fun><function id='60'>glEnable</function></fun>で試してみてください。
+この本がひろく受け容れられている特徴として、文中にあらわれたOpenGLの関数をいつでも照会できることがあげられます。文中の関数にはよく見ると下線が引かれています。マウスのカーソルを関数の上にあわせてしばらくすると、ポップアップがでて関数の情報が表示されます。こちらの関数<fun><function id='60'>glEnable</function></fun>で試してみてください。
 </p>
 
 <p>
