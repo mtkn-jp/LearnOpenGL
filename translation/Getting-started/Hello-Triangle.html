@@ -665,8 +665,10 @@ someOpenGLFunctionThatDrawsOurTriangle();
 </p>
 
 <h2> Element Buffer Objects </h2>
+<h2>要素バッファオブジェクト</h2>
 <p>
   There is one last thing we'd like to discuss when rendering vertices and that is <def>element buffer objects</def> abbreviated to EBO. To explain how element buffer objects work it's best to give an example: suppose we want to draw a rectangle instead of a triangle. We can draw a rectangle using two triangles (OpenGL mainly works with triangles). This will generate the following set of vertices:
+頂点を描画するにあたり紹介しておきたいものがもうひとつあります。EBOと略記される<def>要素バッファオブジェクト</def>です。例をあげて説明します。今、三角形ではなく四角形を描画したいとしましょう。OpenGLは主に三角形を描画するように作られているので、この四角形は二つの三角形として描くことになります。そのため以下のような頂点を作成することになります:
 </p>
 
 <pre><code>	
@@ -684,10 +686,12 @@ float vertices[] = {
 
 <p>
   As you can see, there is some overlap on the vertices specified. We specify <code>bottom right</code> and <code>top left</code> twice! This is an overhead of 50% since the same rectangle could also be specified with only 4 vertices, instead of 6. This will only get worse as soon as we have more complex models that have over 1000s of triangles where there will be large chunks that overlap. What would be a better solution is to store only the unique vertices and then specify the order at which we want to draw these vertices in. In that case we would only have to store 4 vertices for the rectangle, and then just specify at which order we'd like to draw them. Wouldn't it be great if OpenGL provided us with a feature like that?
+ご覧のように定義した頂点に重複があります。右下と左上が二回でてきます。四角形は6つではなく4つの頂点があれば記述できるのでこれは50%も無駄なことをしていることになります。これが例えば1000個以上の三角形からなる複雑なモデルの場合、さらにたくさんの重複が生じ、状況は悪くなる一方です。解決策としては各頂点を重複がないように保存し、頂点を描く順番をあとから指定する方法が考えられます。この場合四角形を描くために頂点を4つだけ保存し、どのような順番で描くのか指定すればいいのです。このような方法がOpenGLに備わっていたら嬉しいと思いませんか？
 </p>
 
 <p>
 	Thankfully, element buffer objects work exactly like that. An EBO is a buffer, just like a vertex buffer object, that stores indices that OpenGL uses to decide what vertices to draw. This so called <def>indexed drawing</def> is exactly the solution to our problem. To get started we first have to specify the (unique) vertices and the indices to draw them as a rectangle:
+ありがたいことに、EBOがその役割を担ってくれます。EBOは頂点バッファオブジェクト同様バッファであり、OpenGLがどの頂点を描くのかを決定するためのインデックスを保持します。この、<def>インデックスによる描画</def>と呼ばれる方法がわれわれの問題を解決してくれます。これを利用するためにはまず、頂点を重複なく指定し、インデックスを作成します:
 </p>
 
 <pre><code>
@@ -705,6 +709,7 @@ unsigned int indices[] = {  // note that we start from 0!
 
 <p>
   You can see that, when using indices, we only need 4 vertices instead of 6. Next we need to create the element buffer object:
+ご覧のようにインデックスを利用すれば必要な頂点は6個ではなく4個だけになります。次にEBOを作成します:
 </p>
 
 <pre class="cpp"><code>
@@ -714,6 +719,7 @@ unsigned int EBO;
 
 <p>
   Similar to the VBO we bind the EBO and copy the indices into the buffer with <fun><function id='31'>glBufferData</function></fun>. Also, just like the VBO we want to place those calls between a bind and an unbind call, although this time we specify <var>GL_ELEMENT_ARRAY_BUFFER</var> as the buffer type. 
+VBOと同じく、EBOを紐付け<fun><function id='31'>glBufferData</function></fun>によりインデックスをそのバッファにコピーします。さらにVBOと同様、これらの関数の呼び出しは紐付けた後、それを解除するまでの間に行います。ただし今回はバッファの種類として<var>GL_ELEMENT_ARRAY_BUFFER</var>を指定します。
 </p>
 
 <pre><code>
@@ -723,6 +729,7 @@ unsigned int EBO;
 
 <p>
   Note that we're now giving <var>GL_ELEMENT_ARRAY_BUFFER</var> as the buffer target. The last thing left to do is replace the <fun><function id='1'>glDrawArrays</function></fun> call with <fun><function id='2'>glDrawElements</function></fun> to indicate we want to render the triangles from an index buffer. When using <fun><function id='2'>glDrawElements</function></fun> we're going to draw using indices provided in the element buffer object currently bound:
+今回は紐付けるバッファとして<var>GL_ELEMENT_ARRAY_BUFFER</var>を指定していることに注意してください。あとはバッファオブジェクトから三角形を描画するために<fun><function id='1'>glDrawArrays</function></fun>を<fun><function id='2'>glDrawElements</function></fun>で置きかえることだけです。<fun><function id='2'>glDrawElements</function></fun>を利用することで、現在紐付いているEBOのインデックスにより描画できます:
 </p>
 
 <pre class="cpp"><code>
@@ -732,39 +739,49 @@ unsigned int EBO;
 
 <p>
   The first argument specifies the mode we want to draw in, similar to <fun><function id='1'>glDrawArrays</function></fun>. The second argument is the count or number of elements we'd like to draw. We specified 6 indices so we want to draw 6 vertices in total. The third argument is the type of the indices which is of type <var>GL_UNSIGNED_INT</var>. The last argument allows us to specify an offset in the EBO (or pass in an index array, but that is when you're not using element buffer objects), but we're just going to leave this at 0.
+最初の引数は<fun><function id='1'>glDrawArrays</function></fun>と同様に描画するモードを指定します。二つ目の引数には描画する要素の数を渡します。6つのインデックスを指定したので6つの頂点を描画します。三番目はインデックスの型で、ここでは<var>GL_UNSIGNED_INT</var>です。最後の引数ではEBOの中でのデータの開始位置を指定できます（あるいはEBOを利用しない場合はインデックスへのポインタ）。今回は0のままにしておきます。
 </p>
     
 <p>
   The <fun><function id='2'>glDrawElements</function></fun> function takes its indices from the EBO currently bound to the <var>GL_ELEMENT_ARRAY_BUFFER</var> target. This means we have to bind the corresponding EBO each time we want to render an object with indices which again is a bit cumbersome. It just so happens that a vertex array object also keeps track of element buffer object bindings. The last element buffer object that gets bound while a VAO is bound, is stored as the VAO's element buffer object. Binding to a VAO then also automatically binds that EBO.
+<fun><function id='2'>glDrawElements</function></fun>はインデックスを現在<var>GL_ELEMENT_ARRAY_BUFFER</var>に紐付いているEBOからとります。つまり、インデックスを用いてなにか描画する際には、いちいちEBOを紐付ける必要があるということです。これも少し面倒です。しかしVAOがEBOの紐付けも追跡しているのでこの面倒は回避できます。VAOが紐付いている状態で最後に紐付けられたEBOを、VAOは記憶しています。VAOの紐付けによりEBOも自動で紐付くようになっているのです。
 </p>
     
 <img src="/img/getting-started/vertex_array_objects_ebo.png" class="clean" alt="Image of VAO's structure / what it stores now also with EBO bindings."/>
 
 <warning>
-  A VAO stores the <fun><function id='32'>glBindBuffer</function></fun> calls when the target is <var>GL_ELEMENT_ARRAY_BUFFER</var>. This also means it stores its unbind calls so make sure you don't unbind the element array buffer before unbinding your VAO, otherwise it doesn't have an EBO configured.  
+  A VAO stores the <fun><function id='32'>glBindBuffer</function></fun> calls when the target is <var>GL_ELEMENT_ARRAY_BUFFER</var>. This also means it stores its unbind calls so make sure you don't unbind the element array buffer before unbinding your VAO, otherwise it doesn't have an EBO configured.
+VAOは、<fun><function id='32'>glBindBuffer</function></fun>のターゲットが<var>GL_ELEMENT_ARRAY_BUFFER</var>の場合、その呼び出しを記憶しています。つまりVAOはEBOの紐付けの解除も記憶してしまうので、VAOの紐付けを解除するまえにEBOを解除しないようにしてください。そうしないとこのVAOがEBOの設定を破棄してしまいます。
 </warning>
   
 <p>
   The resulting initialization and drawing code now looks something like this:
+以上を踏まえると、初期化のコードは以下のようになります:
 </p>
 
 <pre><code>
 // ..:: Initialization code :: ..
+// ..:: 初期化のコード ::..
 // 1. bind Vertex Array Object
+// 1. VAOの紐付け
 <function id='27'>glBindVertexArray</function>(VAO);
 // 2. copy our vertices array in a vertex buffer for OpenGL to use
+// 2. 頂点配列を頂点バッファにコピー
 <function id='32'>glBindBuffer</function>(GL_ARRAY_BUFFER, VBO);
 <function id='31'>glBufferData</function>(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 // 3. copy our index array in a element buffer for OpenGL to use
+// 3. インデックス配列をEBOにコピー
 <function id='32'>glBindBuffer</function>(GL_ELEMENT_ARRAY_BUFFER, EBO);
 <function id='31'>glBufferData</function>(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 // 4. then set the vertex attributes pointers
+// 4. 頂点属性のポインタをセット
 <function id='30'>glVertexAttribPointer</function>(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 <function id='29'><function id='60'>glEnable</function>VertexAttribArray</function>(0);  
 
 [...]
   
 // ..:: Drawing code (in render loop) :: ..
+// ..:: 描画命令（描画ループ内）::..
 <function id='28'>glUseProgram</function>(shaderProgram);
 <function id='27'>glBindVertexArray</function>(VAO);
 <function id='2'>glDrawElements</function>(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0)
@@ -773,21 +790,26 @@ unsigned int EBO;
 
 <p>
   Running the program should give an image as depicted below. The left image should look familiar and the right image is the rectangle drawn in <def>wireframe mode</def>. The wireframe rectangle shows that the rectangle indeed consists of two triangles.
+このプログラムを実行すると以下のような画像が出力されます。左の画像はこのプログラムが表示するものですが、右は<def>ワイヤーフレームモード</def>で描画したものです。ワーヤーフレームで表示した四角形は実際には二つの三角形で成り立っていることが分かります。
 </p>
 
 <img src="/img/getting-started/hellotriangle2.png" width="800px" class="clean" alt="A rectangle drawn using indexed rendering in OpenGL"/>
 
 <note>
   <strong>Wireframe mode</strong><br/>
+  <strong>ワイヤーフレームモード</strong><br/>
   To draw your triangles in wireframe mode, you can configure how OpenGL draws its primitives via <code><function id='43'>glPolygonMode</function>(GL_FRONT_AND_BACK, GL_LINE)</code>. The first argument says we want to apply it to the front and back of all triangles and the second line tells us to draw them as lines. Any subsequent drawing calls will render the triangles in wireframe mode until we set it back to its default using <code><function id='43'>glPolygonMode</function>(GL_FRONT_AND_BACK, GL_FILL)</code>.
+三角形をワイヤーフレームモードで表示することは、OpenGLがどのようにプリミティブを表示するかを<code><function id='43'>glPolygonMode</function>(GL_FRONT_AND_BACK, GL_LINE)</code>により指定することで可能です。最初の引数で三角形の前面と後面の両方に適応することを指定します。二つ目の引数は三角形の描画に線を用いることを指定します。以降のすべての描画命令では三角形をワイヤーフレームモードで描画します。もとに戻すには<code><function id='43'>glPolygonMode</function>(GL_FRONT_AND_BACK, GL_FILL)</code>を実行します。
 </note>
 
 <p>
   If you have any errors, work your way backwards and see if you missed anything. You can find the complete source code <a href="/code_viewer_gh.php?code=src/1.getting_started/2.2.hello_triangle_indexed/hello_triangle_indexed.cpp" target="_blank">here</a>.
+もしエラーがでたら来た道を戻ってミスがないか確認してください。完全なソースコードは<a href="/code_viewer_gh.php?code=src/1.getting_started/2.2.hello_triangle_indexed/hello_triangle_indexed.cpp" target="_blank">ここ</a>にあります。
 </p>
 
 <p>
   If you managed to draw a triangle or a rectangle just like we did then congratulations, you managed to make it past one of the hardest parts of modern OpenGL: drawing your first triangle. This is a difficult part since there is a large chunk of knowledge required before being able to draw your first triangle. Thankfully, we now made it past that barrier and the upcoming chapters will hopefully be much easier to understand.
+三角形や四角形を描画できた人は、おめでとうございます。あなたはOpenGLの学習で最も困難な部分を完了しました。最初の三角形を描画できたのです。最初の三角形を描画するためには多くの知識が必要なのです。その障壁を突破できたあなたは、以降の節を簡単に理解できるでしょう。
 </p>
   
 <h2>Additional resources</h2>
