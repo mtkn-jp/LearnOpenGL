@@ -16,24 +16,28 @@
 <h1 id="content-url" style='display:none;'>Getting-started/Shaders</h1>
 <p>
   As mentioned in the <a href="https://learnopengl.com/Getting-started/Hello-Triangle" target="_blank">Hello Triangle</a> chapter, shaders are little programs that rest on the GPU. These programs are run for each specific section of the graphics pipeline. In a basic sense, shaders are nothing more than programs transforming inputs to outputs. Shaders are also very isolated programs in that they're not allowed to communicate with each other; the only communication they have is via their inputs and outputs.
-
+<a href="https://learnopengl.com/Getting-started/Hello-Triangle" target="_blank">はじめての三角形</a>の章で説明したように、シェーダーはGPUで実行する小さなプログラムです。このプログラムはグラフィックスパイプラインの特定の場所で実行されます。基本的にシェーダーというのは入力をなんらかの形で変換して出力するものです。シェーダーは入出力以外の手段で互いに通信できないので、非常に独立性の高いプログラムだといえます。
 </p>
 
 <p>
   In the previous chapter we briefly touched the surface of shaders and how to properly use them. We will now explain shaders, and specifically the OpenGL Shading Language, in a more general fashion.
+前章においてシェーダーの表面的な部分と適切な使い方について少し触れました。ここではシェーダーについて、特にOpenGLのシェーディング言語について、もう少し全般的に見ていきましょう。
 </p>
 
 <h1>GLSL</h1>
 <p>
   Shaders are written in the C-like language GLSL. GLSL is tailored for use with graphics and contains useful features specifically targeted at vector and matrix manipulation.
+シェーダーはC言語に似たGLSLで記述されます。GLSLはグラフィックを扱うために作られ、便利な機能、特にベクトルと行列に関するものが含まれます。
 </p>
 
 <p>
   Shaders always begin with a version declaration, followed by a list of input and output variables, uniforms and its <fun>main</fun> function. Each shader's entry point is at its <fun>main</fun> function where we process any input variables and output the results in its output variables. Don't worry if you don't know what uniforms are, we'll get to those shortly.
+シェーダーはバージョンの宣言から始まり、入力変数と出力変数およびユニフォームの列挙、そして<fun>main</fum>関数が続きます。シェーダーは<fun>main</fun>関数から実行が開始され、その関数内で入力変数を処理しその結果を出力変数に格納して返します。ユニフォームについてはすぐ後で説明しますので、今は気にしないで下さい。
 </p>
 
 <p>
   A shader typically has the following structure:
+シェーダーは典型的には以下のような構造をしています:
 </p>
 
 <pre><code>
@@ -48,14 +52,17 @@ uniform type uniform_name;
 void main()
 {
   // process input(s) and do some weird graphics stuff
+  // 入力の処理とグラフィックに関するいろいろ
   ...
   // output processed stuff to output variable
+  // 出力変数に処理したものを出力
   out_variable_name = weird_stuff_we_processed;
 }
 </code></pre>
 
 <p>
   When we're talking specifically about the vertex shader each input variable is also known as a <def>vertex attribute</def>. There is a maximum number of vertex attributes we're allowed to declare limited by the hardware. OpenGL guarantees there are always at least 16 4-component vertex attributes available, but some hardware may allow for more which you can retrieve by querying <var>GL_MAX_VERTEX_ATTRIBS</var>:
+頂点シェーダーにおいて、入力変数は<def>頂点属性</def>と呼ばれます。宣言できる頂点属性の最大数はハードウェアにより決定されます。OpenGLは最低でも、4要素からなる頂点属性を16個利用できることを保証していますが、ハードウェアによってはもっと利用できます。その最大数は<var>GL_MAX_VERTEX_ATTRIBS</var>から確認できます:
 </p>
 
 <pre><code>
@@ -66,16 +73,21 @@ std::cout &lt;&lt; "Maximum nr of vertex attributes supported: " &lt;&lt; nrAttr
  
 <p>
   This often returns the minimum of <code>16</code> which should be more than enough for most purposes.
+多くの場合この数字はOpenGLが定める最低である<code>16</code>になっていますが、ほとんどの場合それで十分です。
 </p>
 
 <h2>Types</h2>
+<h2>型</h2>
 <p>
   GLSL has, like any other programming language, data types for specifying what kind of variable we want to work with. GLSL has most of the default basic types we know from languages like C:  <code>int</code>, <code>float</code>, <code>double</code>, <code>uint</code> and <code>bool</code>. GLSL also features two container types that we'll be using a lot, namely <code>vectors</code> and <code>matrices</code>. We'll discuss matrices in a later chapter.
+他のプログラミング言語と同様に、GLSLにも変数の型があります。C言語のようなプログラミング言語において、基本的な型といえば、<code>int</code>、<code>float</code>、<code>double</code>、<code>uint</code>そして<code>bool</code>といったものですが、GLSLはこのような基本的な型に加えて<code>ベクトル</code>と<code>行列</code>という容器のような型があります。この二つの型はこれから頻繁に利用するものです。行列については別の章で説明します。
 </p>
 
 <h3>Vectors</h3>
+<h3>ベクトル</h3>
 <p>
   A vector in GLSL is a 1,2,3 or 4 component container for any of the basic types just mentioned.  They can take the following form (<code>n</code> represents the number of components):
+GLSLにおけるベクトルは上に記した基本的な型の数値を1から4個、要素として持つ容器です。これには以下のような形式があります（<code>n</code>は要素数です）:
 </p>
   
   <ul>
@@ -85,17 +97,27 @@ std::cout &lt;&lt; "Maximum nr of vertex attributes supported: " &lt;&lt; nrAttr
   	<li><code>uvecn</code>: a vector of <code>n</code> unsigned integers.</li>
   	<li><code>dvecn</code>: a vector of <code>n</code> double components.</li>
   </ul>
+  <ul>
+    <li><code>vecn</code>: <code>n</code>個の浮動小数点数からなるデフォルトのベクトル。</li>
+    <li><code>bvecn</code>: <code>n</code>個の真偽値からなるベクトル。</li>
+    <li><code>ivecn</code>: <code>n</code>個の整数からなるベクトル。</li>
+  	<li><code>uvecn</code>: <code>n</code>個の符号なし整数からなるベクトル。</li>
+  	<li><code>dvecn</code>: <code>n</code>個の倍精度浮動小数点数からなるベクトル。</li>
+  </ul>
   
 <p>
   Most of the time we will be using the basic <code>vecn</code> since floats are sufficient for most of our purposes.
+本書においては浮動小数点数で十分間に合うので、主に<code>vecn</code>を利用します。
 </p>
   
   <p>
     Components of a vector can be accessed via <code>vec.x</code> where <code>x</code> is the first component of the vector. You can use <code>.x</code>, <code>.y</code>, <code>.z</code> and <code>.w</code> to access their first, second, third and fourth component respectively. GLSL also allows you to use <code>rgba</code> for colors or <code>stpq</code> for texture coordinates, accessing the same components.
+ベクトルの要素には<code>vec.x</code>のような形でアクセスできます。1〜4番目の要素はそれぞれ<code>.x</code>、<code>.y</code>、<code>.z</code>、<code>.w</code>と記述します。GLSLでは他にも、ベクトルを色の表現として利用する場合には<code>rgba</code>により、またテクスチャの座標には<code>stpq</code>により、各要素にアクセスすることができます。
   </p>
   
   <p>
     The vector datatype allows for some interesting and flexible component selection called <def>swizzling</def>. Swizzling allows us to use syntax like this:
+ベクトルの要素を選択する、おもしろくて柔軟性の高い方法があります。<def>スウィズリング</def>と呼ばれるこの方法は以下のように利用します:
   </p>
   
 <pre><code>
@@ -107,6 +129,7 @@ vec4 otherVec = someVec.xxxx + anotherVec.yxzy;
   
 <p>
 	You can use any combination of up to 4 letters to create a new vector (of the same type) as long as the original vector has those components; it is not allowed to access the <code>.z</code> component of a <code>vec2</code> for example. We can also pass vectors as arguments to different vector constructor calls, reducing the number of arguments required:    
+あるベクトルを用いて、その要素から好きな組み合わせにより同じ型の新しいベクトルを作れるのです。ただし例えば<code>vec2</code>の<code>.z</code>要素は存在しないので利用できません。あるいは以下のように、あるベクトルを他のベクトルのコンストラクタに渡すこともできます:
 </p>
   
 <pre><code>
@@ -117,9 +140,11 @@ vec4 otherResult = vec4(result.xyz, 1.0);
 
 <p>
 	Vectors are thus a flexible datatype that we can use for all kinds of input and output. Throughout the book you'll see plenty of examples of how we can creatively manage vectors.  
+このようにベクトルは柔軟性の高い型で、いつでも入力や出力として用いることができます。本書を通じて創造的にベクトルを使う例がたくさん見られます。
 </p>
   
 <h2>Ins and outs</h2>
+<h2>入力と出力</h2>
 <p>
   Shaders are nice little programs on their own, but they are part of a whole and for that reason we want to have inputs and outputs on the individual shaders so that we can move stuff around. GLSL defined the <code>in</code> and <code>out</code> keywords specifically for that purpose. Each shader can specify inputs and outputs using those keywords and wherever an output variable matches with an input variable of the next shader stage they're passed along. The vertex and fragment shader differ a bit though.
 </p>
