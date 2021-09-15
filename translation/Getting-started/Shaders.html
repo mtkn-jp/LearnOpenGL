@@ -243,16 +243,17 @@ void main()
   
   <p>
     We declared a uniform <code>vec4</code> <var>ourColor</var> in the fragment shader and set the fragment's output color to the content of this uniform value. Since uniforms are global variables, we can define them in any shader stage we'd like so no need to go through the vertex shader again to get something to the fragment shader. We're not using this uniform in the vertex shader so there's no need to define it there.
-<code>vec4</code> <var>ourColor</var>というユニフォームをフラグメントシェーダーで宣言し、フラグメントシェーダーの出力の色をこのユニフォームの値にしました。ユニフォームがグローバル変数なので、
-
+<code>vec4</code> <var>ourColor</var>というユニフォームをフラグメントシェーダーで宣言し、フラグメントシェーダーの出力の色をこのユニフォームの値にしました。ユニフォームはグローバル変数なので、どのシェーダーにおいて定義することも可能です。そのため頂点シェーダーにおいてフラグメントシェーダーのために何かする必要はありません。頂点シェーダーにおいてこのユニフォームを利用しないので、そこで定義する必要もありません。
   </p>
   
   <warning>
     If you declare a uniform that isn't used anywhere in your GLSL code the compiler will silently remove the variable from the compiled version which is the cause for several frustrating errors; keep this in mind!
+定義したユニフォームがどのGLSLのコードにおいて全く利用されない場合、コンパイラは黙ってその変数を削除します。この仕様は時にうっとうしいエラーの原因になります。頭の片隅に置いておいて下さい 。
   </warning>
   
   <p>
     The uniform is currently empty; we haven't added any data to the uniform yet so let's try that. We first need to find the index/location of the uniform attribute in our shader. Once we have the index/location of the uniform, we can update its values. Instead of passing a single color to the fragment shader, let's spice things up by gradually changing color over time:
+このユニフォームはまだデータを追加していないので空っぽです。ここにデータを渡す方法を見ていきましょう。まずシェーダーにおけるユニフォームの場所を探す必要があります。ユニフォームが見つかったらその値を更新します。一色だけ指定するのでは面白くないので、時間と共に色を変化させてみましょう。
   </p>
   
 <pre><code>
@@ -265,15 +266,18 @@ int vertexColorLocation = <function id='45'>glGetUniformLocation</function>(shad
   
   <p>
     First, we retrieve the running time in seconds via <fun><function id='47'>glfwGetTime</function>()</fun>. Then we vary the color in the range of <code>0.0</code> - <code>1.0</code> by using the <fun>sin</fun> function and store the result in <var>greenValue</var>. 
+最初に<fun><function id='47'>glfwGetTime</function>()</fun>により実行時間を秒単位で取得します。次に<fun>sin</fun>関数を利用し色の数値を<code>0.0</code>と<code>1.0</code>の間で設定し、その値を<var>greenValue</var>に保存します。
   </p>
   
   <p>
     Then we query for the location of the <var>ourColor</var> uniform using <fun><function id='45'>glGetUniformLocation</function></fun>. We supply the shader program and the name of the uniform (that we want to retrieve the location from) to the query function. If <fun><function id='45'>glGetUniformLocation</function></fun> returns <code>-1</code>, it could not find the location. Lastly we can set the uniform value using the <fun><function id='44'>glUniform</function>4f</fun> function. Note that finding the uniform location does not require you to use the shader program first, but updating a uniform <strong>does</strong> require you to first use the program (by calling <fun><function id='28'>glUseProgram</function></fun>), because it sets the uniform on the currently active shader program.
+そして<var>ourColor</var>ユニフォームの場所を<fun><function id='45'>glGetUniformLocation</function></fun>により割り出します。シェーダープログラムと、場所が知りたいユニフォームの名前をこの関数に渡します。<fun><function id='45'>glGetUniformLocation</function></fun>が<code>-1</code>を返した場合、ユニフォームが見つからなかったということです。最後に<fun><function id='44'>glUniform</function>4f</fun>を用いてユニフォームの値を設定します。ユニフォームを探す際にシェーダープログラムの利用を宣言する必要はありません。しかしユニフォームの値の更新は、現在アクティブなシェーダープログラムに対して行われるので、<fun><function id='28'>glUseProgram</function></fun>によりシェーダープログラムの利用を宣言することが<strong>必要</strong>です。このことに留意してください。
   </p>
   
 <note>
 <p>
     Because OpenGL is in its core a C library it does not have native support for function overloading, so wherever a function can be called with different types OpenGL defines new functions for each type required; <fun><function id='44'>glUniform</function></fun> is a perfect example of this. The function requires a specific postfix for the type of the uniform you want to set. A few of the possible postfixes are:
+OpenGLの核となる部分はC言語のライブラリであり、関数のオーバーロードができないので、違う型の引数に対して同じことを行う関数が必要な場合、それぞれの型に対して別の関数として定義されています。<fun><function id='44'>glUniform</function></fun>はそのいい例です。値を設定するユニフォームの型に応じて、関数名に接尾語がつきます。例として以下のようなものが挙げられます:
   <ul>
     <li><code>f</code>: the function expects a <code>float</code> as its value.</li>  
     <li><code>i</code>: the function expects an <code>int</code> as its value.</li>  
@@ -281,39 +285,55 @@ int vertexColorLocation = <function id='45'>glGetUniformLocation</function>(shad
     <li><code>3f</code>: the function expects 3 <code>float</code>s as its value.</li> 
     <li><code>fv</code>: the function expects a <code>float</code> vector/array as its value.</li> 
   </ul>
+  <ul>
+    <li><code>f</code>: 関数は1つの<code>float</code>を引数に取ります。</li>  
+    <li><code>i</code>: 関数は1つの<code>int</code>を引数に取ります。</li>  
+  	<li><code>ui</code>: 関数は1つの<code>unsigned int</code>を引数に取ります。</li>  
+    <li><code>3f</code>: 関数は3つの<code>float</code>を引数に取ります。</li> 
+    <li><code>fv</code>: 関数は<code>float</code>のベクトル（配列）1つを引数に取ります。</li> 
+  </ul>
   Whenever you want to configure an option of OpenGL simply pick the overloaded function that corresponds with your type. In our case we want to set 4 floats of the uniform individually so we pass our data via <fun><function id='44'>glUniform</function>4f</fun> (note that we also could've used the <code>fv</code> version).
+OpenGLのオプションを設定したい場合、単にオーバーロードされた関数から適合する型のものを呼び出して下さい。今回はユニフォームに対して4つの浮動小数点数を割り当てたいので<fun><function id='44'>glUniform</function>4f</fun>を利用します（色を配列に格納すれば<code>fv</code>を利用することも可能です）。
 </p>
 </note>
     
  <p>    
    Now that we know how to set the values of uniform variables, we can use them for rendering. If we want the color to gradually change, we want to update this uniform every frame, otherwise the triangle would maintain a single solid color if we only set it once. So we calculate the <var>greenValue</var> and update the uniform each render iteration:
+ユニフォーム変数に値をセットしたので、これを描画に利用できるようになりました。時間と共に色を変化させるには、フレーム毎にユニフォームを更新しなければなりません。そうしないと三角形は最初に設定した色のままになります。そのため<var>greenValue</var>の計算とユニフォームの更新は描画ループの中に配置します:
   </p>
   
 <pre><code>
 while(!<function id='14'>glfwWindowShouldClose</function>(window))
 {
     // input
+    // 入力
     processInput(window);
 
     // render
+    // 描画
     // clear the colorbuffer
+    // 色バッファの削除
     <function id='13'><function id='10'>glClear</function>Color</function>(0.2f, 0.3f, 0.3f, 1.0f);
     <function id='10'>glClear</function>(GL_COLOR_BUFFER_BIT);
 
     // be sure to activate the shader
+    // シェーダーのアクティベート
     <function id='28'>glUseProgram</function>(shaderProgram);
   
     // update the uniform color
+    // ユニフォームの色を更新
     float timeValue = <function id='47'>glfwGetTime</function>();
     float greenValue = sin(timeValue) / 2.0f + 0.5f;
     int vertexColorLocation = <function id='45'>glGetUniformLocation</function>(shaderProgram, "ourColor");
     <function id='44'>glUniform</function>4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
 
     // now render the triangle
+    // 三角形の描画
     <function id='27'>glBindVertexArray</function>(VAO);
     <function id='1'>glDrawArrays</function>(GL_TRIANGLES, 0, 3);
   
     // swap buffers and poll IO events
+    // バッファの入替えとイベントの処理
     <function id='24'>glfwSwapBuffers</function>(window);
     <function id='23'>glfwPollEvents</function>();
 }
@@ -321,6 +341,7 @@ while(!<function id='14'>glfwWindowShouldClose</function>(window))
   
   <p>
     The code is a relatively straightforward adaptation of the previous code. This time, we update a  uniform value each frame before drawing the triangle. If you update the uniform correctly you should see the color of your triangle gradually change from green to black and back to green.
+コードには以前のものをほとんどそのまま適応しただけです。今回は各フレームにおいて三角形を描画する前にユニフォームの値を更新しています。ユニフォームの更新がうまく行われていれば、三角形の色が緑から黒へ、黒から緑へ変化していくのが確認できるでしょう。
   </p>
   
 <div class="video paused" onclick="ClickVideo(this)">
@@ -333,46 +354,57 @@ while(!<function id='14'>glfwWindowShouldClose</function>(window))
   
 <p>
     Check out the source code <a href="/code_viewer_gh.php?code=src/1.getting_started/3.1.shaders_uniform/shaders_uniform.cpp" target="_blank">here</a> if you're stuck.
+問題があれば<a href="/code_viewer_gh.php?code=src/1.getting_started/3.1.shaders_uniform/shaders_uniform.cpp" target="_blank">ここ</a>でソースコードを確認してください。
   </p>
   
 <p>
   As you can see, uniforms are a useful tool for setting attributes that may change every frame, or for interchanging data between your application and your shaders, but what if we want to set a color for each vertex? In that case we'd have to declare as many uniforms as we have vertices. A better solution would be to include more data in the vertex attributes which is what we're going to do now.
+ご覧のように、ユニフォームはフレームごとに値を変更したり、アプリケーションとシェーダーの間でデータをやりとりするうえで便利です。しかし各頂点に対してそれぞれの色を設定したい場合はどうでしょう。この場合、頂点の数だけユニフォームを宣言する必要があります。より良い方法としては頂点属性に追加の情報を含めることが挙げられます。以下、その方法を見ていきましょう。
   </p>
     
   <h2>More attributes!</h2>
+  <h2>属性の追加</h2>
   <p>
     We saw in the previous chapter how we can fill a VBO, configure vertex attribute pointers and store it all in a VAO. This time, we also want to add color data to the vertex data. We're going to add color data as 3 <code>float</code>s to the <var>vertices</var> array. We assign a red, green and blue color to each of the corners of our triangle respectively:
+前章で、VBOにデータを割り当て、頂点属性のポインタを設定し、それをVAOに保存する方法を説明しました。ここでは頂点データに色の情報も追加しましょう。<var>頂点</var>配列に色の情報を3つの<code>float</code>として追加します。三角形の各頂点に赤、緑、青の色を割り当てましょう:
   </p>
   
 <pre><code>
 float vertices[] = {
     // positions         // colors
-     0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,   // bottom right
-    -0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,   // bottom left
-     0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f    // top 
+    // 位置              // 色
+     0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,   // 右下
+    -0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,   // 左下
+     0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f    // 上 
 };    
 </code></pre>
   
 <p>
   Since we now have more data to send to the vertex shader, it is necessary to adjust the vertex shader to also receive our color value as a vertex attribute input. Note that we set the location of the <var>aColor</var> attribute to 1 with the layout specifier:
+頂点シェーダーに送信するデータが増えたため、頂点シェーダーが頂点属性の入力から色の情報を受け取れるように設定する必要があります。<var>aColor</var>の属性位置を1に設定していることに注意して下さい:
 </p>
   
 <pre><code>
 #version 330 core
 layout (location = 0) in vec3 aPos;   // the position variable has attribute position 0
 layout (location = 1) in vec3 aColor; // the color variable has attribute position 1
+layout (location = 0) in vec3 aPos;   // 位置の変数の属性位置は0
+layout (location = 1) in vec3 aColor; // 色の変数の属性位置は1
   
 out vec3 ourColor; // output a color to the fragment shader
+out vec3 ourColor; // フラグメントシェーダーへ色を出力
 
 void main()
 {
     gl_Position = vec4(aPos, 1.0);
     ourColor = aColor; // set ourColor to the input color we got from the vertex data
+    ourColor = aColor; // ourColorを頂点データから取得した色に設定
 }       
 </code></pre>
   
   <p>
     Since we no longer use a uniform for the fragment's color, but now use the <var>ourColor</var> output variable we'll have to change the fragment shader as well:
+フラグメントの色としてユニフォームではなく<var>ourColor</var>の出力を利用するので、フラグメントシェーダーを以下のように変更します:
   </p>
   
 <pre><code>
@@ -388,58 +420,73 @@ void main()
   
 <p>
   Because we added another vertex attribute and updated the VBO's memory we have to re-configure the vertex attribute pointers. The updated data in the VBO's memory now looks a bit like this: 
+頂点属性を追加し、VBOのメモリを更新したので、頂点属性ポインタを再設定します。更新されたデータはVBOのメモリ内で以下のような配置になっています:
   </p>
   
   <img src="/img/getting-started/vertex_attribute_pointer_interleaved.png" class="clean" alt="Interleaved data of position and color within VBO to be configured wtih <function id='30'>glVertexAttribPointer</function>"/>
     
 <p>
   Knowing the current layout we can update the vertex format with <fun><function id='30'>glVertexAttribPointer</function></fun>:
+これお踏まえ、頂点のフォーマットを<fun><function id='30'>glVertexAttribPointer</function></fun>により以下のように変更します:
 </p>
   
 <pre><code>
 // position attribute
+// 位置属性
 <function id='30'>glVertexAttribPointer</function>(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
 <function id='29'><function id='60'>glEnable</function>VertexAttribArray</function>(0);
 // color attribute
+// 色属性
 <function id='30'>glVertexAttribPointer</function>(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3* sizeof(float)));
 <function id='29'><function id='60'>glEnable</function>VertexAttribArray</function>(1);
 </code></pre>
 
 <p> 
   The first few arguments of <fun><function id='30'>glVertexAttribPointer</function></fun> are relatively straightforward. This time we are configuring the vertex attribute on attribute location <code>1</code>. The color values have a size of <code>3</code> <code>float</code>s and we do not normalize the values. 
+<fun><function id='30'>glVertexAttribPointer</function></fun>の前半の引数は分かりやすいと思います。今回は、属性位置<code>1</code>の頂点属性を設定します。色の情報は<code>float</code>が<code>3</code>つ分のサイズで、正規化はしません。
   </p>
   
   <p>
     Since we now have two vertex attributes we have to re-calculate the <em>stride</em> value. To get the next attribute value (e.g. the next <code>x</code> component of the position  vector) in the data array we have to move <code>6</code> <code>float</code>s to the right, three for the position values and three for the color values. This gives us a stride value of 6 times the size of a <code>float</code> in bytes (= <code>24</code> bytes). <br/>
   Also, this time we have to specify an offset. For each vertex, the position vertex attribute is first so we declare an offset of <code>0</code>. The color attribute starts after the position data so the offset is <code>3 * sizeof(float)</code> in bytes (= <code>12</code> bytes).
+頂点属性が二種類になったので<em>ストライド</em>も計算しなおします。次の属性の値（つまり、次の位置属性の<code>x</code>要素）を得るために、データの配列上で<code>float</code><code>6</code>つ分右に移動する必要があります。位置属性の値3つ分と色属性の値3つ分です。つまりストライドは<code>float</code>のサイズの6倍（=<code>24</code>バイト）です。<br/>
+加えて今回はデータの開始位置も設定しないといけません。各頂点において、位置を表わす頂点属性は先頭に位置するので、開始位置は<code>0</code>です。色を表わす頂点属性は位置のデータの後ろにあるので、開始位置は<code>3 * sizeof(float)</code>バイト（=<code>12</code>バイト）です。
 </p>
   
 <p> 
     Running the application should result in the following image:
+アプリケーションを実行すると以下のようになります:
 </p>
   
   <img src="/img/getting-started/shaders3.png" class="clean"/>
   
   <p>
     Check out the source code <a href="/code_viewer_gh.php?code=src/1.getting_started/3.2.shaders_interpolation/shaders_interpolation.cpp" target="_blank">here</a> if you're stuck.
+問題があれば<a href="/code_viewer_gh.php?code=src/1.getting_started/3.2.shaders_interpolation/shaders_interpolation.cpp" target="_blank">ここ</a>でソースコードを確認して下さい。
   </p>
   
  <p>
    The image may not be exactly what you would expect, since we only supplied 3 colors, not the huge color palette we're seeing right now. This is all the result of something called <def>fragment interpolation</def> in the fragment shader. When rendering a triangle the rasterization stage usually results in a lot more fragments than vertices originally specified. The rasterizer then determines the positions of each of those fragments based on where they reside on the triangle shape.<br/>
    Based on these positions, it <def>interpolates</def> all the fragment shader's input variables. Say for example we have a line where the upper point has a green color and the lower point a blue color. If the fragment shader is run at a fragment that resides around a position at <code>70%</code> of the line, its resulting color input attribute would then be a linear combination of green and blue; to be more precise: <code>30%</code> blue and <code>70%</code> green.
+画像は読者が想像したものと少し違うと思います。3つの色を設定したのであり、この画像のようにたくさんの色のパターンを指定したわけではないからです。この結果はフラグメントシェーダーの<def>フラグメント補完</def>と呼ばれる機能によるものです。三角形を描画する時、ラスタリゼーションステージでは最初に用意した頂点の数より多くのフラグメントが生成されています。ラスタライザはそれらのフラグメントの位置を三角形内での位置に基づいて決定します。<br/>
+この位置に基づき、フラグメントシェーダーの入力が<def>補完</def>されます。例えばここに一本の線があり、上端が緑で下端が青だとしましょう。この線上の下から70%の位置にあるフラグメントに対してフラグメントシェーダーが実行された場合、このフラグメントの色は緑と青の線形補完になります。もう少し詳しく言うと、<code>30%</code>の青と<code>70%</code>の緑になります。
   </p>
   
   <p>
     This is exactly what happened at the triangle. We have 3 vertices and thus 3 colors, and judging from the triangle's pixels it probably contains around 50000 fragments, where the fragment shader interpolated the colors among those pixels. If you take a good look at the colors you'll see it all makes sense: red to blue first gets to purple and then to blue. Fragment interpolation is applied to all the fragment shader's input attributes.
+これがまさに三角形で起こったことです。3つの頂点と3つの色があります。三角形のピクセル数から考えて、おそらくフラグメントは50000個程度存在します。このフラグメントそれぞれに対してフラグメントシェーダーが色を補完します。三角形の色をよくみると理解できるはずです。赤から青への変化は途中で紫を経由しています。フラグメント補完はフラグメントシェーダーの入力となる属性すべてに対して適応されます。
   </p>   
   
 <h1>Our own shader class</h1>
+<h1>独自のシェーダークラス</h1>
     <p> 
     Writing, compiling and managing shaders can be quite cumbersome. As a final touch on the shader subject we're going to make our life a bit easier by building a shader class that reads shaders from disk, compiles and links them, checks for errors and is easy to use. This also gives you a bit of an idea how we can encapsulate some of the knowledge we learned so far into useful abstract objects.
+シェーダーの作成、コンパイルそして管理は面倒です。シェーダーの章の最後として、独自のシェーダークラスを作成し、扱いやすくしましょう。このシェーダークラスはシェーダーをディスクから読み込み、コンパイル、リンクし、エラーを検出するものです。こうすることでここまで学んだ知識を抽象的なオブジェクトに詰め込み利便性を高める方法にも慣れることができます。
   </p>
   
   <p>
     We will create the shader class entirely in a header file, mainly for learning purposes and portability. Let's start by adding the required includes and by defining the class structure:
+学習のため、そして移植性を高めるため、シェーダークラスをひとつのヘッダーファイルに構築します。まずはじめに必要なものをインクルードしクラスの構造を定義しましょう:
   </p>
   
 <pre><code>
