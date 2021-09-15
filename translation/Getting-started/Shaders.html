@@ -494,6 +494,7 @@ void main()
 #define SHADER_H
 
 #include &lt;glad/glad.h&gt; // include glad to get all the required OpenGL headers
+#include &lt;glad/glad.h&gt; // gladをインクルードして必要なOpenGLヘッダーを取得
   
 #include &lt;string&gt;
 #include &lt;fstream&gt;
@@ -505,13 +506,17 @@ class Shader
 {
 public:
     // the program ID
+    // プログラムID
     unsigned int ID;
   
     // constructor reads and builds the shader
+    // コンストラクタがシェーダーを読み込んでビルド
     Shader(const char* vertexPath, const char* fragmentPath);
     // use/activate the shader
+    // シェーダーをアクティベート
     void use();
     // utility uniform functions
+    // ユニフォーム設定用関数
     void setBool(const std::string &name, bool value) const;  
     void setInt(const std::string &name, int value) const;   
     void setFloat(const std::string &name, float value) const;
@@ -522,41 +527,51 @@ public:
   
   <note>
     We used several <def>preprocessor directives</def> at the top of the header file. Using these  little lines of code informs your compiler to only include and compile this header file if it hasn't been included yet, even if multiple files include the shader header. This prevents linking conflicts.
+ヘッダファイルの先頭で<def>プリプロセッサ・ディレクティブ</def>を利用しています。これは複数のファイルからこのヘッダをインクルードしようとした時でも、このファイルがまだインクルードされていない場合に限りインクルードしてコンパイルするようにコンパイラに伝えるものです。これによりリンク時の競合を防げます。
   </note>
   
   <p>
     The shader class holds the ID of the shader program. Its constructor requires the file paths of the source code of the vertex and fragment shader respectively that we can store on disk as simple text files. To add a little extra we also add several utility functions to ease our lives a little: <fun>use</fun> activates the shader program, and all <fun>set...</fun> functions query a uniform location and set its value.
+シェーダークラスはシェーダープログラムのIDを記憶しています。頂点シェーダーとフラグメントシェーダーはディスク上にテキストファイルとして保存しておきます。シェーダークラスのコンストラクタはこれらのシェーダーのソースコードのファイルパスを必要とします。さらに利便性を高めるためいくつかの関数を追加します。シェーダープログラムをアクティベートする<fun>use</fun>関数と、ユニフォームの場所を特定してその数値を変更する<fun>set...</fun>関数です。
   </p>
   
 <h2>Reading from file</h2>
+<h2>ファイルからの読込み</h2>
 <p>
     We're using C++ filestreams to read the content from the file into several <code>string</code> objects:
+ファイルの内容を読み込み<code>string</code>オブジェクトに格納するため、C++のファイルストリームを利用します:
 </p>
   
 <pre><code>
 Shader(const char* vertexPath, const char* fragmentPath)
 {
     // 1. retrieve the vertex/fragment source code from filePath
+    // 1. 頂点シェーダーとフラグメントシェーダーのソースコードをfilePathから読込み
     std::string vertexCode;
     std::string fragmentCode;
     std::ifstream vShaderFile;
     std::ifstream fShaderFile;
     // ensure ifstream objects can throw exceptions:
+    // ifstreamオブジェクトがエラーを出せるかどうか確認:
     vShaderFile.exceptions (std::ifstream::failbit | std::ifstream::badbit);
     fShaderFile.exceptions (std::ifstream::failbit | std::ifstream::badbit);
     try 
     {
         // open files
+	// ファイルを開く
         vShaderFile.open(vertexPath);
         fShaderFile.open(fragmentPath);
         std::stringstream vShaderStream, fShaderStream;
         // read file's buffer contents into streams
+	// ファイルのバッファをストリームに読込み
         vShaderStream &lt;&lt; vShaderFile.rdbuf();
         fShaderStream &lt;&lt; fShaderFile.rdbuf();		
         // close file handlers
+	// ファイルを閉じる
         vShaderFile.close();
         fShaderFile.close();
         // convert stream into string
+	// ストリームを文字列に変換
         vertexCode   = vShaderStream.str();
         fragmentCode = fShaderStream.str();		
     }
@@ -571,19 +586,23 @@ Shader(const char* vertexPath, const char* fragmentPath)
   
   <p>
     Next we need to compile and link the shaders. Note that we're also reviewing if compilation/linking failed and if so, print the compile-time errors. This is extremely useful when debugging (you are going to need those error logs eventually):
+続いてシェーダーをコンパイル及びリンクします。加えて、コンパイル及びリンクが成功したかどうか確認し、失敗していた場合コンパイル時のエラーを表示させています。これはデバッグ時に非常に便利です（開発においてエラーログは必須です）。
   </p>
   
 <pre><code>
 // 2. compile shaders
+// 2. シェーダーのコンパイル
 unsigned int vertex, fragment;
 int success;
 char infoLog[512];
    
 // vertex Shader
+// 頂点シェーダー
 vertex = <function id='37'>glCreateShader</function>(GL_VERTEX_SHADER);
 <function id='42'>glShaderSource</function>(vertex, 1, &amp;vShaderCode, NULL);
 <function id='38'>glCompileShader</function>(vertex);
 // print compile errors if any
+// コンパイルエラーの表示
 <function id='39'>glGetShaderiv</function>(vertex, GL_COMPILE_STATUS, &amp;success);
 if(!success)
 {
@@ -592,9 +611,11 @@ if(!success)
 };
   
 // similiar for Fragment Shader
+// フラグメントシェーダーに対しても同様
 [...]
   
 // shader Program
+// シェーダープログラム
 ID = <function id='36'>glCreateProgram</function>();
 <function id='34'>glAttachShader</function>(ID, vertex);
 <function id='34'>glAttachShader</function>(ID, fragment);
@@ -608,6 +629,7 @@ if(!success)
 }
   
 // delete the shaders as they're linked into our program now and no longer necessary
+// リンクが終わりで必要がなくなったシェーダーを削除。
 <function id='46'>glDeleteShader</function>(vertex);
 <function id='46'>glDeleteShader</function>(fragment);
 </code></pre> 
@@ -644,6 +666,7 @@ void setFloat(const std::string &name, float value) const
   
   <p>
     And there we have it, a completed <a href="/code_viewer_gh.php?code=includes/learnopengl/shader_s.h" target="_blank">shader class</a>. Using the shader class is fairly easy; we create a shader object once and from that point on simply start using it:
+これで<a href="/code_viewer_gh.php?code=includes/learnopengl/shader_s.h" target="_blank">シェーダークラス</a>の構築は完了です。このクラスを利用するのは簡単です。シェーダーオブジェクトを作成するだけで使えるのです:
   </p>
   
 <pre><code>
@@ -659,17 +682,23 @@ while(...)
     
 <p>
   Here we stored the vertex and fragment shader source code in two files called <code>shader.vs</code> and <code>shader.fs</code>. You're free to name your shader files however you like; I personally find the extensions <code>.vs</code> and <code>.fs</code> quite intuitive.
+それでは頂点シェーダーとフラグメントシェーダーを<code>shader.vs</code>と<code>shader.fs</code>というファイルにそれぞれ保存しましょう。ファイルの名前は好きなものにしてください。個人的に<code>.vs</code>と<code>.fs</code>という拡張子が分かりやすいのでこのような名前にしています。
 </p>
   
   <p>
     You can find the source code <a href="/code_viewer_gh.php?code=src/1.getting_started/3.3.shaders_class/shaders_class.cpp" target="_blank">here</a> using our newly created <a href="/code_viewer_gh.php?code=includes/learnopengl/shader_s.h" target="_blank">shader class</a>. Note that you can click the shader file paths to find the shaders' source code.
+今作った<a href="/code_viewer_gh.php?code=includes/learnopengl/shader_s.h" target="_blank">シェーダークラス</a>を利用したソースコードは<a href="/code_viewer_gh.php?code=src/1.getting_started/3.3.shaders_class/shaders_class.cpp" target="_blank">ここ</a>にあります。シェーダーファイルのパスをクリックすることでシェーダーのソースコードにもアクセスできます。
   </p>
 
 <h1>Exercises</h1>
+<h1>演習</h1>
   <ol>
     <li>Adjust the vertex shader so that the triangle is upside down: <a href="/code_viewer_gh.php?code=src/1.getting_started/3.4.shaders_exercise1/shaders_exercise1.cpp" target="_blank">solution</a>.</li>
+    <li>頂点シェーダーを変更して三角形を逆さに表示してください: <a href="/code_viewer_gh.php?code=src/1.getting_started/3.4.shaders_exercise1/shaders_exercise1.cpp" target="_blank">回答</a></li>
     <li>Specify a horizontal offset via a uniform and move the triangle to the right side of the screen in the vertex shader using this offset value: <a href="/code_viewer_gh.php?code=src/1.getting_started/3.5.shaders_exercise2/shaders_exercise2.cpp" target="_blank">solution</a>.</li>
+    <li>水平方向の位置をユニフォームで設定し、この値を頂点シェーダーから利用して三角形をスクリーンの右に寄せて下さい: <a href="/code_viewer_gh.php?code=src/1.getting_started/3.5.shaders_exercise2/shaders_exercise2.cpp" target="_blank">solution</a>.</li>
     <li>Output the vertex position to the fragment shader using the <code>out</code> keyword and set the fragment's color equal to this vertex position (see how even the vertex position values are interpolated across the triangle). Once you managed to do this; try to answer the following question: why is the bottom-left side of our triangle black?: <a href="/code_viewer_gh.php?code=src/1.getting_started/3.6.shaders_exercise3/shaders_exercise3.cpp" target="_blank">solution</a>.</li>
+    <li><code>out</code>キーワードを用いて頂点の座標をフラグメントシェーダーに出力し、フラグメントの色をその座標と同じになるようにして下さい（頂点の座標であっても補完されることを確認して下さい）。これができたら、左下がどうして黒くなっているのか考えて下さい: <a href="/code_viewer_gh.php?code=src/1.getting_started/3.6.shaders_exercise3/shaders_exercise3.cpp" target="_blank">solution</a>.</li>
   </ol>
          
 
