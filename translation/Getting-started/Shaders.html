@@ -147,44 +147,56 @@ vec4 otherResult = vec4(result.xyz, 1.0);
 <h2>入力と出力</h2>
 <p>
   Shaders are nice little programs on their own, but they are part of a whole and for that reason we want to have inputs and outputs on the individual shaders so that we can move stuff around. GLSL defined the <code>in</code> and <code>out</code> keywords specifically for that purpose. Each shader can specify inputs and outputs using those keywords and wherever an output variable matches with an input variable of the next shader stage they're passed along. The vertex and fragment shader differ a bit though.
+シェーダーはそれだけで完結した小さなプログラムですが、それらを組み合わて全体としてうまく機能する必要があります。そのため、互いにデータをやりとりするための入力と出力がそれぞれのシェーダーで必要になります。GLSLには入出力を宣言するための<code>in</code>と<code>out</code>というキーワードが用意されています。各シェーダーではこれらのキーワードを使って入力と出力を定義し、あるシェーダーの出力が次のシェーダーの入力と合致すればそこでデータの受け渡しが行われます。ただし頂点シェーダーとフラグメントシェーダーは少し事情が異なります。
 </p>
   
 <p>
   The vertex shader <strong>should</strong> receive some form of input otherwise it would be pretty ineffective. The vertex shader differs in its input, in that it receives its input straight from the vertex data. To define how the vertex data is organized we specify the input variables with location metadata so we can configure the vertex attributes on the CPU. We've seen this in the previous chapter as <code>layout (location = 0)</code>. The vertex shader thus requires an extra layout specification for its inputs so we can link it with the vertex data.
+頂点シェーダーは特定の形式の入力を持つことが<strong>強く推奨</strong>されます。そうしないとかなり効率が落ちます。頂点シェーダーは他のシェーダーとは違い、入力として頂点データを直接受け取ります。CPU上で設定した頂点データがどのように構成されているかをシェーダーに伝えるため、入力に対してデータの位置というメタデータを記述します。前章で<code>layout (location = 0)</code>というコードを記述したのがそれです。頂点シェーダーへの入力を頂点データと紐付けるため、このようにデータの配置を特定する必要があるのです。
   </p>
   
 <note>
   It is also possible to omit the <code>layout (location = 0)</code> specifier and query for the attribute locations in your OpenGL code via <fun><function id='104'>glGetAttribLocation</function></fun>, but I'd prefer to set them in the vertex shader. It is easier to understand and saves you (and OpenGL) some work.
+<code>layout (location = 0)</code>を使わず、<fun><function id='104'>glGetAttribLocation</function></fun>によって属性の位置を特定することも可能ですが、著者は前述の方法を好みます。理解しやすく開発者（とOpenGL）の労力を節約できるからです。
   </note>
   
 <p>
   The other exception is that the fragment shader requires a <code>vec4</code> color output variable, since the fragment shaders needs to generate a final output color. If you fail to specify an output color in your fragment shader, the color buffer output for those fragments will be undefined (which usually means OpenGL will render them either black or white).
+もう一つの例外であるフラグメントシェーダーはその出力が<code>vec4</code>型の色でなければなりません。このシェーダーは最終的な色を生成する必要があるからです。フラグメントシェーダーにおいてあるフラグメントに対して色を出力できなかった場合、そのフラグメントの色バッファがどうなるかは不定です（多くの場合黒または白で描画されます）。
   </p>
 
 <p>
 	So if we want to send data from one shader to the other we'd have to declare an output in the sending shader and a similar input in the receiving shader. When the types and the names are equal on both sides OpenGL will link those variables together and then it is possible to send data between shaders (this is done when linking a program object). To show you how this works in practice we're going to alter the shaders from the previous chapter to let the vertex shader decide the color for the fragment shader.
+あるシェーダーから次のシェーダーにデータを送信する場合、送信元の出力と受信先の入力を同じ形式で宣言しなければいけません。双方の型と名前が一致した場合、OpenGLがそれを接続しデータの受け渡しが可能になります（この作業はプログラムオブジェクトのリンク時に行われます）。実際の動作を確認するために、前章で作成したシェーダーを変更して、頂点シェーダーがフラグメントシェーダーの色を決定するようにしましょう。
   </p>
 
 <strong>Vertex shader</strong>
+<strong>頂点シェーダー</strong>
 <pre><code>
 #version 330 core
 layout (location = 0) in vec3 aPos; // the position variable has attribute position 0
+layout (location = 0) in vec3 aPos; // 位置変数は位置0に存在
   
 out vec4 vertexColor; // specify a color output to the fragment shader
+out vec4 vertexColor; // フラグメントシェーダーへの出力として色を指定
 
 void main()
 {
     gl_Position = vec4(aPos, 1.0); // see how we directly give a vec3 to vec4's constructor
     vertexColor = vec4(0.5, 0.0, 0.0, 1.0); // set the output variable to a dark-red color
+    gl_Position = vec4(aPos, 1.0); // このようにすればvec3からvec4を直接作成できます
+    vertexColor = vec4(0.5, 0.0, 0.0, 1.0); // 出力する色を暗い赤に
 }
 </code></pre>  
   
 <strong>Fragment shader</strong>
+<strong>フラグメントシェーダー</strong>
 <pre><code>
 #version 330 core
 out vec4 FragColor;
   
 in vec4 vertexColor; // the input variable from the vertex shader (same name and same type)  
+in vec4 vertexColor; // 頂点シェーダーからの入力（同じ名前かつ同じ型）
 
 void main()
 {
@@ -194,21 +206,26 @@ void main()
   
 <p>
   You can see we declared a <var>vertexColor</var> variable as a <code>vec4</code> output that we set in the vertex shader and we declare a similar <var>vertexColor</var> input in the fragment shader. Since they both have the same type and name, the <var>vertexColor</var> in the fragment shader is linked to the <var>vertexColor</var> in the vertex shader. Because we set the color to a dark-red color in the vertex shader, the resulting fragments should be dark-red as well. The following image shows the output:
+頂点シェーダーにおいて<code>vec4</code>の変数<var>vertexColor</var>を宣言し、フラグメントシェーダーでも同様のものを定義します。双方が同じ名前で同じ型の変数なので、フラグメントシェーダーの<var>vertexColor</var>は頂点シェーダーの<var>vertexColor</var>と接続されます。頂点シェーダーにおいて暗い赤に設定したので、フラグメントシェーダーからも暗い赤が出力されます。その結果以下のような画像が生成されます:
   </p>
  
   <img src="/img/getting-started/shaders.png" class="clean"/>
   
 <p>
    There we go! We just managed to send a value from the vertex shader to the fragment shader. Let's spice it up a bit and see if we can send a color from our application to the fragment shader!
+いかがでしょう。頂点シェーダーからフラグメントシェーダーに変数を送信できました。これに少し味付けして、アプリケーションからフラグメントシェーダーに色の情報を送信するようにしましょう。
   </p>
   
   <h2>Uniforms</h2>
+  <h2>ユニフォーム</h2>
   <p>
     <def>Uniforms</def> are another way to pass data from our application on the CPU to the shaders on the GPU. Uniforms are however slightly different compared to vertex attributes. First of all, uniforms are <def>global</def>. Global, meaning that a uniform variable is unique per shader program object, and can be accessed from any shader at any stage in the shader program. Second, whatever you set the uniform value to, uniforms will keep their values until they're either reset or updated.
+<def>ユニフォーム</def>はCPU上のアプリケーションからGPU上のシェーダーにデータを送信するもうひとつの方法です。ユニフォームは頂点属性と少し違います。第一にユニフォームは<def>グローバル</def>です。すなわち、ユニフォームは各シェーダープログラムオブジェクトにおいて一意であり、同シェーダープログラム中の他のシェーダーからもアクセスできます。第二に、ユニフォームの値がセットされた場合、その値はリセットあるいは更新されるまで一定です。
   </p>
   
   <p>
     To declare a uniform in GLSL we simply add the <code>uniform</code> keyword to a shader with a type and a name. From that point on we can use the newly declared uniform in the shader. Let's see if this time we can set the color of the triangle via a uniform:
+GLSLにおいてユニフォームを宣言するには<code>uniform</code>キーワードを変数の型と名前に添えてシェーダーに記述するだけです。以降そのシェーダーにおいてこのユニフォームが利用できます。それではユニフォームを使って三角形の色が変更できるか試してみましょう:
   </p>
   
 <pre><code>
@@ -216,6 +233,7 @@ void main()
 out vec4 FragColor;
   
 uniform vec4 ourColor; // we set this variable in the OpenGL code.
+uniform vec4 ourColor; // この変数の値をOpenGLのコードで設定します。
 
 void main()
 {
@@ -225,6 +243,8 @@ void main()
   
   <p>
     We declared a uniform <code>vec4</code> <var>ourColor</var> in the fragment shader and set the fragment's output color to the content of this uniform value. Since uniforms are global variables, we can define them in any shader stage we'd like so no need to go through the vertex shader again to get something to the fragment shader. We're not using this uniform in the vertex shader so there's no need to define it there.
+<code>vec4</code> <var>ourColor</var>というユニフォームをフラグメントシェーダーで宣言し、フラグメントシェーダーの出力の色をこのユニフォームの値にしました。ユニフォームがグローバル変数なので、
+
   </p>
   
   <warning>
