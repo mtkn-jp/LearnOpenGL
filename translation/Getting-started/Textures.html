@@ -120,34 +120,41 @@ float borderColor[] = { 1.0f, 1.0f, 0.0f, 1.0f };
 </code></pre>
 
 <h2>Texture Filtering</h2>
+<h2>テクスチャフィルタリング</h2>
 <p>
 	Texture coordinates do not depend on resolution but can be any floating point value, thus OpenGL has to figure out which texture pixel (also known as a <def>texel</def> ) to map the texture coordinate to. This becomes especially important if you have a very large object and a low resolution texture. You probably guessed by now that OpenGL has options for this <def>texture filtering</def> as well. There are several options available but for now we'll discuss the most important options: <var>GL_NEAREST</var> and <var>GL_LINEAR</var>. 
+	テクスチャ座標は解像度に依存せず、任意の浮動小数点数で指定できます。そのためOpenGLはテクスチャのピクセル（<def>テクセル</def>）をどのようにテクスチャ座標に割り当てるかを決定しなければなりません。これは大きな物体に対して低解像度のテクスチャを割り当てる際に特に重要です。この<def>テクスチャフィルタリング</def>と呼ばれる操作に対してもOpenGLがオブションを用意しているのではないかと思われるかもしれません。予想通りいくつかのオプションがありますが、ここでは中でも重要な<var>GL_NEAREST</var>と<var>GL_LINEAR</var>を紹介します。
 </p>
 
 <p>
 	<var>GL_NEAREST</var> (also known as <def>nearest neighbor</def> or <def>point</def> filtering) is the default texture filtering method of OpenGL. When set to <var>GL_NEAREST</var>, OpenGL selects the texel that center is closest to the texture coordinate. Below you can see 4 pixels where the cross represents the exact texture coordinate. The upper-left texel has its center closest to the texture coordinate and is therefore chosen as the sampled color:
+	<var>GL_NEAREST</var>（あるいは<def>最近傍</def>または<def>ポイント</def>フィルタリング）はOpenGLにおけるデフォルトのテクスチャフィルタリングの方法です。<var>GL_NEAREST</var>が設定されている場合、テクセルのうちその中心がテクスチャ座標に最も近いものが選択されます。以下の図は4つのピクセルとテクスチャ座標を十字で示したものです。左上のテクセルの中心がテクスチャ座標に最も近いので、このテクセルがサンプルとして選択されます:
 </p>
 
 	<img src="/img/getting-started/filter_nearest.png" class="clean"/>
 	
 <p>
 	<var>GL_LINEAR</var> (also known as <def>(bi)linear filtering</def>) takes an interpolated value from the texture coordinate's neighboring texels, approximating a color between the texels. The smaller the distance from the texture coordinate to a texel's center, the more that texel's color contributes to the sampled color. Below we can see that a mixed color of the neighboring pixels is returned:
+	<var>GL_LINEAR</var>（あるいは<def>（双）線形フィルタリング</def>）はテクスチャ座標の周りにあるテクセルの色を近似することにより、周りのテクセルを補完した色を取ります。中心がテクスチャ座標に近いテクセルほどサンプルとして取られる色に対する寄与が大きくなります。以下の例から、周りのピクセルを混ぜた色が得られる様子が見てとれます:
 </p>
 	
 <img src="/img/getting-started/filter_linear.png" class="clean"/>
 	
 <p>
 	But what is the visual effect of such a texture filtering method? Let's see how these methods work when using a texture with a low resolution on a large object (texture is therefore scaled upwards and individual texels are noticeable):
+	ところでこのテクスチャフィルタリングの方法が視覚的にどう影響するのでしょう。この手法が低解像度のテクスチャを大きな物体に利用した（つまりテクスチャは個々のテクセルが確認できるほど引き伸ばされます）様子を見てみましょう:
 </p>
 
 	<img src="/img/getting-started/texture_filtering.png" class="clean"/>
 
 <p>
 	<var>GL_NEAREST</var> results in blocked patterns where we can clearly see the pixels that form the texture while <var>GL_LINEAR</var> produces a smoother pattern where the individual pixels are less visible. <var>GL_LINEAR</var> produces a more realistic output, but some developers prefer a more 8-bit look and as a result pick the <var>GL_NEAREST</var> option.
+	<var>GL_NEAREST</var>はテクスチャを構成するピクセルがはっきりと見えるくらいかくかくした結果になりました。一方<var>GL_LINEAR</var>は個々のピクセルが見えにくくなめらかな仕上りになりす。<var>GL_LINEAR</var>はより現実的な見た目になりますが、開発者のなかには8-bitっぽい見た目を好み、<var>GL_NEAREST</var>を選択する人もいます。
 	</p>
 
 <p>
 	Texture filtering can be set for <def>magnifying</def> and <def>minifying</def> operations (when scaling up or downwards) so you could for example use nearest neighbor filtering when textures are scaled downwards and linear filtering for upscaled textures. We thus have to specify the filtering method for both options via <fun><function id='15'>glTexParameter</function>*</fun>. The code should look similar to setting the wrapping method:
+	テクスチャフィルタリングは<def>拡大</def>と<def>縮小</def>の操作において設定できます。例えば縮小する場合には最近傍点フィルタリングを、拡大する際には線形フィルタリグをそれぞれ適応することができます。そのため両方に対して<fun><function id='15'>glTexParameter</function>*</fun>を用いてフィルタリング方式を設定する必要があります。そのようなコードはテクスチャの繰り返しを指定するコードと同様です:
 </p>
 
 <pre><code>
@@ -156,33 +163,43 @@ float borderColor[] = { 1.0f, 1.0f, 0.0f, 1.0f };
 </code></pre>
 
 <h3>Mipmaps</h3>
+<h3>ミップマップ</h3>
 <p>
 	Imagine we had a large room with thousands of objects, each with an attached texture. There will be objects far away that have the same high resolution texture attached as the objects close to the viewer. Since the objects are far away and probably only produce a few fragments, OpenGL has difficulties retrieving the right color value for its fragment from the high resolution texture, since it has to pick a texture color for a fragment that spans a large part of the texture. This will produce visible artifacts on small objects, not to mention the waste of memory bandwidth using high resolution textures on small objects.
+	部屋の中に数千もの物体があり、それぞれにテクスチャが割り当てられているのを想像してみてください。近くにある物体と同じような高解像度のテクスチャを割り当てられた物体が遠くにある場合もあります。そのような物体は、遠くにあるために少しのフラグメントしか生成しません。このようなフラグメントはテクスチャの広い範囲に渡り、そこから適切な色を取得しないといけないので、テクスチャが高解像度の場合OpenGLは苦労することになります。小さな物体に大きなテクスチャを利用するのは、メモリの帯域の無駄遣いであるだけでなく、視覚的にも奇妙な結果になります。
 </p>
 
 <p>
 	To solve this issue OpenGL uses a concept called <def>mipmaps</def> that is basically a collection of texture images where each subsequent texture is twice as small compared to the previous one. The idea behind mipmaps should be easy to understand: after a certain distance threshold from the viewer, OpenGL will use a different mipmap texture that best suits the distance to the object. Because the object is far away, the smaller resolution will not be noticeable to the user. OpenGL is then able to sample the correct texels, and there's less cache memory involved when sampling that part of the mipmaps. Let's take a closer look at what a mipmapped texture looks like:
+	この問題を解決するため、OpenGLは<def>ミップマップ</def>と呼ばれる概念を利用します。ミップマップとは、基本的にはテクスチャ画像の集合で、次の画像は前のものの半分の大きさになっています。ミップマップの考え方は簡単に理解できます。距離がある閾値を越えると、OpenGLがその距離に応じて適切なミップマップテクスチャを割り当てます。物体が遠くにあれば、解像度の低さにユーザーは気付きません。そうしてOpenGLは適切なテクセルをサンプリングでき、ミップマップの一部をサンプリングするうえでキャッシュメモリは少なくてすみます。テクスチャのミップマップがどのようなのか詳しく見てみましょう:
 </p>
 
 <img src="/img/getting-started/mipmaps.png" class="clean"/>
 
 <p>
 	Creating a collection of mipmapped textures for each texture image is cumbersome to do manually, but luckily OpenGL is able to do all the work for us with a single call to <fun><function id='51'>glGenerateMipmap</function>s</fun> after we've created a texture.
+	ミップマップ化されたテクスチャを手動で生成するのは面倒ですが、テクスチャを作成したあと<fun><function id='51'>glGenerateMipmap</function>s</fun>を呼ぶだけでOpenGLがこの仕事を肩代りしてくれます。
 </p>
 
 <p>
 	When switching between mipmaps levels during rendering OpenGL may show some artifacts like sharp edges visible between the two mipmap layers. Just like normal texture filtering, it is also possible to filter between mipmap levels using <var>NEAREST</var> and <var>LINEAR</var> filtering for switching between mipmap levels. To specify the filtering method between mipmap levels we can replace the original filtering methods with one of the following four options:
+	描画中ミップマップのサイズが切り替わる時にOpenGLは不自然な視覚効果を生じます。ミップマップのレイヤの間にくっきりした縁が見えたりするのです。通常のテクスチャフィルタリングと同様に、<var>NEAREST</var>と<var>LINEAR</var>フィルタリングにより、ミップマップレベルをフィルタリングできます。もとのフィルタリング方法を以下のいずれかのもので置き換えることで、ミップマップレベルの間のフィルタリング方法を指定できます:
 </p>
 	
 	<ul>
 	<li><var>GL_NEAREST_MIPMAP_NEAREST</var>: takes the nearest mipmap to match the pixel size and uses nearest neighbor interpolation for texture sampling.</li>
+	<li><var>GL_NEAREST_MIPMAP_NEAREST</var>: ピクセルサイズに一番近いミップマップを取り、それを最近傍点補完によりサンプリング。</li>
 	<li><var>GL_LINEAR_MIPMAP_NEAREST</var>: takes the nearest mipmap level and samples that level using linear interpolation. </li>
+	<li><var>GL_LINEAR_MIPMAP_NEAREST</var>: ピクセルサイズに一番近いミップマップを取り、それを線形補完によりサンプリング。</li>
 	<li><var>GL_NEAREST_MIPMAP_LINEAR</var>:  linearly interpolates between the two mipmaps that most closely match the size of a pixel and samples the interpolated level via nearest neighbor interpolation. </li>
+	<li><var>GL_NEAREST_MIPMAP_LINEAR</var>: ピクセルサイズに近いミップマップ二つを線形補完し、それを最近傍点補完によりサンプリング。</li>
 	<li><var>GL_LINEAR_MIPMAP_LINEAR</var>: linearly interpolates between the two closest mipmaps and samples the interpolated level via linear interpolation.</li>
+	<li><var>GL_LINEAR_MIPMAP_LINEAR</var>: ピクセルサイズに近いミップマップ二つを線形補間し、それを線形補間によりサンプリング。</li>
 	</ul>
 	
 <p>
 	Just like texture filtering we can set the filtering method to one of the 4 aforementioned methods using <fun><function id='15'>glTexParameter</function>i</fun>:
+	テクスチャフィルタリングと同様に、フィルタリング方式を上記4つの中から選び、<fun><function id='15'>glTexParameter</function>i</fun>により設定できます:
 </p>
 
 <pre><code>
@@ -192,21 +209,26 @@ float borderColor[] = { 1.0f, 1.0f, 0.0f, 1.0f };
 
 <p>
 	A common mistake is to set one of the mipmap filtering options as the magnification filter. This doesn't have any effect since mipmaps are primarily used for when textures get downscaled: texture magnification doesn't use mipmaps and giving it a mipmap filtering option will generate an OpenGL <var>GL_INVALID_ENUM</var> error code.
+	拡大時のフィルタリング方法としてミップマップフィルタリングを設定するのはよくある間違いです。ミップマップはテクスチャが小さくなる時に利用されるものなので、拡大時のフィルタリングとして設定しても意味がありません。テクスチャの拡大にはミップマップを利用しないので、OpenGLが<var>GL_INVALID_ENUM</var>エラーを生成します。
 </p>
 
 <h1>Loading and creating textures</h1>
+<h1>テクスチャの読み込みと作成</h1>
 <p>
 	The first thing we need to do to actually use textures is to load them into our application.
 	Texture images can be stored in dozens of file formats, each with their own structure and ordering of data, so how do we get those images in our application? One solution would be to choose a file format we'd like to use, say <code>.PNG</code> and write our own image loader to convert the image format into a large array of bytes. While it's not very hard to write your own image loader, it's still cumbersome and what if you want to support more file formats? You'd then have to write an image loader for each format you want to support.
+	テクスチャを利用するにあたりまず必要なのは、それをアプリケーションに読み込むことです。テクスチャ画像は様々なフォーマットで保存でき、データの構造と配置順序はそれぞればらばらです。このような画像をアプリケーションに読み込むにはどうすればよいでしょうか。ひとつの方法として、例えば<code>.PNG</code>といったフォーマットを選び、そのフォーマットの画像を読み込むプログラムを独自に作成し、大きなバイト列に格納するというものが考えられます。このような読込み機を作成するのはそんなに難しいことではないですが、面倒ですし、それにもし、たくさんのフォーマットに対応したいとすればどうでしょう。それぞれのフォーマットに対応した読込み機をすべて自分で作成することになります。
 </p>
 
 <p>
 	Another solution, and probably a good one, is to use an image-loading library that supports several popular formats and does all the hard work for us. A library like <code>stb_image.h</code>.
+	他のいい方法として、一般的なフォーマットをサポートした画像読込みライブラリを利用し、難儀な仕事を肩代わりさせるというものがあります。<code>stb_image.h</code>といったライブラリです。
 </p>
 
 <h2>stb_image.h</h2>
 <p>
 	<code>stb_image.h</code> is a very popular single header image loading library by <a href="https://github.com/nothings" target="_blank">Sean Barrett</a> that is able to load most popular file formats and is easy to integrate in your project(s). <code>stb_image.h</code> can be downloaded from <a href="https://github.com/nothings/stb/blob/master/stb_image.h" target="_blank">here</a>. Simply download the single header file, add it to your project as <code>stb_image.h</code>, and create an additional C++ file with the following code:
+	<code>stb_image.h</code>は<a href="https://github.com/nothings" target="_blank">Sean Barrett</a>による、ヘッダひとつの有名なライブラリです。このライブラリは一般的なフォーマットのファイルを読み込め、簡単に自分のプロジェクトに組込めます。<code>stb_image.h</code>は<a href="https://github.com/nothings/stb/blob/master/stb_image.h" target="_blank">ここ</a>からダウンドードできます。ヘッダファイルをひとつダウンロードし、<code>stb_image.h</code>という名前でプロジェクトに追加し、以下のようなC++のファイルを作成するだけです:
 </p>
 	
 <pre><code>
@@ -216,11 +238,13 @@ float borderColor[] = { 1.0f, 1.0f, 0.0f, 1.0f };
 	
 <p>
 	By defining <var>STB_IMAGE_IMPLEMENTATION</var> the preprocessor modifies the header file such that it only contains the relevant definition source code, effectively turning the header file into a <code>.cpp</code> file, and that's about it. Now simply include <code>stb_image.h</code> somewhere in your program and compile.
+	<var>STB_IMAGE_IMPLEMENTATION</var>を定義することでプリプロセッサが、関係のある定義を記述したソースコードのみを含むようにヘッダファイルを変更し、それを効率よく<code>.cpp</code>ファイルに変更します。それではプログラムのどこかで<code>stb_image.h</code>をインクルードしコンパイルしましょう。
 </p>
 
 <p>
 	For the following texture sections we're going to use an image of a <a href="/img/textures/container.jpg" target="_blank">wooden container</a>.
 	To load an image using <code>stb_image.h</code> we use its <fun>stbi_load</fun> function:
+	以降のテクスチャの章では<a href="/img/textures/container.jpg" target="_blank">木箱</a>の画像を利用します。<code>stb_image.h</code>により画像を読み込むには<fun>stbi_load</fun>関数を利用します:
 </p>
 
 <pre><code>
@@ -230,11 +254,14 @@ unsigned char *data = stbi_load("container.jpg", &amp;width, &amp;height, &amp;n
 
 <p>
 	The function first takes as input the location of an image file. It then expects you to give three <code>ints</code> as its second, third and fourth argument that <code>stb_image.h</code> will fill with the resulting image's <em>width</em>, <em>height</em> and <em>number</em> of color channels. We need the image's width and height for generating textures later on. <!--The last argument allows us to force a number of channels. Let's say the image has 4 channels (RGBA) and we only want to load the 3 color channels (RGB) without alpha, we set its last argument to <code>3</code>. -->
+	この関数は最初の引数に画像ファイルの場所を取ります。2番から4番の引数には3つの<code>int</code>を取り、そこに読み込んだ画像の<em>幅</em>、<em>高さ</em>、そして色チャネルの<em>数</em>が<code>stb_image.h</code>により格納されます。幅と高さはこの後テクスチャを作成するのに必要です。
 </p>
 
 <h2>Generating a texture</h2>
+<h2>テクスチャの作成</h2>
 <p>
 	Like any of the previous objects in OpenGL, textures are referenced with an ID; let's create one:
+	ここまで登場したOpenGLのオブジェクトと同様、テクスチャもIDによって参照されます。ひとつ作成してみましょう:
 </p>
 
 <pre class="cpp"><code>
@@ -244,6 +271,7 @@ unsigned int texture;
 
 <p>
 	The <fun><function id='50'>glGenTextures</function></fun> function first takes as input how many textures we want to generate and stores them in a <code>unsigned int</code> array given as its second argument (in our case just a single <code>unsigned int</code>). Just like other objects we need to bind it so any subsequent texture commands will configure the currently bound texture:
+	<fun><function id='50'>glGenTextures</function></fun>関数は最初の入力として作成するテクスチャの数を受け取り、二番目の入力として与えられた<code>unsigned int</code>の配列にそれらを格納します（ここではひとつだけです）。他のオブジェクトと同様に、この後の設定がこのテクスチャに反映されるためにはこのテクスチャを紐付ける必要があります:
 </p>
 
 <pre><code>
@@ -252,6 +280,7 @@ unsigned int texture;
 
 <p>
 	Now that the texture is bound, we can start generating a texture using the previously loaded image data. Textures are generated with <fun><function id='52'>glTexImage2D</function></fun>:
+	テクスチャを紐付けた後、先に読み込んでおいた画像を用いてテクスチャを生成することができます。テクスチャは<fun><function id='52'>glTexImage2D</function></fun>により生成されます:
 </p>
 
 <pre class="cpp"><code>
@@ -261,8 +290,10 @@ unsigned int texture;
 
 <p>
 	This is a large function with quite a few parameters so we'll walk through them step-by-step:
+	たくさんの引数を取る大きな関数なので一つづつ見ていきましょう:
 	<ul>
 	<li>The first argument specifies the texture target; setting this to <var>GL_TEXTURE_2D</var> means this operation will generate a texture on the currently bound texture object at the same target (so any textures bound to targets <var>GL_TEXTURE_1D</var> or <var>GL_TEXTURE_3D</var> will not be affected).</li>
+	<li>1つ目の引数はテクスチャのターゲットを指定します。この引数を<var>GL_TEXTURE_2D</var>にすることで、
 	<li>The second argument specifies the mipmap level for which we want to create a texture for if you want to set each mipmap level manually, but we'll leave it at the base level which is <code>0</code>.</li>
 	<li>The third argument tells OpenGL in what kind of format we want to store the texture. Our image has only <code>RGB</code> values so we'll store the texture with <code>RGB</code> values as well.</li>
 	<li>The 4th and 5th argument sets the width and height of the resulting texture. We stored those earlier when loading the image so we'll use the corresponding variables.</li>
