@@ -293,13 +293,19 @@ unsigned int texture;
 	たくさんの引数を取る大きな関数なので一つづつ見ていきましょう:
 	<ul>
 	<li>The first argument specifies the texture target; setting this to <var>GL_TEXTURE_2D</var> means this operation will generate a texture on the currently bound texture object at the same target (so any textures bound to targets <var>GL_TEXTURE_1D</var> or <var>GL_TEXTURE_3D</var> will not be affected).</li>
-	<li>1つ目の引数はテクスチャのターゲットを指定します。この引数を<var>GL_TEXTURE_2D</var>にすることで、
+	<li>1つ目の引数はテクスチャのターゲットを指定します。この引数を<var>GL_TEXTURE_2D</var>にすることで、現在紐付いているテクスチャオブジェクトのうちこのターゲットのものに対してテクスチャを作成できます（現在紐付いている<var>GL_TEXTURE_1D</var>や<var>GL_TEXTURE_3D</var>には影響しません）。</li>
 	<li>The second argument specifies the mipmap level for which we want to create a texture for if you want to set each mipmap level manually, but we'll leave it at the base level which is <code>0</code>.</li>
+	<li>2つ目の引数ではテクスチャを作成する際のミップマップレベルを手動で設定したい場合にそのレベルを指定します。しかし今回は既定値の<code>0</code>にしておきましょう。</li>
 	<li>The third argument tells OpenGL in what kind of format we want to store the texture. Our image has only <code>RGB</code> values so we'll store the texture with <code>RGB</code> values as well.</li>
+	<li>3つ目はテクスチャを保存する形式を指定します。今回利用する画像は<code>RGB</code>の値のみを含むので、保存形式も<code>RGB</code>にしておきます。</li>
 	<li>The 4th and 5th argument sets the width and height of the resulting texture. We stored those earlier when loading the image so we'll use the corresponding variables.</li>
+	<li>4つ目と5つ目は出力されるテクスチャの幅と高さをそれぞれ指定します。先程画像を読み込む際にこれらの値を取得していたのでそのまま利用します。</li>
 	<li>The next argument should always be <code>0</code> (some legacy stuff).</li>
+	<li>次の引数は常に<code>0</code>にしておくべきです（過去の遺物です）。</li>
 	<li>The 7th and 8th argument specify the format and datatype of the source image. We loaded the image with <code>RGB</code> values and stored them as <code>char</code>s (bytes) so we'll pass in the corresponding values.</li>
-	<li>The last argument is the actual image data.</li>    
+	<li>7つ目と8つ目では読み込む画像のデータ形式を指定します。<code>RGB</code>値の画像を読み込み、<code>char</code>形式（バイト形式）で保存したので、それらの形式をそれぞれ渡します。</li>
+	<li>The last argument is the actual image data.</li>
+	<li>最後の引数は実際の画像データです。</li>
 	</ul>
 </p>
 
