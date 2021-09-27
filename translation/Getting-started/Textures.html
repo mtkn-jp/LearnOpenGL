@@ -311,10 +311,12 @@ unsigned int texture;
 
 <p>
 	Once <fun><function id='52'>glTexImage2D</function></fun> is called, the currently bound texture object now has the texture image attached to it. However, currently it only has the base-level of the texture image loaded and if we want to use mipmaps we have to specify all the different images manually (by continually incrementing the second argument) or, we could call <fun><function id='51'>glGenerateMipmap</function></fun> after generating the texture. This will automatically generate all the required mipmaps for the currently bound texture.
+ひとたび<fun><function id='52'>glTexImage2D</function></fun>が呼ばれると、現在紐付いているテクスチャオブジェクトにテクスチャ画像が貼り付きます。しかしこれだけではテクスチャ画像の元のサイズのものが読み込まれただけなので、ミップマップを利用しようと思うといちいち別の画像を手動で（2つ目の引数を連続的に増加させることにより）指定しないといけません。しかし、別の方法として、テクスチャを生成した後<fun><function id='51'>glGenerateMipmap</function></fun>を呼ぶこともできます。これにより現在紐付いているテクスチャに必要なミップマップをすべて自動で作成されます。
 </p>
 
 <p> 
 	After we're done generating the texture and its corresponding mipmaps, it is good practice to free the image memory:
+	テクスチャとミップマップを作成した後は画像のメモリを開放するのがいいでしょう:
 </p>
 
 <pre class="cpp"><code>
@@ -323,6 +325,7 @@ stbi_image_free(data);
 
 <p>
 	The whole process of generating a texture thus looks something like this:
+	以上をまとめると、テクスチャの作成手順は以下のようになります:
 </p>
 
 <pre><code>
@@ -330,11 +333,13 @@ unsigned int texture;
 <function id='50'>glGenTextures</function>(1, &amp;texture);
 <function id='48'>glBindTexture</function>(GL_TEXTURE_2D, texture);
 // set the texture wrapping/filtering options (on the currently bound texture object)
+// テクスチャの繰り返しとフィルタリングの設定（現在紐付いているテクスチャオブジェクトに対して）
 <function id='15'>glTexParameter</function>i(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	
 <function id='15'>glTexParameter</function>i(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 <function id='15'>glTexParameter</function>i(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 <function id='15'>glTexParameter</function>i(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 // load and generate the texture
+// テクスチャの読込みと作成
 int width, height, nrChannels;
 unsigned char *data = stbi_load("container.jpg", &amp;width, &amp;height, &amp;nrChannels, 0);
 if (data)
@@ -350,9 +355,11 @@ stbi_image_free(data);
 </code></pre>
 
 <h2>Applying textures</h2>
+<h2>テクスチャの適応</h2>
 <p>
 	For the upcoming sections we will use the rectangle shape drawn with <fun><function id='2'>glDrawElements</function></fun> from  the final part of the <a href="https://learnopengl.com/Getting-started/Hello-Triangle" target="_blank">Hello Triangle</a> chapter. 
 	We need to inform OpenGL how to sample the texture so we'll have to update the vertex data with the texture coordinates:
+	以降の章では<a href="https://learnopengl.com/Getting-started/Hello-Triangle" target="_blank">はじめての三角形</a>の最後において<fun><function id='2'>glDrawElements</function></fun>を用いて描画した四角形を利用します。テクスチャのサンプリング方法をOpenGLに伝える必要があるので、頂点データにテクスチャ座標を追加します:
 </p>
 
 <pre><code>
@@ -367,6 +374,7 @@ float vertices[] = {
 
 <p>
 	Since we've added an extra vertex attribute we again have to notify OpenGL of the new vertex format:
+	頂点属性を追加したのでOpenGLに新しい頂点のフォーマットを伝えます:
 </p>
 
 <img src="/img/getting-started/vertex_attribute_pointer_interleaved_textures.png" class="clean" alt="Image of VBO with interleaved position, color and texture data with strides and offsets shown for configuring vertex attribute pointers."/>
@@ -378,10 +386,12 @@ float vertices[] = {
 
 <p>
 	Note that we have to adjust the stride parameter of the previous two vertex attributes to <code>8 * sizeof(float)</code> as well.
+	ほかの頂点属性に対するストライドの値を<code>8 * sizeof(float)</code>に変更する必要があることに注意してください。
 </p>
 
 <p>
 	Next we need to alter the vertex shader to accept the texture coordinates as a vertex attribute and then forward the coordinates to the fragment shader:
+	続いて頂点シェーダーを変更して、テクスチャ座標を頂点属性として受け取りフラグメントシェーダーに取り次ぐようにします:
 </p>
 
 <pre><code>
@@ -403,10 +413,12 @@ void main()
 
 <p>
 	The fragment shader should then accept the <code>TexCoord</code> output variable as an input variable. 
+	これで<code>TexCoord</code>という出力をフラグメントシェーダーが入力として受け取れるようになりました。
 </p>
 
 <p>
 	The fragment shader should also have access to the texture object, but how do we pass the texture object to the fragment shader? GLSL has a built-in data-type for texture objects called a  <def>sampler</def> that takes as a postfix the texture type we want e.g. <code>sampler1D</code>, <code>sampler3D</code> or in our case <code>sampler2D</code>. We can then add a texture to the fragment shader by simply declaring a <code>uniform sampler2D</code> that we later assign our texture to.
+	フラグメントシェーダーはテクスチャオブジェクトにもアクセスできるべきですが、どのようにしてテクスチャオブジェクトをフラグメントシェーダーに渡せるでしょうか。
 </p>
 
 <pre><code>
@@ -426,6 +438,7 @@ void main()
 
 <p>
 	To sample the color of a texture we use GLSL's built-in <fun>texture</fun> function that takes as its first argument a texture sampler and as its second argument the corresponding texture coordinates. The <fun>texture</fun> function then samples the corresponding color value using the texture parameters we set earlier. The output of this fragment shader is then the (filtered) color of the texture at the (interpolated) texture coordinate.
+
 </p>
 
 <p>
