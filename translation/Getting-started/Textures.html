@@ -418,7 +418,7 @@ void main()
 
 <p>
 	The fragment shader should also have access to the texture object, but how do we pass the texture object to the fragment shader? GLSL has a built-in data-type for texture objects called a  <def>sampler</def> that takes as a postfix the texture type we want e.g. <code>sampler1D</code>, <code>sampler3D</code> or in our case <code>sampler2D</code>. We can then add a texture to the fragment shader by simply declaring a <code>uniform sampler2D</code> that we later assign our texture to.
-	フラグメントシェーダーはテクスチャオブジェクトにもアクセスできるべきですが、どのようにしてテクスチャオブジェクトをフラグメントシェーダーに渡せるでしょうか。
+	フラグメントシェーダーはテクスチャオブジェクトにもアクセスできるべきですが、どのようにしてテクスチャオブジェクトをフラグメントシェーダーに渡せるでしょうか。GLSLには<def>サンプラ</def>と呼ばれるテクスチャオブジェクトのデータ型が組込まれていて、語尾にテクスチャの種類を付けて利用できます。例えば<code>sampler1D</code>、<code>sampler2D</code>、<code>sampler3D</code>といったもので、今回は<code>sampler2D</code>を利用します。<code>uniform sampler2D</code>を宣言するだけで、フラグメントシェーダーにテクスチャを追加することができます。その後このユニフォームにテクスチャを割り当てます。
 </p>
 
 <pre><code>
@@ -438,11 +438,12 @@ void main()
 
 <p>
 	To sample the color of a texture we use GLSL's built-in <fun>texture</fun> function that takes as its first argument a texture sampler and as its second argument the corresponding texture coordinates. The <fun>texture</fun> function then samples the corresponding color value using the texture parameters we set earlier. The output of this fragment shader is then the (filtered) color of the texture at the (interpolated) texture coordinate.
-
+	テクスチャの色をサンプリングするには、GLSLに組込まれている<fun>texture</fun>関数を利用します。1つ目の引数はテクスチャのサンプラで、2つ目は対応するテクスチャ座標です。<fun>texture</fun>関数は先程設定したテクスチャの情報を用いて色をサンプリングします。これでフラグメントシェーダーの出力はテクスチャ座標の（補完された）各点におけるテクスチャの（フィルタリングされた）色になります。
 </p>
 
 <p>
 	All that's left to do now is to bind the texture before calling <fun><function id='2'>glDrawElements</function></fun> and it will then automatically assign the texture to the fragment shader's sampler:
+	最後にやり残したことは<fun><function id='2'>glDrawElements</function></fun>を呼ぶ前にテクスチャを紐付けることです。これによりフラグメントシェーダーのサンプラにテクスチャが自動的に割り当てられます:
 </p>
 
 <pre class="cpp"><code>
@@ -453,20 +454,24 @@ void main()
 
 <p>
 	If you did everything right you should see the following image: 
+	すべて間違わずにできていれば以下のような画像が出力されるはずです:
 </p>
 
 <img src="/img/getting-started/textures2.png" class="clean"/>
 
 <p>
 	If your rectangle is completely white or black you probably made an error along the way. Check your shader logs and try to compare your code with the application's <a href="/code_viewer_gh.php?code=src/1.getting_started/4.1.textures/textures.cpp" target="_blank">source code</a>.
+	もし四角形が真っ白や真っ黒に表示されたら、どこかに手違いがあるはずです。シェーダーのログを確認し、自分のコードをアプリケーションの<a href="/code_viewer_gh.php?code=src/1.getting_started/4.1.textures/textures.cpp" target="_blank">ソースコード</a>と見比べて下さい。
 </p>
 	
 <warning>
 	If your texture code doesn't work or shows up as completely black, continue reading and work your way to the last example that <strong>should</strong> work. On some drivers it is <strong>required</strong> to assign a texture unit to each sampler uniform, which is something we'll discuss further in this chapter.
+	もしテクスチャのコードが動かなかったり真っ黒なものを表示した場合、とりあえず最後の例まで読み進めて下さい。最後の例は機能する<strong>はず</strong>です。ドライバによってはテクスチャユニットを各々のサンプラユニフォームに割り当てることが<strong>必要</strong>です。テクスチャユニットについてはこの章で詳しく議論します。
 </warning>
 
 <p>
 	To get a little funky we can also mix the resulting texture color with the vertex colors. We simply multiply the resulting texture color with the vertex color in the fragment shader to mix both colors:
+	少しイカしたことをするために出力されたテクスチャの色を頂点の色と混ぜてみましょう。この為にフラグメントシェーダーにおいてテクスチャの色と頂点の色を単に掛け合わせます:
 </p>
 
 <pre><code>
@@ -475,38 +480,47 @@ FragColor = texture(ourTexture, TexCoord) * vec4(ourColor, 1.0);
 
 <p>
 	The result should be a mixture of the vertex's color and the texture's color:
+	その結果、頂点の色とテクスチャの色が混ぜ合わせられます:
 </p>
 
 <img src="/img/getting-started/textures_funky.png" class="clean"/>
 
 <p>
 	I guess you could say our container likes to disco.
+	コンテナがディスコのように見えるでしょう。<!--平成生まれの役者にはなんのことやら。-->
 </p>
 
 <h2>Texture Units</h2>
+<h2>テクスチャユニット</h2>
 <p>
 	You probably wondered why the <code>sampler2D</code> variable is a uniform if we didn't even assign it some value with <fun><function id='44'>glUniform</function></fun>. Using <fun><function id='44'>glUniform</function>1i</fun> we can actually assign a <em>location</em> value to the texture sampler so we can set multiple textures at once in a  fragment shader. This location of a texture is more commonly known as a <def>texture unit</def>. The default texture unit for a texture is <code>0</code> which is the default active texture unit so we didn't need to assign a location in the previous section; note that not all graphics drivers assign a default texture unit so the previous section may not have rendered for you.
+	<fun><function id='44'>glUniform</function></fun>によって値を設定しない場合であっても<code>sampler2D</code>がユニフォームであることについて疑問に思うかもしれません。<fun><function id='44'>glUniform</function>1i</fun>を利用することで、テクスチャサンプラに<em>位置</em>を実際に割り当てられるので、フラグメントシェーダーにおいて複数のテクスチャを一度に指定することができます。このテクスチャの位置は一般に<def>テクスチャユニット</def>と呼ばれます。テクスチャユニットの既定値は<code>0</code>で、これがデフォルトのアクティブなテクスチャユニットなので、前の章において位置を割り当てる必要はなかったのです。ただし全てのグラフィックドライバがデフォルトのテクスチャユニットを割り当てるわけではないので、場合によっては前章のコードでは描画されないことがあるのです。
 </p>
 
 <p>
 	The main purpose of texture units is to allow us to use more than 1 texture in our shaders. By  assigning texture units to the samplers, we can bind to multiple textures at once as long as we activate the corresponding texture unit first. Just like <fun><function id='48'>glBindTexture</function></fun> we can activate texture units using <fun><function id='49'>glActiveTexture</function></fun> passing in the texture unit we'd like to use:
+	テクスチャユニットの主な目的はシェーダーにおいて複数のテクスチャを利用することです。サンプラにテクスチャユニットを割り当て、呼応するテクスチャユニットを最初にアクティベートしておけば、複数のテクスチャを一度に紐付けることができます。<fun><function id='48'>glBindTexture</function></fun>と同様に、<fun><function id='49'>glActiveTexture</function></fun>に、利用したいテクスチャユニットを渡すことで、それをアクティベートすることができます:
 </p>
 
 <pre class="cpp"><code>
 <function id='49'>glActiveTexture</function>(GL_TEXTURE0); // activate the texture unit first before binding texture
+<function id='49'>glActiveTexture</function>(GL_TEXTURE0); // テクスチャを紐付ける前にまずテクスチャユニットをアクティベート
 <function id='48'>glBindTexture</function>(GL_TEXTURE_2D, texture);
 </code></pre>
 
 <p>
 	After activating a texture unit, a subsequent <fun><function id='48'>glBindTexture</function></fun> call will bind that texture to the currently active texture unit. Texture unit <var>GL_TEXTURE0</var> is always by default activated, so we didn't have to activate any texture units in the previous example when using <fun><function id='48'>glBindTexture</function></fun>.
+	テクスチャユニットをアクティベートした後で<fun><function id='48'>glBindTexture</function></fun>を呼び出すとそのテクスチャが現在アクティブなテクスチャユニットに紐付きます。<var>GL_TEXTURE0</var>というテクスチャユニットはデフォルトで常にアクティブな状態なので、前の例において、<fun><function id='48'>glBindTexture</function></fun>を利用した際にテクスチャユニットをアクティベートする必要がなかったのです。
 </p>
 
 <note>
 	OpenGL should have a at least a minimum of 16 texture units for you to use which you can activate using <var>GL_TEXTURE0</var> to <var>GL_TEXTURE15</var>. They are defined in order so we could also get <var>GL_TEXTURE8</var> via <var>GL_TEXTURE0 + 8</var> for example, which is useful when we'd have to loop over several texture units.
+	OpenGLでは少なくとも16個のテクスチャユニットを利用でき、<var>GL_TEXTURE0</var>から<var>GL_TEXTURE15</var>を使ってアクティベートできます。これらのテクスチャユニットは例えば<var>GL_TEXTURE8</var>に<var>GL_TEXTURE0 + 8</var>という形でアクセスできるように定義されており、テクスチャユニットに対してループ処理を行う際に便利です。
 </note>
 
 <p>
 	We still however need to edit the fragment shader to accept another sampler. This should be  relatively straightforward now:
+	しかしまだフラグメントシェーダーが他のサンプラを受け入れるように変更を加える必要があります。これは比較的簡単です:
 </p>
 
 <pre><code>
@@ -524,10 +538,12 @@ void main()
 
 <p>
 	The final output color is now the combination of two texture lookups. GLSL's built-in <fun>mix</fun> function takes two values as input and linearly interpolates between them based on its third argument. If the third value is <code>0.0</code> it returns the first input; if it's <code>1.0</code> it returns the second input value. A value of <code>0.2</code> will return <code>80%</code> of the first input color and <code>20%</code> of the second input color, resulting in a mixture of both our textures.
+	最終的に出力される色がふたつのテクスチャの組み合わせになりました。GLSLの組み込み関数である<fun>mix</fun>は2つの入力値を受け取り、3つ目の引数に基づいてそれらの値を線形補完します。3つ目の値が<code>0.0</code>であれば1つ目の入力がそのまま返され、<code>1.0</code>であれば2つ目の入力が返ります。<code>0.2</code>であれば1つ目の入力の80%と2つ目の入力の20%が返り、結果としてふたつのテクスチャを混ぜたものになります。
 </p>
 
 <p>
 	We now want to load and create another texture; you should be familiar with the steps now. Make sure to create another texture object, load the image and generate the final texture using <fun><function id='52'>glTexImage2D</function></fun>. For the second texture we'll use an image of your <a href="/img/textures/awesomeface.png" target="_blank">facial expression while learning OpenGL</a>:
+	今度はもうひとつのテクスチャを読み込んで作成しましょう。手順はすでにご存知のはずです。テクスチャオブジェクトをもうひとつ作成し、画像を読込み<fun><function id='52'>glTexImage2D</function></fun>により最終的なテクスチャを生成します。ふたつ目のテクスチャには<a href="/img/textures/awesomeface.png" target="_blank">OpenGLを学習中の表情</a>の画像を利用しましょう:
 </p>
 	
 <pre><code>
@@ -541,10 +557,12 @@ if (data)
 	
 <p>
 	Note that we now load a <code>.png</code> image that includes an alpha (transparency) channel. This means we now need to specify that the image data contains an alpha channel as well by using <var>GL_RGBA</var>; otherwise OpenGL will incorrectly interpret the image data.
+	今回読み込んだのは<code>.png</code>画像であり、アルファ（透明）チャネルを含むことに注意してください。今回は画像データにアルファチャネルが含まれていることも<var>GL_RGBA</var>を用いて示さなければなりません。そうしないとOenGLが正しく画像データを解釈してくれません。
 </p>
 
 <p> 
 	To use the second texture (and the first texture) we'd have to change the rendering procedure a bit by binding both textures to the corresponding texture unit:
+	ひとつ目のテクスチャに加えふたつ目のものを利用するには両方のテクスチャを対応するテクスチャユニットに紐付けるように描画処理を少し変更する必要があります:
 </p>
 
 <pre><code>
@@ -559,12 +577,16 @@ if (data)
 	
 <p>
 	We also have to tell OpenGL to which texture unit each shader sampler belongs to by setting each sampler using <fun><function id='44'>glUniform</function>1i</fun>. We only have to set this once, so we can do this before we enter the render loop:
+	また各シェーダーサンプラを<fun><function id='44'>glUniform</function>1i</fun>により設定することで、そのサンプラがどのテクスチャユニットに属するかをOpenGLに伝える必要があります。これは一度だけでいいので、描画ループに入る前の段階で実行します:
 </p>
 	
 <pre><code>
 ourShader.use(); // don't forget to activate the shader before setting uniforms!  
+ourShader.use(); // ユニフォームを設定する前にシェーダーをアクティベートする
 <function id='44'>glUniform</function>1i(<function id='45'>glGetUniformLocation</function>(ourShader.ID, "texture1"), 0); // set it manually
+<function id='44'>glUniform</function>1i(<function id='45'>glGetUniformLocation</function>(ourShader.ID, "texture1"), 0); // 手動で設定
 ourShader.setInt("texture2", 1); // or with shader class
+ourShader.setInt("texture2", 1); // またはシェーダークラスを利用
 	
 while(...) 
 {
@@ -574,12 +596,14 @@ while(...)
 
 <p>
 	By setting the samplers via <fun><function id='44'>glUniform</function>1i</fun> we make sure each uniform sampler corresponds to the proper texture unit. You should get the following result:
+<fun><function id='44'>glUniform</function>1i</fun>によりサンプラを設定することで、各ユニフォームサンプラが適切なテクスチャユニットに確実に対応させます。以下の結果が得られるでしょう:
 </p>
 
 <img src="/img/getting-started/textures_combined.png" class="clean"/>
 
 <p>
 	You probably noticed that the texture is flipped upside-down! This happens because OpenGL expects the <code>0.0</code> coordinate on the y-axis to be on the bottom side of the image, but images usually have <code>0.0</code> at the top of the y-axis. Luckily for us, <code>stb_image.h</code> can flip the y-axis during image loading by adding the following statement before loading any image:
+	テクスチャが上下さかさになっていますね。これはOpenGLにおいてy軸上の<code>0.0</code>が画像の下端に対応しているからです。しかし普通y軸の<code>0.0</code>は上端です。有り難いことに<code>stb_image.h</code>は画像読込み前に以下の宣言をすることで読み込む画像を上下反転してくれます:
 	</p>
 	
 <pre><code>
@@ -588,22 +612,30 @@ stbi_set_flip_vertically_on_load(true);
 	
 <p>
 	After telling <code>stb_image.h</code> to flip the y-axis when loading images you should get the following result:
+	読み込み時にy軸に沿って画像を反転するように<code>stb_image.h</code>に伝えれば、以下のような結果が得られるでしょう:
 </p>
 
 <img src="/img/getting-started/textures_combined2.png" class="clean"/>
 
 <p>
 	If you see one happy container, you did things right. You can compare it with the <a href="/code_viewer_gh.php?code=src/1.getting_started/4.2.textures_combined/textures_combined.cpp" target="_blank">source code</a>.
+	幸せそうな箱が現れれば完璧です。<a href="/code_viewer_gh.php?code=src/1.getting_started/4.2.textures_combined/textures_combined.cpp" target="_blank">ソースコード</a>と比較してみて下さい。
 </p>
 
 <h2>Exercises</h2>
+<h2>演習問題</h2>
 <p>
 	To get more comfortable with textures it is advised to work through these exercises before continuing.
+	次の章に進む前に、以下の演習問題を解いてテクスチャに慣れておくのがいいでしょう。
 	<ul>
 	<li>Make sure <strong>only</strong> the happy face looks in the other/reverse direction by changing the fragment shader: <a href="/code_viewer_gh.php?code=src/1.getting_started/4.3.textures_exercise1/textures_exercise1.cpp" target="_blank">solution</a>.</li>
+	<li>フラグメントシェーダーを変更して笑顔<strong>だけ</strong>が別の方向に向くようにしてください: <a href="/code_viewer_gh.php?code=src/1.getting_started/4.3.textures_exercise1/textures_exercise1.cpp" target="_blank">解答</a>。</li>
 	<li>Experiment with the different texture wrapping methods by specifying texture coordinates in the range <code>0.0f</code> to <code>2.0f</code> instead of <code>0.0f</code> to <code>1.0f</code>. See if you can display 4 smiley faces on a single container image clamped at its edge: <a href="/code_viewer_gh.php?code=src/1.getting_started/4.4.textures_exercise2/textures_exercise2.cpp" target="_blank">solution</a>, <a href="/img/getting-started/textures_exercise2.png" target="_blank">result</a>. See if you can experiment with other wrapping methods as well.</li>
+	<li>テクスチャ座標を<code>0.0f</code>から<code>1.0f</code>ではなく<code>0.0</code>から<code>2.0f</code>に変更したうえで、テクスチャの繰り返し方法を別のものにして結果がどうなるか実験してください。箱の画像が端で引き伸ばされ、その上に笑顔が4つ表示されているようなものを作成できるでしょうか:<a href="/code_viewer_gh.php?code=src/1.getting_started/4.4.textures_exercise2/textures_exercise2.cpp" target="_blank">解答</a>、<a href="/img/getting-started/textures_exercise2.png" target="_blank">結果</a>。他の繰り返し方法でも試して下さい。</li>
 	<li>Try to display only the center pixels of the texture image on the rectangle in such a way that the individual pixels are getting visible by changing the texture coordinates. Try to set the texture filtering method to <var>GL_NEAREST</var> to see the pixels more clearly: <a href="/code_viewer_gh.php?code=src/1.getting_started/4.5.textures_exercise3/textures_exercise3.cpp" target="_blank">solution</a>.</li>
+	<li>ピクセルが認識できるようにテクスチャ座標を変更することで四角形の上にテクスチャ画像の中心のピクセルだけを表示させて下さい。さらにピクセルがくっきり見えるようにフィルタリング方法を<var>GL_NEAREST</var>にしてみてください:<a href="/code_viewer_gh.php?code=src/1.getting_started/4.5.textures_exercise3/textures_exercise3.cpp" target="_blank">解答</a>。</li>
 	<li>Use a uniform variable as the <fun>mix</fun> function's third parameter to vary the amount  the two textures are visible. Use the up and down arrow keys to change how much the container or the smiley face is visible: <a href="/code_viewer_gh.php?code=src/1.getting_started/4.6.textures_exercise4/textures_exercise4.cpp" target="_blank">solution</a>.</li>
+	</li>ふたつのテクスチャの見え方を変化させられるよう、<fun>mix</fun>関数の3つ目の引数にユニフォームを渡して下さい。上下の矢印キーにより箱と笑顔の見え方を変更できるようにしてください:<a href="/code_viewer_gh.php?code=src/1.getting_started/4.6.textures_exercise4/textures_exercise4.cpp" target="_blank">解答</a>。</li>
 	</ul>
 </p>
 	
