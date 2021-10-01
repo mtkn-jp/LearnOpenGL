@@ -303,10 +303,12 @@ Now it also makes sense as to why those single numbers are called scalars. A sca
 
 <p>
   Don't worry if you have difficulties imagining the multiplications inside your head. Just keep trying to do the calculations by hand and return to this page whenever you have difficulties. Over time, matrix multiplication becomes second nature to you.
+  頭の中でこの積を想像するのが難しくても心配しないで下さい。紙に書いて計算をすればいいですし、忘れたらこのページに戻ってきてください。時間と共に慣れることでしょう。
 </p>
 
 <p>
   Let's finish the discussion of matrix-matrix multiplication with a larger example. Try to visualize the pattern using the colors. As a useful exercise, see if you can come up with your own answer of the multiplication and then compare them with the resulting matrix (once you try to do a matrix multiplication by hand you'll quickly get the grasp of them).
+  もう少し大きな例で行列の積の議論を終えましょう。色分けにより計算法を可視化しています。いい演習として自分で行列の積を計算して答えを示し合わせて下さい。実際に手を動かすことで、計算の流れがよく掴めます。
   
   \[ \begin{bmatrix} \color{red}4 & \color{red}2 & \color{red}0 \\ \color{green}0 & \color{green}8 & \color{green}1 \\ \color{blue}0 & \color{blue}1 & \color{blue}0 \end{bmatrix} \cdot \begin{bmatrix} \color{red}4 & \color{green}2 & \color{blue}1 \\ \color{red}2 & \color{green}0 & \color{blue}4 \\ \color{red}9 & \color{green}4 & \color{blue}2 \end{bmatrix} = \begin{bmatrix} \color{red}4 \cdot \color{red}4 + \color{red}2 \cdot \color{red}2 + \color{red}0 \cdot \color{red}9 & \color{red}4 \cdot \color{green}2 + \color{red}2 \cdot \color{green}0 + \color{red}0 \cdot \color{green}4 & \color{red}4 \cdot \color{blue}1 + \color{red}2 \cdot \color{blue}4 + \color{red}0 \cdot \color{blue}2 \\ \color{green}0 \cdot \color{red}4 + \color{green}8 \cdot \color{red}2 + \color{green}1 \cdot \color{red}9 & \color{green}0 \cdot \color{green}2 + \color{green}8 \cdot \color{green}0 + \color{green}1 \cdot \color{green}4 & \color{green}0 \cdot \color{blue}1 + \color{green}8 \cdot \color{blue}4 + \color{green}1 \cdot \color{blue}2 \\ \color{blue}0 \cdot \color{red}4 + \color{blue}1 \cdot \color{red}2 + \color{blue}0 \cdot \color{red}9 & \color{blue}0 \cdot \color{green}2 + \color{blue}1 \cdot \color{green}0 + \color{blue}0 \cdot \color{green}4 & \color{blue}0 \cdot \color{blue}1 + \color{blue}1 \cdot \color{blue}4 + \color{blue}0 \cdot \color{blue}2 \end{bmatrix} 
  \\ = \begin{bmatrix} 20 & 8 & 12 \\ 25 & 4 & 34 \\ 2 & 0 & 4 \end{bmatrix}\]
@@ -314,41 +316,53 @@ Now it also makes sense as to why those single numbers are called scalars. A sca
 
 <p>
   As you can see, matrix-matrix multiplication is quite a cumbersome process and very prone to errors (which is why we usually let computers do this) and this gets problematic real quick when the matrices become larger. If you're still thirsty for more and you're curious about some more of the mathematical properties of matrices I strongly suggest you take a look at these <a href="https://www.khanacademy.org/math/algebra2/algebra-matrices" target="_blank">Khan Academy videos</a> about matrices. 
+  ご覧のように行列の積は非常に面倒であり計算間違いも起こりやすく、特に大きいサイズの行列では大変ですので、通常この計算はコンピュータに任せます。行列の数学的な性質についてさらに知りたい方にはこの行列に関する動画<a href="https://www.khanacademy.org/math/algebra2/algebra-matrices" target="_blank">Khan Academy videos</a>を強くおすすめします。
 </p>
 
 <p>
   Anyways, now that we know how to multiply matrices together, we can start getting to the good stuff.
+  ともあれ行列を掛け合わせることができるようになったので、面白いことができるようになりました。
 </p>
 
 <h1>Matrix-Vector multiplication</h1>
+<h1>行列とベクトルの積</h1>
 <p>
   Up until now we've had our fair share of vectors. We used them to represent positions, colors and even texture coordinates. Let's move a bit further down the rabbit hole and tell you that a vector is basically a <code>Nx1</code> matrix where <code>N</code> is the vector's number of components (also known as an <def>N-dimensional</def> vector). If you think about it, it makes a lot of sense. Vectors are just like matrices an array of numbers, but with only 1 column. So, how does this new piece of information help us?  Well, if we have a <code>MxN</code> matrix we can multiply this matrix with our <code>Nx1</code> vector, since the columns of the matrix are equal to the number of rows of the vector, thus matrix multiplication is defined.
+  ここまでベクトルについはたくさん利用してきました。ベクトルを使って位置、色、そしてテクスチャ座標を表しました。もう少し踏み込むと、ベクトルは基本的には<code>Nx1</code>の行列だと言えます。ただし<code>N</code>はベクトルの要素数で、このベクトルは<def>N次元</def>であるとも言います。この見方をするとベクトルは行列と同じく数字の羅列であり、その列が1つだけのものだと言えます。つまり、<code>MxN</code>の行列を持ってくればこの行列を<code>Nx1</code>のベクトルに掛け合わせることができるということです。この行列の列の数が、ベクトルの行の数に一致するので、行列の積が定義できるためです。
 </p>
 
 <p>
   But why do we care if we can multiply matrices with a vector? Well, it just so happens that there are lots of interesting 2D/3D transformations we can place inside a matrix, and multiplying that matrix with a vector then <em>transforms</em> that vector. In case you're still a bit confused, let's start with a few examples and you'll soon see what we mean.
+  しかし行列とベクトルの積が計算できてなにがいいのでしょう。実は2次元や3次元空間での座標変換に対応した行列をベクトルに掛けることでそのベクトルを<em>座標変換</em>することができるのです。まだ少し混乱している読者のためにいくつか例を挙げます。そのうち何が起こっているのか見えてくるでしょう。
 </p>
 
 <h2>Identity matrix</h2>
+<h2>単位行列</h2>
 <p>
   In OpenGL we usually work with <code>4x4</code> transformation matrices for several reasons and one of them is that most of the vectors are of size 4. The most simple transformation matrix that we can think of is the <def>identity matrix</def>. The identity matrix is an <code>NxN</code> matrix with only 0s except on its diagonal. As you'll see, this transformation matrix leaves a vector completely unharmed:
+  OpenGLにおいては通常<code>4x4</code>の変換行列を利用します。そのひとつの理由はほとんどの場合4次元のベクトルを扱うからです。想像し得る最も単純な変換行列は<def>単位行列</def>です。単位行列は対角成分以外の要素が0である<code>NxN</code>の行列です。この変換行列は以下のようにベクトルを全く変化させません:
   
   \[ \begin{bmatrix} \color{red}1 & \color{red}0 & \color{red}0 & \color{red}0 \\ \color{green}0 & \color{green}1 & \color{green}0 & \color{green}0 \\ \color{blue}0 & \color{blue}0 & \color{blue}1 & \color{blue}0 \\ \color{purple}0 & \color{purple}0 & \color{purple}0 & \color{purple}1 \end{bmatrix} \cdot \begin{bmatrix} 1 \\ 2 \\ 3 \\ 4 \end{bmatrix} = \begin{bmatrix} \color{red}1 \cdot 1 \\ \color{green}1 \cdot 2 \\ \color{blue}1 \cdot 3 \\ \color{purple}1 \cdot 4 \end{bmatrix} = \begin{bmatrix} 1 \\ 2 \\ 3 \\ 4 \end{bmatrix} \]
   
   The vector is completely untouched. This becomes obvious from the rules of multiplication: the first result element is each individual element of the first row of the matrix multiplied with each element of the vector. Since each of the row's elements are 0 except the first one, we get: \(\color{red}1\cdot1 + \color{red}0\cdot2 + \color{red}0\cdot3 + \color{red}0\cdot4 = 1\) and the same applies for the other 3 elements of the vector.
+  ベクトルは完全に元のままです。これは積の定義から明らかです。結果となるベクトルの1つ目の要素は行列の1行目にベクトルの各要素を掛けたものです。行列の一行目は1つめの要素を除いて0なので、得られる値は\(\color{red}1\cdot1 + \color{red}0\cdot2 + \color{red}0\cdot3 + \color{red}0\cdot4 = 1\)となり、残りの3つの要素についても同様です。
 </p>
 
 <note>
   You may be wondering what the use is of a transformation matrix that does not transform? The identity matrix is usually a starting point for generating other transformation matrices and if we dig even deeper into linear algebra, a very useful matrix for proving theorems and solving linear equations.
+  変換しない変換行列にどんな使い道があるのか疑問に思うかもしれません。単位行列は通常他の変換行列を生成する出発点となります。あるいは線形代数に踏み込むなら、定理を証明したり線形方程式を解いたりするのに役立ちます。
 </note>
 
 <h2>Scaling</h2>
+<h2>拡大</h2>
 <p>
   When we're scaling a vector we are increasing the length of the arrow by the amount we'd like to scale, keeping its direction the same. Since we're working in either 2 or 3 dimensions we can define scaling by a vector of 2 or 3 scaling variables, each scaling one axis (<code>x</code>, <code>y</code> or <code>z</code>).
+  ベクトルを拡大するには矢印の方向を一定に保ったまま、長さに拡大率を掛ける必要があります。2次元あるいは3次元の空間を扱っているので、2または3の値を持つベクトルにより拡大を定義できます。そのベクトルの各要素がそれぞれ<code>x</code>、<code>y</code>、<code>z</code>軸をそれぞれ拡大します。
 </p>
 
 <p>
   Let's try scaling the vector \(\color{red}{\bar{v}} = (3,2)\). We will scale the vector along the x-axis by <code>0.5</code>, thus making it twice as narrow; and we'll scale the vector by <code>2</code> along the y-axis, making it twice as high. Let's see what it looks like if we scale the vector by <code>(0.5,2)</code> as \(\color{blue}{\bar{s}}\):
+  \(\color{red}{\bar{v}} = (3, 2)\)を拡大してみましょう。x軸方向に<code>0.5</code>倍、つまり半分に切り詰め、y軸方向に<code>2</code>倍、つまり倍に引き伸ばします。このベクトルを<code>(0.5, 2)</code>により拡大したベクトル\(\color{blue}{\bar{s}}\)は以下のようになります:
 </p>
 
 
@@ -356,89 +370,112 @@ Now it also makes sense as to why those single numbers are called scalars. A sca
 
 <p>
   Keep in mind that OpenGL usually operates in 3D space so for this 2D case we could set the z-axis scale to <code>1</code>, leaving it unharmed. The scaling operation we just performed is a <def>non-uniform</def> scale, because the scaling factor is not the same for each axis. If the scalar would be equal on all axes it would be called a <def>uniform scale</def>.
+  OpenGLは3次元を扱うので、この2次元の例においてはz軸方向の拡大率は<code>1</code>として、その軸は変化させていないことに注意してください。今回行った拡大は各要素に対する拡大率が違うので、<def>一様でない</def>拡大と呼ばれます。これに対して各軸の拡大率が同じ場合、<def>一様な</def>拡大と言います。
 </p>
 
 <p>
   Let's start building a transformation matrix that does the scaling for us. We saw from the identity matrix that each of the diagonal elements were multiplied with its corresponding vector element. What if we were to change the <code>1</code>s in the identity matrix to <code>3</code>s? In that case, we would be multiplying each of the vector elements by a value of <code>3</code> and thus effectively uniformly scale the vector by 3. If we represent the scaling variables as \( (\color{red}{S_1}, \color{green}{S_2}, \color{blue}{S_3}) \) we can define a scaling matrix on any vector \((x,y,z)\) as:
+  それでは拡大を行う変換行列を作成してみましょう。先程単位行列を見た際、対角線上の各要素がそれに対応するベクトルの要素と掛け合わせられるのを確認しました。単位行列の対角成分を<code>1</code>ではなく<code>3</code>にしたらどうなるでしょう。この場合、ベクトルの各要素に<code>3</code>が掛けられ、ベクトルが一様に3倍になります。各軸に対する拡大率をそれぞれ\( (\color{red}{S_1}, \color{green}{S_2}, \color{blue}{S_3})\)とした場合、ベクトル\((x, y, z)\)に対する拡大行列は:
   
   \[\begin{bmatrix} \color{red}{S_1} & \color{red}0 & \color{red}0 & \color{red}0 \\ \color{green}0 & \color{green}{S_2} & \color{green}0 & \color{green}0 \\ \color{blue}0 & \color{blue}0 & \color{blue}{S_3} & \color{blue}0 \\ \color{purple}0 & \color{purple}0 & \color{purple}0 & \color{purple}1 \end{bmatrix} \cdot \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix} = \begin{pmatrix} \color{red}{S_1} \cdot x \\ \color{green}{S_2} \cdot y \\ \color{blue}{S_3} \cdot z \\ 1 \end{pmatrix} \]
   
   Note that we keep the 4th scaling value <code>1</code>. The <code>w</code> component is used for other purposes as we'll see later on.
+  となります。4つ目の要素は<code>1</code>であることに注意して下さい。この<code>w</code>要素は後程別の用途に利用します。
 </p>
 
 <h2>Translation</h2>
+<h2>平行移動</h2>
 <p>
   <def>Translation</def> is the process of adding another vector on top of the original vector to return a new vector with a different position, thus <em>moving</em> the vector based on a translation vector. We've already discussed vector addition so this shouldn't be too new.
+  <def>平行移動</def>とはあるベクトルに他のベクトルを足して新しいベクトルにすることで、元のベクトルを平行移動ベクトルにより<em>移動</em>させることです。既にベクトルの足し算については確認しているので、特に新しいことはありません。
 </p>
   
 <p>
   Just like the scaling matrix there are several locations on a 4-by-4 matrix that we can use to perform certain operations and for translation those are the top-3 values of the 4th column. If we represent the translation vector as \((\color{red}{T_x},\color{green}{T_y},\color{blue}{T_z})\) we can define the translation matrix by:
+  拡大行列と同様、4x4の行列のある部分を利用することで平行移動を実現できます。その部分とは4番目の列の上3つの要素です。平行移動ベクトルを\((\color{red}{T_x},\color{green}{T_y},\color{blue}{T_z})\)で表わすと、平行移動行列は:
   
   \[\begin{bmatrix}  \color{red}1 & \color{red}0 & \color{red}0 & \color{red}{T_x} \\ \color{green}0 & \color{green}1 & \color{green}0 & \color{green}{T_y} \\ \color{blue}0 & \color{blue}0 & \color{blue}1 & \color{blue}{T_z} \\ \color{purple}0 & \color{purple}0 & \color{purple}0 & \color{purple}1 \end{bmatrix} \cdot \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix} = \begin{pmatrix} x + \color{red}{T_x} \\ y + \color{green}{T_y} \\ z + \color{blue}{T_z} \\ 1 \end{pmatrix} \]
   
   This works because all of the translation values are multiplied by the vector's <code>w</code> column and added to the vector's original values (remember the matrix-multiplication rules). This wouldn't have been possible with a 3-by-3 matrix.
+  のようになります。平行移動の値はベクトルの<code>w</code>要素に掛けられ、ベクトルの元の値に足し合せられます（行列の積の規則を思い出して下さい）。これは3x3の行列では実現できません。
 </p>
 
 <note>
   <strong>Homogeneous coordinates</strong><br/>
+  <strong>同次座標</strong><br/>
   The <code>w</code> component of a vector is also known as a <def>homogeneous coordinate</def>.
   To get the 3D vector from a homogeneous vector we divide the <code>x</code>, <code>y</code> and <code>z</code> coordinate by its <code>w</code> coordinate. We usually do not notice this since the <code>w</code> component is <code>1.0</code> most of the time. Using homogeneous coordinates has several advantages: it allows us to do matrix translations on 3D vectors (without a <code>w</code> component we can't translate vectors) and in the next chapter we'll use the <code>w</code> value to create 3D perspective.<br/>
   <br/>
   Also, whenever the homogeneous coordinate is equal to <code>0</code>, the vector is specifically known as a <def>direction vector</def> since a vector with a <code>w</code> coordinate of <code>0</code> cannot be translated.
+  ベクトルの<code>w</code>要素は<def>同次座標</def>として知られます。同次ベクトルから3次元の座標を得るには<code>x</code>、<code>y</code>、<code>z</code>座標を<code>w</code>座標で割ります。多くの場合<code>w</code>座標は<code>1.0</code>なので、通常気にしなくてもかまいません。同次座標の利点は3次元のベクトルに対して行列を掛けることで平行移動できる（<code>w</code>要素がないと実現できません）ことや、次の章ででてきますが、<code>w</code>の値を利用して3次元空間の透視投影を行います。<br/><br/>
+  また、同次座標が<code>0</code>のベクトルは特別に<def>方向ベクトル</def>と呼ばれます。<code>w</code>要素が<code>0</code>のベクトルは平行移動できないためです。
 </note>
 
 <p>
   With a translation matrix we can move objects in any of the 3 axis directions (<code>x</code>, <code>y</code>, <code>z</code>), making it a very useful transformation matrix for our transformation toolkit.
+	平行移動行列を利用して<code>x</code>、<code>y</code>、<code>z</code>の任意の方向に物体を動かすことができ、変換行列のひとつとして非常に有用です。
 </p>
-
-
   
 <h2>Rotation</h2>
+<h2>回転</h2>
 <p>
   The last few transformations were relatively easy to understand and visualize in 2D or 3D space, but rotations are a bit trickier. If you want to know exactly how these matrices are constructed I'd recommend that you watch the rotation items of Khan Academy's <a href="https://www.khanacademy.org/math/linear-algebra/matrix_transformations" target="_blank">linear algebra</a> videos.
+  ここまでの変換は理解し、2次元や3次元空間で可視化すること比較的簡単でしたでしたが、回転はもう少しトリッキーです。回転に用いる行列がどうしてそのような形になっているのかを正確に理解したい場合、Khan Academyによる<a href="https://www.khanacademy.org/math/linear-algebra/matrix_transformations" target="_blank">線形代数</a>の動画の、物体の回転の部分をご覧になるのがいいでしょう。
 </p>
   
 <p>
 	First let's define what a rotation of a vector actually is. A rotation in 2D or 3D is represented with an <def>angle</def>. An angle could be in degrees or radians where a whole circle has 360 degrees or 2 <a href="http://en.wikipedia.org/wiki/Pi" target="_blank">PI</a> radians. I prefer explaining rotations using degrees as we're generally more accustomed to them.
+	まずはじめにベクトルの回転がどんなものなのかを定義しましょう。2次元あるいは3次元における回転は<def>角度</def>によって規定されます。角度は一周を360度とする度数法を用いた度または一周を2<a href="http://en.wikipedia.org/wiki/Pi" target="_blank">\(\pi\)</a>とする弧度法を用いたラジアンにより表わされます。度数法に慣れている人が多いでしょうから、ここでは度数法で説明します。
   
 <note>
   Most rotation functions require an angle in radians, but luckily degrees are easily converted to radians:  <br/>
   <code>angle in degrees = angle in radians * (180 / PI) </code><br/>
   <code>angle in radians = angle in degrees * (PI / 180) </code><br/>
   Where <code>PI</code> equals (rounded) <code>3.14159265359</code>.
+  回転に用いる多くの関数はラジアンで角度を指定します。しかし度は簡単にラジアンに変換できます:<br/>
+  <code>度 = ラジアン * (180 / \(\pi\)) </code><br/>
+  <code>ラジアン = 度 * (\(\pi\) / 180) </code><br/>
+  ここで<code>\(\pi\)</code>はおよそ<code>3.14159265359</code>です。
 </note>
   
   Rotating half a circle rotates us 360/2 = 180 degrees and rotating 1/5th to the right means we rotate 360/5 = 72 degrees to the right. This is demonstrated for a basic 2D vector where \(\color{red}{\bar{v}}\) is rotated 72 degrees to the right, or clockwise, from \(\color{green}{\bar{k}}\):
+  半円分の回転は360/2 = 180度の回転を意味し、右に1/5回転させるのは360/5 = 72度時計回りに回転させることを意味します。以下にこの回転を2次元ベクトルで行ったものを図示します。\(\color{red}{\bar{v}}\)は\(\color{green}{\bar{k}}\)を時計回りに72度回転させたものです:
 </p>
   
   <img src="/img/getting-started/vectors_angle.png" class="clean" />
 
 <p>
   Rotations in 3D are specified with an angle <strong>and</strong> a <def>rotation axis</def>. The angle specified will rotate the object along the rotation axis given. Try to visualize this by spinning your head a certain degree while continually looking down a single rotation axis. When rotating 2D vectors in a 3D world for example, we set the rotation axis to the z-axis (try to visualize this).
+  3次元空間における回転は角度に<strong>加え</strong><def>回転軸</def>により規定されます。物体は回転軸に沿って与えられた角度だけ回転します。ある回転軸を見たまま頭を一定の角度回転させて下さい。それが回転行列によるベクトルの回転です。3次元の回転を2次元に落として考える場合、回転軸をz軸に一致させます。
 </p>
   
 <p>
   Using trigonometry it is possible to transform vectors to newly rotated vectors given an angle. This is usually done via a smart combination of the <code>sine</code> and <code>cosine</code> functions (commonly abbreviated to <code>sin</code> and <code>cos</code>). A discussion of how the rotation matrices are generated is out of the scope of this chapter.
+  三角関数を利用すればあるベクトルを与えられた角度だけ回転させることができます。これは通常<code>sine</code>と<code>cosine</code>関数の組み合わせにより行われます（これらの関数は一般に<code>sin</code>、<code>cos</code>と略記されます）。回転行列の導出はこの章の範疇を越えます。
 </p>
 
 <p>
   A rotation matrix is defined for each unit axis in 3D space where the angle is represented as the  theta symbol \(\theta\).
+  3次元空間における各座標軸に沿った角度\(\theta\)度の回転行列は以下のように表わされます:
 </p>
   
   <p>
     Rotation around the X-axis:
+	x軸周りの回転:
   
   \[\begin{bmatrix} \color{red}1 & \color{red}0 & \color{red}0 & \color{red}0 \\ \color{green}0 & \color{green}{\cos \theta} & - \color{green}{\sin \theta} & \color{green}0 \\ \color{blue}0 & \color{blue}{\sin \theta} & \color{blue}{\cos \theta} & \color{blue}0 \\ \color{purple}0 & \color{purple}0 & \color{purple}0 & \color{purple}1 \end{bmatrix} \cdot \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix} = \begin{pmatrix} x \\ \color{green}{\cos \theta} \cdot y - \color{green}{\sin \theta} \cdot z \\ \color{blue}{\sin \theta} \cdot y + \color{blue}{\cos \theta} \cdot z \\ 1 \end{pmatrix}\]
   </p>
        
    <p>
     Rotation around the Y-axis:
+	y軸周りの回転:
   
   \[\begin{bmatrix} \color{red}{\cos \theta} & \color{red}0 & \color{red}{\sin \theta} & \color{red}0 \\ \color{green}0 & \color{green}1 & \color{green}0 & \color{green}0 \\ - \color{blue}{\sin \theta} & \color{blue}0 & \color{blue}{\cos \theta} & \color{blue}0 \\ \color{purple}0 & \color{purple}0 & \color{purple}0 & \color{purple}1 \end{bmatrix} \cdot \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix} = \begin{pmatrix} \color{red}{\cos \theta} \cdot x + \color{red}{\sin \theta} \cdot z \\ y \\ - \color{blue}{\sin \theta} \cdot x + \color{blue}{\cos \theta} \cdot z \\ 1 \end{pmatrix} \]
   </p>
   
   <p>
     Rotation around the Z-axis:
+	z軸周りの回転:
   
   \[\begin{bmatrix} \color{red}{\cos \theta} & - \color{red}{\sin \theta} & \color{red}0 & \color{red}0 \\ \color{green}{\sin \theta} & \color{green}{\cos \theta} & \color{green}0 & \color{green}0 \\ \color{blue}0 & \color{blue}0 & \color{blue}1 & \color{blue}0 \\ \color{purple}0 & \color{purple}0 & \color{purple}0 & \color{purple}1 \end{bmatrix} \cdot \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix} = \begin{pmatrix} \color{red}{\cos \theta} \cdot x - \color{red}{\sin \theta} \cdot y  \\ \color{green}{\sin \theta} \cdot x + \color{green}{\cos \theta} \cdot y \\ z \\ 1 \end{pmatrix} \]
   </p>
@@ -446,40 +483,51 @@ Now it also makes sense as to why those single numbers are called scalars. A sca
   
   <p>
     Using the rotation matrices we can transform our position vectors around one of the three unit axes. To rotate around an arbitrary 3D axis we can combine all 3 them by first rotating around the X-axis, then Y and then Z for example. However, this quickly introduces a problem called <def>Gimbal lock</def>. We won't discuss the details, but a better solution is to rotate around an arbitrary unit axis e.g. <code>(0.662,0.2,0.722)</code> (note that this is a unit vector) right away instead of combining the rotation matrices. Such a (verbose) matrix exists and is given below with \((\color{red}{R_x}, \color{green}{R_y}, \color{blue}{R_z})\) as the arbitrary rotation axis:
+	これらの回転行列により、位置ベクトルを座標軸に沿って回転させることができます。任意の回転軸に沿って回転させるにはこの3つの回転を組み合わせればいいのですが、これでは<def>ジンバルロック</def>と呼ばれる問題が生じます。この問題には深く立ち入りません。よりよい方法は任意の単位ベクトルに沿って回転させる回転行列を利用することです。そのような直接的な行列は確かに存在し、\((\color{red}{R_x}, \color{green}{R_y}, \color{blue}{R_z})\)を回転軸としたとき以下のように表わされます。
     
     \[\begin{bmatrix} \cos \theta + \color{red}{R_x}^2(1 - \cos \theta) & \color{red}{R_x}\color{green}{R_y}(1 - \cos \theta) - \color{blue}{R_z} \sin \theta & \color{red}{R_x}\color{blue}{R_z}(1 - \cos \theta) + \color{green}{R_y} \sin \theta & 0 \\ \color{green}{R_y}\color{red}{R_x} (1 - \cos \theta) + \color{blue}{R_z} \sin \theta & \cos \theta + \color{green}{R_y}^2(1 - \cos \theta) & \color{green}{R_y}\color{blue}{R_z}(1 - \cos \theta) - \color{red}{R_x} \sin \theta & 0 \\ \color{blue}{R_z}\color{red}{R_x}(1 - \cos \theta) - \color{green}{R_y} \sin \theta & \color{blue}{R_z}\color{green}{R_y}(1 - \cos \theta) + \color{red}{R_x} \sin \theta & \cos \theta + \color{blue}{R_z}^2(1 - \cos \theta) & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix}\]
     
     
     A mathematical discussion of generating such a matrix is out of the scope of this chapter. Keep in mind that even this matrix does not completely prevent gimbal lock (although it gets a lot harder). To truly prevent Gimbal locks we have to represent rotations using <def>quaternions</def>, that are not only safer, but also more computationally friendly. However, a discussion of quaternions is out of this chapter's scope. 
+	この行列の数学的な導出はこの章の内容から逸脱しますので立ち入りません。またこの行列はジンバルロックを完全には解決しないことを頭の片隅に置いておいて下さい（むしろ問題はさらにややこしくなっています）。完全にジンバルロックを解消するには<def>四元数</def>を利用する必要があります。しかしこれは安全でない上に計算量も多くなります。いずれにせよこの章の範疇ではありませんのでここでは議論しません。
   </p>
 
 <h2>Combining matrices</h2>
+<h2>行列の組み合わせ</h2>
 <p>
  The true power from using matrices for transformations is that we can combine multiple transformations in a single matrix thanks to matrix-matrix multiplication. Let's see if we can generate a transformation matrix that combines several transformations. Say we have a vector <code>(x,y,z)</code> and we want to scale it by 2 and then translate it by <code>(1,2,3)</code>. We need a translation and a scaling matrix for our required steps. The resulting transformation matrix would then look like:
+ 座標変換に行列を利用する真のパワーは、行列の積のおかげで複数の変換をひとつの行列により表わすことができることです。いくつかの変換を組み合わせた変換行列の例を見てみましょう。ここにベクトル<code>(x, y, z)</code>があり、二倍に拡大した後<code>(1, 2, 3)</code>だけ平行移動させたいとしましょう。この操作のために平行移動の行列と拡大の行列が必要です。その結果変換行列は以下のようになります:
     
          \[Trans . Scale = \begin{bmatrix} \color{red}1 & \color{red}0 & \color{red}0 & \color{red}1 \\ \color{green}0 & \color{green}1 & \color{green}0 & \color{green}2 \\ \color{blue}0 & \color{blue}0 & \color{blue}1 & \color{blue}3 \\ \color{purple}0 & \color{purple}0 & \color{purple}0 & \color{purple}1 \end{bmatrix} . \begin{bmatrix} \color{red}2 & \color{red}0 & \color{red}0 & \color{red}0 \\ \color{green}0 & \color{green}2 & \color{green}0 & \color{green}0 \\ \color{blue}0 & \color{blue}0 & \color{blue}2 & \color{blue}0 \\ \color{purple}0 & \color{purple}0 & \color{purple}0 & \color{purple}1 \end{bmatrix} = \begin{bmatrix} \color{red}2 & \color{red}0 & \color{red}0 & \color{red}1 \\ \color{green}0 & \color{green}2 & \color{green}0 & \color{green}2 \\ \color{blue}0 & \color{blue}0 & \color{blue}2 & \color{blue}3 \\ \color{purple}0 & \color{purple}0 & \color{purple}0 & \color{purple}1 \end{bmatrix} \]
     
     Note that we first do a translation and then a scale transformation when multiplying matrices. Matrix multiplication is not commutative, which means their order is important. When multiplying matrices the right-most matrix is first multiplied with the vector so you should read the multiplications from right to left. It is advised to first do scaling operations, then rotations and lastly translations when combining matrices otherwise they may (negatively) affect each other. For example, if you would first do a translation and then scale, the translation vector would also scale!
+	行列の積において初めに平行移動をしてその後拡大をしていることに注意して下さい。行列の積は非可換なので順番が大切です。行列の積において、ベクトルに対してまず右側の行列から掛けられるので、行列の積は右から左に見ていかなければいけません。行列を組み合わせる際、まず拡大の操作を行い、その後平行移動の操作に移って下さい。そうしないとお互いに間違った効果が生じてしまいます。例えば平行移動を行った後に拡大すると、平行移動のベクトル自体に拡大の影響がでてしいます。
   </p>
   
 <p>
   Running the final transformation matrix on our vector results in the following vector:
+  組み合わせた結果の変換行列をベクトルに掛けると以下のような結果が得られます:
     
 	\[\begin{bmatrix} \color{red}2 & \color{red}0 & \color{red}0 & \color{red}1 \\ \color{green}0 & \color{green}2 & \color{green}0 & \color{green}2 \\ \color{blue}0 & \color{blue}0 & \color{blue}2 & \color{blue}3 \\ \color{purple}0 & \color{purple}0 & \color{purple}0 & \color{purple}1 \end{bmatrix} . \begin{bmatrix} x \\ y \\ z \\ 1 \end{bmatrix} = \begin{bmatrix} \color{red}2x + \color{red}1 \\ \color{green}2y + \color{green}2  \\ \color{blue}2z + \color{blue}3 \\ 1 \end{bmatrix} \]
     
   Great! The vector is first scaled by two and then translated by <code>(1,2,3)</code>.
+  ええやん。ベクトルはまず2倍に拡大され、<code>(1, 2, 3)</code>だけ平行いどうしました。
   </p>
   
 <h1>In practice</h1>
+<h1>実践</h1>
 <p>
   Now that we've explained all the theory behind transformations, it's time to see how we can actually use this knowledge to our advantage. OpenGL does not have any form of matrix or vector knowledge built in, so we have to define our own mathematics classes and functions. In this book we'd rather abstract from all the tiny mathematical details and simply use pre-made mathematics libraries. Luckily, there is an easy-to-use and tailored-for-OpenGL mathematics library called GLM.
+  変換に関する理論は説明し終わったので、この知識を実際に利用してみましょう。OpenGLには行列やベクトルの概念が組込まれていないので、自分達で数学的なクラスや関数を定義しないといけません。ここでは自分達で数学的に込み入ったものを作成するのではなく、あらかじめ用意された数学のライブラリを利用することにします。ありがたいことに簡単に使えてOpenGLに特化したGLMというライブラリが存在します。
   </p>
 
+  <h2>GLM</h2>
   <h2>GLM</h2>
 <p>
   <img src="/img/getting-started/glm.png" class="right"/>
   GLM stands for Open<strong>GL</strong> <strong>M</strong>athematics and is a <em>header-only</em> library, which means that we only have to include the proper header files and we're done; no linking and compiling necessary.
   GLM can be downloaded from their <a href="https://glm.g-truc.net/0.9.8/index.html" target="_blank">website</a>. Copy the root directory of the header files into your <em>includes</em> folder and let's get rolling.
+  GLMはOpen<strong>GL</strong> <strong>M</strong>athematicsの省略で、<em>ヘッダーのみ</em>のライブラリです。つまり必要なヘッダーファイルをインクルードするだけでリンクやコンパイルが必要ありません。GLMは彼らの<a href="https://glm.g-truc.net/0.9.8/index.html" target="_blank">ウェブサイト</a>からダウンロードできます。ヘッダーファイルのルートディレクトリを手元の<em>include</em>フォルダにコピーすればそれだけで利用できます。
   </p>
 
 <!--<warning>
@@ -491,6 +539,7 @@ Now it also makes sense as to why those single numbers are called scalars. A sca
   
   <p>
     Most of GLM's functionality that we need can be found in 3 headers files that we'll include as follows:
+	ここで必要なほとんどのGLMの関数は以下の3つのヘッダーファイルに含まれます:
   </p>
   
 <pre><code>
@@ -501,6 +550,7 @@ Now it also makes sense as to why those single numbers are called scalars. A sca
     
   <p>
     Let's see if we can put our transformation knowledge to good use by translating a vector of <code>(1,0,0)</code> by <code>(1,1,0)</code> (note that we define it as a <code>glm::vec4</code> with its homogeneous coordinate set to <code>1.0</code>:
+	さっそく座標変換の知識を利用して、ベクトル<code>(1, 0, 0)</code>を<code>(1, 1, 0)</code>だけ平行移動してみましょう。これらのベクトルを<code>glm::vec4</code>により定義し、同次座標を<code>1.0</code>にしていることに注意して下さい:
   </p>
   
 <pre><code>
@@ -513,15 +563,19 @@ std::cout &lt;&lt; vec.x &lt;&lt; vec.y &lt;&lt; vec.z &lt;&lt; std::endl;
   
   <p>
     We first define a vector named <code>vec</code> using GLM's built-in vector class. Next we define a <code>mat4</code> and explicitly initialize it to the identity matrix by initializing the matrix's diagonals to <code>1.0</code>; if we do not initialize it to the identity matrix the matrix would be a null matrix (all elements <code>0</code>) and all subsequent matrix operations would end up a null matrix as well.    
+	初めにGLMに組込まれたベクトルのクラスを用いて<code>vec</code>という名前のベクトルを定義します。次に<code>mat4</code>という行列を定義し、対角成分を<code>1.0</code>にすることで単位行列にしています。この操作をしなかった場合、行列は零行列（全ての要素が<code>0</code>の行列）になり、以降の操作は全て零行列を生成することになります。
 </p>
 
 <p>
 The next step is to create a transformation matrix by passing our identity matrix to the <code><function id='55'>glm::translate</function></code> function, together with a translation vector (the given matrix is then multiplied with a  translation matrix and the resulting matrix is returned). <br/>
     Then we multiply our vector by the transformation matrix and output the result. If we still remember how matrix translation works then the resulting vector should be <code>(1+1,0+1,0+0)</code> which is <code>(2,1,0)</code>. This snippet of code outputs <code>210</code> so the translation matrix did its job.
+	次に今作った単位行列を平行移動ベクトルと共に<code><function id='55'>glm::translate</function></code>に渡すことで平行移動行列を作成します。これにより渡した行列に平行移動行列が乗じられ、その結果の行列が返ります。<br/>
+	得られた行列をベクトルに掛けることで、結果が得られます。平行移動の定義から、得られるベクトルは<code>(1 + 1, 0 + 1, 0 + 0)</code>つまり<code>(2, 1, 0)</code>であるはずです。このコードの出力は<code>210</code>なので、予想通り、平行移動の行列が機能しています。
   </p>
   
   <p>
     Let's do something more interesting and scale and rotate the container object from the previous chapter:
+	もう少し面白いことをしてみましょう。前章の箱を拡大、回転してみます:
   </p>
   
 <pre><code>
@@ -532,10 +586,12 @@ trans = <function id='56'>glm::scale</function>(trans, glm::vec3(0.5, 0.5, 0.5))
   
 <p>
   First we scale the container by <code>0.5</code> on each axis and then rotate the container <code>90</code> degrees around the Z-axis. GLM expects its angles in radians so we convert the degrees to radians using <code><function id='63'>glm::radians</function></code>. Note that the textured rectangle is on the XY plane so we want to rotate around the Z-axis. Keep in mind that the axis that we rotate around should be a unit vector, so be sure to normalize the vector first if you're not rotating around the X, Y, or Z axis. Because we pass the matrix to each of GLM's functions, GLM automatically multiples the matrices together, resulting in a transformation matrix that combines all the transformations. 
+  まずは箱を各軸に沿って<code>0.5</code>倍に縮小し、z軸に沿って<code>90</code>度回転させます。GLMは角度としてラジアンを受け取りますので、<code><function id='63'>glm::radians</function></code>により変換します。テクスチャの付いた四角形はxy平面にあるので回転はz軸周りで行います。また回転軸は単位行列である必要がありますので、特にx、y、またはz軸に沿った回転でない場合に正規化するのを忘れないで下さい。行列をGLMの関数に渡せば、GLMは自動的に行列を掛け合わせ、全ての変換を組み合わせた変換行列が出力されます。
   </p>   
 
   <p>
     The next big question is: how do we get the transformation matrix to the shaders? We shortly mentioned before that GLSL also has a <code>mat4</code> type. So we'll adapt the vertex shader to accept a <code>mat4</code> uniform variable and multiply the position vector by the matrix uniform:
+	次に起こる疑問はどのようにして変換行列をシェーダーに渡すのかというものです。以前説明しましたが、GLSLには<code>mat4</code>という型があります。そのため頂点シェーダーが<code>mat4</code>のユニフォームを受け容れるようにし、位置ベクトルにその行列のユニフォームを乗じます:
   </p>
   
 <pre><code>
@@ -556,10 +612,12 @@ void main()
   
 <note>
   GLSL also has <code>mat2</code> and <code>mat3</code> types that allow for swizzling-like operations just like vectors. All the aforementioned math operations (like scalar-matrix multiplication, matrix-vector multiplication and matrix-matrix multiplication) are allowed on the matrix types. Wherever special matrix operations are used we'll be sure to explain what's happening.
+GLSLには<code>mat2</code>や<code>mat3</code>といった型もあり、ベクトル同様、要素を入れ替えるスイズリングを利用できます。ここまで見て来た、スカラと行列の積、行列とベクトルの積、行列どうしの積といった演算は全てこの行列の型で利用することができます。特殊な行列の演算が出てきたら必ず詳細を説明するようにします。
 </note>
 
   <p>
     We added the uniform and multiplied the position vector with the transformation matrix before passing it to <var>gl_Position</var>. Our container should now be twice as small and rotated <code>90</code> degrees (tilted to the left). We still need to pass the transformation matrix to the shader though:
+	<var>gl_Position</var>に位置ベクトルを渡す前に、変換行列のユニフォームを作成し、それを掛けました。これで箱は半分の大きさになり、<code>90</code>度右に回転しするはずです。あとは変換行列をシェーダーに送信しなければいけません:
   </p>
 
 <pre><code>
@@ -569,10 +627,12 @@ unsigned int transformLoc = <function id='45'>glGetUniformLocation</function>(ou
 
 <p>
   We first query the location of the uniform variable and then send the matrix data to the shaders using <fun><function id='44'>glUniform</function></fun> with <code>Matrix4fv</code> as its postfix. The first argument should be familiar by now which is the uniform's location. The second argument tells OpenGL how many matrices we'd like to send, which is <code>1</code>. The third argument asks us if we want to transpose our matrix, that is to swap the columns and rows. OpenGL developers often use an internal matrix layout called <def>column-major ordering</def> which is the default matrix layout in GLM so there is no need to transpose the matrices; we can keep it at <var>GL_FALSE</var>. The last parameter is the actual matrix data, but GLM stores their matrices' data in a way that doesn't always match OpenGL's expectations so we first convert the data with GLM's built-in function <fun>value_ptr</fun>. 
+  まずユニフォーム変数の場所を特定し<fun><function id='44'>glUniform</function></fun>の語尾に<code>Matrix4fv</code>をつけた関数を用いて行列のデータをシェーダーに送信します。1つ目の引数は今まで通りユニフォームの場所です。2つ目はいくつの行列を送信するのかをOpenGLに伝えるもので、今回は<code>1</code>です。3つ目の引数は送信する行列を転置するかどうかです。行列の転置とは、行と列を入れ替えることです。OpenGLの開発者は行列の構造として<def>列優先</def>の配置を用いることが多く、この配置はGLMの既定のものでもあるので、今回は転置を取る必要はありません。この引数は<var>GL_FALSE</var>にしておきます。最後の引数は実際の行列のデータですが、GLMにおける行列のデータはOpenGLが受け付けるものとは少し違うので、GLMの組込み関数<fun>value_ptr</fun>により変換する必要があります。
 </p>
 
 <p>
   We created a transformation matrix, declared a uniform in the vertex shader and sent the matrix to the shaders where we transform our vertex coordinates. The result should look something like this:
+	ここまで変換行列を作成し、頂点シェーダーにおいてユニフォームを宣言し、行列のデータをシェーダーに送信し、そこで頂点座標を変換しました。その結果以下のようなものが得られるはずです:
 </p>
   
   <img src="/img/getting-started/transformations.png" class="clean" />
@@ -580,6 +640,7 @@ unsigned int transformLoc = <function id='45'>glGetUniformLocation</function>(ou
 <p>
   Perfect! Our container is indeed tilted to the left and twice as small so the transformation was successful. Let's get a little more funky and see if we can rotate the container over time, and for fun we'll also reposition the container at the bottom-right side of the window.
 To rotate the container over time we have to update the transformation matrix in the render loop because it needs to update each frame. We use GLFW's time function to get an angle over time:
+完璧です。
 </p>
 
 <pre><code>
