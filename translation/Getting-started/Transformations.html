@@ -8,7 +8,6 @@
 	<meta name="fragment" content="!">
 	<link rel="stylesheet" href="../static/style.css" />
 	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"> </script>
-
 </head>
 <body>
     <div id="content">
@@ -145,126 +144,161 @@
 
 <p>
   There is also a special type of vector that we call a <def>unit vector</def>. A unit vector has one extra property and that is that its length is exactly 1. We can calculate a unit vector \(\hat{n}\) from any vector by dividing each of the vector's components by its length:
+  また、<def>単位ベクトル</def>と呼ばれる特別なベクトルもあります。単位ベクトルとはその長さがちょうど1であるベクトルです。単位ベクトル\(\hat{n}\)は任意のベクトルから、各要素をその長さで割ることで得られます:
   
   \[\hat{n} = \frac{\bar{v}}{||\bar{v}||}\]
   
   We call this <def>normalizing</def> a vector. Unit vectors are displayed with a little roof over their head and are generally easier to work with, especially when we only care about their directions (the direction does not change if we change a vector's length).
+  この操作はベクトルの<def>正規化と呼ばれます。単位ベクトルは記号の上に屋根を乗せて書きます。単位ベクトルは特にその方向だけが必要な場合に便利です（ベクトルの長さを変更してもその方向は不変です）。
 </p>
 
 <h2>Vector-vector multiplication</h2>
+<h2>ベクトルどうしの積</h2>
 <p>
   Multiplying two vectors is a bit of a weird case. Normal multiplication isn't really defined on vectors since it has no visual meaning, but we have two specific cases that we could choose from when multiplying: one is the <def>dot product</def> denoted as \(\bar{v} \cdot \bar{k}\) and the other is the <def>cross product</def> denoted as \(\bar{v} \times \bar{k}\).
+  2つのベクトルを掛け合せるのは少し特殊です。通常の積は幾何学的な意味がないので定義されませんが、他の特殊な掛け算が存在します。ひとつは<def>内積</def>と呼ばれ、\(\bar{v} \cdot \bar{k}\)と表記されるもので、いまひとつは<def>外積</def>と呼ばれ、\(\bar{v} \times \bar{k}\)と表記されるものです。
 </p>
 
 <h3>Dot product</h3>
+<h3>内積</h3>
 <p>
   The dot product of two vectors is equal to the scalar product of their lengths times the cosine of the angle between them. If this sounds confusing take a look at its formula:
+  ベクトルの内積はそれぞれの長さのスカラ積に、2つのベクトルがなす角のコサインを掛けたものに等しいものです。文字で書いてもややこしいので以下の式を見て下さい:
   
   \[\bar{v} \cdot \bar{k} = ||\bar{v}|| \cdot ||\bar{k}|| \cdot \cos \theta \]
   
   Where the angle between them is represented as theta (\(\theta\)). Why is this interesting? Well, imagine if \(\bar{v}\) and \(\bar{k}\) are unit vectors then their length would be equal to 1. This would effectively reduce the formula to:
+  ここで\(theta\)は2つのベクトルのなす角です。これのなにが面白いのでしょう。もし両方のベクトルが単位ベクトルであればその長さが1に等しいので、以下の式のように単純なものになります:
   
   \[\hat{v} \cdot \hat{k} = 1 \cdot 1 \cdot \cos \theta = \cos \theta\]
   
   Now the dot product <strong>only</strong> defines the angle between both vectors. You may remember that the cosine or cos function becomes <code>0</code> when the angle is 90 degrees or <code>1</code> when the angle is 0. This allows us to easily test if the two vectors are <def>orthogonal</def> or <def>parallel</def> to each other using the dot product (orthogonal means the vectors are at a <def>right-angle</def> to each other). In case you want to know more about the <code>sin</code> or the <code>cos</code> functions I'd suggest the following <a href="https://www.khanacademy.org/math/trigonometry/basic-trigonometry/basic_trig_ratios/v/basic-trigonometry" target="_blank">Khan Academy videos</a> about basic trigonometry.
+  この場合、内積は2つのベクトルのなす角<strong>だけ</strong>を表しています。コサインという関数は角度が90度なら<code>0</code>で、0度なら<code>1</code>になることを思いだして下さい。この性質を用いると、内積を計算することで2つのベクトルが<def>直交</def>するかどうか、あるいは<def>平行</def>であるかどうかを簡単に判定できます。<code>sin</code>や<code>cos</code>に興味がある場合、三角関数の基礎にかんするこの動画<a href="https://www.khanacademy.org/math/trigonometry/basic-trigonometry/basic_trig_ratios/v/basic-trigonometry" target="_blank">Khan Academy videos</a>をおすすめします。
 </p>
 
 <note>
   You can also calculate the angle between two non-unit vectors, but then you'd have to divide the lengths of both vectors from the result to be left with \(cos \theta\).
+  単位ベクトルでないベクトルの内積からそれらのなす角を求めることもできますが、その場合、内積を2つのベクトルの長さで割る必要があります。
 </note>
 
 <p>
   So how do we calculate the dot product? The dot product is a component-wise multiplication where we add the results together. It looks like this with two unit vectors (you can verify that both their lengths are exactly <code>1</code>):
+  ではどのようにして内積を計算するのでしょう。内積は各要素毎に積を取り、それらを足し合わせて計算できます。2つの単位ベクトルでは以下のようになります（各ベクトルの長さが<code>1</code>であることを確認してください）:
   
   \[ \begin{pmatrix} \color{red}{0.6} \\ -\color{green}{0.8} \\ \color{blue}0 \end{pmatrix} \cdot \begin{pmatrix} \color{red}0 \\ \color{green}1 \\ \color{blue}0 \end{pmatrix} = (\color{red}{0.6} * \color{red}0) + (-\color{green}{0.8} * \color{green}1) + (\color{blue}0 * \color{blue}0) = -0.8 \]
   
   To calculate the degree between both these unit vectors we use the inverse of the cosine function \(cos^{-1}\) and this results in <code>143.1</code> degrees. We now effectively calculated the angle between these two vectors. The dot product proves very useful when doing lighting calculations later on.
+  2つのベクトルのなす角を求めるにはコサインの逆関数\(cos^{-1}\)を利用します。今回の場合この値は<code>143.1</code>度です。2つのベクトルのなす角度を効率よく計算できるようになりました。内積は後程でてくる照明の計算において非常に役立ちます。
 </p>
 
 <h3>Cross product</h3>
+<h3>外積</h3>
 <p>
   The cross product is only defined in 3D space and takes two non-parallel vectors as input and produces a third vector that is orthogonal to both the input vectors. If both the input vectors are orthogonal to each other as well, a cross product would result in 3 orthogonal vectors; this will prove useful in the upcoming chapters. The following image shows what this looks like in 3D space:
+  外積は3次元空間においてのみ定義され、2つの平行でないベクトルからその両方に直交する3つめのベクトルを生成します。はじめの2つのベクトルが直交する場合、外積を取ることで3つの互いに直交するベクトルが得られます。この性質については次の章においてその利便性が明らかになります。次の図はここで述べたことを3次元空間に図示したものです:
 </p>
 
 <img src="/img/getting-started/vectors_crossproduct.png" class="clean"/>
 
 <p>
   Unlike the other operations, the cross product isn't really intuitive without delving into linear algebra so it's best to just memorize the formula and you'll be fine (or don't, you'll probably be fine as well). Below you'll see the cross product between two orthogonal vectors A and B:
+  他の演算と違い、外積の計算は線形代数に踏み込まなければあまり直感的ではありません。とりあえず公式を暗記すれば十分です（覚えられなくてもおそらく大丈夫です）。以下の式は2つの直交するベクトルAとBの外積を表すものです:
   
   \[\begin{pmatrix} \color{red}{A_{x}} \\ \color{green}{A_{y}} \\ \color{blue}{A_{z}} \end{pmatrix} \times \begin{pmatrix} \color{red}{B_{x}} \\ \color{green}{B_{y}} \\ \color{blue}{B_{z}}  \end{pmatrix} = \begin{pmatrix} \color{green}{A_{y}} \cdot \color{blue}{B_{z}} - \color{blue}{A_{z}} \cdot \color{green}{B_{y}} \\ \color{blue}{A_{z}} \cdot \color{red}{B_{x}} - \color{red}{A_{x}} \cdot \color{blue}{B_{z}} \\ \color{red}{A_{x}} \cdot \color{green}{B_{y}} - \color{green}{A_{y}} \cdot \color{red}{B_{x}} \end{pmatrix} \]
   
   As you can see, it doesn't really seem to make sense. However, if you just follow these steps you'll get another vector that is orthogonal to your input vectors. 
+  これを見てもよく意味が分からないでしょう。しかしこの手順に従えば2つのベクトルからそれらに直交するベクトルが得られます。
 </p>
 
 <h1>Matrices</h1>
+<h1>行列</h1>
 <p>
   Now that we've discussed almost all there is to vectors it is time to enter the matrix!
   A matrix is a rectangular array of numbers, symbols and/or mathematical expressions. Each individual item in a matrix is called an <def>element</def> of the matrix. An example of a 2x3 matrix is shown below:
+  ベクトルに関してはだいたい見終わったので、次は行列の話に入りましょう。行列とは数字や記号、数式を四角形に並べたものです。行列を構成する個々の数字等は行列の<def>要素</def>と呼ばれます。2x3の行列の例を以下に挙げます:
   
   \[\begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{bmatrix}\]
   
   Matrices are indexed by <code>(i,j)</code> where <code>i</code> is the row and <code>j</code> is the column, that is why the above matrix is called a 2x3 matrix (3 columns and 2 rows, also known as the <def>dimensions</def> of the matrix). This is the opposite of what you're used to when indexing 2D graphs as <code>(x,y)</code>. To retrieve the value 4 we would index it as <code>(2,1)</code> (second row, first column).
+  行列の各要素は行を表わす<code>i</code>と列を表わす<code>j</code>を用いて<code>(i, j)</code>で参照できます。上の行列は2行3列なので2x3の行列と書きました。この2x3は行列の<def>型</def>と呼ばれます。これは2次元平面上で<code>(x, y)</code>を用いる場合と反対です。上の行列において4という要素を参照するには<code>(2, 1)</code>を利用します（2行目、1列目）。
 </p>
 
 <p>
   Matrices are basically nothing more than that, just rectangular arrays of mathematical expressions. They do have a very nice set of mathematical properties and just like vectors we can define several operations on matrices, namely: addition, subtraction and multiplication.
+  行列は単にこれだけのものです。数式を四角形に並べたものでしかありません。しかし行列は数学的に非常に優れた性質を持っていて、ベクトルの場合と同様に和、差、積といった演算を定義できます。
 </p>
 
 <h2>Addition and subtraction</h2>
+<h2>行列の和、差</h2>
 <p>
   Matrix addition and subtraction between two matrices is done on a per-element basis. So the same general rules apply that we're familiar with for normal numbers, but done on the elements of both matrices with the same index. This does mean that addition and subtraction is only defined for matrices of the same dimensions. A 3x2 matrix and a 2x3 matrix (or a 3x3 matrix and a 4x4 matrix) cannot be added or subtracted together. Let's see how matrix addition works on two 2x2 matrices:
+  2つの行列の和と差は要素毎に行われます。なので通常の数字と同じような規則が各要素毎に成り立ちます。要素毎に行われるため、和と差は同じ型の行列に対してのみ定義できます。3x2の行列と2x3の行列、あるいは3x3の行列と4x4の行列は足したり引いたりすることができません。2x2の行列どうしの足し算を以下に示します:
   
   \[\begin{bmatrix} \color{red}1 & \color{red}2 \\ \color{green}3 & \color{green}4 \end{bmatrix} + \begin{bmatrix} \color{red}5 & \color{red}6 \\ \color{green}7 & \color{green}8 \end{bmatrix} = \begin{bmatrix} \color{red}1 + \color{red}5 & \color{red}2 + \color{red}6 \\ \color{green}3 + \color{green}7 & \color{green}4 + \color{green}8 \end{bmatrix} = \begin{bmatrix} \color{red}6 & \color{red}8 \\ \color{green}{10} & \color{green}{12} \end{bmatrix} \]
   
 The same rules apply for matrix subtraction:
+同様にして差は以下のようになります:
   
    \[\begin{bmatrix} \color{red}4 & \color{red}2 \\ \color{green}1 & \color{green}6 \end{bmatrix} - \begin{bmatrix} \color{red}2 & \color{red}4 \\ \color{green}0 & \color{green}1 \end{bmatrix} = \begin{bmatrix} \color{red}4 - \color{red}2 & \color{red}2  - \color{red}4 \\ \color{green}1 - \color{green}0 & \color{green}6 - \color{green}1 \end{bmatrix} = \begin{bmatrix} \color{red}2 & -\color{red}2 \\ \color{green}1 & \color{green}5 \end{bmatrix} \]
   
 </p>
 
 <h2>Matrix-scalar products</h2>
+<h2>行列とスカラの積</h2>
 <p>
   A matrix-scalar product multiples each element of the matrix by a scalar. The following example illustrates the multiplication:
+  行列とスカラの積は行列の各要素にスカラを掛け合わせることとして定義されます。以下にこの積の例を示します:
   
   \[\color{green}2 \cdot \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} = \begin{bmatrix} \color{green}2 \cdot 1 & \color{green}2 \cdot 2 \\ \color{green}2 \cdot 3 & \color{green}2 \cdot 4 \end{bmatrix} = \begin{bmatrix} 2 & 4 \\ 6 & 8 \end{bmatrix}\]
   
 Now it also makes sense as to why those single numbers are called scalars. A scalar basically  <em>scales</em> all the elements of the matrix by its value. In the previous example, all elements were scaled by <code>2</code>. 
+これを見るとなぜ数字がスカラと呼ばれるのか分かります。スカラは行列の各要素をその値で<em>拡大、縮小</em>（英語でscaleと言います）するのです。前の例では各要素を<code>2</code>倍に拡大しています。
 </p>
   
 <p>
   So far so good, all of our cases weren't really too complicated. That is, until we start on matrix-matrix multiplication.
+  ここまではそんなに難しくはありません。続いてもう少し込み入った、行列どうしの積の話に移りましょう。
 </p>
 
 <h2>Matrix-matrix multiplication</h2>
+<h2>行列の積</h2>
 <p>
   Multiplying matrices is not necessarily complex, but rather difficult to get comfortable with. Matrix multiplication basically means to follow a set of pre-defined rules when multiplying. There are a few restrictions though: 
+  2つの行列の積は必ずしも複雑ではありませんが、慣れるまで時間がかかります。行列の積はある規則に従った演算です。この演算にもある制約があります:
   
   <ol>
     <li>You can only multiply two matrices if the number of columns on the left-hand side matrix is equal to the number of rows on the right-hand side matrix.</li>
+	<li>行列の積は、1つ目の行列の列の数と、2つ目の行列の行の数が一致する時に限り定義される。</li>
     <li>Matrix multiplication is not <def>commutative</def> that is \(A \cdot B \neq B \cdot A\).</li>
+	<li>行列の積は<def>非可換</def>である。つまり、\(A \cdot B \neq B \cdot A\)。</li>
   </ol>
 </p>
 
 <p>
   Let's get started with an example of a matrix multiplication of 2 <code>2x2</code> matrices:
+  まずは2つの<code>2x2</code>の行列の積を例示しましょう:
   
   \[ \begin{bmatrix} \color{red}1 & \color{red}2 \\ \color{green}3 & \color{green}4 \end{bmatrix} \cdot \begin{bmatrix} \color{blue}5 & \color{purple}6 \\ \color{blue}7 & \color{purple}8 \end{bmatrix} = \begin{bmatrix} \color{red}1 \cdot \color{blue}5 + \color{red}2 \cdot \color{blue}7 & \color{red}1 \cdot \color{purple}6 + \color{red}2 \cdot \color{purple}8 \\ \color{green}3 \cdot \color{blue}5 + \color{green}4 \cdot \color{blue}7 & \color{green}3 \cdot \color{purple}6 + \color{green}4 \cdot \color{purple}8 \end{bmatrix} = \begin{bmatrix} 19 & 22 \\ 43 & 50 \end{bmatrix} \]
   
   Right now you're probably trying to figure out what the hell just happened? Matrix multiplication is a combination of normal multiplication and addition using the left-matrix's rows with the right-matrix's columns. Let's try discussing this with the following image:
+  いったい何ごとかと身構えることでしょう。行列の積は左の行列の行と右の行列の列を用いて通常の和と積を組み合わせることで計算されます。下図で説明します:
 </p>
 
   <img src="/img/getting-started/matrix_multiplication.png" class="clean"/>
   
 <p>
  	We first take the upper row of the left matrix and then take a column from the right matrix. The row and column that we picked decides which output value of the resulting <code>2x2</code> matrix we're going to calculate. If we take the first row of the left matrix the resulting value will end up in the first row of the result matrix, then we pick a column and if it's the first column the result value will end up in the first column of the result matrix. This is exactly the case of the red pathway. To calculate the bottom-right result we take the bottom row of the first matrix and the rightmost column of the second matrix.
+	まず左の行列から上の行を取り、次に右の行列から列を取ります。どの行とどの列を取ったかにより、結果となる<code>2x2</code>行列のどの要素を計算するのかが決まります。左の行列の1つ目の行を取ると、結果となる行列の1つ目の行を計算することになります。そして右の行列の1つ目の列を取ると、結果となる行列の1つ目の列を計算することになります。これは図において赤で囲ったものにあたります。右下の要素を計算するには、左の行列の下の行と、右の行列の右の列から計算します。
 </p>
 
 <p>
   To calculate the resulting value we multiply the first element of the row and column together using normal multiplication, we do the same for the second elements, third, fourth etc. The results of the individual multiplications are then summed up and we have our result. Now it also makes sense that one of the requirements is that the size of the left-matrix's columns and the right-matrix's rows are equal, otherwise we can't finish the operations!
+  結果となる数値を得るためには左右の行列から取った行と列の1つ目の要素どうしを掛け、2つ目の要素どうしを掛け、3つ目、4つ目...、最後にこれらの掛け合わせた値を全て足し合わせます。この操作が必要なので、1つ目の制約である、左の行列の行の数と右の行列の列の数が等しくないといけないという意味が理解できるでしょう。この制約がないと、計算を完了できません。
 </p>
 
 <p>
    The result is then a matrix that has dimensions of  (<code>n,m</code>) where <code>n</code> is equal to the number of rows of the left-hand side matrix and <code>m</code> is equal to the columns of the right-hand side matrix.
+   左の行列の行数を<code>n</code>、右の行列の列数を<code>m</code>とした場合、行列の積の結果得られる行列の型は<code>(n, m)</code>となります。
 </p>
 
 <p>
