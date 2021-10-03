@@ -676,46 +676,37 @@ trans = <function id='57'>glm::rotate</function>(trans, (float)<function id='47'
 
   <p>
     And there you have it. A translated container that's rotated over time, all done by a single transformation matrix! Now you can see why matrices are such a powerful construct in graphics land. We can define an infinite amount of transformations and combine them all in a single matrix that we can re-use as often as we'd like. Using transformations like this in the vertex shader saves us the effort of re-defining the vertex data and saves us some processing time as well, since we don't have to re-send our data all the time (which is quite slow); all we need to do is update the transformation uniform.
+	やりました。平行移動された箱が時間と共に回転しています。すべての変換がひとつの変換行列で行われました。グラフィックスの世界において行列がいかに強力な道具であるかということが理解できたでしょう。変換行列は好きなだけ定義してひとつにまとめることができ、その変換行列はいつでも再利用できます。このように頂点シェーダーにおいて変換行列を利用することで、いちいち頂点データを再定義する面倒を回避でき、またそのデータをシェーダーに再送する必要がなくなるので処理時間も短縮できます（データの送信は遅いのです）。必要なことは変換行列の更新だけです。
   </p>
 
 <p>
   If you didn't get the right result or you're stuck somewhere else, take a look at the <a href="/code_viewer_gh.php?code=src/1.getting_started/5.1.transformations/transformations.cpp" target="_blank">source code</a> and the updated <a href="https://learnopengl.com/code_viewer_gh.php?code=includes/learnopengl/shader_m.h" target="_blank">shader</a> class. 
+  正しい結果が得られなかったり、どこかで詰まったのであれば、<a href="/code_viewer_gh.php?code=src/1.getting_started/5.1.transformations/transformations.cpp" target="_blank">ソースコード</a>を確認して、<a href="https://learnopengl.com/code_viewer_gh.php?code=includes/learnopengl/shader_m.h" target="_blank">シェーダー</a>クラスを更新して下さい。
 </p>
     
   <p>
     In the next chapter we'll discuss how we can use matrices to define different coordinate spaces for our vertices. This will be our first step into 3D graphics!
+	次章では行列を用いて頂点のための別の座標空間を定義する方法を議論します。3次元グラフィックスへの最初の一歩です。
   </p>
 
 <h2>Further reading</h2>
+<h2>参考文献</h2>
 <ul>
     <li><a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab" target="_blank">Essence of Linear Algebra</a>: great video tutorial series by Grant Sanderson about the underlying mathematics of transformations and linear algebra.</li>
-
+	<li><a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab" target="_blank">線形代数学の基本</a>: Grant Sandersonによる座標変換と線形代数学に関する入門的なすばらしい動画シリーズ。
 </ul>
 
 <h2>Exercises</h2>
+<h2>演習問題</h2>
 <p>
   <ul>
     <li>Using the last transformation on the container, try switching the order around by first rotating and then translating. See what happens and try to reason why this happens: <a href="/code_viewer_gh.php?code=src/1.getting_started/5.2.transformations_exercise1/transformations_exercise1.cpp" target="_blank">solution</a>.</li>
+	<li>箱に対する最後の変換を利用し、変換の順序を入れ替えて、まず回転しその後平行移動して下さい。なにが起こるのか確認し、その理由を考えて下さい: <a href="/code_viewer_gh.php?code=src/1.getting_started/5.2.transformations_exercise1/transformations_exercise1.cpp" target="_blank">解答</a>。</li>
     <li>Try drawing a second container with another call to <fun><function id='2'>glDrawElements</function></fun> but place it at a different position using transformations <strong>only</strong>. Make sure this second container is placed at the top-left of the window and instead of rotating, scale it over time (using the <code>sin</code> function is useful here; note that using <code>sin</code> will cause the object to invert as soon as a negative scale is applied): <a href="/code_viewer_gh.php?code=src/1.getting_started/5.2.transformations_exercise2/transformations_exercise2.cpp" target="_blank">solution</a>.</li>
+	<li><fun><function id='2'>glDrawElements</function></fun>をもう一度呼び出し、2つ目の箱を描いて下さい。ただし座標変換<strong>のみ</strong>を用いて別の場所に表示して下さい。この2つ目の箱は画面の左上に表示し、今回は回転させるのではなく時間と共に拡大縮小して下さい。拡大縮小には<code>sin</code>関数が便利です。<code>sin</code>を使うと拡大率が負になったときに物体が反転します:<a href="/code_viewer_gh.php?code=src/1.getting_started/5.2.transformations_exercise2/transformations_exercise2.cpp" target="_blank">解答</a>。</li>
   </ul>
 </p>       
 
     </div>
-    
-    <div id="hover">
-        HI
-    </div>
-   <!-- 728x90/320x50 sticky footer -->
-<div id="waldo-tag-6196"></div>
-
-   <div id="disqus_thread"></div>
-
-    
-
-
-</div> <!-- container div -->
-
-
-</div> <!-- super container div -->
 </body>
 </html>
