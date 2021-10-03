@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en"> 
 <head>
@@ -8,323 +6,112 @@
     <link rel="shortcut icon" type="image/ico" href="/favicon.ico"  />
     <meta name="description" content="Learn OpenGL . com provides good and clear modern 3.3+ OpenGL tutorials with clear examples. A great resource to learn modern OpenGL aimed at beginners.">
 	<meta name="fragment" content="!">
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-51879160-1', 'learnopengl.com');
-      ga('send', 'pageview');
-
-    </script>
-    <!--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({
-              google_ad_client: "ca-pub-7855791439695850",
-              enable_page_level_ads: true
-         });
-    </script>
-	<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
-	<script>
-	  var googletag = googletag || {};
-	  googletag.cmd = googletag.cmd || [];
-	</script>
-	<script>
-	  googletag.cmd.push(function() {
-		googletag.defineSlot('/8491498/learnopengl_video', [300, 225], 'div-gpt-ad-1540574378241-0').addService(googletag.pubads());
-		googletag.pubads().enableSingleRequest();
-		googletag.pubads().collapseEmptyDivs();
-		googletag.enableServices();
-	  });
-	</script>
-    <script type="text/javascript" src="https://d31vxm9ubutrmw.cloudfront.net/static/js/1681.js"></script>
-	<script src="/js/jquery-1.11.0.min.js"></script>
-	<script src="/js/hoverintent.js"></script>
-	<link rel="stylesheet" type="text/css" href="/layout.css">
-    <link rel="stylesheet" type="text/css" href="/js/styles/obsidian.css">
-    <script src="/js/highlight.pack.js"></script>    
-    <script src="/js/functions.js"></script>
-    <script type="text/javascript" src="/js/mathjax/MathJax.js?config=TeX-AMS_HTML"></script>
-    <script>
-    // Has to be loaded last due to content bug 
-    MathJax.Hub.Config({
-        TeX: { equationNumbers: { autoNumber: "AMS" } }
-    });
-    </script>
-    <script>hljs.initHighlightingOnLoad();</script>
-    <script>  
-        $(document).ready(function() {
-            // check if user visited from the old # based urls, re-direct to ?p= form
-            if(window.location.hash)
-            {
-                var name = window.location.hash.substring(2);
-                // name = name.replace(/-/g," ");
-                var index = name.indexOf('#'); // Remove any hash fragments from the url (Disquss adds hash fragments for comments, but results in 404 pages)
-                if(index >= 0)
-                    name = name.substring(0, index);
-                
-                window.location.href = "https://learnopengl.com/" + name;
-            } else {
-                    // Check if data has been succesfully loaded, if so: change title bar as ajax hash fragment
-                    var title = $('#content-url').text();
-                  
-                    // Refresh syntax highlighting
-                    // $('pre').each(function(i, e) {hljs.highlightBlock(e)});
-                  
-                    // Reset DISQUS
-                    // if(title == '/dev/')
-                        // title = '';
-                    // alert('hoi');
-                    
-                    // Adjust ads for correct bottom positioning based on content size
-                    window.setTimeout(function() {  
-                        AdPositioning();
-                     }, 3000);
-                  
-                  
-                    // set API resets after time-out (once content is properly loaded)
-                    window.setTimeout(function() {  
-                        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);       
-                        MathJax.Hub.Queue(["resetEquationNumbers", MathJax.InputJax.TeX]);
-                        
-                        var page_url = title == "" ? "http://www.learnopengl.com/" : "http://www.learnopengl.com/" + title;
-                        if(typeof DISQUS !== 'undefined') {                                              
-                            DISQUS.reset({
-                              reload: true,
-                              config: function () {  
-                                this.page.identifier = title;  
-                                this.page.url = page_url;
-                              }
-                            });
-                            $('#disqus_thread').show();
-                        }
-                           // Refresh callbacks on <function> tags
-                        SetFunctionTagCallbacks();        
-                    }, 1000);
-                                        
-                    // Zet ook de juiste button op 'selected'
-                    $('#nav li span, #nav li a').removeClass('selected');                
-                    if(title != '')
-                    {                    
-                        $('#nav li[id=\'' + title + '\']').children('span, a').addClass('selected');
-                    }
-                    // En open menu waar nodig
-                    var parents = $('#nav span.selected, #nav a.selected').parents('li').children('span.closed, a.closed');
-                    var index = 0;
-                    for(index = parents.length - 1; index >= 0; index--)
-                    {             
-                        
-                        var id = $(parents[index]).attr("id").replace( /^\D+/g, '');
-                        MenuClick(id, false);
-                    }                          
-                
-            }
-        });
-		// var initialized = false;
-        // window.onpopstate = function() {
-            // if(initialized)
-                // LoadPage();
-			// else
-				// initialized = true;
-        // };
-        
-        // Set up DISQUS
-        // $(document).ready(function() {
-            var disqus_shortname = 'learnopengl';
-            (function() {
-                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-            })();           
-        // });
-    </script>
+	<link rel="stylesheet" href="../static/style.css" />
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"> </script>
+	<script src="/static/functions.js"></script>
 </head>
 <body>
-<a href="https://learnopengl.com">
-<div id="header">
-</div>
-</a>
-
-<div id="supercontainer">
-    <!-- 728x90/320x50 -->
-    <div id="header_ad">
-        <div id="waldo-tag-6194"></div>
-    </div>
-    <div id="rightad_container">
-        <div id="rightad">
-            <!-- /8491498/learnopengl_video -->
-            <!--<div id='div-gpt-ad-1540574378241-0' style='height:225px; width:300px;'>
-			<script>
-			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1540574378241-0'); });
-			</script>
-			</div>            
-            <br/>-->
-           
-            <div id="waldo-tag-1715"></div>
-        </div>
-
-        <div id="admessage">
-            If you're running AdBlock, please consider whitelisting this site if you'd like to support LearnOpenGL; and no worries, I won't be mad if you don't :)
-            <!--<br/><br/>
-            Also, check out this little local multiplayer-only game I've made: <a href="https://store.steampowered.com/app/983590/Tank_Blazers/" target="_blank">Tank Blazers</a>.
-            <br/>
-            <a href="https://store.steampowered.com/app/983590/Tank_Blazers" target="_blank"><img src="/img/tank_blazers.jpg"  style="width:278px; margin-top: 9px; margin-left: -3px;"/></a>-->
-        </div>
-        
-        <div id="rightonethirdad">
-            <div id="waldo-tag-2246"></div>
-        </div>
-        
-        <div id="rightbottomad">            
-			<div id="waldo-tag-2247"></div>								
-        </div>
-    </div>
-    <div id="container">
-        <div id="loading"></div>
-<script> 
-$(document).ready(function() {
-$('#menu-item4').mousedown(function() { MenuClick(4, true) });
-$('#menu-item48').mousedown(function() { MenuClick(48, true) });
-$('#menu-item56').mousedown(function() { MenuClick(56, true) });
-$('#menu-item63').mousedown(function() { MenuClick(63, true) });
-$('#menu-item100').mousedown(function() { MenuClick(100, true) });
-$('#menu-item102').mousedown(function() { MenuClick(102, true) });
-$('#menu-item113').mousedown(function() { MenuClick(113, true) });
-$('#menu-item116').mousedown(function() { MenuClick(116, true) });
-$('#menu-item78').mousedown(function() { MenuClick(78, true) });
-$('#menu-item81').mousedown(function() { MenuClick(81, true) });
-$('#menu-item85').mousedown(function() { MenuClick(85, true) });
-$('#menu-item125').mousedown(function() { MenuClick(125, true) });
-$('#menu-item128').mousedown(function() { MenuClick(128, true) });
-$('#menu-item129').mousedown(function() { MenuClick(129, true) });
-$('#menu-item133').mousedown(function() { MenuClick(133, true) });
-$('#menu-item134').mousedown(function() { MenuClick(134, true) });
-}); 
-</script>   
-    <div id="nav">
-         <div id="social">
-            <a href="https://github.com/JoeyDeVries/LearnOpenGL" target="_blank">
-                    <img src="/img/github.png" class="social_ico">
-            </a>
-             <!-- <a href="https://www.facebook.com/Learnopengl-2199631333595544/" target="_blank">
-                <img src="/img/facebook.png" class="social_ico">
-            </a>-->
-            <a href="https://twitter.com/JoeyDeVriez" target="_blank">
-                <img src="/img/twitter.png" class="social_ico">
-            </a>
-          
-        </div>
-    <img src='img/nav-button_bottom-arrow.png' style='display: none'><ol><li id='Introduction'><a id="menu-item1" href="https://learnopengl.com/Introduction">Introduction </a></li><li id='Getting-started'><span id="menu-item4" class="closed">Getting started </span><ol id="menu-items-of4" style="display:none;"><li id='Getting-started/OpenGL'><a id="menu-item49" href="https://learnopengl.com/Getting-started/OpenGL">OpenGL </a></li><li id='Getting-started/Creating-a-window'><a id="menu-item5" href="https://learnopengl.com/Getting-started/Creating-a-window">Creating a window </a></li><li id='Getting-started/Hello-Window'><a id="menu-item6" href="https://learnopengl.com/Getting-started/Hello-Window">Hello Window </a></li><li id='Getting-started/Hello-Triangle'><a id="menu-item38" href="https://learnopengl.com/Getting-started/Hello-Triangle">Hello Triangle </a></li><li id='Getting-started/Shaders'><a id="menu-item39" href="https://learnopengl.com/Getting-started/Shaders">Shaders </a></li><li id='Getting-started/Textures'><a id="menu-item40" href="https://learnopengl.com/Getting-started/Textures">Textures </a></li><li id='Getting-started/Transformations'><a id="menu-item43" href="https://learnopengl.com/Getting-started/Transformations">Transformations </a></li><li id='Getting-started/Coordinate-Systems'><a id="menu-item44" href="https://learnopengl.com/Getting-started/Coordinate-Systems">Coordinate Systems </a></li><li id='Getting-started/Camera'><a id="menu-item47" href="https://learnopengl.com/Getting-started/Camera">Camera </a></li><li id='Getting-started/Review'><a id="menu-item50" href="https://learnopengl.com/Getting-started/Review">Review </a></li></ol></li><li id='Lighting'><span id="menu-item48" class="closed">Lighting </span><ol id="menu-items-of48" style="display:none;"><li id='Lighting/Colors'><a id="menu-item51" href="https://learnopengl.com/Lighting/Colors">Colors </a></li><li id='Lighting/Basic-Lighting'><a id="menu-item52" href="https://learnopengl.com/Lighting/Basic-Lighting">Basic Lighting </a></li><li id='Lighting/Materials'><a id="menu-item53" href="https://learnopengl.com/Lighting/Materials">Materials </a></li><li id='Lighting/Lighting-maps'><a id="menu-item54" href="https://learnopengl.com/Lighting/Lighting-maps">Lighting maps </a></li><li id='Lighting/Light-casters'><a id="menu-item55" href="https://learnopengl.com/Lighting/Light-casters">Light casters </a></li><li id='Lighting/Multiple-lights'><a id="menu-item58" href="https://learnopengl.com/Lighting/Multiple-lights">Multiple lights </a></li><li id='Lighting/Review'><a id="menu-item57" href="https://learnopengl.com/Lighting/Review">Review </a></li></ol></li><li id='Model-Loading'><span id="menu-item56" class="closed">Model Loading </span><ol id="menu-items-of56" style="display:none;"><li id='Model-Loading/Assimp'><a id="menu-item59" href="https://learnopengl.com/Model-Loading/Assimp">Assimp </a></li><li id='Model-Loading/Mesh'><a id="menu-item60" href="https://learnopengl.com/Model-Loading/Mesh">Mesh </a></li><li id='Model-Loading/Model'><a id="menu-item61" href="https://learnopengl.com/Model-Loading/Model">Model </a></li></ol></li><li id='Advanced-OpenGL'><span id="menu-item63" class="closed">Advanced OpenGL </span><ol id="menu-items-of63" style="display:none;"><li id='Advanced-OpenGL/Depth-testing'><a id="menu-item72" href="https://learnopengl.com/Advanced-OpenGL/Depth-testing">Depth testing </a></li><li id='Advanced-OpenGL/Stencil-testing'><a id="menu-item73" href="https://learnopengl.com/Advanced-OpenGL/Stencil-testing">Stencil testing </a></li><li id='Advanced-OpenGL/Blending'><a id="menu-item74" href="https://learnopengl.com/Advanced-OpenGL/Blending">Blending </a></li><li id='Advanced-OpenGL/Face-culling'><a id="menu-item77" href="https://learnopengl.com/Advanced-OpenGL/Face-culling">Face culling </a></li><li id='Advanced-OpenGL/Framebuffers'><a id="menu-item65" href="https://learnopengl.com/Advanced-OpenGL/Framebuffers">Framebuffers </a></li><li id='Advanced-OpenGL/Cubemaps'><a id="menu-item66" href="https://learnopengl.com/Advanced-OpenGL/Cubemaps">Cubemaps </a></li><li id='Advanced-OpenGL/Advanced-Data'><a id="menu-item69" href="https://learnopengl.com/Advanced-OpenGL/Advanced-Data">Advanced Data </a></li><li id='Advanced-OpenGL/Advanced-GLSL'><a id="menu-item67" href="https://learnopengl.com/Advanced-OpenGL/Advanced-GLSL">Advanced GLSL </a></li><li id='Advanced-OpenGL/Geometry-Shader'><a id="menu-item68" href="https://learnopengl.com/Advanced-OpenGL/Geometry-Shader">Geometry Shader </a></li><li id='Advanced-OpenGL/Instancing'><a id="menu-item70" href="https://learnopengl.com/Advanced-OpenGL/Instancing">Instancing </a></li><li id='Advanced-OpenGL/Anti-Aliasing'><a id="menu-item75" href="https://learnopengl.com/Advanced-OpenGL/Anti-Aliasing">Anti Aliasing </a></li></ol></li><li id='Advanced-Lighting'><span id="menu-item100" class="closed">Advanced Lighting </span><ol id="menu-items-of100" style="display:none;"><li id='Advanced-Lighting/Advanced-Lighting'><a id="menu-item101" href="https://learnopengl.com/Advanced-Lighting/Advanced-Lighting">Advanced Lighting </a></li><li id='Advanced-Lighting/Gamma-Correction'><a id="menu-item110" href="https://learnopengl.com/Advanced-Lighting/Gamma-Correction">Gamma Correction </a></li><li id='Advanced-Lighting/Shadows'><span id="menu-item102" class="closed">Shadows </span><ol id="menu-items-of102" style="display:none;"><li id='Advanced-Lighting/Shadows/Shadow-Mapping'><a id="menu-item103" href="https://learnopengl.com/Advanced-Lighting/Shadows/Shadow-Mapping">Shadow Mapping </a></li><li id='Advanced-Lighting/Shadows/Point-Shadows'><a id="menu-item104" href="https://learnopengl.com/Advanced-Lighting/Shadows/Point-Shadows">Point Shadows </a></li></ol></li><li id='Advanced-Lighting/Normal-Mapping'><a id="menu-item106" href="https://learnopengl.com/Advanced-Lighting/Normal-Mapping">Normal Mapping </a></li><li id='Advanced-Lighting/Parallax-Mapping'><a id="menu-item107" href="https://learnopengl.com/Advanced-Lighting/Parallax-Mapping">Parallax Mapping </a></li><li id='Advanced-Lighting/HDR'><a id="menu-item111" href="https://learnopengl.com/Advanced-Lighting/HDR">HDR </a></li><li id='Advanced-Lighting/Bloom'><a id="menu-item112" href="https://learnopengl.com/Advanced-Lighting/Bloom">Bloom </a></li><li id='Advanced-Lighting/Deferred-Shading'><a id="menu-item108" href="https://learnopengl.com/Advanced-Lighting/Deferred-Shading">Deferred Shading </a></li><li id='Advanced-Lighting/SSAO'><a id="menu-item109" href="https://learnopengl.com/Advanced-Lighting/SSAO">SSAO </a></li></ol></li><li id='PBR'><span id="menu-item113" class="closed">PBR </span><ol id="menu-items-of113" style="display:none;"><li id='PBR/Theory'><a id="menu-item114" href="https://learnopengl.com/PBR/Theory">Theory </a></li><li id='PBR/Lighting'><a id="menu-item115" href="https://learnopengl.com/PBR/Lighting">Lighting </a></li><li id='PBR/IBL'><span id="menu-item116" class="closed">IBL </span><ol id="menu-items-of116" style="display:none;"><li id='PBR/IBL/Diffuse-irradiance'><a id="menu-item117" href="https://learnopengl.com/PBR/IBL/Diffuse-irradiance">Diffuse irradiance </a></li><li id='PBR/IBL/Specular-IBL'><a id="menu-item118" href="https://learnopengl.com/PBR/IBL/Specular-IBL">Specular IBL </a></li></ol></li></ol></li><li id='In-Practice'><span id="menu-item78" class="closed">In Practice </span><ol id="menu-items-of78" style="display:none;"><li id='In-Practice/Debugging'><a id="menu-item79" href="https://learnopengl.com/In-Practice/Debugging">Debugging </a></li><li id='In-Practice/Text-Rendering'><a id="menu-item80" href="https://learnopengl.com/In-Practice/Text-Rendering">Text Rendering </a></li><li id='In-Practice/2D-Game'><span id="menu-item81" class="closed">2D Game </span><ol id="menu-items-of81" style="display:none;"><li id='In-Practice/2D-Game/Breakout'><a id="menu-item82" href="https://learnopengl.com/In-Practice/2D-Game/Breakout">Breakout </a></li><li id='In-Practice/2D-Game/Setting-up'><a id="menu-item88" href="https://learnopengl.com/In-Practice/2D-Game/Setting-up">Setting up </a></li><li id='In-Practice/2D-Game/Rendering-Sprites'><a id="menu-item83" href="https://learnopengl.com/In-Practice/2D-Game/Rendering-Sprites">Rendering Sprites </a></li><li id='In-Practice/2D-Game/Levels'><a id="menu-item84" href="https://learnopengl.com/In-Practice/2D-Game/Levels">Levels </a></li><li id='In-Practice/2D-Game/Collisions'><span id="menu-item85" class="closed">Collisions </span><ol id="menu-items-of85" style="display:none;"><li id='In-Practice/2D-Game/Collisions/Ball'><a id="menu-item95" href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Ball">Ball </a></li><li id='In-Practice/2D-Game/Collisions/Collision-detection'><a id="menu-item96" href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Collision-detection">Collision detection </a></li><li id='In-Practice/2D-Game/Collisions/Collision-resolution'><a id="menu-item97" href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Collision-resolution">Collision resolution </a></li></ol></li><li id='In-Practice/2D-Game/Particles'><a id="menu-item89" href="https://learnopengl.com/In-Practice/2D-Game/Particles">Particles </a></li><li id='In-Practice/2D-Game/Postprocessing'><a id="menu-item90" href="https://learnopengl.com/In-Practice/2D-Game/Postprocessing">Postprocessing </a></li><li id='In-Practice/2D-Game/Powerups'><a id="menu-item91" href="https://learnopengl.com/In-Practice/2D-Game/Powerups">Powerups </a></li><li id='In-Practice/2D-Game/Audio'><a id="menu-item94" href="https://learnopengl.com/In-Practice/2D-Game/Audio">Audio </a></li><li id='In-Practice/2D-Game/Render-text'><a id="menu-item92" href="https://learnopengl.com/In-Practice/2D-Game/Render-text">Render text </a></li><li id='In-Practice/2D-Game/Final-thoughts'><a id="menu-item93" href="https://learnopengl.com/In-Practice/2D-Game/Final-thoughts">Final thoughts </a></li></ol></li></ol></li><li id='Guest-Articles'><span id="menu-item125" class="closed">Guest Articles </span><ol id="menu-items-of125" style="display:none;"><li id='Guest-Articles/How-to-publish'><a id="menu-item126" href="https://learnopengl.com/Guest-Articles/How-to-publish">How to publish </a></li><li id='Guest-Articles/2020'><span id="menu-item128" class="closed">2020 </span><ol id="menu-items-of128" style="display:none;"><li id='Guest-Articles/2020/OIT'><span id="menu-item129" class="closed">OIT </span><ol id="menu-items-of129" style="display:none;"><li id='Guest-Articles/2020/OIT/Introduction'><a id="menu-item130" href="https://learnopengl.com/Guest-Articles/2020/OIT/Introduction">Introduction </a></li><li id='Guest-Articles/2020/OIT/Weighted-Blended'><a id="menu-item132" href="https://learnopengl.com/Guest-Articles/2020/OIT/Weighted-Blended">Weighted Blended </a></li></ol></li><li id='Guest-Articles/2020/Skeletal-Animation'><a id="menu-item131" href="https://learnopengl.com/Guest-Articles/2020/Skeletal-Animation">Skeletal Animation </a></li></ol></li><li id='Guest-Articles/2021'><span id="menu-item133" class="closed">2021 </span><ol id="menu-items-of133" style="display:none;"><li id='Guest-Articles/2021/Scene'><span id="menu-item134" class="closed">Scene </span><ol id="menu-items-of134" style="display:none;"><li id='Guest-Articles/2021/Scene/Scene-Graph'><a id="menu-item135" href="https://learnopengl.com/Guest-Articles/2021/Scene/Scene-Graph">Scene Graph </a></li><li id='Guest-Articles/2021/Scene/Frustum-Culling'><a id="menu-item136" href="https://learnopengl.com/Guest-Articles/2021/Scene/Frustum-Culling">Frustum Culling </a></li></ol></li></ol></li></ol></li><li id='Code-repository'><a id="menu-item99" href="https://learnopengl.com/Code-repository">Code repository </a></li><li id='Translations'><a id="menu-item119" href="https://learnopengl.com/Translations">Translations </a></li><li id='About'><a id="menu-item2" href="https://learnopengl.com/About">About </a></li></ol>		<div id="menu_book">
-            <a href="https://geni.us/learnopengl" target="_blank"><img src="/book/below_menu.png" class="clean"/></a>
-        </div>
-       <div id="donate">
-            <a href="https://www.paypal.me/learnopengl/" target="_blank">
-                <div id="donate_img"></div>
-                <img style="display: none" src="/img/donate_button_hover.png"/>
-                <!--<img id="donate_img" src="img/patreon.png"/>-->
-            </a>
-          <!--<div id="alipay">
-            <img style="width: 150px;" class="clean" src="/img/alipay_logo.png"/>
-            <img style="width: 150px; margin-top: 5px" src="/img/alipay.png"/>
-          </div>-->
-        </div> 
-		<div class="btc">
-			<h3>BTC</h3>
-			<p>
-				1CLGKgmBSuYJ1nnvDGAepVTKNNDpUjfpRa
-			</p>
-			<img src="/img/btc_qr.png"/>
-        </div> 
-		<div class="btc">
-			<h3>ETH/ERC20</h3>
-			<p>
-				0x1de59bd9e52521a46309474f8372531533bd7c43
-			</p>
-			<img src="/img/erc20_qr.png"/>
-        </div>       
-        <div id="ad">
-							<!--<div id="waldo-tag-1684"></div>-->
-			        </div>
-      
-        <div id="lefttwothirdad">
-            <div id="waldo-tag-2245"></div>
-        </div>
-    </div>
-    
     <div id="content">
     <h1 id="content-title">Coordinate Systems</h1>
+    <h1 id="content-title">座標系</h1>
 <h1 id="content-url" style='display:none;'>Getting-started/Coordinate-Systems</h1>
 <p>
   In the last chapter we learned how we can use matrices to our advantage by transforming all vertices with transformation matrices. OpenGL expects all the vertices, that we want to become visible, to be in normalized device coordinates after each vertex shader run. That is, the <code>x</code>, <code>y</code> and <code>z</code> coordinates of each vertex should be between <code>-1.0</code> and <code>1.0</code>; coordinates outside this range will not be visible. What we usually do, is specify the coordinates in a range (or space) we determine ourselves and in the vertex shader transform these coordinates to normalized device coordinates (NDC). These NDC are then given to the rasterizer to transform them to 2D coordinates/pixels on your screen.
+  前章において行列の便利な使い方、すなわち全ての頂点を変換行列により座標変換する方法を学びました。OpenGLでは画面に表示すべき全ての頂点は頂点シェーダーから出力される段階で正規化座標に納まっていないといけません。つまり各頂点の<code>x</code>、<code>y</code>、<code>z</code>座標が<code>-1.0</code>と<code>1.0</code>の間にないといけないということです。この範囲外のものは表示されません。開発者がすべきことは、表示したい範囲を決定し、頂点シェーダーにおいてその座標を正規化座標（NDC）に変換することです。そうすればNDCがラスターライザに渡され、画面に対応した2次元座標、あるいはピクセルに変換されます。
 </p>
 
 <p>
   Transforming coordinates to NDC is usually accomplished in a step-by-step fashion where we transform an object's vertices to several coordinate systems before finally transforming them to NDC. The advantage of transforming them to several <em>intermediate</em> coordinate systems is that some operations/calculations are easier in certain coordinate systems as will soon become apparent. There are a total of 5 different coordinate systems that are of importance to us:
+  座標をNDCに変換する作業は段階的に行われます。NDCに落とし込まれるまでに物体の頂点はいくつかの座標系を経由するのです。<em>中間的な</em>座標系を経由するのは、後程説明するようにある種の操作や計算が、特定の座標系において行うのが適しているからです。重要な座標系が5つあります:
 </p>
 
   <ul>
     <li>Local space (or Object space)</li>
+	<li>局所空間（物体空間）</li>
     <li>World space</li>
+	<li>大域空間</li>
     <li>View space (or Eye space)</li>
+	<li>視野空間</li>
     <li>Clip space</li>
+	<li>クリップ空間</li>
     <li>Screen space</li>
+	<li>スクリーン空間</li>
   </ul>
  
 <p>
 	Those are all a different state at which our vertices will be transformed in before finally ending up as fragments. 
+	上記の空間は頂点が座標変換によってフラグメントになるまでに通過するものです。
 </p>
 
 <p>
   You're probably quite confused by now by what a space or coordinate system actually is so we'll explain them in a more high-level fashion first by showing the total picture and what each specific space represents.
+  これらの空間あるいは座標系がいったい何のことなのかと混乱していることでしょう。これからもう少し詳しく説明します。まずは各空間が何を表しているのか、全体像を提示するところから始めます。
 </p>
 
 <h2>The global picture</h2>
+<h2>全体像</h2>
 <p>
   To transform the coordinates from one space to the next coordinate space we'll use several transformation matrices of which the most important are the <def>model</def>, <def>view</def> and <def>projection</def> matrix. Our vertex coordinates first start in <def>local space</def> as <def>local coordinates</def> and are then further processed to <def>world coordinates</def>, <def>view coordinates</def>, <def>clip coordinates</def> and eventually end up as <def>screen coordinates</def>. The following image displays the process and shows what each transformation does:
+  ある座標系から次の座標系に変換する際、変換行列をいくつか用います。中でも重要なのが、<def>モデル</def>、<def>ビュー</def>、<def>射影変換</def>行列です。
+
 </p>
 
 <img src="/img/getting-started/coordinate_systems.png" class="clean"/>
 
   <ol>
     <li>Local coordinates are the coordinates of your object relative to its local origin; they're the coordinates your object begins in. </li>
+	<li>局所座標は物体ごとの座標です。各物体が自身の局所座標中で定義されます。</li>
     <li>The next step is to transform the local coordinates to world-space coordinates which are coordinates in respect of a larger world. These coordinates are relative to some global origin of the world, together with many other objects also placed relative to this world's origin.</li>
+	<li>次の作業は局所座標を大域座標に変換することです。大域座標は大きな世界の座標です。この座標は世界のある原点に対する相対的な位置で表され、多くの物体が配置されるものです。</li>
     <li>Next we transform the world coordinates to view-space coordinates in such a way that each coordinate is as seen from the camera or viewer's point of view. </li>
+	<li>続いて大域座標を視野座標に変換します。この座標系はカメラから見たときの座標です。</li>
     <li>After the coordinates are in view space we want to project them to clip coordinates. Clip coordinates are processed to the <code>-1.0</code> and <code>1.0</code> range and determine which vertices will end up on the screen. Projection to clip-space coordinates can add perspective if using perspective projection. </li>
+	<li>座標が視野空間に納まったら、クリップ座標にそれを投射します。クリップ座標系は<code>-1.0</code>と<code>1.0</code>の範囲の座標系で、最終的に画面に表示されるものを決定します。透視投影を利用するのであればこのクリップ座標系への投射の段階で行います。</li>
     <li>
       And lastly we transform the clip coordinates to screen coordinates in a process we call <def>viewport transform</def> that transforms the coordinates from <code>-1.0</code> and <code>1.0</code> to the coordinate range defined by <fun><function id='22'>glViewport</function></fun>. The resulting coordinates are then sent to the rasterizer to turn them into fragments.
     </li>   
+	<li>最後に、クリップ座標を画面の座標系に変換します。この処理は<def>ビューポート変換</def>と呼ばれ、<code>-1.0</code>から<code>1.0</code>の座標を<fun><function id='22'>glViewport</function></fun>で定義された範囲の座標に変換するものです。変換を終えた座標はラスタライザに送られ、フラグメントに加工されます。</li>
   </ol>
 
 <p>
   You probably got a slight idea what each individual space is used for. The reason we're transforming our vertices into all these different spaces is that some operations make more sense or are easier to use in certain coordinate systems. For example, when modifying your object it makes most sense to do this in local space, while calculating certain operations on the object with respect to the position of other objects makes most sense in world coordinates and so on. If we want, we could define one transformation matrix that goes from local space to clip space all in one go, but that leaves us with less flexibility.
+  それぞれの空間がなにを意味するのか多少雰囲気を掴めたでしょうか。頂点をいくつもの空間に変換していくのは、ある種の処理が特定の空間において良く意味をなし、あるいはその空間において利用しやすいからです。例えば物体自体を変形させる操作はその物体の局所座標においてするのがいいでしょうし、他の物体との位置関係を計算するのであれば大域座標においてするのが分かりやすいでしょう。もちろん局所座標からクリップ座標への変換にひとつの変換行列だけを用いることもできますが、それでは柔軟性が非常に低くなります。
 </p>
 
 <p>
   We'll discuss each coordinate system in more detail below.
+  それでは各座標空間について更に詳しく見ていきましょう。
 </p>
 
 <h2>Local space</h2>
+<h2>局所空間</h2>
 <p>
   Local space is the coordinate space that is local to your object, i.e. where your object begins in. Imagine that you've created your cube in a modeling software package (like Blender). The origin of your cube is probably at <code>(0,0,0)</code> even though your cube may end up at a different location in your final application. Probably all the models you've created all have <code>(0,0,0)</code> as their initial position. All the vertices of your model are therefore in <em>local</em> space: they are all local to your object. 
+  局所空間は物体に結び付いた座標系です。ブレンダーのようなモデリングソフトで立方体を作成しているところを想像して下さい。最終的にアプリケーションの中で立方体がどこに置かれるか分かりませんが、モデリングソフトにおいては立方体の原点は<code>(0, 0, 0)</code>でしょう。他の全ての物体に関しても、作成時の最初の座標は<code>(0, 0, 0)</code>であるはずです。作成した物体の頂点の座標は全てその物体に<em>固有</em>のものであるということです。
 </p>
 
 <p>
   The vertices of the container we've been using were specified as coordinates between <code>-0.5</code> and <code>0.5</code> with <code>0.0</code> as its origin. These are local coordinates.
+  今回使っている箱の頂点の座標は<code>-0.5</code>と<code>0.5</code>の間にあり、原点は<code>0.0</code>ですが、これがこの箱の局所座標です。
 </p>
 
 <h2>World space</h2>
+<h2>大域空間</h2>
 <p>
   If we would import all our objects directly in the application they would probably all be somewhere positioned inside each other at the world's origin of <code>(0,0,0)</code> which is not what we want. We want to define a position for each object to position them inside a larger world. The coordinates in world space are exactly what they sound like: the coordinates of all your vertices relative to a (game) world. This is the coordinate space where you want your objects transformed to in such a way that they're all scattered around the place (preferably in a realistic fashion). The coordinates of your object are transformed from local to world space; this is accomplished with the <def>model</def> matrix.
+  全ての物体を直接アプリケーションに読み込んだとすると、それらは世界の原点<code>(0, 0, 0)</code>において互いに重なり合ってしまいます。大きな世界の中でそれらの物体を適切な場所に配置したいものです。大域空間の座標はこの目的のために存在します。（ゲームの）世界における頂点の相対的な位置を表わすのがこの座標です。現実世界と同じように、この座標空間に向けて物体を座標変換して、それらを世界のあちこちに配置することができます。物体の局所座標が大域座標に変換されます。この変換を行うのが<def>モデル</def>行列です。
 </p>
 
 <p>
   The model matrix is a transformation matrix that translates, scales and/or rotates your object to place it in the world at a location/orientation they belong to. Think of it as transforming a house by scaling it down (it was a bit too large in local space), translating it to a suburbia town and rotating it a bit to the left on the y-axis so that it neatly fits with the neighboring houses. You could think of the matrix in the previous chapter to position the container all over the scene as a sort of model matrix as well; we transformed the local coordinates of the container to some different place in the scene/world.
+  モデル行列は物体を平行移動し、拡大縮小し、あるいは回転することでアプリケーションの中の世界での位置や向きを決定する変換行列です。例えば局所座標の状態では大きすぎる家を縮小し、平行移動により郊外に移動させ、y軸に沿った回転により周囲の家にきちんと並ぶようにするような変換を考えることができます。また、前章で箱を移動させた行列も、ひとつのモデル行列だと考えることができます。箱の局所座標を変換して画面、あるいは世界の別の場所に置いたのです。
 </p>
 
 <h2>View space</h2>
+<h2>視野空間</h2>
 <p>
   The view space is what people usually refer to as the <def>camera</def> of OpenGL (it is sometimes also known as <def>camera space</def> or <def>eye space</def>). The view space is the result of transforming your world-space coordinates to coordinates that are in front of the user's view. The view space is thus the space as seen from the camera's point of view. This is usually accomplished  with a combination of translations and rotations to translate/rotate the scene so that certain items are transformed to the front of the camera. These combined transformations are generally stored inside a <def>view matrix</def> that transforms world coordinates to view space. In the next chapter we'll extensively discuss how to create such a view matrix to simulate a camera.
+  視野空間はOpenGLの<def>カメラ</def>とも言われます。また、<def>カメラ空間</def>や、<def>eye space</def>とも呼ばれるものです。視野空間は大域空間の座標を変換してユーザーの目から見た座標にしたものです。
 </p>
 
 <h2>Clip space</h2>
