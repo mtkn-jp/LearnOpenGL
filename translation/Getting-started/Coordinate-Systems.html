@@ -256,24 +256,31 @@ Its first parameter defines the <def>fov</def> value, that stands for <def>field
  	\[ V_{clip} = M_{projection} \cdot M_{view} \cdot M_{model} \cdot V_{local} \]
   
 Note that the order of matrix multiplication is reversed (remember that we need to read matrix multiplication from right to left). The resulting vertex should then be assigned to <var>gl_Position</var> in the vertex shader and OpenGL will then automatically perform perspective division and clipping.
+行列の積の順番が逆であることに注意してください。行列の積は右から左に読む必要があります。この積の結果が頂点シェーダーにおいて<var>gl_Position</var>に格納され、OpenGLが自動的に透視除算及び切り落としを行います。
 </p>
 
 <note>
   <strong>And then?</strong><br/>
+  <strong>ほんで？</strong><br/>
   The output of the vertex shader requires the coordinates to be in clip-space which is what we just did with the transformation matrices. OpenGL then performs <em>perspective division</em> on the <em>clip-space coordinates</em> to transform them to <em>normalized-device coordinates</em>. OpenGL then uses the parameters from <fun><function id='22'>glViewPort</function></fun> to map the normalized-device coordinates to <em>screen coordinates</em> where each coordinate corresponds to a point on your screen (in our case a 800x600 screen). This process is called the <em>viewport transform</em>. 
+  今行ったように、頂点シェーダーからの出力となる座標はクリップ空間に納まっていなければいけません。この後OpenGLはクリップ空間において<em>透視除算</em>を行い、<em>NDC</em>に変換します。そして<fun><function id='22'>glViewPort</function></fun>から値を取得し、NDCを<em>画面の座標系</em>に変換します。画面の座標は画面の各点に対応する座標で、今回の場合その大きさは800x600です。この処理は<em>ビューポート変換（viewport transform）</em>と呼ばれます。
 </note>
 
 <p>
   This is a difficult topic to understand so if you're still not exactly sure about what each space is used for you don't have to worry. Below you'll see how we can actually put these coordinate spaces to good use and enough examples will follow in the upcoming chapters.
+  本章の内容は難解で、各空間が何の為の物なのか理解し辛いかもしれませんが、心配は無用です。以下にこれらの座標空間の使い方を十分な例と共に示します。
 </p>
 
 <h1>Going 3D</h1>
+<h1>3次元の世界へ</h1>
 <p>
   Now that we know how to transform 3D coordinates to 2D coordinates we can start rendering real 3D objects instead of the lame 2D plane we've been showing so far.
+  3次元の座標を2次元に変換する方法が分かったので、ここまで見てきたようなつまらない平面の画像ではなく、現実世界のような3次元の物体の描画に進む準備が整いました。
 </p>
 
 <p>
   To start drawing in 3D we'll first create a model matrix. The model matrix consists of  translations, scaling and/or rotations we'd like to apply to <em>transform</em> all object's vertices  to the global world space. Let's transform our plane a bit by rotating it on the x-axis so it looks like it's laying on the floor. The model matrix then looks like this:
+  3次元のものを描画するにあたり、まずはモデル行列を作成しましょう。モデル行列は平行移動、拡大縮小、及び回転から構成されます。これらの変換は物体の各頂点を大域空間に<em>変換</em>する為の物です。とりあえず平面をx軸に沿って少し回転させ、床に敷かれているかのようにしてみましょう。このようなモデル行列は以下のようになります:
 </p>
 
 <pre><code>
@@ -283,6 +290,7 @@ model = <function id='57'>glm::rotate</function>(model, <function id='63'>glm::r
 
 <p>
 By multiplying the vertex coordinates with this model matrix we're transforming the vertex coordinates to world coordinates. Our plane that is slightly on the floor thus represents the plane in the global world. 
+
     </p>
   
 <p>
