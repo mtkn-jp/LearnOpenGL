@@ -290,39 +290,52 @@ model = <function id='57'>glm::rotate</function>(model, <function id='63'>glm::r
 
 <p>
 By multiplying the vertex coordinates with this model matrix we're transforming the vertex coordinates to world coordinates. Our plane that is slightly on the floor thus represents the plane in the global world. 
-
+頂点座標にモデル行列を掛けることで、頂点の座標を大域座標に変換しています。この操作により、この平面は大域的な世界での平面になりました。
     </p>
   
 <p>
   Next we need to create a view matrix. We want to move slightly backwards in the scene so the object becomes visible (when in world space we're located at the origin <code>(0,0,0)</code>). To move around the scene, think about the following:
+  次に視野行列を作成します。物体が見えるように少し後ろに下がりましょう（現状、大域空間の原点<code>(0, 0, 0)</code>に居ます）。この世界で移動する為に以下のように考えます:
   <ul>
     <li>To move a camera backwards, is the same as moving the entire scene forward.</li>
+	<li>カメラを手前に動かすのは世界全体を奥に動かすのと同じこと。</li>
   </ul>
   That is exactly what a view matrix does, we move the entire scene around inversed to where we want the camera to move.<br/>
   Because we want to move backwards and since OpenGL is a right-handed system we have to move in the positive z-axis. We do this by translating the scene towards the negative z-axis. This gives the impression that we are moving backwards. 
+  これはまさに視野行列が行うことです。カメラを動かしたい方向と逆向きに世界を動かします。<br/>
+  今回はカメラを手前に動かしたいのですが、OpenGLの世界は右手の法則に従っているので、これはz軸の正の方向への移動になります。そのために世界をz軸の負の方向に移動させます。これにより自分自身が後ろに下ったように見えます。
 </p>
 
 
 <note>
   <strong>Right-handed system</strong>
+  <strong>右手の法則</strong>
   <p>
     By convention, OpenGL is a right-handed system. What this basically says is that the positive x-axis is to your right, the positive y-axis is up and the positive z-axis is backwards. Think of your screen being the center of the 3 axes and the positive z-axis going through your screen towards you. The axes are drawn as follows:
+	慣例的にOpenGLは右手の法則を採用しています。これは座標空間の各軸が従う規則で、右側がx軸正の方向、上側がy軸正の方向、手前側がz軸正の方向になるようなものです。画面が座標空間の原点に位置し、z軸が手前を向いているとすると、以下のようになります:
 </p>
   <img src="/img/getting-started/coordinate_systems_right_handed.png" class="clean"/>
   <p>
     To understand why it's called right-handed do the following:
+	これが右手の法則と呼ばれるのは以下の理由からです:
     <ul>
       <li>Stretch your right-arm along the positive y-axis with your hand up top.</li>
+	  <li>右手をy軸に沿うように上に向けます。</li>
       <li>Let your thumb point to the right.</li>
+	  <li>親指を右に向けます。</li>
       <li>Let your pointing finger point up.</li>
+	  <li>人差し指を上に向けます。</li>
       <li>Now bend your middle finger downwards 90 degrees.</li>
+	  <li>中指を90度折ります。</li>
     </ul>
     If you did things right, your thumb should point towards the positive x-axis, the pointing finger towards the positive y-axis and your middle finger towards the positive z-axis. If you were to do this with your left-arm you would see the z-axis is reversed. This is known as a left-handed system and is commonly used by DirectX. Note that in normalized device coordinates OpenGL actually uses a left-handed system (the projection matrix switches the handedness).
+	そうすると親指がx軸、人差し指がy軸、中指がz軸に対応するようになるはずです。左手で同じことをするとz軸は反対を向くであほう。これは左手の法則と呼ばれ、DirectXで利用されます。ただしNDCにおいて実際はOpenGLも左手の法則を利用しており、投影行列が反転しています。
   </p>
 </note>
 
 <p>
   We'll discuss how to move around the scene in more detail in the next chapter. For now the view matrix looks like this:
+次章において空間上の移動を詳しく解説します。今のところ視野行列は以下のようになっています:
 </p>
 
 <pre><code>
@@ -333,6 +346,7 @@ view = <function id='55'>glm::translate</function>(view, glm::vec3(0.0f, 0.0f, -
 
 <p>
   The last thing we need to define is the projection matrix. We want to use perspective projection for our scene so we'll declare the projection matrix like this:
+最後に投影行列を定義します。遠近法を利用したいので、投影行列を以下のように宣言します:
 </p>
 
 <pre><code>
@@ -342,6 +356,7 @@ projection = <function id='58'>glm::perspective</function>(<function id='63'>glm
 
 <p>
   Now that we created the transformation matrices we should pass them to our shaders. First let's declare the transformation matrices as uniforms in the vertex shader and multiply them with the vertex coordinates:
+  以上でシェーダーに渡す変換行列を全て作成しました。それではそれらの変換行列を頂点シェーダーにおいてユニフォームとして定義し頂点座標と共に掛け合わせます:
 </p>
 
 <pre><code>
@@ -362,39 +377,50 @@ void main()
 
 <p>
   We should also send the matrices to the shader (this is usually done each frame since  transformation matrices tend to change a lot):
+  それから行列をシェーダーに送信しなければなりません。変換行列は通常頻繁に変更されるので行列の送信はフレーム毎に行います:
 </p>
 
 <pre><code>
 int modelLoc = <function id='45'>glGetUniformLocation</function>(ourShader.ID, "model");
 <function id='44'>glUniform</function>Matrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 ... // same for View Matrix and Projection Matrix
+... // 視野行列、投影行列についても同様
 </code></pre>
 
 <p>
   Now that our vertex coordinates are transformed via the model, view and projection matrix the final object should be:
+  これにて頂点座標がモデル、視野、投影行列により変換され、最終的な物体は以下のようになります:
   
   <ul>
     <li>Tilted backwards to the floor. </li>
+	<li>傾いて床に置かれている。</li>
     <li>A bit farther away from us.</li>
+	<li>カメラから少し離れている。</li>
     <li>Be displayed with perspective (it should get smaller, the further its vertices are).</li>
+	<li>遠近法を用いて描画されている（遠くの頂点ほど小さい）。</li>
   </ul>
   
   Let's check if the result actually does fulfill these requirements:
+  本当にこのような結果になるか確かめましょう:
 </p>
 
 <img src="/img/getting-started/coordinate_systems_result.png" class="clean"/>
 
 <p>
   It does indeed look like the plane is a 3D plane that's resting at some imaginary floor. If you're not getting the same result, compare your code with the complete  <a href="/code_viewer_gh.php?code=src/1.getting_started/6.1.coordinate_systems/coordinate_systems.cpp" target="_blank">source code</a>.
+  確かに平面は3次元空間上で床に敷かれているように見えます。同じ結果にならなければ、自分のコードを完全な<a href="/code_viewer_gh.php?code=src/1.getting_started/6.1.coordinate_systems/coordinate_systems.cpp" target="_blank">ソースコード</a>と照らし合わせて下さい。
 </p>
 
 <h2>More 3D</h2>
+<h2>もっと3次元</h2>
 <p>
   So far we've been working with a 2D plane, even in 3D space, so let's take the adventurous  route and extend our 2D plane to a 3D cube. To render a cube we need a total of 36 vertices (6 faces * 2 triangles * 3 vertices each). 36 vertices are a lot to sum up so you can retrieve them from <a href="/code_viewer.php?code=getting-started/cube_vertices" target="_blank">here</a>. 
+  ここまで空間が3次元になったとはいえ物体自体は2次元の平面でした。今度はもう少し冒険して、3次元の立方体を扱ってみましょう。立方体を描写するには頂点が36個も必要です（6つの面 * 2つの三角形 * 3つの頂点）。多すぎるので<a href="/code_viewer.php?code=getting-started/cube_vertices" target="_blank">ここ</a>からコピーして下さい。
 </p>
 
 <p>
  For fun, we'll let the cube rotate over time:  
+ さらに面白くするためにこの立方体を時間と共に回転させましょう:
 </p>
 
 <pre><code>
@@ -403,6 +429,7 @@ model = <function id='57'>glm::rotate</function>(model, (float)<function id='47'
 
 <p>
   And then we'll draw the cube using <fun><function id='1'>glDrawArrays</function></fun> (as we didn't specify indices), but this time with a count of 36 vertices.
+  それでは<fun><function id='1'>glDrawArrays</function></fun>により立方体を描写しましょう。今までは頂点の個数を指定しませんでしたが今回は36を指定します。
 </p>
 
 <pre class="cpp"><code>
@@ -411,6 +438,7 @@ model = <function id='57'>glm::rotate</function>(model, (float)<function id='47'
 
 <p>
   You should get something similar to the following:
+  以下のような結果が得られたでしょうか:
 </p>
 
 <div class="video paused" onclick="ClickVideo(this)">
@@ -423,19 +451,24 @@ model = <function id='57'>glm::rotate</function>(model, (float)<function id='47'
 
 <p>
   It does resemble a cube slightly but something's off. Some sides of the cubes are being drawn over other sides of the cube. This happens because when OpenGL draws your cube triangle-by-triangle, fragment by fragment, it will overwrite any pixel color that may have already been drawn there before. Since OpenGL gives no guarantee on the order of triangles rendered (within the same draw call), some triangles are drawn on top of each other even though one should clearly be in front of the other.
+  立方体のようにも見えますが、なにかが足りないようです。立方体のいくつかの面が他の面の後ろに描画されています。OpenGLはこの立方体を描画する際、各三角形を順番に、そしてフラグメントを順番に描き、先に描かれた部分を後に描かれた部分が上書きしてしまうのでこのような結果になります。単一の描画命令中に三角形をどの順番で描くのか、OpenGLは何も規定していないので、手前に描画されるべきものの上から別のものを描いてしまうことがあるのです。
 </p>
 
 <p>
   Luckily, OpenGL stores depth information in a buffer called the <def>z-buffer</def> that allows OpenGL to decide when to draw over a pixel and when not to. Using the z-buffer we can configure OpenGL to do depth-testing.
+  幸いOpenGLは深度の情報を<def>zバッファ</def>と呼ばれるバッファに保存しており、これを用いてピクセルを上書きすべきかどうか判断できます。zバッファを利用して、深度テストを行うようにOpenGLを設定できます。
 </p>
 
 <h3>Z-buffer</h3>
+<h3>zバッファ</h3>
 <p>
   OpenGL stores all its depth information in a z-buffer, also known as a <def>depth buffer</def>. GLFW automatically creates such a buffer for you (just like it has a color-buffer that stores the colors of the output image). The depth is stored within each fragment (as the fragment's <code>z</code> value) and whenever the fragment wants to output its color, OpenGL compares its depth values with the z-buffer. If the current fragment is behind the other fragment it is discarded, otherwise overwritten. This process is called <def>depth testing</def> and is done automatically by OpenGL.
+  OpenGLは深度の情報をzバッファに格納しています。zバッファは<def>深度バッファ</def>とも呼ばれます。GLFWは自動的にこのバッファを作成します。これは出力となる色の情報を格納するカラーバッファと同様です。深度情報は<code>z</code>の値として各フラグメントに保存され、フラグメントが自身の色を出力しようとする際に、OpenGLがその深度値をzバッファと比較します。そのフラグメントが他のフラグメントの後ろに隠れていればそのフラグメントは破棄され、そうでなければ上書きされます。この処理を<def>深度テスト</def>と言い、OpenGLにより自動で行われます。
 </p>
 
 <p>
   However, if we want to make sure OpenGL actually performs the depth testing we first need to tell OpenGL we want to enable depth testing; it is disabled by default. We can enable depth testing using <fun><function id='60'>glEnable</function></fun>. The <fun><function id='60'>glEnable</function></fun> and <fun>glDisable</fun> functions allow us to enable/disable certain functionality in OpenGL. That functionality is then enabled/disabled until another call is made to disable/enable it. Right now we want to enable depth testing by enabling <var>GL_DEPTH_TEST</var>:
+  しかしopenGLが確実に深度テストを行ってくれるようにするには、深度テストを有効化するように明記する必要があります。デフォルトでは無効になっている為です。<fun><function id='60'>glEnable</function></fun>を用いてこれを有効化できます。<fun><function id='60'>glEnable</function></fun>と<fun>glDisable</fun>はOpenGLの様々な機能を有効化、無効化するものです。ある機能を有効化、あるいは無効化すれば、次に明示的にそれを無効化、あるいは有効化するまでその機能は有効、あるいは無効です。今回深度テストを行いたいので、<var>GL_DEPTH_TEST</var>を有効化します:
 </p>
 
 <pre><code>
@@ -444,6 +477,7 @@ model = <function id='57'>glm::rotate</function>(model, (float)<function id='47'
 
 <p>
   Since we're using a depth buffer we also want to clear the depth buffer before each render iteration (otherwise the depth information of the previous frame stays in the buffer). Just like clearing the color buffer, we can clear the depth buffer by specifying the <var>DEPTH_BUFFER_BIT</var> bit in the <fun><function id='10'>glClear</function></fun> function:
+  深度バッファを利用するので、描画の度にそれを消去する必要があります（そうしないと前のフレームがこのバッファに残ったままになります）。カラーバッファと同様に<fun><function id='10'>glClear</function></fun>に<var>DEPTH_BUFFER_BIT</var>を渡すことで削除できます。
 </p>
 
 <pre><code>
@@ -452,6 +486,7 @@ model = <function id='57'>glm::rotate</function>(model, (float)<function id='47'
 
 <p>
   Let's re-run our program and see if OpenGL now performs depth testing:
+  それでは再びプログラムを実行し、深度テストが行われているか確認しましょう:
 </p>
 
 <div class="video paused" onclick="ClickVideo(this)">
@@ -464,17 +499,21 @@ model = <function id='57'>glm::rotate</function>(model, (float)<function id='47'
 
 <p>
   There we go! A fully textured cube with proper depth testing that rotates over time. Check the source code <a href="/code_viewer_gh.php?code=src/1.getting_started/6.2.coordinate_systems_depth/coordinate_systems_depth.cpp" target="_blank">here</a>.
+  ええやん。前面にテクスチャの施された立方体が、適切な深度テストが行われた上で時間と共に回転するようになりました。<a href="/code_viewer_gh.php?code=src/1.getting_started/6.2.coordinate_systems_depth/coordinate_systems_depth.cpp" target="_blank">ここ</a>からソースコードを確認して下さい。
 </p>
 
 
 
 <h3>More cubes!</h3>
+<h3>もっと沢山の立方体</h3>
 <p>
   Say we wanted to display 10 of our cubes on screen. Each cube will look the same but will only differ in where it's located in the world with each a different rotation. The graphical layout of the cube is already defined so we don't have to change our buffers or attribute arrays when rendering more objects. The only thing we have to change for each object is its model matrix where we transform the cubes into the world.
+  今度は10個の立方体を表示してみましょう。同じ立方体を場所と角度を変えて描画しましょう。立方体の形やテクスチャは既に定義しているので、複数の立方体を表示させるからといってバッファや属性配列を変える必要はありません。必要なのはモデル行列を各物体毎に変え、それぞれを大域空間の別の場所に座標変換することです。
 </p>
 
 <p>
   First, let's define a translation vector for each cube that specifies its position in world space. We'll define 10 cube positions in a <code>glm::vec3</code> array:
+  まずは大域空間中の各立方体の場所を示す平行移動ベクトルを定義しましょう。<code>glm::vec3</code>の配列として、10個の立方体の位置を指定します:
 </p>
 
 <pre><code>
@@ -494,6 +533,7 @@ glm::vec3 cubePositions[] = {
 
 <p>
   Now, within the render loop we want to call <fun><function id='1'>glDrawArrays</function></fun> 10 times, but this time send a different model matrix to the vertex shader each time before we send out the draw call. We will create a small loop within the render loop that renders our object 10 times with a different model matrix each time. Note that we also add a small unique rotation to each container.
+  次に描画ループの中で<fun><function id='1'>glDrawArrays</function></fun>を10回呼びます。ただし今回は描画命令の前にそれぞれ別のモデル行列を頂点シェーダーに送信します。描画ループの中で小さなループを作成し、10個の物体をそれぞれ別のモデル行列により描写します。ついでにそれぞれ別の角度だけ回転を加えましょう:
 </p>
 
 <pre><code>
@@ -512,37 +552,27 @@ for(unsigned int i = 0; i &lt; 10; i++)
 
 <p>
   This snippet of code will update the model matrix each time a new cube is drawn and do this 10 times in total. Right now we should be looking into a world filled with 10 oddly rotated cubes:
+  このコードにより新しい立方体が描画される度にモデル行列が更新されます。今回は少し回転した立方体が10個ちりばめられた世界が描画されるはずです。
 </p>
 
 <img src="/img/getting-started/coordinate_systems_multiple_objects.png" class="clean"/>
 
 <p>
   Perfect! It looks like our container found some like-minded friends. If you're stuck see if you can compare your code with the  <a href="/code_viewer_gh.php?code=src/1.getting_started/6.3.coordinate_systems_multiple/coordinate_systems_multiple.cpp" target="_blank">source code</a>.
+  完の璧です。箱が気の合う仲間を見付けたようです。どこかで詰まってしまったのであれば<a href="/code_viewer_gh.php?code=src/1.getting_started/6.3.coordinate_systems_multiple/coordinate_systems_multiple.cpp" target="_blank">ソースコード</a>と比較してください。
 </p>
 
 <h2>Exercises</h2>
+<h2>演習問題</h2>
 <ul>
   <li>Try experimenting with the <code>FoV</code> and <code>aspect-ratio</code> parameters of GLM's <code>projection</code> function. See if you can figure out how those affect the perspective frustum.</li>
+  <li>GLMの<code>projection</code>関数の<code>FoV</code>と<code>aspect-ratio</code>を色々変化させて何が起こるか実験して下さい。透視投影の視錐台にどう影響するでしょうか。</li>
   <li>Play with the view matrix by translating in several directions and see how the scene changes. Think of the view matrix as a camera object.</li>  
+  <li>視野行列を色々な方向に平行移動し、画面がどう変化するか実験して下さい。視野行列をカメラオブジェクトだと考えましょう。</li>
   <li>Try to make every 3rd container (including the 1st) rotate over time, while leaving the other containers static using just the model matrix: <a href="/code_viewer_gh.php?code=src/1.getting_started/6.4.coordinate_systems_exercise3/coordinate_systems_exercise3.cpp" target="_blank">solution</a>.</li>
+  <li>モデル行列だけを利用し、1つ目の箱を含み3つおきの箱を時間と共に回転させて下さい。他の箱は固定したままにして下さい: <a href="/code_viewer_gh.php?code=src/1.getting_started/6.4.coordinate_systems_exercise3/coordinate_systems_exercise3.cpp" target="_blank">解答</a>。</li>
 </ul>       
 
     </div>
-    
-    <div id="hover">
-        HI
-    </div>
-   <!-- 728x90/320x50 sticky footer -->
-<div id="waldo-tag-6196"></div>
-
-   <div id="disqus_thread"></div>
-
-    
-
-
-</div> <!-- container div -->
-
-
-</div> <!-- super container div -->
 </body>
 </html>

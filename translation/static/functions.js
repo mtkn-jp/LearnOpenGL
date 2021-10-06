@@ -3,4 +3,5 @@ function ClickVideo(video){
 		video.children[0].play();
 	else
 		video.children[0].pause();
+	video.classList.toggle("paused");
 }
