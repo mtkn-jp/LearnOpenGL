@@ -64,11 +64,14 @@ glm::vec3 cameraDirection = glm::normalize(cameraPos - cameraTarget);
 
 <warning>
   The name <em>direction</em> vector is not the best chosen name, since it is actually pointing in the reverse direction of what it is targeting.
+  <em>direction（方向）</em>というのは最良の名前とは言えません。このベクトルは実際にはカメラの向いているのと逆方向のベクトルだからです。
 </warning>
 
 <h3>3. Right axis</h3>
+<h3>3. 右方向の軸</h3>
 <p>
   The next vector that we need is a <em>right</em> vector that represents the positive x-axis of the camera space. To get the <em>right</em> vector we use a little trick by first specifying an <em>up</em> vector that points upwards (in world space). Then we do a cross product on the up vector and the direction vector from step 2. Since the result of a cross product is a vector perpendicular to both vectors, we will get a vector that points in the positive x-axis's direction (if we would switch the cross product order we'd get a vector that points in the negative x-axis): 
+  次に必要なベクトルは<em>右方向</em>のベクトルです。このベクトルはカメラ空間のx軸正の方向を表わすものです。<em>右方向</em>のベクトルを得る為に少し技巧的なことをします。まず大域空間において<em>上向き</em>のベクトルを取り、このベクトルと、2段階目に作成した方向ベクトルの外積を取ります。外積の結果得られるベクトルは両方のベクトルに直交するので、この計算によりx軸正の方向を向いたベクトルが得られるのです（外積の掛ける順番を逆にするとベクトルはx軸負の方向を向きます）。
 </p>
 
 <pre><code>
@@ -77,8 +80,10 @@ glm::vec3 cameraRight = glm::normalize(<function id='61'>glm::cross</function>(u
 </code></pre>
 
 <h3>4. Up axis</h3>
+<h3>4. 上方向の軸</h3>
 <p>
   Now that we have both the x-axis vector and the z-axis vector, retrieving the vector that points to the camera's positive y-axis is relatively easy: we take the cross product of the right and direction vector:
+  ここまででx軸とz軸のベクトルが得られたので、カメラの座標系におけるy軸正の方向のベクトルを計算するのは簡単です。右方向のベクトルとカメラの向いている方向のベクトルの外積を取ればいいのです:
 </p>
 
 <pre><code>
@@ -87,6 +92,7 @@ glm::vec3 cameraUp = <function id='61'>glm::cross</function>(cameraDirection, ca
 
 <p>
 	With the help of the cross product and a few tricks we were able to create all the vectors that form the view/camera space. For the more mathematically inclined readers, this process is known as the <a href="http://en.wikipedia.org/wiki/Gram%E2%80%93Schmidt_process" target="_blank">Gram-Schmidt</a> process in linear algebra. Using these camera vectors we can now create a <def>LookAt</def> matrix that proves very useful for creating a camera.
+	外積により視野空間を形成するベクトルを全て取得できました。この手法は<a href="http://en.wikipedia.org/wiki/Gram%E2%80%93Schmidt_process" target="_blank">グラム・シュミットの正規直交化法</a>と言います。数学に傾倒した人はご自身で調べてみて下さい。これらのカメラに関するベクトルを利用することで、<def>視点行列（LookAt Matrix）</def>を作成できます。この行列はカメラを作成する上で非常に便利なものです。
 </p>
 
 <h2>Look At</h2>
