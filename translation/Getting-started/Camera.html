@@ -121,11 +121,12 @@ view = <function id='62'>glm::lookAt</function>(glm::vec3(0.0f, 0.0f, 3.0f),
 
 <p>
   The <fun><function id='62'>glm::LookAt</function></fun> function requires a position, target and up vector respectively. This example creates a view matrix that is the same as the one we created in the previous chapter.
-
+<fun><function id='62'>glm::LookAt</function></fun>には位置、視点、上のベクトルを渡します。この例では前章で作成したものと同じ視野行列を作成しています。
 </p>
 
 <p>
   Before delving into user input, let's get a little funky first by rotating the camera around our scene. We keep the target of the scene at <code>(0,0,0)</code>. We use a little bit of trigonometry to create an <code>x</code> and <code>z</code> coordinate each frame that represents a point on a circle and we'll use these for our camera position. By re-calculating the <code>x</code> and <code>y</code> coordinate over time we're traversing all the points in a circle and thus the camera rotates around the scene. We enlarge this circle by a pre-defined <var>radius</var> and create a new view matrix each frame using GLFW's <fun><function id='47'>glfwGetTime</function></fun> function:
+  ユーザーからの入力に話を進める前に、少しイケたことをしてみましょう。カメラの視点を<code>(0, 0, 0)</code>に固定して、その周りで回転させてみます。三角関数を利用して各フレームに対してxz平面における円周上の点を求め、それをカメラの位置として利用します。<code>x</code>座標と<code>z</code>座標をフレーム毎に計算しなおすことで円周上をカメラが移動して行き、回転しているように見えます。あらかじめ定義しておいた<var>radius</var>という変数を用いてこの円周を大きくし、<fun><function id='47'>glfwGetTime</function></fun>を用いてフレーム毎に新しい視野行列を作成します:
 </p>
 
 <pre><code>
@@ -138,6 +139,7 @@ view = <function id='62'>glm::lookAt</function>(glm::vec3(camX, 0.0, camZ), glm:
 
 <p>
   If you run this code you should get something like this:
+  このコードを実行すると以下のようなものが得られます:
 </p>
 
 <div class="video paused" onclick="ClickVideo(this)">
@@ -149,11 +151,14 @@ view = <function id='62'>glm::lookAt</function>(glm::vec3(camX, 0.0, camZ), glm:
 
 <p>
   With this little snippet of code the camera now circles around the scene over time. Feel free to experiment with the radius and position/direction parameters to get the feel of how this <em>LookAt</em> matrix works. Also, check the  <a href="/code_viewer_gh.php?code=src/1.getting_started/7.1.camera_circle/camera_circle.cpp" target="_blank">source code</a> if you're stuck.
+  このちょっとしたコードで、時間と共にカメラを回転させることができました。半径や位置、方向等の変数を変化させてみて下さい。<em>視点行列</em>の働きが掴めるはずです。また、どこかで詰まった場合は<a href="/code_viewer_gh.php?code=src/1.getting_started/7.1.camera_circle/camera_circle.cpp" target="_blank">ソースコード</a>を確認して下さい。
 </p>
 
 <h1>Walk around</h1>
+<h1>歩き回る</h1>
 <p>
   Swinging the camera around a scene is fun, but it's more fun to do all the movement ourselves! First we need to set up a camera system, so it is useful to define some camera variables at the top of our program:
+  カメラが動くのは楽しいものですが、それを自分自身で行なえたらもっと楽しいでしょう。まずカメラの座標系を設定しなければなりませんが、その為にカメラに関する変数をいくつかプログラムの冒頭に定義しておくのが便利です:
 </p>
 
 <pre><code>
@@ -164,6 +169,7 @@ glm::vec3 cameraUp    = glm::vec3(0.0f, 1.0f,  0.0f);
 
 <p>
   The <code>LookAt</code> function now becomes:
+  これらを用いると<code>LookAt</code>関数は以下のようになります:
 </p>
 
 <pre><code>
@@ -172,10 +178,12 @@ view = <function id='62'>glm::lookAt</function>(cameraPos, cameraPos + cameraFro
 
 <p>
   First we set the camera position to the previously defined <var>cameraPos</var>. The direction is the current position + the direction vector we just defined. This ensures that however we move, the camera keeps looking at the target direction. Let's play a bit with these variables by updating the <var>cameraPos</var> vector when we press some keys.
+  まず初めに先程定義した<var>cameraPos</var>を用いてカメラの位置を設定します。方向は現在の位置ベクトルにカメラの方向ベクトルを足したものです。こうすることでカメラがどのように動いても同じ点を見続けるようになります。これを少し面白くするために、特定のキーを押下した時に<var>cameraPos</var>を変更するようにしてみましょう:
 </p>
 
 <p>
   We already defined a <fun>processInput</fun> function to manage GLFW's keyboard input so let's add a few extra key commands:
+  GLFWのキーボーッド入力を処理する為に<fun>processInput</fun>という関数を既に定義していました。これに他のキーの処理を追加します:
 </p>
 
 <pre><code>
@@ -196,22 +204,29 @@ void processInput(GLFWwindow *window)
 
 <p>
   Whenever we press one of the <code>WASD</code> keys, the camera's position is updated accordingly. If we want to move forward or backwards we add or subtract the direction vector from the position vector scaled by some speed value. If we want to move sideways we do a cross product to create a <em>right</em> vector and we move along the right vector accordingly. This creates the familiar <def>strafe</def> effect when using the camera. 
+  <code>WASD</code>のいずれかのキーを押すと、押したキーに応じてカメラの位置が更新されます。前進あるいは後退したい時はカメラの向きのベクトルに速度の値を掛けたものをカメラの位置ベクトルに加え、あるいは引きます。横に移動したければ外積を取って<em>右方向</em>のベクトルを作り、その方向に移動します。この処理により、<def>機銃掃射（strafe）</def>効果が得られます。これは一点を見つめたまま横に移動するというもののようです。
 </p>
 
 <note>
   Note that we normalize the resulting <em>right</em> vector. If we wouldn't normalize this vector, the resulting cross product may return differently sized vectors based on the <var>cameraFront</var> variable. If we would not normalize the vector we would move slow or fast based on the camera's orientation instead of at a consistent movement speed.
+  <em>右方向</em>のベクトルを正規化していることに注意して下さい。こうしないと外積の結果得られるベクトルの大きさが違ってしまします。カメラの向きによって移動速度が大きくなったり小さくなったりして一定しません。
 </note>
 
 <p>
   By now, you should already be able to move the camera somewhat, albeit at a speed that's system-specific so you may need to adjust <var>cameraSpeed</var>.
+  ここまでで既にカメラを移動することはできるようになりました。とは言えその速度はシステムによって異なりますので、<var>cameraSpeed</var>を調整しないといけません。
+</p>
 
 <h2>Movement speed</h2>
+<h2>移動速度</h2>
 <p>
   Currently we used a constant value for movement speed when walking around. In theory this seems fine, but in practice people's machines have different processing powers and the result of that is that some people are able to render much more frames than others each second. Whenever a user renders more frames than another user he also calls <fun>processInput</fun> more often. The result is that some people move really fast and some really slow depending on their setup. When shipping your application you want to make sure it runs the same on all kinds of hardware.
+  現状移動速度は定数です。これでも良いように思われますが、実際はコンピュータの処理能力により1秒間に描画できるフレーム数が異なり、多くのフレームを描画できるコンピュータではそれだけ多く<fun>processInput</fun>が呼ばれるので、移動速度がコンピュータによりまちまちになってしまいます。アプリケーションを配布するなら、どのようなハードウェアにおいても同じように実行されるのが好ましいでしょう。
 </p>
 
 <p>
   Graphics applications and games usually keep track of a <def>deltatime</def> variable that stores the time it took to render the last frame. We then multiply all velocities with this <var>deltaTime</var> value. The result is that when we have a large <var>deltaTime</var> in a frame, meaning that the last frame took longer than average, the velocity for that frame will also be a bit higher to balance it all out. When using this approach it does not matter if you have a very fast or slow pc, the velocity of the camera will be balanced out accordingly so each user will have the same experience.
+  グラフィックスを利用するアプリケーションやゲームは、通常<def>
 </p>
 
 <p>
