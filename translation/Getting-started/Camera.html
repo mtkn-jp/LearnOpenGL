@@ -226,20 +226,24 @@ void processInput(GLFWwindow *window)
 
 <p>
   Graphics applications and games usually keep track of a <def>deltatime</def> variable that stores the time it took to render the last frame. We then multiply all velocities with this <var>deltaTime</var> value. The result is that when we have a large <var>deltaTime</var> in a frame, meaning that the last frame took longer than average, the velocity for that frame will also be a bit higher to balance it all out. When using this approach it does not matter if you have a very fast or slow pc, the velocity of the camera will be balanced out accordingly so each user will have the same experience.
-  グラフィックスを利用するアプリケーションやゲームは、通常<def>
+  グラフィックスを利用するアプリケーションやゲームは、通常直前のフレームの描画にかかった時間である<def>差分時間（deltatime）</def>という変数を追跡しています。ここではこの<var>deltaTime</var>の値を速度に掛け合せます。そうすることで直前のフレームの描画に長い時間かかり、<var>deltaTime</var>が大きくなった場合、そのフレームでの速度も大きくなり、描画時間の差が均されます。この方法によりPCの処理速度に関わらずカメラの速度が一定に保たれ、同じような体験が得られます。
 </p>
 
 <p>
   To calculate the <var>deltaTime</var> value we keep track of 2 global variables:
+  <var>deltaTime</var>の値を計算する為に2つの大域変数を追跡します:
 </p>
 
 <pre><code>
 float deltaTime = 0.0f;	// Time between current frame and last frame
+float deltaTime = 0.0f;	// 直前のフレームと現在のフレームの間の時間
 float lastFrame = 0.0f; // Time of last frame
+float lastFrame = 0.0f; // 直前のフレームの時刻
 </code></pre>
 
 <p>
   Within each frame we then calculate the new <var>deltaTime</var> value for later use:
+  各フレームにおいて<var>deltaTime</var>を計算して後の利用に備えます:
 </p>
 
 <pre><code>
@@ -250,6 +254,7 @@ lastFrame = currentFrame;
 
 <p>
   Now that we have <var>deltaTime</var> we can take it into account when calculating the velocities:
+  <var>deltaTime</var>が得られたので速度の計算に組込みます:
 </p>
 
 <pre><code>
@@ -262,6 +267,7 @@ void processInput(GLFWwindow *window)
 
 <p>
   Since we're using <var>deltaTime</var> the camera will now move at a constant speed of <code>2.5</code> units per second. Together with the previous section we should now have a much smoother and more consistent camera system for moving around the scene:
+  <var>deltaTime</var>を使っているのでカメラは秒速<code>2.5</code>というような一定の速度では動きません。前節で作成したものと合わせると、よりなめらかで一定の動きでカメラを移動できるようになります:
 </p>
 
 <div class="video paused" onclick="ClickVideo(this)">
@@ -273,63 +279,78 @@ void processInput(GLFWwindow *window)
 
 <p>
   And now we have a camera that walks and looks equally fast on any system. Again, check the  <a href="/code_viewer_gh.php?code=src/1.getting_started/7.2.camera_keyboard_dt/camera_keyboard_dt.cpp" target="_blank">source code</a> if you're stuck. We'll see the <var>deltaTime</var> value frequently return with anything movement related.
+  これにてどんなシステム上でも同じように動き回れるカメラの実装が完了しました。どこかで詰まったら<a href="/code_viewer_gh.php?code=src/1.getting_started/7.2.camera_keyboard_dt/camera_keyboard_dt.cpp" target="_blank">ソースコード</a>を確認して下さい。以降においてもなんらかの動きを作成する場合、<var>deltaTime</var>をしばしば利用することになります。
 </p>
 
 <h1>Look around</h1>
+<h1>視点の移動</h1>
 <p>
   Only using the keyboard keys to move around isn't that interesting. Especially since we can't turn around making the movement rather restricted. That's where the mouse comes in!
+  キーボードの入力により動き回るだけではそんなに面白くありません。カメラの向きを変更できない為に動きが制限されているからです。そこでマウスの登場です。
 </p>
 
 <p>
   To look around the scene we have to change the <var>cameraFront</var> vector based on the input of the mouse. However, changing the direction vector based on mouse rotations is a little complicated and requires some trigonometry. If you do not understand the trigonometry, don't worry, you can just skip to the code sections and paste them in your code; you can always come back later if you want to know more.
+  あちこち見て回るにはマウスからの入力に応じて<var>cameraFront</var>を変更する必要があります。しかしマウスの回転に応じて方向ベクトルを変化させるのは少し煩雑で、三角関数が必要です。三角関数を知らない人も心配は不要です。コードの章まで読み飛してコピペして下さい。内容を知りたくなった時に戻って来れば結構です。
 </p>
 
 <h2>Euler angles</h2>
+<h2>オイラー角</h2>
 <p>
   Euler angles are 3 values that can represent any rotation in 3D, defined by Leonhard Euler somewhere in the 1700s. There are 3 Euler angles: <em>pitch</em>, <em>yaw</em> and <em>roll</em>. The following image gives them a visual meaning:
+  オイラー角は3次元空間における任意の角度を表わすことができる3つの値です。1700年代にレオンハルト・オイラーによって定義されました。オイラー角を構成する3つの角はそれぞれ<em>仰角</em>、<em>方位角</em>、<em>傾斜角</em>です。これらの角を図示すると以下のようになります:
 </p>
 
 <img src="/img/getting-started/camera_pitch_yaw_roll.png" alt="Euler angles yaw pitch and roll" class="clean"/>
 
 <p>
   The <def>pitch</def> is the angle that depicts how much we're looking up or down as seen in the first image. The second image shows the <def>yaw</def> value which represents the magnitude we're looking to the left or to the right. The <def>roll</def> represents how much we <em>roll</em> as mostly used in space-flight cameras. Each of the Euler angles are represented by a single value and with the combination of all 3 of them we can calculate any rotation vector in 3D.
+  <def>仰角（pitch）</def>は1つ目の図の通り、どのくらい見上げているか、あるいは見下げているかを表わします。<def>方位角</def>は2つ目の図の通り、左右の角度です。<def>傾斜角</def>はどのくらい<em>傾いている</em>かを表わし、特に空間中を飛んでいるカメラのようなものに利用されます。これら3つの角の組み合わせにより3次元空間上の任意の回転を表わせます。
 </p>
 
 <p>
   For our camera system we only care about the yaw and pitch values so we won't discuss the roll value here. Given a pitch and a yaw value we can convert them into a 3D vector that represents a new direction vector. The process of converting yaw and pitch values to a direction vector requires a bit of trigonometry. and we start with a basic case:
+  これから作成するカメラにおいては仰角と方位角のみを考えますので、傾斜角については議論しません。仰角と方位角が与えられると、その方向を向いた3次元のベクトルを作成できます。仰角と方位角の値を方向ベクトルに変換するために、三角関数の知識が必要です。まずは基本的な場合から始めましょう:
 </p>
   
 <p>
   Let's start with a bit of a refresher and check the general right triangle case (with one side at a 90 degree angle):
+  復習の意味も兼ねて、一般的な直角三角形を用いて説明します:
 
 <img src="/img/getting-started/camera_triangle.png" class="clean"/>
 
 <p>
   If we define the hypotenuse to be of length <code>1</code> we know from trigonometry (soh cah toa) that the adjacant side's length is \(\cos \ \color{red}x/\color{purple}h = \cos \ \color{red}x/\color{purple}1 = \cos\ \color{red}x\) and that the opposing side's length is \(\sin \ \color{green}y/\color{purple}h = \sin \ \color{green}y/\color{purple}1 = \sin\ \color{green}y\).  This gives us some general formulas for retrieving the length in both the <code>x</code> and <code>y</code> sides on right triangles, depending on the given angle. Let's use this to calculate the components of the direction vector.
+  斜辺の長さを<code>1</code>とした場合、三角関数を使うと、底辺の長さは\(\cos \ \color{red}x/\color{purple}h = \cos \ \color{red}x/\color{purple}1 = \cos\ \color{red}x\)、高さは\(\sin \ \color{green}y/\color{purple}h = \sin \ \color{green}y/\color{purple}1 = \sin\ \color{green}y\)となります。
 </p>
   
 <p>
   Let's imagine this same triangle, but now looking at it from a top perspective with the adjacent and opposite sides being parallel to the scene's x and z axis (as if looking down the y-axis). 
+  これと同じ三角形を空間上で考えましょう。座標空間を上から見下ろし、三角形の底辺と対辺をそれぞれ空間のx軸とz軸に平行になるように置きます。
 </p>
   
 <img src="/img/getting-started/camera_yaw.png" class="clean"/>
 
 <p>
   If we visualize the yaw angle to be the counter-clockwise angle starting from the <code>x</code> side we can see that the length of the <code>x</code> side relates to <code>cos(yaw)</code>. And similarly how the length of the <code>z</code> side relates to <code>sin(yaw)</code>. 
+  方位角を<code>x</code>軸から反時計回りの角度として定義すると、<code>x</code>軸の辺の長さは<code>cos(yaw)</code>となり、同様に<code>z</code>軸の辺は<code>sin(yaw)</code>となります。
 </p>  
   
 <p>
   If we take this knowledge and a given <code>yaw</code> value we can use it to create a camera direction vector:
+  このことを用いると、<code>yaw</code>の値から以下のようにカメラの方向ベクトルを作成できます:
 </p>
   
 <pre><code>
 glm::vec3 direction;
 direction.x = cos(<function id='63'>glm::radians</function>(yaw)); // Note that we convert the angle to radians first
+direction.x = cos(<function id='63'>glm::radians</function>(yaw)); // 角度の値をラジアンに変換していることに注意
 direction.z = sin(<function id='63'>glm::radians</function>(yaw));
 </code></pre>
   
 <p>
   This solves how we can get a 3D direction vector from a yaw value, but pitch needs to be included as well. Let's now look at the <code>y</code> axis side as if we're sitting on the <code>xz</code> plane: 
+  これで方位角から3次元の方向ベクトルを得られますが、これに加えて仰角も考慮する必要があります。今度は<code>xz</code>平面から<code>y</code>軸を眺めてみましょう:
 </p>
   
 
@@ -337,6 +358,7 @@ direction.z = sin(<function id='63'>glm::radians</function>(yaw));
 
 <p>
   Similarly, from this triangle we can see that the direction's y component equals <code>sin(pitch)</code> so let's fill that in:
+  同様にしてこの三角形から、方向ベクトルのy要素は<code>sin(pitch)</code>となります:
 </p>
   
   
@@ -346,6 +368,7 @@ direction.y = sin(<function id='63'>glm::radians</function>(pitch));
     
 <p>
   However, from the pitch triangle we can also see the <code>xz</code> sides are influenced by <code>cos(pitch)</code> so we need to make sure this is also part of the direction vector. With this included we get the final direction vector as translated from yaw and pitch Euler angles:
+  加えてこの仰角を表わす三角形から<code>xz</code>平面の成分は<code>cos(pitch)</code>となるので、これを方向ベクトルに組込む必要があります。以上を踏まえると方向ベクトルは以下のようになります:
 </p>
   
 <pre><code>
@@ -356,10 +379,12 @@ direction.z = sin(<function id='63'>glm::radians</function>(yaw)) * cos(<functio
   
 <p>
   This gives us a formula to convert yaw and pitch values to a 3-dimensional direction vector that we can use for looking around. 
+  これが仰角と方位角を、3次元の方向ベクトルに変換する公式です。このベクトルをカメラの視線として利用できます。
 </p>
   
 <p>
   We've set up the scene world so everything's positioned in the direction of the negative z-axis. However, if we look at the <code>x</code> and <code>z</code> yaw triangle we see that a \(\theta\) of <code>0</code> results in the camera's <code>direction</code> vector to point towards the positive x-axis. To make sure the camera points towards the negative z-axis by default we can give the <code>yaw</code> a default value of a 90 degree clockwise rotation. Positive degrees rotate counter-clockwise so we set the default <code>yaw</code> value to:
+  以前設定した空間において、全ての物体はz軸が負の位置に置かれていました。しかし<code>xz</code>平面における方位角を表わす三角形を見ると、\(\theta\)が<code>0</code>である場合カメラの<code>direction</code>ベクトルがx軸正の方向を向くことが分かります。初期段階においてカメラがz軸負の方向を見るようにするために、<code>yaw</code>の初期値を時計回りに90度回転させるべきです。正の値は反時計回りの回転を表わすので、<code>yaw</code>の初期値は以下のように設定します:
 </p>
   
 <pre><code>
@@ -367,18 +392,21 @@ yaw = -90.0f;
 </code></pre>
   
 <p>
-  
     You've probably wondered by now: how do we set and modify these yaw and pitch values?
+	それではどのようにしてこの仰角と方位角を更新すればよいでしょうか。
 </p>
 
 
 <h2>Mouse input</h2>
+<h2>マウスからの入力</h2>
 <p>
   The yaw and pitch values are obtained from mouse (or controller/joystick) movement where horizontal mouse-movement affects the yaw and vertical mouse-movement affects the pitch. The idea is to store the last frame's mouse positions and calculate in the current frame how much the mouse values changed. The higher the horizontal or vertical difference, the more we update the pitch or yaw value and thus the more the camera should move. 
+  方位角と仰角の値はマウス（あるいはコントローラ、ジョイスティック等）の動きから得ます。マウスの水平方向の移動により方位角を、垂直方向の移動により仰角を変更するようにします。直前のフレームにおけるマウスの位置を保存しておいて、現在のフレームにおけるマウスの位置との差を計算します。水平方向や垂直方向の動きが大きいほど、方位角や仰角の変化量も大きくなるようにし、カメラも大きく動かされるようにしましょう。
 </p>
 
 <p>
   First we will tell GLFW that it should hide the cursor and <def>capture</def> it. Capturing a cursor means that, once the application has focus, the mouse cursor stays within the center of the window (unless the application loses focus or quits). We can do this with one simple configuration call:
+  まずはGLFWがカーソルを<def>キャプチャ</def>し非表示にするようにします。カーソルのキャプチャとはアプリケーションにフォーカスしたらマウスのカーソルを（別のアプリケーションにフォーカスが移るか、このアプリケーションが終了するまで）ウィンドウの中央に固定しておくことを言います。これは1つの簡単な設定により実行できます:
 </p>
 
 <pre><code>
@@ -387,10 +415,12 @@ glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
 <p>
   After this call, wherever we move the mouse it won't be visible and it should not leave the window. This is perfect for an FPS camera system.
+  この関数を実行することで、マウスを動かしても表示されず、ウィンドウの外に出ることもなくなります。FPSのカメラには最適です。
 </p>
 
 <p>
 To calculate the pitch and yaw values we need to tell GLFW to listen to mouse-movement events. We do this by creating a callback function with the following prototype:
+仰角と方位角を計算する為、GLFWにマウスのイベントを監視させる必要があります。その為に以下のようなプロトタイプのコールバック関数を定義します:
 </p>
 
 <pre><code>
@@ -399,6 +429,7 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 
 <p>
   Here <var>xpos</var> and <var>ypos</var> represent the current mouse positions. As soon as we register the callback function with GLFW each time the mouse moves, the <fun>mouse_callback</fun> function is called:
+  ここで、<var>xpos</var>と<var>ypos</var>は現在のマウスの位置を表わします。この関数をGLFWにコールバックとして登録すれば、マウスが動く度に<fun>mouse_callback</fun>が呼ばれます:
 </p>
 
 <pre><code>
@@ -407,6 +438,7 @@ glfwSetCursorPosCallback(window, mouse_callback);
 
 <p>
   When handling mouse input for a fly style camera there are several steps we have to take  before we're able to fully calculate the camera's direction vector:
+  マウスの入力により飛行型のカメラを操作する場合、実際にカメラの方向ベクトルを計算する上で以下の手順を踏まなければいけません:
   
   <ol>
     <li>Calculate the mouse's offset since the last frame.</li>
