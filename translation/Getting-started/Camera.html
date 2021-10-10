@@ -442,14 +442,19 @@ glfwSetCursorPosCallback(window, mouse_callback);
   
   <ol>
     <li>Calculate the mouse's offset since the last frame.</li>
+	<li>直前のフレームからのマウスの移動量を計算。</li>
     <li>Add the offset values to the camera's yaw and pitch values.</li>
+	<li>その移動量をカメラの方位角と仰角に加算。</li>
     <li>Add some constraints to the minimum/maximum pitch values.</li>
+	<li>仰角をある範囲に制限。</li>
     <li>Calculate the direction vector.</li>
+	<li>方向ベクトルを計算。</li>
   </ol>
 </p>
 
 <p>
   The first step is to calculate the offset of the mouse since last frame. We first have to store the last mouse positions in the application, which we initialize to be in the center of the screen (screen size is <code>800</code> by <code>600</code>) initially:
+  最初の作業は直近のフレームからのマウスの移動量を計算することです。まず直前のマウスの位置をアプリケーションに保存します。この変数の初期値は画面の中心にしておきます（画面の大きさは<code>800x600</code>です）。
 </p>
 
 <pre class="cpp"><code>
@@ -458,11 +463,13 @@ float lastX = 400, lastY = 300;
 
 <p>
   Then in the mouse's callback function we calculate the offset movement between the last and current frame:
+  次にマウスのコールバック関数内で直前のフレームからの移動量を計算します:
 </p>
 
 <pre><code>
 float xoffset = xpos - lastX;
 float yoffset = lastY - ypos; // reversed since y-coordinates range from bottom to top
+float yoffset = lastY - ypos; // y座標は下から上へ増加するのでx座標とは逆
 lastX = xpos;
 lastY = ypos;
 
@@ -473,10 +480,12 @@ yoffset *= sensitivity;
 
 <p>
   Note that we multiply the offset values by a <var>sensitivity</var> value. If we omit this multiplication the mouse movement would be way too strong; fiddle around with the sensitivity value to your liking.
+	<var>sensitivity</var>（感度）を移動量の値に掛けていることに注意して下さい。これをしないとマウスによる動きが速すぎるかと思います。感度を変化させて好みの値を探って下さい。
 </p>
 
 <p>
   Next we add the offset values to the globally declared <var>pitch</var> and <var>yaw</var> values:
+  続いて大域的に宣言されている<var>pitch</var>と<var>yaw</var>に加算します:
 </p>
 
 <pre><code>
@@ -486,6 +495,7 @@ pitch += yoffset;
 
 <p>
   In the third step we'd like to add some constraints to the camera so users won't be able to make weird camera movements (also causes a LookAt flip once direction vector is parallel to the world up direction). The pitch needs to be constrained in such a way that users won't be able to look higher than <code>89</code> degrees (at <code>90</code> degrees we get the LookAt flip) and also not below <code>-89</code> degrees. This ensures the user will be able to look up to the sky or below to his feet but not further. The constraints work by replacing the Euler value with its constraint value whenever it breaches the constraint:
+  3つ目の作業はカメラの動く範囲に制限を加え、ユーザーがおかしなカメラの動きをできないようにすることです。カメラの方向ベクトルが大域空間の上向きのベクトルと平行になった時に視線がひっくり返るのです。すなわち仰角が<code>90</code>度になると視線の反転が起こるので、この角を<code>89</code>度以下、そして<code>-89</code>度以上に制限します。こうすることでユーザーは空を見上げたり足元を見下げたりはできますがそれ以上はできなくなります。このような制限は、この角が制限を越えたときに制限の最大値あるいは最小値に置き換えることで実現できます:
 </p>
 
 <pre><code>
@@ -497,10 +507,12 @@ if(pitch &lt; -89.0f)
 
 <p>
   Note that we set no constraint on the yaw value since we don't want to constrain the user in horizontal rotation. However, it's just as easy to add a constraint to the yaw as well if you feel like it.
+  ここでは水平方向のカメラの動きに制限を設けたくないので、方位角の値には制限をかけません。しかし必要であれば仰角と同様の方法で制限することができます。
 </p>
 
 <p>
   The fourth and last step is to calculate the actual direction vector using the formula from the previous section:
+  最後の作業は方向ベクトルを前章の公式から計算することです:
 </p>
 
 <pre><code>
@@ -513,6 +525,7 @@ cameraFront = glm::normalize(direction);
   
   <p>
     This computed direction vector then contains all the rotations calculated from the mouse's movement. Since the <var>cameraFront</var> vector is already included in glm's <fun>lookAt</fun> function we're set to go.
+	この計算によりマウスの動きを加味した方向ベクトルが得られます。
 </p>
 
 <p>
