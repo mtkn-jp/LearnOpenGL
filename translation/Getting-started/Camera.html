@@ -525,11 +525,12 @@ cameraFront = glm::normalize(direction);
   
   <p>
     This computed direction vector then contains all the rotations calculated from the mouse's movement. Since the <var>cameraFront</var> vector is already included in glm's <fun>lookAt</fun> function we're set to go.
-	この計算によりマウスの動きを加味した方向ベクトルが得られます。
+	この計算によりマウスの動きを加味した方向ベクトルが得られます。<var>cameraFront</var>ベクトルは既にglmの<fun>lookAt</fun>関数に含まれているので、これで準備完了です。
 </p>
 
 <p>
   If you'd now run the code you'll notice the camera makes a large sudden jump whenever the window first receives focus of your mouse cursor. The cause for this sudden jump is that as soon as your cursor enters the window the mouse callback function is called with an <var>xpos</var> and <var>ypos</var> position equal to the location your mouse entered the screen from. This is often a position that is significantly far away from the center of the screen, resulting in large offsets and thus a large movement jump. We can circumvent this issue by defining a global <code>bool</code> variable to check if this is the first time we receive mouse input. If it is the first time, we update the initial mouse positions to the new <var>xpos</var> and <code>ypos</code> values. The resulting mouse movements will then use the newly entered mouse's position coordinates to calculate the offsets:
+  現段階でのコードを実行すると最初にウィンドウにマウスのカーソルでフォーカスした際にカメラの視点が大きく移動することに気付くでしょう。マウスのカーソルがウィンドウに入った時にマウスのコールバック関数が呼ばれますがこの時引数として渡される<var>xpos</var>と<var>ypos</var>がその時のカーソルの位置であり、ウィンドウの中心からは大きく離れているため、中心から大きく移動したものと見做され、結果としてカメラの大きな移動になります。この問題に対処する為に、マウスからの入力を受けとるのが初めてかどうかを保存した大域的な真偽値の変数を定義します。マウスからの最初の入力があった場合、マウスの初期位置を引数として渡された<var>xpos</var>と<var>ypos</var>に変更します。そうするとマウスの移動量の計算に新しく入力されたマウスの位置が利用されるようになります:
 </p>
 
 <pre><code>
@@ -582,6 +583,7 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 
 <p>
   There we go! Give it a spin and you'll see that we can now freely move through our 3D scene! 
+
 </p>
 
 
