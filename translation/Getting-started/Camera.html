@@ -583,13 +583,15 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 
 <p>
   There we go! Give it a spin and you'll see that we can now freely move through our 3D scene! 
-
+これで完成です。コードを実行して3次元空間を自由に動き回れるか確認してみましょう。
 </p>
 
 
 <h2>Zoom</h2>
+<h2>拡大</h2>
 <p>
   As a little extra to the camera system we'll also implement a zooming interface. In the previous chapter we said the <em>Field of view</em> or <em>fov</em> largely defines how much we can see of the scene. When the field of view becomes smaller, the scene's projected space gets smaller. This smaller space is projected over the same NDC, giving the illusion of zooming in. To zoom in, we're going to use the mouse's scroll wheel. Similar to mouse movement and keyboard input we have a callback function for mouse scrolling:
+  最後におまけとしてカメラに拡大機能を実装してみましょう。前章において、<em>視野角（fov）</em>が画面上で見える範囲を主に規定することをお話ししました。視野角が小さくなると空間の中で射影される範囲が小さくなります。範囲が狭くなった空間もそれまでと同じ大きさのNDCに投影されるので、結果として拡大したように見えます。ここでは拡大の操作をするためにマウスのホイールを利用しましょう。マウスの動きやキーボードの入力の時と同様に、マウスのスクロールに対してもコールバック関数を定義します。
 </p>
 
 <pre><code>
@@ -605,10 +607,12 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 
 <p>
   When scrolling, the <var>yoffset</var> value tells us the amount we scrolled vertically. When the <fun>scroll_callback</fun> function is called we change the content of the globally declared <var>fov</var> variable. Since <code>45.0</code> is the default fov value we want to constrain the zoom level between <code>1.0</code> and <code> 45.0</code>.
+  スクロールすると<var>yoffset</var>の値がその時のスクロール量を保持します。<fun>scroll_callback</fun>関数が呼ばれた時に、大域的に宣言されている<var>fov</var>の値を変更するようにします。<code>45.0</code>が視野角の既定値ですが、これを<code>1.0</code>から<code>45.0</code>の間で動かせるようにしましょう。
 </p>
 
 <p>
   We now have to upload the perspective projection matrix to the GPU each frame, but this time with the <var>fov</var> variable as its field of view:
+  透視投影行列をフレーム毎に更新する必要がありますが、この時に視野角の値として<var>fov</var>を利用するようにします:
 </p>
 
 <pre><code>
@@ -617,6 +621,7 @@ projection = <function id='58'>glm::perspective</function>(<function id='63'>glm
 
 <p>
   And lastly don't forget to register the scroll callback function:
+  最後にスクロールのコールバック関数を登録するのを忘れないようにしましょう:
 </p>
 
 <pre><code>
@@ -625,6 +630,7 @@ projection = <function id='58'>glm::perspective</function>(<function id='63'>glm
 
 <p>
   And there you have it. We implemented a simple camera system that allows for free movement in a 3D environment.
+  これで完成です。3次元空間上を自由に動き回れるカメラが実装できました。
 </p>
 
 <div class="video paused" onclick="ClickVideo(this)">
@@ -636,50 +642,41 @@ projection = <function id='58'>glm::perspective</function>(<function id='63'>glm
 
 <p>
   Feel free to experiment a little and if you're stuck compare your code with the  <a href="/code_viewer_gh.php?code=src/1.getting_started/7.3.camera_mouse_zoom/camera_mouse_zoom.cpp" target="_blank">source code</a>.
+  いろいろ変更して好きに実験してみて下さい。どこかで分からなくなったらご自分のコードとこの<a href="/code_viewer_gh.php?code=src/1.getting_started/7.3.camera_mouse_zoom/camera_mouse_zoom.cpp" target="_blank">ソースコード</a>を比較して下さい。
 </p>
 
 <h1>Camera class</h1>
+<h1>カメラのクラス</h1>
 <p>
   In the upcoming chapters we'll always use a camera to easily look around the scenes and see the results from all angles. However, since the camera code can take up a significant amount of space on each chapter we'll abstract its details a little and create our own camera object that does most of the work for us with some neat little extras. Unlike the Shader chapter we won't walk you through creating the camera class, but provide you with the (fully commented) source code if you want to know the inner workings. 
+  以降の章では作成したものを様々な角度から確認するためにカメラを利用します。しかしカメラのコードは場所をとるので細かい部分を少し抽象化するためにカメラオブジェクトを作成し、コードをすっきりさせるようにします。シェーダーの章においては細かく解説しましたが今回は（コメントをたくさん付けた）ソースコードをご自身で見て内容を確認していただくことにします。
 </p>
 
 <p>
   Like the <code>Shader</code> object, we define the camera class entirely in a single header file. You can find the camera class <a href="/code_viewer_gh.php?code=includes/learnopengl/camera.h" target="_blank">here</a>; you should be able to understand the code after this chapter. It is advised to at least check the class out once as an example on how you could create your own camera system.
+  <code>Shader</code>オブジェクトと同様、カメラのクラスはひとつのヘッダファイルに記述します。<a href="/code_viewer_gh.php?code=includes/learnopengl/camera.h" target="_blank">ここ</a>でカメラクラスを確認して下さい。ここまで読み終えた方には十分理解できるはずです。一度はこのクラスの中身にさっと目を通してカメラのシステムの作成方法を確認して下さい。
 </p>
 
 <warning>
   The camera system we introduced is a fly like camera that suits most purposes and works well with Euler angles, but be careful when creating different camera systems like an FPS camera, or a flight simulation camera. Each camera system has its own tricks and quirks so be sure to read up on them. For example, this fly camera doesn't allow for pitch values higher than or equal to <code>90</code> degrees and a static up vector of <code>(0,1,0)</code> doesn't work when we take roll values into account. 
+  ここで作成したカメラは飛んでいるようなカメラで、オイラー角と共にほとんどの目的に利用できます。しかしFPSのカメラやフライトシミュレーションのカメラのような別のカメラを作成する場合は注意が必要です。角カメラにはそれぞれ独特の手法が必要なので、利用する場合はそのカメラについての解説を読むようにして下さい。例えばここで作ったカメラは仰角を<code>90</code>度以上にできませんし、また傾斜角を考慮したい場合はカメラの上方向のベクトルを<code>(0, 1, 0)</code>に保っているのは間違いです。
 </warning>
 
 <p>
   The updated version of the source code using the new camera object can be found  <a href="/code_viewer_gh.php?code=src/1.getting_started/7.4.camera_class/camera_class.cpp" target="_blank">here</a>.
+  カメラオブジェクトを利用したコードは<a href="/code_viewer_gh.php?code=src/1.getting_started/7.4.camera_class/camera_class.cpp" target="_blank">こちら</a>です。
 </p>
 
 <h2>Exercises</h2>
+<h2>演習</h2>
 <p>
   <ul>
     <li>See if you can transform the camera class in such a way that it becomes a <strong>true</strong> fps camera where you cannot fly; you can only look around while staying on the <code>xz</code> plane: <a href="/code_viewer_gh.php?code=src/1.getting_started/7.5.camera_exercise1/camera_exercise1.cpp" target="_blank">solution</a>.</li>
+	<li>カメラクラスを変更して<strong>本当の</strong>FPSのカメラを実装して下さい。すなわち周囲を見回せても<code>xz</code>平面を離れられないようにして下さい: <a href="/code_viewer_gh.php?code=src/1.getting_started/7.5.camera_exercise1/camera_exercise1.cpp" target="_blank">解答</a>。</li>
     <li>Try to create your own LookAt function where you manually create a view matrix as discussed at the start of this chapter. Replace glm's LookAt function with your own implementation and see if it still acts the same: <a href="/code_viewer_gh.php?code=src/1.getting_started/7.6.camera_exercise2/camera_exercise2.cpp" target="_blank">solution</a>.</li>
+	<li>この章の初めに紹介した視野行列を自身で作成し、それを利用してLookAt関数を実装して下さい。glmのLookAt関数を自身で作成したものに置き換え、同じように機能するか確認して下さい: <a href="/code_viewer_gh.php?code=src/1.getting_started/7.6.camera_exercise2/camera_exercise2.cpp" target="_blank">解答</a>。</li>
   </ul>
 </p>
-       
-
     </div>
-    
-    <div id="hover">
-        HI
-    </div>
-   <!-- 728x90/320x50 sticky footer -->
-<div id="waldo-tag-6196"></div>
-
-   <div id="disqus_thread"></div>
-
-    
-
-
-</div> <!-- container div -->
-
-
-</div> <!-- super container div -->
 </body>
 </html>
