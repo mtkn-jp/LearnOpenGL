@@ -36,8 +36,8 @@
 </p>
 
 <p>
-  Below you'll see 3 vectors where each vector is represented with <code>(x,y)</code> as arrows in a 2D graph. Because it is more intuitive to display vectors in 2D (rather than 3D) you can think of the 2D vectors as 3D vectors with a <code>z</code> coordinate of <code>0</code>. Since vectors represent directions, the origin of the vector does not change its value. In the graph below we can see that the vectors \(\color{red}{\bar{v}}\) and \(\color{blue}{\bar{w}}\) are equal even though their origin is different:
-  下の図は2次元の座標空間上に<code>(x, y)</code>と共に矢印で図示した3つのベクトルです。ベクトルは3次元より2次元で図示する方が直感的なので、2次元ベクトルは<code>z</code>座標が<code>0</code>である3次元ベクトルだと見做せます。ベクトルは方向を表わしたものなので、始点が変化してもベクトル自身は同じものです。下の図において2つのベクトル\(\color{red}{\bar{v}}\)と\(\color{blue}{\bar{w}}\)は始点は違いますがベクトルとしては同じものです:
+  Below you'll see 3 vectors where each vector is represented with <code>(x,y)</code> as arrows in a 2D graph. Because it is more intuitive to display vectors in 2D (rather than 3D) you can think of the 2D vectors as 3D vectors with a <code>z</code> coordinate of <code>0</code>. Since vectors represent directions, the origin of the vector does not change its value. In the graph below we can see that the vectors \({\color{red}\bar{v}}\) and \({\color{blue}\bar{w}}\) are equal even though their origin is different:
+  下の図は2次元の座標空間上に<code>(x, y)</code>と共に矢印で図示した3つのベクトルです。ベクトルは3次元より2次元で図示する方が直感的なので、2次元ベクトルは<code>z</code>座標が<code>0</code>である3次元ベクトルだと見做せます。ベクトルは方向を表わしたものなので、始点が変化してもベクトル自身は同じものです。下の図において2つのベクトル\({\color{red}\bar{v}}\)と\({\color{blue}\bar{w}}\)は始点は違いますがベクトルとしては同じものです:
 </p>
 
 <img src="/img/getting-started/vectors.png" class="clean" />
@@ -46,7 +46,7 @@
   When describing vectors mathematicians generally prefer to describe vectors as character symbols with a little bar over their head like \(\bar{v}\). Also, when displaying vectors in formulas they are generally displayed as follows:
   数学者はよく\(\bar{v}\)のように文字の上に小さな棒を書いてベクトルを表わす書き方をします。そして数式の中にベクトルを書く際は一般に以下のような形になります:
   
-  \[\bar{v} = \begin{pmatrix} \color{red}x \\ \color{green}y \\ \color{blue}z \end{pmatrix} \]
+  \[\bar{v} = \begin{pmatrix} {\color{red}x} \\ {\color{green}y} \\ {\color{blue}z} \end{pmatrix} \]
 </p>
 
 <p>
@@ -65,7 +65,7 @@
   A <def>scalar</def> is a single digit. When adding/subtracting/multiplying or dividing a vector with a scalar we simply  add/subtract/multiply or divide each element of the vector by the scalar. For addition it would look like this:
   <def>スカラ</def>というのは数字です。ベクトルに対してスカラを足す／引く／掛ける演算は単にベクトルの各要素に対してスカラを足す／引く／掛けるだけです。足し算は以下のようになります:
   
-  \[ \begin{pmatrix} \color{red}1 \\ \color{green}2 \\ \color{blue}3 \end{pmatrix} + x \rightarrow \begin{pmatrix} \color{red}1 \\ \color{green}2 \\ \color{blue}3 \end{pmatrix} + \begin{pmatrix} x \\ x \\ x \end{pmatrix}  = \begin{pmatrix} \color{red}1 + x \\ \color{green}2 + x \\ \color{blue}3 + x \end{pmatrix} \]
+  \[ \begin{pmatrix} {\color{red}1} \\ {\color{green}2} \\ {\color{blue}3} \end{pmatrix} + x \rightarrow \begin{pmatrix} {\color{red}1} \\ {\color{green}2} \\ {\color{blue}3} \end{pmatrix} + \begin{pmatrix} x \\ x \\ x \end{pmatrix}  = \begin{pmatrix} {\color{red}1} + x \\ {\color{green}2} + x \\ {\color{blue}3} + x \end{pmatrix} \]
   
   Where \(+\) can be \(+\),\(-\),\(\cdot\) or \(\div\) where \(\cdot\) is the multiplication operator. 
   \(+\)になっているところは\(+\)、\(-\)、\(\cdot\)あるいは\(\div\)が使えます。ただし\(\cdot\)は掛け算です。
@@ -77,7 +77,7 @@
   Negating a vector results in a vector in the reversed direction. A vector pointing north-east would point south-west after negation. To negate a vector we add a minus-sign to each component (you can also represent it as a scalar-vector multiplication with a scalar value of <code>-1</code>):
   ベクトルを反転させるというのはベクトルの向きを逆にするということです。北東を向いていたベクトルは反転により南西を向くようになります。ベクトルを反転させるには各要素にマイナスの記号を付ければよいです（あるいはベクトルに対して<code>-1</code>を掛けることでも反転できます）:
   
-  \[-\bar{v} = -\begin{pmatrix} \color{red}{v_x} \\ \color{blue}{v_y} \\ \color{green}{v_z} \end{pmatrix} = \begin{pmatrix} -\color{red}{v_x} \\ -\color{blue}{v_y} \\ -\color{green}{v_z} \end{pmatrix} \]
+  \[-\bar{v} = -\begin{pmatrix} {\color{red}v_x} \\ {\color{blue}v_y} \\ {\color{green}v_z} \end{pmatrix} = \begin{pmatrix} -{\color{red}v_x} \\ -{\color{blue}v_y} \\ -{\color{green}v_z} \end{pmatrix} \]
 </p>
 
 <h2>Addition and subtraction</h2>
@@ -86,7 +86,7 @@
   Addition of two vectors is defined as <def>component-wise</def> addition, that is each component of one vector is added to the same component of the other vector like so:
   2つのベクトルの足し算は<def>要素毎</def>の足し算として定義されます。つまり以下のように、一方のベクトルの各要素が他方のベクトルの同じ要素と足し合せられるということです:
   
-  \[\bar{v} = \begin{pmatrix} \color{red}1 \\ \color{green}2 \\ \color{blue}3 \end{pmatrix}, \bar{k} = \begin{pmatrix} \color{red}4 \\ \color{green}5 \\ \color{blue}6 \end{pmatrix} \rightarrow \bar{v} + \bar{k} = \begin{pmatrix} \color{red}1 + \color{red}4 \\ \color{green}2 + \color{green}5 \\ \color{blue}3 + \color{blue}6 \end{pmatrix} = \begin{pmatrix} \color{red}5 \\ \color{green}7 \\ \color{blue}9 \end{pmatrix} \]
+  \[\bar{v} = \begin{pmatrix} {\color{red}1} \\ {\color{green}2} \\ {\color{blue}3} \end{pmatrix}, \bar{k} = \begin{pmatrix} {\color{red}4} \\ {\color{green}5} \\ {\color{blue}6} \end{pmatrix} \rightarrow \bar{v} + \bar{k} = \begin{pmatrix} {\color{red}1} + {\color{red}4} \\ {\color{green}2} + {\color{green}5} \\ {\color{blue}3} + {\color{blue}6} \end{pmatrix} = \begin{pmatrix} {\color{red}5} \\ {\color{green}7} \\ {\color{blue}9} \end{pmatrix} \]
   
   Visually, it looks like this on vectors <code>v=(4,2)</code> and <code>k=(1,2)</code>, where the second vector is added on top of the first vector's end to find the end point of the resulting vector (head-to-tail method):
   視覚的には以下の図のように、2つのベクトル<code>v=(4, 2)</code>と<code>k=(1, 2)</code>を足す場合、2つ目のベクトルが1つ目のベクトルの終点から始まり、結果として足し合せられたベクトルは1つ目のベクトルの始点から2つ目のベクトルの終点を差すようになります:
@@ -98,7 +98,7 @@
   Just like normal addition and subtraction, vector subtraction is the same as addition with a negated second vector:
   通常の加法、減法と同様に、ベクトルの引き算は2つ目のベクトルを反転させたものを足し合せるだけです:
   
-  \[\bar{v} = \begin{pmatrix} \color{red}{1} \\ \color{green}{2} \\ \color{blue}{3} \end{pmatrix}, \bar{k} = \begin{pmatrix} \color{red}{4} \\ \color{green}{5} \\ \color{blue}{6} \end{pmatrix} \rightarrow \bar{v} + -\bar{k} = \begin{pmatrix} \color{red}{1} + (-\color{red}{4}) \\ \color{green}{2} + (-\color{green}{5}) \\ \color{blue}{3} + (-\color{blue}{6}) \end{pmatrix} = \begin{pmatrix} -\color{red}{3} \\ -\color{green}{3} \\ -\color{blue}{3} \end{pmatrix} \]
+  \[\bar{v} = \begin{pmatrix} {\color{red}1} \\ {\color{green}2} \\ {\color{blue}3} \end{pmatrix}, \bar{k} = \begin{pmatrix} {\color{red}4} \\ {\color{green}5} \\ {\color{blue}6} \end{pmatrix} \rightarrow \bar{v} + -\bar{k} = \begin{pmatrix} {\color{red}1} + (-{\color{red}4}) \\ {\color{green}2} + (-{\color{green}5}) \\ {\color{blue}3} + (-{\color{blue}6}) \end{pmatrix} = \begin{pmatrix} -{\color{red}3} \\ -{\color{green}3} \\ -{\color{blue}3} \end{pmatrix} \]
     
 </p>
 
@@ -120,20 +120,20 @@
 <img src="/img/getting-started/vectors_triangle.png" class="clean"/>
 
 <p>
-  Since the length of the two sides <code>(x, y)</code> are known and we want to know the length of the tilted side \(\color{red}{\bar{v}}\) we can calculate it using the Pythagoras theorem as:
+  Since the length of the two sides <code>(x, y)</code> are known and we want to know the length of the tilted side \({\color{red}\bar{v}}\) we can calculate it using the Pythagoras theorem as:
   2辺の長さ<code>(x, y)</code>は既知なので、斜辺の長さはピタゴラスの定理より:
   
-  \[||\color{red}{\bar{v}}|| = \sqrt{\color{green}x^2 + \color{blue}y^2} \]
+  \[||{\color{red}\bar{v}}|| = \sqrt{{\color{green}x}^2 + {\color{blue}y}^2} \]
   
-  Where \(||\color{red}{\bar{v}}||\) is denoted as <em>the length of vector \(\color{red}{\bar{v}}\)</em>. This is easily extended to 3D by adding \(z^2\) to the equation.
-  となります。ここで\(||\color{red}{\bar{v}}||\)は<em>ベクトル\(\color{red}{\bar{v}}\)の長さ</em>を表わします。ここに\(z^2\)を加えることで簡単に3次元に拡張できます。
+  Where \(||{\color{red}\bar{v}}||\) is denoted as <em>the length of vector \({\color{red}\bar{v}}\)</em>. This is easily extended to 3D by adding \(z^2\) to the equation.
+  となります。ここで\(||{\color{red}\bar{v}}||\)は<em>ベクトル\({\color{red}\bar{v}}\)の長さ</em>を表わします。ここに\(z^2\)を加えることで簡単に3次元に拡張できます。
 </p>
 
 <p>
   In this case the length of vector <code>(4, 2)</code> equals:
   これを用いると、ベクトル<code>(4, 2)</code>の長さは:
   
-  \[||\color{red}{\bar{v}}|| = \sqrt{\color{green}4^2 + \color{blue}2^2} = \sqrt{\color{green}16 + \color{blue}4} = \sqrt{20} = 4.47  \]
+  \[||{\color{red}\bar{v}}|| = \sqrt{{\color{green}4}^2 + {\color{blue}2}^2} = \sqrt{{\color{green}16} + {\color{blue}4}} = \sqrt{20} = 4.47  \]
   
   Which is <code>4.47</code>.
   となり、これは<code>4.47</code>です。
@@ -184,7 +184,7 @@
   So how do we calculate the dot product? The dot product is a component-wise multiplication where we add the results together. It looks like this with two unit vectors (you can verify that both their lengths are exactly <code>1</code>):
   ではどのようにして内積を計算するのでしょう。内積は各要素毎に積を取り、それらを足し合わせて計算できます。2つの単位ベクトルでは以下のようになります（各ベクトルの長さが<code>1</code>であることを確認してください）:
   
-  \[ \begin{pmatrix} \color{red}{0.6} \\ -\color{green}{0.8} \\ \color{blue}0 \end{pmatrix} \cdot \begin{pmatrix} \color{red}0 \\ \color{green}1 \\ \color{blue}0 \end{pmatrix} = (\color{red}{0.6} * \color{red}0) + (-\color{green}{0.8} * \color{green}1) + (\color{blue}0 * \color{blue}0) = -0.8 \]
+  \[ \begin{pmatrix} {\color{red}0.6} \\ -{\color{green}0.8} \\ {\color{blue}0} \end{pmatrix} \cdot \begin{pmatrix} {\color{red}0} \\ {\color{green}1} \\ {\color{blue}0} \end{pmatrix} = ({\color{red}0.6} * {\color{red}0}) + (-{\color{green}0.8} * {\color{green}1}) + ({\color{blue}0} * {\color{blue}0}) = -0.8 \]
   
   To calculate the degree between both these unit vectors we use the inverse of the cosine function \(cos^{-1}\) and this results in <code>143.1</code> degrees. We now effectively calculated the angle between these two vectors. The dot product proves very useful when doing lighting calculations later on.
   2つのベクトルのなす角を求めるにはコサインの逆関数\(cos^{-1}\)を利用します。今回の場合この値は<code>143.1</code>度です。2つのベクトルのなす角度を効率よく計算できるようになりました。内積は後程でてくる照明の計算において非常に役立ちます。
@@ -203,7 +203,7 @@
   Unlike the other operations, the cross product isn't really intuitive without delving into linear algebra so it's best to just memorize the formula and you'll be fine (or don't, you'll probably be fine as well). Below you'll see the cross product between two orthogonal vectors A and B:
   他の演算と違い、外積の計算は線形代数に踏み込まなければあまり直感的ではありません。とりあえず公式を暗記すれば十分です（覚えられなくてもおそらく大丈夫です）。以下の式は2つの直交するベクトルAとBの外積を表すものです:
   
-  \[\begin{pmatrix} \color{red}{A_{x}} \\ \color{green}{A_{y}} \\ \color{blue}{A_{z}} \end{pmatrix} \times \begin{pmatrix} \color{red}{B_{x}} \\ \color{green}{B_{y}} \\ \color{blue}{B_{z}}  \end{pmatrix} = \begin{pmatrix} \color{green}{A_{y}} \cdot \color{blue}{B_{z}} - \color{blue}{A_{z}} \cdot \color{green}{B_{y}} \\ \color{blue}{A_{z}} \cdot \color{red}{B_{x}} - \color{red}{A_{x}} \cdot \color{blue}{B_{z}} \\ \color{red}{A_{x}} \cdot \color{green}{B_{y}} - \color{green}{A_{y}} \cdot \color{red}{B_{x}} \end{pmatrix} \]
+  \[\begin{pmatrix} {\color{red}A_{x}} \\ {\color{green}A_{y}} \\ {\color{blue}A_{z}} \end{pmatrix} \times \begin{pmatrix} {\color{red}B_{x}} \\ {\color{green}B_{y}} \\ {\color{blue}B_{z}}  \end{pmatrix} = \begin{pmatrix} {\color{green}A_{y}} \cdot {\color{blue}B_{z}} - {\color{blue}A_{z}} \cdot {\color{green}B_{y}} \\ {\color{blue}A_{z}} \cdot {\color{red}B_{x}} - {\color{red}A_{x}} \cdot {\color{blue}B_{z}} \\ {\color{red}A_{x}} \cdot {\color{green}B_{y}} - {\color{green}A_{y}} \cdot {\color{red}B_{x}} \end{pmatrix} \]
   
   As you can see, it doesn't really seem to make sense. However, if you just follow these steps you'll get another vector that is orthogonal to your input vectors. 
   これを見てもよく意味が分からないでしょう。しかしこの手順に従えば2つのベクトルからそれらに直交するベクトルが得られます。
@@ -233,12 +233,12 @@
   Matrix addition and subtraction between two matrices is done on a per-element basis. So the same general rules apply that we're familiar with for normal numbers, but done on the elements of both matrices with the same index. This does mean that addition and subtraction is only defined for matrices of the same dimensions. A 3x2 matrix and a 2x3 matrix (or a 3x3 matrix and a 4x4 matrix) cannot be added or subtracted together. Let's see how matrix addition works on two 2x2 matrices:
   2つの行列の和と差は要素毎に行われます。なので通常の数字と同じような規則が各要素毎に成り立ちます。要素毎に行われるため、和と差は同じ型の行列に対してのみ定義できます。3x2の行列と2x3の行列、あるいは3x3の行列と4x4の行列は足したり引いたりすることができません。2x2の行列どうしの足し算を以下に示します:
   
-  \[\begin{bmatrix} \color{red}1 & \color{red}2 \\ \color{green}3 & \color{green}4 \end{bmatrix} + \begin{bmatrix} \color{red}5 & \color{red}6 \\ \color{green}7 & \color{green}8 \end{bmatrix} = \begin{bmatrix} \color{red}1 + \color{red}5 & \color{red}2 + \color{red}6 \\ \color{green}3 + \color{green}7 & \color{green}4 + \color{green}8 \end{bmatrix} = \begin{bmatrix} \color{red}6 & \color{red}8 \\ \color{green}{10} & \color{green}{12} \end{bmatrix} \]
+  \[\begin{bmatrix} {\color{red}1} & {\color{red}2} \\ {\color{green}3} & {\color{green}4} \end{bmatrix} + \begin{bmatrix} {\color{red}5} & {\color{red}6} \\ {\color{green}7} & {\color{green}8} \end{bmatrix} = \begin{bmatrix} {\color{red}1} + {\color{red}5} & {\color{red}2} + {\color{red}6} \\ {\color{green}3} + {\color{green}7} & {\color{green}4} + {\color{green}8} \end{bmatrix} = \begin{bmatrix} {\color{red}6} & {\color{red}8} \\ {\color{green}10} & {\color{green}12} \end{bmatrix} \]
   
 The same rules apply for matrix subtraction:
 同様にして差は以下のようになります:
   
-   \[\begin{bmatrix} \color{red}4 & \color{red}2 \\ \color{green}1 & \color{green}6 \end{bmatrix} - \begin{bmatrix} \color{red}2 & \color{red}4 \\ \color{green}0 & \color{green}1 \end{bmatrix} = \begin{bmatrix} \color{red}4 - \color{red}2 & \color{red}2  - \color{red}4 \\ \color{green}1 - \color{green}0 & \color{green}6 - \color{green}1 \end{bmatrix} = \begin{bmatrix} \color{red}2 & -\color{red}2 \\ \color{green}1 & \color{green}5 \end{bmatrix} \]
+   \[\begin{bmatrix} {\color{red}4} & {\color{red}2} \\ {\color{green}1} & {\color{green}6} \end{bmatrix} - \begin{bmatrix} {\color{red}2} & {\color{red}4} \\ {\color{green}0} & {\color{green}1} \end{bmatrix} = \begin{bmatrix} {\color{red}4} - {\color{red}2} & {\color{red}2}  - {\color{red}4} \\ {\color{green}1} - {\color{green}0} & {\color{green}6} - {\color{green}1} \end{bmatrix} = \begin{bmatrix} {\color{red}2} & -{\color{red}2} \\ {\color{green}1} & {\color{green}5} \end{bmatrix} \]
   
 </p>
 
@@ -248,7 +248,7 @@ The same rules apply for matrix subtraction:
   A matrix-scalar product multiples each element of the matrix by a scalar. The following example illustrates the multiplication:
   行列とスカラの積は行列の各要素にスカラを掛け合わせることとして定義されます。以下にこの積の例を示します:
   
-  \[\color{green}2 \cdot \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} = \begin{bmatrix} \color{green}2 \cdot 1 & \color{green}2 \cdot 2 \\ \color{green}2 \cdot 3 & \color{green}2 \cdot 4 \end{bmatrix} = \begin{bmatrix} 2 & 4 \\ 6 & 8 \end{bmatrix}\]
+  \[{\color{green}2} \cdot \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} = \begin{bmatrix} {\color{green}2} \cdot 1 & {\color{green}2} \cdot 2 \\ {\color{green}2} \cdot 3 & {\color{green}2} \cdot 4 \end{bmatrix} = \begin{bmatrix} 2 & 4 \\ 6 & 8 \end{bmatrix}\]
   
 Now it also makes sense as to why those single numbers are called scalars. A scalar basically  <em>scales</em> all the elements of the matrix by its value. In the previous example, all elements were scaled by <code>2</code>. 
 これを見るとなぜ数字がスカラと呼ばれるのか分かります。スカラは行列の各要素をその値で<em>拡大、縮小</em>（英語でscaleと言います）するのです。前の例では各要素を<code>2</code>倍に拡大しています。
@@ -277,7 +277,7 @@ Now it also makes sense as to why those single numbers are called scalars. A sca
   Let's get started with an example of a matrix multiplication of 2 <code>2x2</code> matrices:
   まずは2つの<code>2x2</code>の行列の積を例示しましょう:
   
-  \[ \begin{bmatrix} \color{red}1 & \color{red}2 \\ \color{green}3 & \color{green}4 \end{bmatrix} \cdot \begin{bmatrix} \color{blue}5 & \color{purple}6 \\ \color{blue}7 & \color{purple}8 \end{bmatrix} = \begin{bmatrix} \color{red}1 \cdot \color{blue}5 + \color{red}2 \cdot \color{blue}7 & \color{red}1 \cdot \color{purple}6 + \color{red}2 \cdot \color{purple}8 \\ \color{green}3 \cdot \color{blue}5 + \color{green}4 \cdot \color{blue}7 & \color{green}3 \cdot \color{purple}6 + \color{green}4 \cdot \color{purple}8 \end{bmatrix} = \begin{bmatrix} 19 & 22 \\ 43 & 50 \end{bmatrix} \]
+  \[ \begin{bmatrix} {\color{red}1} & {\color{red}2} \\ {\color{green}3} & {\color{green}4} \end{bmatrix} \cdot \begin{bmatrix} {\color{blue}5} & {\color{purple}6} \\ {\color{blue}7} & {\color{purple}8} \end{bmatrix} = \begin{bmatrix} {\color{red}1} \cdot {\color{blue}5} + {\color{red}2} \cdot {\color{blue}7} & {\color{red}1} \cdot {\color{purple}6} + {\color{red}2} \cdot {\color{purple}8} \\ {\color{green}3} \cdot {\color{blue}5} + {\color{green}4} \cdot {\color{blue}7} & {\color{green}3} \cdot {\color{purple}6} + {\color{green}4} \cdot {\color{purple}8} \end{bmatrix} = \begin{bmatrix} 19 & 22 \\ 43 & 50 \end{bmatrix} \]
   
   Right now you're probably trying to figure out what the hell just happened? Matrix multiplication is a combination of normal multiplication and addition using the left-matrix's rows with the right-matrix's columns. Let's try discussing this with the following image:
   いったい何ごとかと身構えることでしょう。行列の積は左の行列の行と右の行列の列を用いて通常の和と積を組み合わせることで計算されます。下図で説明します:
@@ -309,7 +309,7 @@ Now it also makes sense as to why those single numbers are called scalars. A sca
   Let's finish the discussion of matrix-matrix multiplication with a larger example. Try to visualize the pattern using the colors. As a useful exercise, see if you can come up with your own answer of the multiplication and then compare them with the resulting matrix (once you try to do a matrix multiplication by hand you'll quickly get the grasp of them).
   もう少し大きな例で行列の積の議論を終えましょう。色分けにより計算法を可視化しています。いい演習として自分で行列の積を計算して答えを示し合わせて下さい。実際に手を動かすことで、計算の流れがよく掴めます。
   
-  \[ \begin{bmatrix} \color{red}4 & \color{red}2 & \color{red}0 \\ \color{green}0 & \color{green}8 & \color{green}1 \\ \color{blue}0 & \color{blue}1 & \color{blue}0 \end{bmatrix} \cdot \begin{bmatrix} \color{red}4 & \color{green}2 & \color{blue}1 \\ \color{red}2 & \color{green}0 & \color{blue}4 \\ \color{red}9 & \color{green}4 & \color{blue}2 \end{bmatrix} = \begin{bmatrix} \color{red}4 \cdot \color{red}4 + \color{red}2 \cdot \color{red}2 + \color{red}0 \cdot \color{red}9 & \color{red}4 \cdot \color{green}2 + \color{red}2 \cdot \color{green}0 + \color{red}0 \cdot \color{green}4 & \color{red}4 \cdot \color{blue}1 + \color{red}2 \cdot \color{blue}4 + \color{red}0 \cdot \color{blue}2 \\ \color{green}0 \cdot \color{red}4 + \color{green}8 \cdot \color{red}2 + \color{green}1 \cdot \color{red}9 & \color{green}0 \cdot \color{green}2 + \color{green}8 \cdot \color{green}0 + \color{green}1 \cdot \color{green}4 & \color{green}0 \cdot \color{blue}1 + \color{green}8 \cdot \color{blue}4 + \color{green}1 \cdot \color{blue}2 \\ \color{blue}0 \cdot \color{red}4 + \color{blue}1 \cdot \color{red}2 + \color{blue}0 \cdot \color{red}9 & \color{blue}0 \cdot \color{green}2 + \color{blue}1 \cdot \color{green}0 + \color{blue}0 \cdot \color{green}4 & \color{blue}0 \cdot \color{blue}1 + \color{blue}1 \cdot \color{blue}4 + \color{blue}0 \cdot \color{blue}2 \end{bmatrix} 
+  \[ \begin{bmatrix} {\color{red}4} & {\color{red}2} & {\color{red}0} \\ {\color{green}0} & {\color{green}8} & {\color{green}1} \\ {\color{blue}0} & {\color{blue}1} & {\color{blue}0} \end{bmatrix} \cdot \begin{bmatrix} {\color{red}4} & {\color{green}2} & {\color{blue}1} \\ {\color{red}2} & {\color{green}0} & {\color{blue}4} \\ {\color{red}9} & {\color{green}4} & {\color{blue}2} \end{bmatrix} = \begin{bmatrix} {\color{red}4} \cdot {\color{red}4} + {\color{red}2} \cdot {\color{red}2} + {\color{red}0} \cdot {\color{red}9} & {\color{red}4} \cdot {\color{green}2} + {\color{red}2} \cdot {\color{green}0} + {\color{red}0} \cdot {\color{green}4} & {\color{red}4} \cdot {\color{blue}1} + {\color{red}2} \cdot {\color{blue}4} + {\color{red}0} \cdot {\color{blue}2} \\ {\color{green}0} \cdot {\color{red}4} + {\color{green}8} \cdot {\color{red}2} + {\color{green}1} \cdot {\color{red}9} & {\color{green}0} \cdot {\color{green}2} + {\color{green}8} \cdot {\color{green}0} + {\color{green}1} \cdot {\color{green}4} & {\color{green}0} \cdot {\color{blue}1} + {\color{green}8} \cdot {\color{blue}4} + {\color{green}1} \cdot {\color{blue}2} \\ {\color{blue}0} \cdot {\color{red}4} + {\color{blue}1} \cdot {\color{red}2} + {\color{blue}0} \cdot {\color{red}9} & {\color{blue}0} \cdot {\color{green}2} + {\color{blue}1} \cdot {\color{green}0} + {\color{blue}0} \cdot {\color{green}4} & {\color{blue}0} \cdot {\color{blue}1} + {\color{blue}1} \cdot {\color{blue}4} + {\color{blue}0} \cdot {\color{blue}2} \end{bmatrix} 
  \\ = \begin{bmatrix} 20 & 8 & 12 \\ 25 & 4 & 34 \\ 2 & 0 & 4 \end{bmatrix}\]
 </p>
 
@@ -341,10 +341,10 @@ Now it also makes sense as to why those single numbers are called scalars. A sca
   In OpenGL we usually work with <code>4x4</code> transformation matrices for several reasons and one of them is that most of the vectors are of size 4. The most simple transformation matrix that we can think of is the <def>identity matrix</def>. The identity matrix is an <code>NxN</code> matrix with only 0s except on its diagonal. As you'll see, this transformation matrix leaves a vector completely unharmed:
   OpenGLにおいては通常<code>4x4</code>の変換行列を利用します。そのひとつの理由はほとんどの場合4次元のベクトルを扱うからです。想像し得る最も単純な変換行列は<def>単位行列</def>です。単位行列は対角成分以外の要素が0である<code>NxN</code>の行列です。この変換行列は以下のようにベクトルを全く変化させません:
   
-  \[ \begin{bmatrix} \color{red}1 & \color{red}0 & \color{red}0 & \color{red}0 \\ \color{green}0 & \color{green}1 & \color{green}0 & \color{green}0 \\ \color{blue}0 & \color{blue}0 & \color{blue}1 & \color{blue}0 \\ \color{purple}0 & \color{purple}0 & \color{purple}0 & \color{purple}1 \end{bmatrix} \cdot \begin{bmatrix} 1 \\ 2 \\ 3 \\ 4 \end{bmatrix} = \begin{bmatrix} \color{red}1 \cdot 1 \\ \color{green}1 \cdot 2 \\ \color{blue}1 \cdot 3 \\ \color{purple}1 \cdot 4 \end{bmatrix} = \begin{bmatrix} 1 \\ 2 \\ 3 \\ 4 \end{bmatrix} \]
+  \[ \begin{bmatrix} {\color{red}1} & {\color{red}0} & {\color{red}0} & {\color{red}0} \\ {\color{green}0} & {\color{green}1} & {\color{green}0} & {\color{green}0} \\ {\color{blue}0} & {\color{blue}0} & {\color{blue}1} & {\color{blue}0} \\ {\color{purple}0} & {\color{purple}0} & {\color{purple}0} & {\color{purple}1} \end{bmatrix} \cdot \begin{bmatrix} 1 \\ 2 \\ 3 \\ 4 \end{bmatrix} = \begin{bmatrix} {\color{red}1} \cdot 1 \\ {\color{green}1} \cdot 2 \\ {\color{blue}1} \cdot 3 \\ {\color{purple}1} \cdot 4 \end{bmatrix} = \begin{bmatrix} 1 \\ 2 \\ 3 \\ 4 \end{bmatrix} \]
   
-  The vector is completely untouched. This becomes obvious from the rules of multiplication: the first result element is each individual element of the first row of the matrix multiplied with each element of the vector. Since each of the row's elements are 0 except the first one, we get: \(\color{red}1\cdot1 + \color{red}0\cdot2 + \color{red}0\cdot3 + \color{red}0\cdot4 = 1\) and the same applies for the other 3 elements of the vector.
-  ベクトルは完全に元のままです。これは積の定義から明らかです。結果となるベクトルの1つ目の要素は行列の1行目にベクトルの各要素を掛けたものです。行列の一行目は1つめの要素を除いて0なので、得られる値は\(\color{red}1\cdot1 + \color{red}0\cdot2 + \color{red}0\cdot3 + \color{red}0\cdot4 = 1\)となり、残りの3つの要素についても同様です。
+  The vector is completely untouched. This becomes obvious from the rules of multiplication: the first result element is each individual element of the first row of the matrix multiplied with each element of the vector. Since each of the row's elements are 0 except the first one, we get: \({\color{red}1\cdot1} + {\color{red}0\cdot2} + {\color{red}0\cdot3} + {\color{red}0\cdot4} = 1\) and the same applies for the other 3 elements of the vector.
+  ベクトルは完全に元のままです。これは積の定義から明らかです。結果となるベクトルの1つ目の要素は行列の1行目にベクトルの各要素を掛けたものです。行列の一行目は1つめの要素を除いて0なので、得られる値は\({\color{red}1}\cdot1 + {\color{red}0}\cdot2 + {\color{red}0}\cdot3 + {\color{red}0}\cdot4 = 1\)となり、残りの3つの要素についても同様です。
 </p>
 
 <note>
@@ -360,8 +360,8 @@ Now it also makes sense as to why those single numbers are called scalars. A sca
 </p>
 
 <p>
-  Let's try scaling the vector \(\color{red}{\bar{v}} = (3,2)\). We will scale the vector along the x-axis by <code>0.5</code>, thus making it twice as narrow; and we'll scale the vector by <code>2</code> along the y-axis, making it twice as high. Let's see what it looks like if we scale the vector by <code>(0.5,2)</code> as \(\color{blue}{\bar{s}}\):
-  \(\color{red}{\bar{v}} = (3, 2)\)を拡大してみましょう。x軸方向に<code>0.5</code>倍、つまり半分に切り詰め、y軸方向に<code>2</code>倍、つまり倍に引き伸ばします。このベクトルを<code>(0.5, 2)</code>により拡大したベクトル\(\color{blue}{\bar{s}}\)は以下のようになります:
+  Let's try scaling the vector \({\color{red}\bar{v}} = (3,2)\). We will scale the vector along the x-axis by <code>0.5</code>, thus making it twice as narrow; and we'll scale the vector by <code>2</code> along the y-axis, making it twice as high. Let's see what it looks like if we scale the vector by <code>(0.5,2)</code> as \({\color{blue}\bar{s}}\):
+  \({\color{red}\bar{v}} = (3, 2)\)を拡大してみましょう。x軸方向に<code>0.5</code>倍、つまり半分に切り詰め、y軸方向に<code>2</code>倍、つまり倍に引き伸ばします。このベクトルを<code>(0.5, 2)</code>により拡大したベクトル\({\color{blue}\bar{s}}\)は以下のようになります:
 </p>
 
 
@@ -373,10 +373,10 @@ Now it also makes sense as to why those single numbers are called scalars. A sca
 </p>
 
 <p>
-  Let's start building a transformation matrix that does the scaling for us. We saw from the identity matrix that each of the diagonal elements were multiplied with its corresponding vector element. What if we were to change the <code>1</code>s in the identity matrix to <code>3</code>s? In that case, we would be multiplying each of the vector elements by a value of <code>3</code> and thus effectively uniformly scale the vector by 3. If we represent the scaling variables as \( (\color{red}{S_1}, \color{green}{S_2}, \color{blue}{S_3}) \) we can define a scaling matrix on any vector \((x,y,z)\) as:
-  それでは拡大を行う変換行列を作成してみましょう。先程単位行列を見た際、対角線上の各要素がそれに対応するベクトルの要素と掛け合わせられるのを確認しました。単位行列の対角成分を<code>1</code>ではなく<code>3</code>にしたらどうなるでしょう。この場合、ベクトルの各要素に<code>3</code>が掛けられ、ベクトルが一様に3倍になります。各軸に対する拡大率をそれぞれ\( (\color{red}{S_1}, \color{green}{S_2}, \color{blue}{S_3})\)とした場合、ベクトル\((x, y, z)\)に対する拡大行列は:
+  Let's start building a transformation matrix that does the scaling for us. We saw from the identity matrix that each of the diagonal elements were multiplied with its corresponding vector element. What if we were to change the <code>1</code>s in the identity matrix to <code>3</code>s? In that case, we would be multiplying each of the vector elements by a value of <code>3</code> and thus effectively uniformly scale the vector by 3. If we represent the scaling variables as \( ({\color{red}S_1}, {\color{green}S_2}, {\color{blue}S_3}) \) we can define a scaling matrix on any vector \((x,y,z)\) as:
+  それでは拡大を行う変換行列を作成してみましょう。先程単位行列を見た際、対角線上の各要素がそれに対応するベクトルの要素と掛け合わせられるのを確認しました。単位行列の対角成分を<code>1</code>ではなく<code>3</code>にしたらどうなるでしょう。この場合、ベクトルの各要素に<code>3</code>が掛けられ、ベクトルが一様に3倍になります。各軸に対する拡大率をそれぞれ\( ({\color{red}S_1}, {\color{green}S_2}, {\color{blue}S_3})\)とした場合、ベクトル\((x, y, z)\)に対する拡大行列は:
   
-  \[\begin{bmatrix} \color{red}{S_1} & \color{red}0 & \color{red}0 & \color{red}0 \\ \color{green}0 & \color{green}{S_2} & \color{green}0 & \color{green}0 \\ \color{blue}0 & \color{blue}0 & \color{blue}{S_3} & \color{blue}0 \\ \color{purple}0 & \color{purple}0 & \color{purple}0 & \color{purple}1 \end{bmatrix} \cdot \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix} = \begin{pmatrix} \color{red}{S_1} \cdot x \\ \color{green}{S_2} \cdot y \\ \color{blue}{S_3} \cdot z \\ 1 \end{pmatrix} \]
+  \[\begin{bmatrix} {\color{red}S_1} & {\color{red}0} & {\color{red}0} & {\color{red}0} \\ {\color{green}0} & {\color{green}S_2} & {\color{green}0} & {\color{green}0} \\ {\color{blue}0} & {\color{blue}0} & {\color{blue}S_3} & {\color{blue}0} \\ {\color{purple}0} & {\color{purple}0} & {\color{purple}0} & {\color{purple}1} \end{bmatrix} \cdot \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix} = \begin{pmatrix} {\color{red}S_1} \cdot x \\ {\color{green}S_2} \cdot y \\ {\color{blue}S_3} \cdot z \\ 1 \end{pmatrix} \]
   
   Note that we keep the 4th scaling value <code>1</code>. The <code>w</code> component is used for other purposes as we'll see later on.
   となります。4つ目の要素は<code>1</code>であることに注意して下さい。この<code>w</code>要素は後程別の用途に利用します。
@@ -390,10 +390,10 @@ Now it also makes sense as to why those single numbers are called scalars. A sca
 </p>
   
 <p>
-  Just like the scaling matrix there are several locations on a 4-by-4 matrix that we can use to perform certain operations and for translation those are the top-3 values of the 4th column. If we represent the translation vector as \((\color{red}{T_x},\color{green}{T_y},\color{blue}{T_z})\) we can define the translation matrix by:
-  拡大行列と同様、4x4の行列のある部分を利用することで平行移動を実現できます。その部分とは4番目の列の上3つの要素です。平行移動ベクトルを\((\color{red}{T_x},\color{green}{T_y},\color{blue}{T_z})\)で表わすと、平行移動行列は:
+  Just like the scaling matrix there are several locations on a 4-by-4 matrix that we can use to perform certain operations and for translation those are the top-3 values of the 4th column. If we represent the translation vector as \(({\color{red}T_x},{\color{green}T_y},{\color{blue}T_z})\) we can define the translation matrix by:
+  拡大行列と同様、4x4の行列のある部分を利用することで平行移動を実現できます。その部分とは4番目の列の上3つの要素です。平行移動ベクトルを\(({\color{red}T_x},{\color{green}T_y},{\color{blue}T_z})\)で表わすと、平行移動行列は:
   
-  \[\begin{bmatrix}  \color{red}1 & \color{red}0 & \color{red}0 & \color{red}{T_x} \\ \color{green}0 & \color{green}1 & \color{green}0 & \color{green}{T_y} \\ \color{blue}0 & \color{blue}0 & \color{blue}1 & \color{blue}{T_z} \\ \color{purple}0 & \color{purple}0 & \color{purple}0 & \color{purple}1 \end{bmatrix} \cdot \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix} = \begin{pmatrix} x + \color{red}{T_x} \\ y + \color{green}{T_y} \\ z + \color{blue}{T_z} \\ 1 \end{pmatrix} \]
+  \[\begin{bmatrix}  {\color{red}1} & {\color{red}0} & {\color{red}0} & {\color{red}T_x} \\ {\color{green}0} & {\color{green}1} & {\color{green}0} & {\color{green}T_y} \\ {\color{blue}0} & {\color{blue}0} & {\color{blue}1} & {\color{blue}T_z} \\ {\color{purple}0} & {\color{purple}0} & {\color{purple}0} & {\color{purple}1} \end{bmatrix} \cdot \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix} = \begin{pmatrix} x + {\color{red}T_x} \\ y + {\color{green}T_y} \\ z + {\color{blue}T_z} \\ 1 \end{pmatrix} \]
   
   This works because all of the translation values are multiplied by the vector's <code>w</code> column and added to the vector's original values (remember the matrix-multiplication rules). This wouldn't have been possible with a 3-by-3 matrix.
   のようになります。平行移動の値はベクトルの<code>w</code>要素に掛けられ、ベクトルの元の値に足し合せられます（行列の積の規則を思い出して下さい）。これは3x3の行列では実現できません。
@@ -437,8 +437,8 @@ Now it also makes sense as to why those single numbers are called scalars. A sca
   ここで<code>\(\pi\)</code>はおよそ<code>3.14159265359</code>です。
 </note>
   
-  Rotating half a circle rotates us 360/2 = 180 degrees and rotating 1/5th to the right means we rotate 360/5 = 72 degrees to the right. This is demonstrated for a basic 2D vector where \(\color{red}{\bar{v}}\) is rotated 72 degrees to the right, or clockwise, from \(\color{green}{\bar{k}}\):
-  半円分の回転は360/2 = 180度の回転を意味し、右に1/5回転させるのは360/5 = 72度時計回りに回転させることを意味します。以下にこの回転を2次元ベクトルで行ったものを図示します。\(\color{red}{\bar{v}}\)は\(\color{green}{\bar{k}}\)を時計回りに72度回転させたものです:
+  Rotating half a circle rotates us 360/2 = 180 degrees and rotating 1/5th to the right means we rotate 360/5 = 72 degrees to the right. This is demonstrated for a basic 2D vector where \({\color{red}\bar{v}}\) is rotated 72 degrees to the right, or clockwise, from \({\color{green}\bar{k}}\):
+  半円分の回転は360/2 = 180度の回転を意味し、右に1/5回転させるのは360/5 = 72度時計回りに回転させることを意味します。以下にこの回転を2次元ベクトルで行ったものを図示します。\({\color{red}\bar{v}}\)は\({\color{green}\bar{k}}\)を時計回りに72度回転させたものです:
 </p>
   
   <img src="/img/getting-started/vectors_angle.png" class="clean" />
@@ -462,29 +462,29 @@ Now it also makes sense as to why those single numbers are called scalars. A sca
     Rotation around the X-axis:
 	x軸周りの回転:
   
-  \[\begin{bmatrix} \color{red}1 & \color{red}0 & \color{red}0 & \color{red}0 \\ \color{green}0 & \color{green}{\cos \theta} & - \color{green}{\sin \theta} & \color{green}0 \\ \color{blue}0 & \color{blue}{\sin \theta} & \color{blue}{\cos \theta} & \color{blue}0 \\ \color{purple}0 & \color{purple}0 & \color{purple}0 & \color{purple}1 \end{bmatrix} \cdot \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix} = \begin{pmatrix} x \\ \color{green}{\cos \theta} \cdot y - \color{green}{\sin \theta} \cdot z \\ \color{blue}{\sin \theta} \cdot y + \color{blue}{\cos \theta} \cdot z \\ 1 \end{pmatrix}\]
+  \[\begin{bmatrix} {\color{red}1} & {\color{red}0} & {\color{red}0} & {\color{red}0} \\ {\color{green}0} & {\color{green}\cos \theta} & - {\color{green}\sin \theta} & {\color{green}0} \\ {\color{blue}0} & {\color{blue}\sin \theta} & {\color{blue}\cos \theta} & {\color{blue}0} \\ {\color{purple}0} & {\color{purple}0} & {\color{purple}0} & {\color{purple}1} \end{bmatrix} \cdot \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix} = \begin{pmatrix} x \\ {\color{green}\cos \theta} \cdot y - {\color{green}\sin \theta} \cdot z \\ {\color{blue}\sin \theta} \cdot y + {\color{blue}\cos \theta} \cdot z \\ 1 \end{pmatrix}\]
   </p>
        
    <p>
     Rotation around the Y-axis:
 	y軸周りの回転:
   
-  \[\begin{bmatrix} \color{red}{\cos \theta} & \color{red}0 & \color{red}{\sin \theta} & \color{red}0 \\ \color{green}0 & \color{green}1 & \color{green}0 & \color{green}0 \\ - \color{blue}{\sin \theta} & \color{blue}0 & \color{blue}{\cos \theta} & \color{blue}0 \\ \color{purple}0 & \color{purple}0 & \color{purple}0 & \color{purple}1 \end{bmatrix} \cdot \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix} = \begin{pmatrix} \color{red}{\cos \theta} \cdot x + \color{red}{\sin \theta} \cdot z \\ y \\ - \color{blue}{\sin \theta} \cdot x + \color{blue}{\cos \theta} \cdot z \\ 1 \end{pmatrix} \]
+  \[\begin{bmatrix} {\color{red}\cos \theta} & {\color{red}0} & {\color{red}\sin \theta} & {\color{red}0} \\ {\color{green}0} & {\color{green}1} & {\color{green}0} & {\color{green}0} \\ - {\color{blue}\sin \theta} & {\color{blue}0} & {\color{blue}\cos \theta} & {\color{blue}0} \\ {\color{purple}0} & {\color{purple}0} & {\color{purple}0} & {\color{purple}1} \end{bmatrix} \cdot \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix} = \begin{pmatrix} {\color{red}\cos \theta} \cdot x + {\color{red}\sin \theta} \cdot z \\ y \\ - {\color{blue}\sin \theta} \cdot x + {\color{blue}\cos \theta} \cdot z \\ 1 \end{pmatrix} \]
   </p>
   
   <p>
     Rotation around the Z-axis:
 	z軸周りの回転:
   
-  \[\begin{bmatrix} \color{red}{\cos \theta} & - \color{red}{\sin \theta} & \color{red}0 & \color{red}0 \\ \color{green}{\sin \theta} & \color{green}{\cos \theta} & \color{green}0 & \color{green}0 \\ \color{blue}0 & \color{blue}0 & \color{blue}1 & \color{blue}0 \\ \color{purple}0 & \color{purple}0 & \color{purple}0 & \color{purple}1 \end{bmatrix} \cdot \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix} = \begin{pmatrix} \color{red}{\cos \theta} \cdot x - \color{red}{\sin \theta} \cdot y  \\ \color{green}{\sin \theta} \cdot x + \color{green}{\cos \theta} \cdot y \\ z \\ 1 \end{pmatrix} \]
+  \[\begin{bmatrix} {\color{red}\cos \theta} & - {\color{red}\sin \theta} & {\color{red}0} & {\color{red}0} \\ {\color{green}\sin \theta} & {\color{green}\cos \theta} & {\color{green}0} & {\color{green}0} \\ {\color{blue}0} & {\color{blue}0} & {\color{blue}1} & {\color{blue}0} \\ {\color{purple}0} & {\color{purple}0} & {\color{purple}0} & {\color{purple}1} \end{bmatrix} \cdot \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix} = \begin{pmatrix} {\color{red}\cos \theta} \cdot x - {\color{red}\sin \theta} \cdot y  \\ {\color{green}\sin \theta} \cdot x + {\color{green}\cos \theta} \cdot y \\ z \\ 1 \end{pmatrix} \]
   </p>
 
   
   <p>
-    Using the rotation matrices we can transform our position vectors around one of the three unit axes. To rotate around an arbitrary 3D axis we can combine all 3 them by first rotating around the X-axis, then Y and then Z for example. However, this quickly introduces a problem called <def>Gimbal lock</def>. We won't discuss the details, but a better solution is to rotate around an arbitrary unit axis e.g. <code>(0.662,0.2,0.722)</code> (note that this is a unit vector) right away instead of combining the rotation matrices. Such a (verbose) matrix exists and is given below with \((\color{red}{R_x}, \color{green}{R_y}, \color{blue}{R_z})\) as the arbitrary rotation axis:
-	これらの回転行列により、位置ベクトルを座標軸に沿って回転させることができます。任意の回転軸に沿って回転させるにはこの3つの回転を組み合わせればいいのですが、これでは<def>ジンバルロック</def>と呼ばれる問題が生じます。この問題には深く立ち入りません。よりよい方法は任意の単位ベクトルに沿って回転させる回転行列を利用することです。そのような直接的な行列は確かに存在し、\((\color{red}{R_x}, \color{green}{R_y}, \color{blue}{R_z})\)を回転軸としたとき以下のように表わされます。
+    Using the rotation matrices we can transform our position vectors around one of the three unit axes. To rotate around an arbitrary 3D axis we can combine all 3 them by first rotating around the X-axis, then Y and then Z for example. However, this quickly introduces a problem called <def>Gimbal lock</def>. We won't discuss the details, but a better solution is to rotate around an arbitrary unit axis e.g. <code>(0.662,0.2,0.722)</code> (note that this is a unit vector) right away instead of combining the rotation matrices. Such a (verbose) matrix exists and is given below with \(({\color{red}R_x}, {\color{green}R_y}, {\color{blue}R_z})\) as the arbitrary rotation axis:
+	これらの回転行列により、位置ベクトルを座標軸に沿って回転させることができます。任意の回転軸に沿って回転させるにはこの3つの回転を組み合わせればいいのですが、これでは<def>ジンバルロック</def>と呼ばれる問題が生じます。この問題には深く立ち入りません。よりよい方法は任意の単位ベクトルに沿って回転させる回転行列を利用することです。そのような直接的な行列は確かに存在し、\(({\color{red}R_x}, {\color{green}R_y}, {\color{blue}R_z})\)を回転軸としたとき以下のように表わされます。
     
-    \[\begin{bmatrix} \cos \theta + \color{red}{R_x}^2(1 - \cos \theta) & \color{red}{R_x}\color{green}{R_y}(1 - \cos \theta) - \color{blue}{R_z} \sin \theta & \color{red}{R_x}\color{blue}{R_z}(1 - \cos \theta) + \color{green}{R_y} \sin \theta & 0 \\ \color{green}{R_y}\color{red}{R_x} (1 - \cos \theta) + \color{blue}{R_z} \sin \theta & \cos \theta + \color{green}{R_y}^2(1 - \cos \theta) & \color{green}{R_y}\color{blue}{R_z}(1 - \cos \theta) - \color{red}{R_x} \sin \theta & 0 \\ \color{blue}{R_z}\color{red}{R_x}(1 - \cos \theta) - \color{green}{R_y} \sin \theta & \color{blue}{R_z}\color{green}{R_y}(1 - \cos \theta) + \color{red}{R_x} \sin \theta & \cos \theta + \color{blue}{R_z}^2(1 - \cos \theta) & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix}\]
+    \[\begin{bmatrix} \cos \theta + {\color{red}R_x}^2(1 - \cos \theta) & {\color{red}R_x}{\color{green}R_y}(1 - \cos \theta) - {\color{blue}R_z} \sin \theta & {\color{red}R_x}{\color{blue}R_z}(1 - \cos \theta) + {\color{green}R_y} \sin \theta & 0 \\ {\color{green}R_y}{\color{red}R_x} (1 - \cos \theta) + {\color{blue}R_z} \sin \theta & \cos \theta + {\color{green}R_y}^2(1 - \cos \theta) & {\color{green}R_y}{\color{blue}R_z}(1 - \cos \theta) - {\color{red}R_x} \sin \theta & 0 \\ {\color{blue}R_z}{\color{red}R_x}(1 - \cos \theta) - {\color{green}R_y} \sin \theta & {\color{blue}R_z}{\color{green}R_y}(1 - \cos \theta) + {\color{red}R_x} \sin \theta & \cos \theta + {\color{blue}R_z}^2(1 - \cos \theta) & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix}\]
     
     
     A mathematical discussion of generating such a matrix is out of the scope of this chapter. Keep in mind that even this matrix does not completely prevent gimbal lock (although it gets a lot harder). To truly prevent Gimbal locks we have to represent rotations using <def>quaternions</def>, that are not only safer, but also more computationally friendly. However, a discussion of quaternions is out of this chapter's scope. 
@@ -497,7 +497,7 @@ Now it also makes sense as to why those single numbers are called scalars. A sca
  The true power from using matrices for transformations is that we can combine multiple transformations in a single matrix thanks to matrix-matrix multiplication. Let's see if we can generate a transformation matrix that combines several transformations. Say we have a vector <code>(x,y,z)</code> and we want to scale it by 2 and then translate it by <code>(1,2,3)</code>. We need a translation and a scaling matrix for our required steps. The resulting transformation matrix would then look like:
  座標変換に行列を利用する真のパワーは、行列の積のおかげで複数の変換をひとつの行列により表わすことができることです。いくつかの変換を組み合わせた変換行列の例を見てみましょう。ここにベクトル<code>(x, y, z)</code>があり、二倍に拡大した後<code>(1, 2, 3)</code>だけ平行移動させたいとしましょう。この操作のために平行移動の行列と拡大の行列が必要です。その結果変換行列は以下のようになります:
     
-         \[Trans . Scale = \begin{bmatrix} \color{red}1 & \color{red}0 & \color{red}0 & \color{red}1 \\ \color{green}0 & \color{green}1 & \color{green}0 & \color{green}2 \\ \color{blue}0 & \color{blue}0 & \color{blue}1 & \color{blue}3 \\ \color{purple}0 & \color{purple}0 & \color{purple}0 & \color{purple}1 \end{bmatrix} . \begin{bmatrix} \color{red}2 & \color{red}0 & \color{red}0 & \color{red}0 \\ \color{green}0 & \color{green}2 & \color{green}0 & \color{green}0 \\ \color{blue}0 & \color{blue}0 & \color{blue}2 & \color{blue}0 \\ \color{purple}0 & \color{purple}0 & \color{purple}0 & \color{purple}1 \end{bmatrix} = \begin{bmatrix} \color{red}2 & \color{red}0 & \color{red}0 & \color{red}1 \\ \color{green}0 & \color{green}2 & \color{green}0 & \color{green}2 \\ \color{blue}0 & \color{blue}0 & \color{blue}2 & \color{blue}3 \\ \color{purple}0 & \color{purple}0 & \color{purple}0 & \color{purple}1 \end{bmatrix} \]
+         \[Trans . Scale = \begin{bmatrix} {\color{red}1} & {\color{red}0} & {\color{red}0} & {\color{red}1} \\ {\color{green}0} & {\color{green}1} & {\color{green}0} & {\color{green}2} \\ {\color{blue}0} & {\color{blue}0} & {\color{blue}1} & {\color{blue}3} \\ {\color{purple}0} & {\color{purple}0} & {\color{purple}0} & {\color{purple}1} \end{bmatrix} . \begin{bmatrix} {\color{red}2} & {\color{red}0} & {\color{red}0} & {\color{red}0} \\ {\color{green}0} & {\color{green}2} & {\color{green}0} & {\color{green}0} \\ {\color{blue}0} & {\color{blue}0} & {\color{blue}2} & {\color{blue}0} \\ {\color{purple}0} & {\color{purple}0} & {\color{purple}0} & {\color{purple}1} \end{bmatrix} = \begin{bmatrix} {\color{red}2} & {\color{red}0} & {\color{red}0} & {\color{red}1} \\ {\color{green}0} & {\color{green}2} & {\color{green}0} & {\color{green}2} \\ {\color{blue}0} & {\color{blue}0} & {\color{blue}2} & {\color{blue}3} \\ {\color{purple}0} & {\color{purple}0} & {\color{purple}0} & {\color{purple}1} \end{bmatrix} \]
     
     Note that we first do a translation and then a scale transformation when multiplying matrices. Matrix multiplication is not commutative, which means their order is important. When multiplying matrices the right-most matrix is first multiplied with the vector so you should read the multiplications from right to left. It is advised to first do scaling operations, then rotations and lastly translations when combining matrices otherwise they may (negatively) affect each other. For example, if you would first do a translation and then scale, the translation vector would also scale!
 	行列の積において初めに平行移動をしてその後拡大をしていることに注意して下さい。行列の積は非可換なので順番が大切です。行列の積において、ベクトルに対してまず右側の行列から掛けられるので、行列の積は右から左に見ていかなければいけません。行列を組み合わせる際、まず拡大の操作を行い、その後平行移動の操作に移って下さい。そうしないとお互いに間違った効果が生じてしまいます。例えば平行移動を行った後に拡大すると、平行移動のベクトル自体に拡大の影響がでてしいます。
@@ -507,7 +507,7 @@ Now it also makes sense as to why those single numbers are called scalars. A sca
   Running the final transformation matrix on our vector results in the following vector:
   組み合わせた結果の変換行列をベクトルに掛けると以下のような結果が得られます:
     
-	\[\begin{bmatrix} \color{red}2 & \color{red}0 & \color{red}0 & \color{red}1 \\ \color{green}0 & \color{green}2 & \color{green}0 & \color{green}2 \\ \color{blue}0 & \color{blue}0 & \color{blue}2 & \color{blue}3 \\ \color{purple}0 & \color{purple}0 & \color{purple}0 & \color{purple}1 \end{bmatrix} . \begin{bmatrix} x \\ y \\ z \\ 1 \end{bmatrix} = \begin{bmatrix} \color{red}2x + \color{red}1 \\ \color{green}2y + \color{green}2  \\ \color{blue}2z + \color{blue}3 \\ 1 \end{bmatrix} \]
+	\[\begin{bmatrix} {\color{red}2} & {\color{red}0} & {\color{red}0} & {\color{red}1} \\ {\color{green}0} & {\color{green}2} & {\color{green}0} & {\color{green}2} \\ {\color{blue}0} & {\color{blue}0} & {\color{blue}2} & {\color{blue}3} \\ {\color{purple}0} & {\color{purple}0} & {\color{purple}0} & {\color{purple}1} \end{bmatrix} . \begin{bmatrix} x \\ y \\ z \\ 1 \end{bmatrix} = \begin{bmatrix} {\color{red}2}x + {\color{red}1} \\ {\color{green}2}y + {\color{green}2}  \\ {\color{blue}2}z + {\color{blue}3} \\ 1 \end{bmatrix} \]
     
   Great! The vector is first scaled by two and then translated by <code>(1,2,3)</code>.
   ええやん。ベクトルはまず2倍に拡大され、<code>(1, 2, 3)</code>だけ平行いどうしました。

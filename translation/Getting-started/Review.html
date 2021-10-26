@@ -15,7 +15,7 @@
 <h1 id="content-url" style='display:none;'>Getting-started/Review</h1>
 <p>
   Congratulations on reaching the end of the <em>Getting started</em> chapters. By now you should be able to create a window, create and compile shaders, send vertex data to your shaders via buffer objects or uniforms, draw objects, use textures, understand vectors and matrices and combine all that knowledge to create a full 3D scene with a camera to play around with.
-おめでとうございます。これにて<em>第一節</em>は完了です。ここまで読んだ方はウィンドウを作成し、シェーダーを作成及びコンパイルし、バッファオブジェクトやユニフォームを通して頂点のデータをシェーダーに送信し、物体を描画し、テクスチャを利用し、ベクトルや行列を理解しそれらを組み合わせて3次元の世界をカメラと共に作成することができるようになりました。
+おめでとうございます。これにて<em>入門</em>の節は完了です。ここまで読んだ方はウィンドウを作成し、シェーダーを作成及びコンパイルし、バッファオブジェクトやユニフォームを通して頂点のデータをシェーダーに送信し、物体を描画し、テクスチャを利用し、ベクトルや行列を理解しそれらを組み合わせて3次元の世界をカメラと共に作成することができるようになりました。
 </p>
 
 <p>
@@ -34,29 +34,53 @@
     <li><code>Viewport</code>: the 2D window region where we render to.  </li>
     <li><code>可視領域（Viewport）</code>: 映像を描画するウィンドウの2次元領域。</li>
     <li><code>Graphics Pipeline</code>: the entire process vertices have to walk through before ending up as one or more pixels on the screen.  </li>
+    <li><code>グラフィックパイプライン（Graphics Pipeline）</code>: 頂点データが画面上のピクセルに変換されるまでに行われる処理。</li>
     <li><code>Shader</code>: a small program that runs on the graphics card. Several stages of the graphics pipeline can use user-made shaders to replace existing functionality.</li>
+    <li><code>シェーダ（Shader）</code>: グラフィックカード上で実行される小さなプログラム。グラフィックパイプライン上のいくつかの処理はユーザーが独自に作成したシェーダにより置き換えることが出来る。</li>
     <li><code>Vertex</code>: a collection of data that represent a single point. </li>
+    <li><code>頂点（Vertex）</code>: 点を表わすデータの集合。</li>
     <li><code>Normalized Device Coordinates</code>: the coordinate system your vertices end up in after perspective division is performed on clip coordinates. All vertex positions in NDC between <code>-1.0</code> and <code>1.0</code> will not be discarded or clipped and end up visible. </li>
+	<li><code>正規化デバイス座標（Normalized Device Coordinates）</code>: クリップ座標における透視除算の後に頂点が納まるべき座標系。各要素が<code>-1.0</code>と<code>1.0</code>の間にあれば切り落されずに残り、画面上に表示される。</li>
     <li><code>Vertex Buffer Object</code>: a buffer object that allocates memory on the GPU and stores all the vertex data there for the graphics card to use.  </li>
+    <li><code>頂点バッファオブジェクト（Vertex Buffer Object）</code>: GPU上のメモリを確保しそこに頂点データを保存するバッファオブジェクト。</li>
     <li><code>Vertex Array Object</code>: stores buffer and vertex attribute state information.</li>
+    <li><code>頂点配列オブジェクト（Vertex Array Object）</code>: バッファと頂点属性の状態を保存する。</li>
     <li><code>Element Buffer Object</code>: a buffer object that stores indices on the GPU for indexed drawing. </li>
+	<li><code>要素バッファオブジェクト（Element Buffer Object）</code>: インデックスによる描画に利用するインデックスをGPUに保存するバッファオブジェクト。</li>
     <li><code>Uniform</code>: a special type of GLSL variable that is global (each shader in a shader program can access this uniform variable) and only has to be set once.   </li>
+    <li><code>ユニフォーム（Uniform）</code>: GLSLの特別な変数。大域的（シェーダープログラム中の各シェーダーからこの変数にアクセスできる）で一度値が決まれば変更できない。</li>
     <li><code>Texture</code>: a special type of image used in shaders and usually wrapped around objects, giving the illusion an object is extremely detailed.  </li>
+    <li><code>テクスチャ（Texture）</code>: シェーダーで利用される画像。通常物体に貼り付けられその物体を微細に描くために用いられる。</li>
     <li><code>Texture Wrapping</code>: defines the mode that specifies how OpenGL should sample  textures when texture coordinates are outside the range: (<code>0</code>, <code>1</code>).  </li>
+	<li><code>テクスチャの繰り返し（Texture Wrapping）</code>: <code>0</code>と<code>1</code>の外のテクスチャ座標においてOpenGLがどのようにテクスチャをサンプリングするかを定める。</li>
     <li><code>Texture Filtering</code>: defines the mode that specifies how OpenGL should sample the texture when there are several texels (texture pixels) to choose from. This usually occurs when a texture is magnified.  </li>
+    <li><code>テクスチャフィルタリング（Texture Filtering）</code>: テクスチャのピクセルであるテクセルが複数ある場合にどのようにサンプリングするかを定める。テクスチャが拡大される時に利用される。</li>
     <li><code>Mipmaps</code>: stored smaller versions of a texture where the appropriate sized version is chosen based on the distance to the viewer. </li>
+    <li><code>ミップマップ（Mipmaps）</code>: テクスチャを縮小したものを保存。カメラからの距離に応じて適切なサイズのテクスチャを選ぶために利用。</li>
     <li><code>stb_image</code>: image loading library.  </li>
-    <li><code>Texture Units</code>: allows for multiple textures on a single shader program by binding multiple textures, each to a different texture unit.  </li>
-      <li><code>Vector</code>: a mathematical entity that defines directions and/or positions in any dimension. </li>
+    <li><code>stb_image</code>: 画像を読み込むためのライブラリ。</li>
+    <li><code>Texture Units）</code>: allows for multiple textures on a single shader program by binding multiple textures, each to a different texture unit.  </li>
+    <li><code>テクスチャユニット（Texture Units）</code>: 単一のシェーダープログラムに対して複数のテクスチャを紐付けるためのもの。それぞれのテクスチャをそれぞれのテクスチャユニットに割り当てる。</li>
+	<li><code>Vector</code>: a mathematical entity that defines directions and/or positions in any dimension. </li>
+	<li><code>ベクトル（Vector）</code>: 任意の次元の空間において方向や位置を定める数学の道具。</li>
     <li><code>Matrix</code>: a rectangular array of mathematical expressions with useful transformation properties.  </li>
+    <li><code>行列（Matrix）</code>: 数式を四角に並べたもの。座標変換において便利。</li>
     <li><code>GLM</code>: a mathematics library tailored for OpenGL.  </li>
+	<li><code>GLM</code>: OpenGLに特化した数学ライブラリ。</li>
     <li><code>Local Space</code>: the space an object begins in. All coordinates relative to an object's origin.  </li>
+    <li><code>局所空間（Local Space）</code>: 各物体に固有の座標空間。</li>
     <li><code>World Space</code>: all coordinates relative to a global origin.  </li>
+    <li><code>大域空間（World Space）</code>: 大域的な原点に相対的な座標。</li>
     <li><code>View Space</code>: all coordinates as viewed from a camera's perspective.  </li>
+    <li><code>視野空間（View Space）</code>: カメラから見た座標。</li>
     <li><code>Clip Space</code>: all coordinates as viewed from the camera's perspective but with projection applied. This is the space the vertex coordinates should end up in, as output of the vertex shader. OpenGL does the rest (clipping/perspective division).  </li>
+    <li><code>クリップ空間（Clip Space）</code>: カメラから見た座標を投影したもの。頂点座標は最終的にこの座標に変換されシェーダーからの出力となる。この後OpenGLがクリッピングと透視除算を行う。</li>
 	<li><code>Screen Space</code>: all coordinates as viewed from the screen. Coordinates range from <code>0</code> to screen width/height.  </li>
+	<li><code>スクリーン空間（Screen Space）</code>: スクリーンから見た座標。座標は<code>0</code>とスクリーンの幅、高さの間。</li>
     <li><code>LookAt</code>: a special type of view matrix  that creates a coordinate system where all coordinates are rotated and translated in such a way that the user is looking at a given target from a given position.  </li>
-      <li><code>Euler Angles</code>: defined as <code>yaw</code>, <code>pitch</code> and <code>roll</code> that allow us to form any 3D direction vector from these 3 values.  </li>      
+    <li><code>視点行列（LookAt）</code>: 視野行列のひとつ。与えられた場所から与えられた位置を見つめるように座標変換するもの。</li>
+	<li><code>Euler Angles</code>: defined as <code>yaw</code>, <code>pitch</code> and <code>roll</code> that allow us to form any 3D direction vector from these 3 values.  </li>      
+	<li><code>オイラー角（Euler Angles）</code>: <code>yaw</code>（方位角）、<code>pitch</code>（仰角）、<code>roll</code>（傾斜角）によって3次元空間のあらゆる方向を定める。</li>
   </ul>
 </p>       
 
