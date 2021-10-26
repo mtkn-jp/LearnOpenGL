@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ja"> 
+<head>
+    <meta charset="utf-8"/>
+    <title>LearnOpenGL</title>
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico"  />
+	<link rel="stylesheet" href="../static/style.css" />
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"> </script>
+	<script src="/static/functions.js"></script>
+</head>
+<body>
+	<nav>
+<ol>
+	<li id="Introduction">
+		<a href="https://learnopengl.com/Introduction">はじめに</a>
+	</li>
+	<li id="Getting-started">
+		<span class="closed">入門</span>
+		<ol>
+			<li id="Getting-started/OpenGL">
+				<a href="https://learnopengl.com/Getting-started/OpenGL">OpenGL </a>
+			</li>
+			<li id="Getting-started/Creating-a-window">
+				<a href="https://learnopengl.com/Getting-started/Creating-a-window">ウィンドウの作成</a>
+			</li>
+			<li id="Getting-started/Hello-Window">
+				<a href="https://learnopengl.com/Getting-started/Hello-Window">最初のウィンドウ</a>
+			</li>
+			<li id="Getting-started/Hello-Triangle">
+				<a href="https://learnopengl.com/Getting-started/Hello-Triangle">最初の三角形</a>
+			</li>
+			<li id="Getting-started/Shaders">
+				<a href="https://learnopengl.com/Getting-started/Shaders">シェーダー</a>
+			</li>
+			<li id="Getting-started/Textures">
+				<a href="https://learnopengl.com/Getting-started/Textures">テクスチャ</a>
+			</li>
+			<li id="Getting-started/Transformations">
+				<a href="https://learnopengl.com/Getting-started/Transformations">座標変換</a>
+			</li>
+			<li id="Getting-started/Coordinate-Systems">
+				<a href="https://learnopengl.com/Getting-started/Coordinate-Systems">座標系</a>
+			</li>
+			<li id="Getting-started/Camera">
+				<a href="https://learnopengl.com/Getting-started/Camera">カメラ</a>
+			</li>
+			<li id="Getting-started/Review">
+				<a href="https://learnopengl.com/Getting-started/Review">まとめ</a>
+			</li>
+		</ol>
+	</li>
+	<li id="Lighting">
+		<span class="closed">Lighting </span>
+		<ol>
+			<li id="Lighting/Colors">
+				<a href="https://learnopengl.com/Lighting/Colors">Colors </a>
+			</li>
+			<li id="Lighting/Basic-Lighting">
+				<a href="https://learnopengl.com/Lighting/Basic-Lighting">Basic Lighting </a>
+			</li>
+			<li id="Lighting/Materials">
+				<a href="https://learnopengl.com/Lighting/Materials">Materials </a>
+			</li>
+			<li id="Lighting/Lighting-maps">
+				<a href="https://learnopengl.com/Lighting/Lighting-maps">Lighting maps </a>
+			</li>
+			<li id="Lighting/Light-casters">
+				<a href="https://learnopengl.com/Lighting/Light-casters">Light casters </a>
+			</li>
+			<li id="Lighting/Multiple-lights">
+				<a href="https://learnopengl.com/Lighting/Multiple-lights">Multiple lights </a>
+			</li>
+			<li id="Lighting/Review">
+				<a href="https://learnopengl.com/Lighting/Review">Review </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Model-Loading">
+		<span class="closed">Model Loading </span>
+		<ol>
+			<li id="Model-Loading/Assimp">
+				<a href="https://learnopengl.com/Model-Loading/Assimp">Assimp </a>
+			</li>
+			<li id="Model-Loading/Mesh">
+				<a href="https://learnopengl.com/Model-Loading/Mesh">Mesh </a>
+			</li>
+			<li id="Model-Loading/Model">
+				<a href="https://learnopengl.com/Model-Loading/Model">Model </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Advanced-OpenGL">
+		<span class="closed">Advanced OpenGL </span>
+		<ol>
+			<li id="Advanced-OpenGL/Depth-testing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Depth-testing">Depth testing </a>
+			</li>
+			<li id="Advanced-OpenGL/Stencil-testing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Stencil-testing">Stencil testing </a>
+			</li>
+			<li id="Advanced-OpenGL/Blending">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Blending">Blending </a>
+			</li>
+			<li id="Advanced-OpenGL/Face-culling">
+				<a href="https://learnopengl.cm/Advanced-OpenGL/Face-culling">Face culling </a>
+			</li>
+			<li id="Advanced-OpenGL/Framebuffers">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Framebuffers">Framebuffers </a>
+			</li>
+			<li id="Advanced-OpenGL/Cubemaps">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Cubemaps">Cubemaps </a>
+			</li>
+			<li id="Advanced-OpenGL/Advanced-Data">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Advanced-Data">Advanced Data </a>
+			</li>
+			<li id="Advanced-OpenGL/Advanced-GLSL">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Advanced-GLSL">Advanced GLSL </a>
+			</li>
+			<li id="Advanced-OpenGL/Geometry-Shader">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Geometry-Shader">Geometry Shader </a>
+			</li>
+			<li id="Advanced-OpenGL/Instancing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Instancing">Instancing </a>
+			</li>
+			<li id="Advanced-OpenGL/Anti-Aliasing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Anti-Aliasing">Anti Aliasing </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Advanced-Lighting">
+		<span class="closed">Advanced Lighting </span>
+		<ol>
+			<li id="Advanced-Lighting/Advanced-Lighting">
+				<a href="https://learnopengl.com/Advanced-Lighting/Advanced-Lighting">Advanced Lighting </a>
+			</li>
+			<li id="Advanced-Lighting/Gamma-Correction">
+				<a href="https://learnopengl.com/Advanced-Lighting/Gamma-Correction">Gamma Correction </a>
+			</li>
+			<li id="Advanced-Lighting/Shadows">
+				<span class="closed">Shadows </span>
+				<ol>
+					<li id="Advanced-Lighting/Shadows/Shadow-Mapping">
+						<a href="https://learnopengl.com/Advanced-Lighting/Shadows/Shadow-Mapping">Shadow Mapping </a>
+					</li>
+					<li id="Advanced-Lighting/Shadows/Point-Shadows">
+						<a href="https://learnopengl.com/Advanced-Lighting/Shadows/Point-Shadows">Point Shadows </a>
+					</li>
+				</ol>
+			</li>
+			<li id="Advanced-Lighting/Normal-Mapping">
+				<a href="https://learnopengl.com/Advanced-Lighting/Normal-Mapping">Normal Mapping </a>
+			</li>
+			<li id="Advanced-Lighting/Parallax-Mapping">
+				<a href="https://learnopengl.com/Advanced-Lighting/Parallax-Mapping">Parallax Mapping </a>
+			</li>
+			<li id="Advanced-Lighting/HDR">
+				<a href="https://learnopengl.com/Advanced-Lighting/HDR">HDR </a>
+			</li>
+			<li id="Advanced-Lighting/Bloom">
+				<a href="https://learnopengl.com/Advanced-Lighting/Bloom">Bloom </a>
+			</li>
+			<li id="Advanced-Lighting/Deferred-Shading">
+				<a href="https://learnopengl.com/Advanced-Lighting/Deferred-Shading">Deferred Shading </a>
+			</li>
+			<li id="Advanced-Lighting/SSAO">
+				<a href="https://learnopengl.com/Advanced-Lighting/SSAO">SSAO </a>
+			</li>
+		</ol>
+	</li>
+	<li id="PBR">
+		<span class="closed">PBR </span>
+		<ol>
+			<li id="PBR/Theory">
+				<a href="https://learnopengl.com/PBR/Theory">Theory </a>
+			</li>
+			<li id="PBR/Lighting">
+				<a href="https://learnopengl.com/PBR/Lighting">Lighting </a>
+			</li>
+			<li id="PBR/IBL">
+				<span class="closed">IBL </span>
+				<ol>
+					<li id="PBR/IBL/Diffuse-irradiance">
+						<a href="https://learnopengl.com/PBR/IBL/Diffuse-irradiance">Diffuse irradiance </a>
+					</li>
+					<li id="PBR/IBL/Specular-IBL">
+						<a href="https://learnopengl.com/PBR/IBL/Specular-IBL">Specular IBL </a>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="In-Practice">
+		<span class="closed">In Practice </span>
+		<ol>
+			<li id="In-Practice/Debugging">
+				<a href="https://learnopengl.com/In-Practice/Debugging">Debugging </a>
+			</li>
+			<li id="In-Practice/Text-Rendering">
+				<a href="https://learnopengl.com/In-Practice/Text-Rendering">Text Rendering </a>
+			</li>
+			<li id="In-Practice/2D-Game">
+				<span class="closed">2D Game </span>
+				<ol>
+					<li id="In-Practice/2D-Game/Breakout">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Breakout">Breakout </a>
+					</li>
+					<li id="In-Practice/2D-Game/Setting-up">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Setting-up">Setting up </a>
+					</li>
+					<li id="In-Practice/2D-Game/Rendering-Sprites">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Rendering-Sprites">Rendering Sprites </a>
+					</li>
+					<li id="In-Practice/2D-Game/Levels">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Levels">Levels </a>
+					</li>
+					<li id="In-Practice/2D-Game/Collisions">
+						<span class="closed">Collisions </span>
+						<ol>
+							<li id="In-Practice/2D-Game/Collisions/Ball">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Ball">Ball </a>
+							</li>
+							<li id="In-Practice/2D-Game/Collisions/Collision-detection">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Collision-detection">Collision detection </a>
+							</li>
+							<li id="In-Practice/2D-Game/Collisions/Collision-resolution">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Collision-resolution">Collision resolution </a>
+							</li>
+						</ol>
+					</li>
+					<li id="In-Practice/2D-Game/Particles">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Particles">Particles </a>
+					</li>
+					<li id="In-Practice/2D-Game/Postprocessing">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Postprocessing">Postprocessing </a>
+					</li>
+					<li id="In-Practice/2D-Game/Powerups">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Powerups">Powerups </a>
+					</li>
+					<li id="In-Practice/2D-Game/Audio">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Audio">Audio </a>
+					</li>
+					<li id="In-Practice/2D-Game/Render-text">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Render-text">Render text </a>
+					</li>
+					<li id="In-Practice/2D-Game/Final-thoughts">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Final-thoughts">Final thoughts </a>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="Guest-Articles">
+		<span class="closed">Guest Articles </span>
+		<ol>
+			<li id="Guest-Articles/How-to-publish">
+				<a href="https://learnopengl.com/Guest-Articles/How-to-publish">How to publish </a>
+			</li>
+			<li id="Guest-Articles/2020">
+				<span class="closed">2020 </span>
+				<ol>
+					<li id="Guest-Articles/2020/OIT">
+						<span class="closed">OIT </span>
+						<ol>
+							<li id="Guest-Articles/2020/OIT/Introduction">
+								<a href="https://learnopengl.com/Guest-Articles/2020/OIT/Introduction">Introduction </a>
+							</li>
+							<li id="Guest-Articles/2020/OIT/Weighted-Blended">
+								<a href="https://learnopengl.com/Guest-Articles/2020/OIT/Weighted-Blended">Weighted Blended </a>
+							</li>
+						</ol>
+					</li>
+					<li id="Guest-Articles/2020/Skeletal-Animation">
+						<a href="https://learnopengl.com/Guest-Articles/2020/Skeletal-Animation">Skeletal Animation </a>
+					</li>
+				</ol>
+			</li>
+			<li id="Guest-Articles/2021">
+				<span class="closed">2021 </span>
+				<ol>
+					<li id="Guest-Articles/2021/CSM">
+						<a href="https://learnopengl.com/Guest-Articles/2021/CSM">CSM </a>
+					</li>
+					<li id="Guest-Articles/2021/Scene">
+						<span class="closed">Scene </span>
+						<ol>
+							<li id="Guest-Articles/2021/Scene/Scene-Graph">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Scene/Scene-Graph">Scene Graph </a>
+							</li>
+							<li id="Guest-Articles/2021/Scene/Frustum-Culling">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Scene/Frustum-Culling">Frustum Culling </a>
+							</li>
+						</ol>
+					</li>
+					<li id="Guest-Articles/2021/Tessellation">
+						<span class="closed">Tessellation </span>
+						<ol>
+							<li id="Guest-Articles/2021/Tessellation/Height-map">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Tessellation/Height-map">Height map </a>
+							</li>
+						</ol>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="Code-repository">
+		<a href="https://learnopengl.com/Code-repository">Code repository </a>
+	</li>
+	<li id="Translations">
+		<a href="https://learnopengl.com/Translations">Translations </a>
+	</li>
+	<li id="About">
+		<a href="https://learnopengl.com/About">About </a>
+	</li>
+</ol>
+	</nav>
+	<main>
+    <div id="content">
+    <h1 id="content-title">Assimp</h1>
+<h1 id="content-url" style='display:none;'>Model-Loading/Assimp</h1>
+<p>
+  In all the scenes so far we've been extensively playing with our little container friend, but over time, even our best friends can get a little boring. In bigger graphics applications, there are usually lots of complicated and interesting models that are much prettier to look at than a static container. However, unlike the container object, we can't really manually define all the vertices, normals, and texture coordinates of complicated shapes like houses, vehicles, or human-like characters.  What we want instead, is to <em>import</em> these models into the application; models that were carefully designed by 3D artists in tools like <a href="http://www.blender.org/" target="_blank">Blender</a>, <a href="http://www.autodesk.nl/products/3ds-max/overview" target="_blank">3DS Max</a> or <a href="http://www.autodesk.com/products/autodesk-maya/overview" target="_blank">Maya</a>.
+</p>
+
+<p>
+  These so called <def>3D modeling tools</def> allow artists to create complicated shapes and apply textures to them via a process called <def>uv-mapping</def>. The tools then automatically generate all the vertex coordinates, vertex normals, and texture coordinates while exporting them to a model file format we can use. This way, artists have an extensive toolkit to create high quality models without having to care too much about the technical details. All the technical aspects are hidden in the exported model file. We, as graphics programmers, <strong>do</strong> have to care about these technical details though.
+</p>
+
+<p>
+  It is our job to parse these exported model files and extract all the relevant information so we can store them in a format that OpenGL understands. A common issue is that there are dozens of different file formats where each exports the model data in its own unique way. Model formats like the <a href="http://en.wikipedia.org/wiki/Wavefront_.obj_file" target="_blank">Wavefront .obj</a> only contains model data with minor material information like model colors and diffuse/specular maps, while model formats like the XML-based <a href="http://en.wikipedia.org/wiki/COLLADA" target="_blank">Collada file format</a> are extremely extensive and contain models, lights, many types of materials, animation data, cameras, complete scene information, and much more. The wavefront object format is generally considered to be an easy-to-parse model format. It is recommended to visit the Wavefront's wiki page at least once to see how such a file format's data is structured. This should give you a basic perception of how  model file formats are generally structured.
+</p>
+
+<p>
+  All by all, there are many different file formats where a common general structure between them usually does not exist. So if we want to import a model from these file formats, we'd have to write an importer ourselves for each of the file formats we want to import. Luckily for us, there just happens to be a library for this.  
+</p>
+
+<h2>A model loading library</h2>
+<p>
+  A very popular model importing library out there is called <a href="http://assimp.org/" target="_blank">Assimp</a> that stands for <em>Open Asset Import Library</em>.  Assimp is able to import dozens of different model file formats (and export to some as well) by loading all the model's data into Assimp's generalized data structures. As soon as Assimp has loaded the model, we can retrieve all the data we need from Assimp's data structures. Because the data structure of Assimp stays the same, regardless of the type of file format we imported, it abstracts us from all the different file formats out there. 
+</p>
+
+<p>
+  When importing a model via Assimp it loads the entire model into a <em>scene</em> object that contains all the data of the imported model/scene. Assimp then has a collection of nodes where each node contains indices to data stored in the scene object where each node can have any number of children. A (simplistic) model of Assimp's structure is shown below:
+</p>
+
+<img src="/img/model_loading/assimp_structure.png" class="clean"/>
+
+<p>
+  <ul>
+    <li>All the data of the scene/model is contained in the <u>Scene</u> object like all the materials and the meshes. It also contains a reference to the root node of the scene.</li>
+    <li>The <u>Root node</u> of the scene may contain children nodes (like all other nodes) and could have a set of indices that point to mesh data in the scene object's <var>mMeshes</var> array. The scene's <var>mMeshes</var> array contains the actual <u>Mesh</u> objects, the values in the <var>mMeshes</var> array of a node are only indices for the scene's meshes array.</li>
+    <li>A <u>Mesh</u> object itself contains all the relevant data required for rendering, think of vertex positions, normal vectors, texture coordinates, faces, and the material of the object.</li>
+    <li>A mesh contains several faces. A <u>Face</u> represents a render primitive of the object (triangles, squares, points). A face contains the indices of the vertices that form a primitive. Because the vertices and the indices are separated, this makes it easy for us to render via an index buffer (see <a href="https://learnopengl.com/Getting-started/Hello-Triangle" target="_blank">Hello Triangle</a>).</li>
+    <li>Finally a mesh also links to a <u>Material</u> object that hosts several functions to retrieve the material properties of an object. Think of colors and/or texture maps (like diffuse and specular maps).</li>
+  </ul>
+</p>
+
+<p>
+  What we want to do is: first load an object into a <u>Scene</u> object, recursively retrieve the corresponding <u>Mesh</u> objects from each of the nodes (we recursively search each node's children), and process each <u>Mesh</u> object to retrieve the vertex data, indices, and its material properties. The result is then a collection of mesh data that we want to contain in a single <code>Model</code> object.
+</p>
+
+<note>
+  <strong>Mesh</strong><br/>
+  When modeling objects in modeling toolkits, artists generally do not create an entire model out of a single shape. Usually, each model has several sub-models/shapes that it consists of. Each of those single shapes is called a <def>mesh</def>. Think of a human-like character: artists usually model the head, limbs, clothes, and weapons all as separate components, and the combined result of all these meshes represents the final model. A single mesh is the minimal representation of what we need to draw an object in OpenGL (vertex data, indices, and material properties). A model (usually) consists of several meshes.
+</note>
+
+<p>
+  In the <a href="https://learnopengl.com/Model-Loading/Mesh" target="_blank">next</a> chapters we'll create our own <fun>Model</fun> and <fun>Mesh</fun> class that load and store imported models using the structure we've just described. If we then want to draw a model, we do not render the model as a whole, but we render all of the individual meshes that the model is composed of. However, before we can start importing models, we first need to actually include Assimp in our project.
+</p>
+
+<h2>Building Assimp</h2>
+<p>
+    You can download Assimp from their <a href="http://assimp.org/index.php/downloads" target="_blank">download</a> page and choose the corresponding version. For this writing, the Assimp version used was version <code>3.1.1</code>. It is advised to compile the libraries by yourself, since their pre-compiled libraries don't always work on all systems. Review the <a href="https://learnopengl.com/Getting-started/Creating-a-window" target="_blank">Creating a window</a> chapter if you forgot how to compile a library by yourself via CMake.
+</p>
+
+<p>
+  A few issues can come up while building Assimp, so I'll note them down here with their solutions in case any of you get the same errors:
+  <ul>
+    <li>CMake continually gives errors while retrieving the configuration list about DirectX libraries missing, messages like: 
+<pre><code>
+Could not locate DirectX
+CMake Error at cmake-modules/FindPkgMacros.cmake:110 (message):
+Required library DirectX not found! Install the library (including dev packages) 
+and try again. If the library is already installed, set the missing variables 
+manually in cmake.
+</code></pre>
+      The solution here is to install the DirectX SDK in case you haven't installed this before. You can download the SDK from <a href="http://www.microsoft.com/en-us/download/details.aspx?id=6812" target="_blank">here</a>.</li>
+    <li>While installing the DirectX SDK, a possible error code of <code>s1023</code> could pop up. In that case you first want to de-install the C++ Redistributable package(s) before installing the SDK.</li>
+  </ul>
+</p>
+
+<p>
+  Once the configuration is completed, you can generate a solution file, open it, and compile the libraries (either as a release version or a debug version, whatever floats your boat). Be sure to compile it for 64-bit as all LearnOpenGL code is 64 bit. 
+</p>
+
+<p>
+  The default configuration builds Assimp as a dynamic library so we need to include the resulting DLL named <code>assimp.dll</code> (or with some post-fix) alongside the application's binaries. You can simply copy the DLL to the same folder where your application's executable is located.
+</p>
+
+<p>
+  After compiling the generated solution, the resulting library and DLL file are located in the <code>code/Debug</code> or <code>code/Release</code> folder. Then simply move the lib and DLL to their appropriate locations, link them from your solution, and be sure to copy Assimp's headers to your <code>include</code> directory (the header files are found in the <code>include</code> folder in the files downloaded from Assimp).
+</p>
+
+<p>
+  By now you should have compiled Assimp and linked it to your application. If you still received any unreported error, feel free to ask for help in the comments.
+</p>       
+
+    </div>
+    
+	</main>
+</body>
+</html>

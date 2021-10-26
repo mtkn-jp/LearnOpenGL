@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="ja"> 
+<head>
+    <meta charset="utf-8"/>
+    <title>LearnOpenGL</title>
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico"  />
+	<link rel="stylesheet" href="../static/style.css" />
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"> </script>
+	<script src="/static/functions.js"></script>
+</head>
+<body>
+	<nav>
+<ol>
+	<li id="Introduction">
+		<a href="https://learnopengl.com/Introduction">はじめに</a>
+	</li>
+	<li id="Getting-started">
+		<span class="closed">入門</span>
+		<ol>
+			<li id="Getting-started/OpenGL">
+				<a href="https://learnopengl.com/Getting-started/OpenGL">OpenGL </a>
+			</li>
+			<li id="Getting-started/Creating-a-window">
+				<a href="https://learnopengl.com/Getting-started/Creating-a-window">ウィンドウの作成</a>
+			</li>
+			<li id="Getting-started/Hello-Window">
+				<a href="https://learnopengl.com/Getting-started/Hello-Window">最初のウィンドウ</a>
+			</li>
+			<li id="Getting-started/Hello-Triangle">
+				<a href="https://learnopengl.com/Getting-started/Hello-Triangle">最初の三角形</a>
+			</li>
+			<li id="Getting-started/Shaders">
+				<a href="https://learnopengl.com/Getting-started/Shaders">シェーダー</a>
+			</li>
+			<li id="Getting-started/Textures">
+				<a href="https://learnopengl.com/Getting-started/Textures">テクスチャ</a>
+			</li>
+			<li id="Getting-started/Transformations">
+				<a href="https://learnopengl.com/Getting-started/Transformations">座標変換</a>
+			</li>
+			<li id="Getting-started/Coordinate-Systems">
+				<a href="https://learnopengl.com/Getting-started/Coordinate-Systems">座標系</a>
+			</li>
+			<li id="Getting-started/Camera">
+				<a href="https://learnopengl.com/Getting-started/Camera">カメラ</a>
+			</li>
+			<li id="Getting-started/Review">
+				<a href="https://learnopengl.com/Getting-started/Review">まとめ</a>
+			</li>
+		</ol>
+	</li>
+	<li id="Lighting">
+		<span class="closed">Lighting </span>
+		<ol>
+			<li id="Lighting/Colors">
+				<a href="https://learnopengl.com/Lighting/Colors">Colors </a>
+			</li>
+			<li id="Lighting/Basic-Lighting">
+				<a href="https://learnopengl.com/Lighting/Basic-Lighting">Basic Lighting </a>
+			</li>
+			<li id="Lighting/Materials">
+				<a href="https://learnopengl.com/Lighting/Materials">Materials </a>
+			</li>
+			<li id="Lighting/Lighting-maps">
+				<a href="https://learnopengl.com/Lighting/Lighting-maps">Lighting maps </a>
+			</li>
+			<li id="Lighting/Light-casters">
+				<a href="https://learnopengl.com/Lighting/Light-casters">Light casters </a>
+			</li>
+			<li id="Lighting/Multiple-lights">
+				<a href="https://learnopengl.com/Lighting/Multiple-lights">Multiple lights </a>
+			</li>
+			<li id="Lighting/Review">
+				<a href="https://learnopengl.com/Lighting/Review">Review </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Model-Loading">
+		<span class="closed">Model Loading </span>
+		<ol>
+			<li id="Model-Loading/Assimp">
+				<a href="https://learnopengl.com/Model-Loading/Assimp">Assimp </a>
+			</li>
+			<li id="Model-Loading/Mesh">
+				<a href="https://learnopengl.com/Model-Loading/Mesh">Mesh </a>
+			</li>
+			<li id="Model-Loading/Model">
+				<a href="https://learnopengl.com/Model-Loading/Model">Model </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Advanced-OpenGL">
+		<span class="closed">Advanced OpenGL </span>
+		<ol>
+			<li id="Advanced-OpenGL/Depth-testing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Depth-testing">Depth testing </a>
+			</li>
+			<li id="Advanced-OpenGL/Stencil-testing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Stencil-testing">Stencil testing </a>
+			</li>
+			<li id="Advanced-OpenGL/Blending">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Blending">Blending </a>
+			</li>
+			<li id="Advanced-OpenGL/Face-culling">
+				<a href="https://learnopengl.cm/Advanced-OpenGL/Face-culling">Face culling </a>
+			</li>
+			<li id="Advanced-OpenGL/Framebuffers">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Framebuffers">Framebuffers </a>
+			</li>
+			<li id="Advanced-OpenGL/Cubemaps">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Cubemaps">Cubemaps </a>
+			</li>
+			<li id="Advanced-OpenGL/Advanced-Data">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Advanced-Data">Advanced Data </a>
+			</li>
+			<li id="Advanced-OpenGL/Advanced-GLSL">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Advanced-GLSL">Advanced GLSL </a>
+			</li>
+			<li id="Advanced-OpenGL/Geometry-Shader">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Geometry-Shader">Geometry Shader </a>
+			</li>
+			<li id="Advanced-OpenGL/Instancing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Instancing">Instancing </a>
+			</li>
+			<li id="Advanced-OpenGL/Anti-Aliasing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Anti-Aliasing">Anti Aliasing </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Advanced-Lighting">
+		<span class="closed">Advanced Lighting </span>
+		<ol>
+			<li id="Advanced-Lighting/Advanced-Lighting">
+				<a href="https://learnopengl.com/Advanced-Lighting/Advanced-Lighting">Advanced Lighting </a>
+			</li>
+			<li id="Advanced-Lighting/Gamma-Correction">
+				<a href="https://learnopengl.com/Advanced-Lighting/Gamma-Correction">Gamma Correction </a>
+			</li>
+			<li id="Advanced-Lighting/Shadows">
+				<span class="closed">Shadows </span>
+				<ol>
+					<li id="Advanced-Lighting/Shadows/Shadow-Mapping">
+						<a href="https://learnopengl.com/Advanced-Lighting/Shadows/Shadow-Mapping">Shadow Mapping </a>
+					</li>
+					<li id="Advanced-Lighting/Shadows/Point-Shadows">
+						<a href="https://learnopengl.com/Advanced-Lighting/Shadows/Point-Shadows">Point Shadows </a>
+					</li>
+				</ol>
+			</li>
+			<li id="Advanced-Lighting/Normal-Mapping">
+				<a href="https://learnopengl.com/Advanced-Lighting/Normal-Mapping">Normal Mapping </a>
+			</li>
+			<li id="Advanced-Lighting/Parallax-Mapping">
+				<a href="https://learnopengl.com/Advanced-Lighting/Parallax-Mapping">Parallax Mapping </a>
+			</li>
+			<li id="Advanced-Lighting/HDR">
+				<a href="https://learnopengl.com/Advanced-Lighting/HDR">HDR </a>
+			</li>
+			<li id="Advanced-Lighting/Bloom">
+				<a href="https://learnopengl.com/Advanced-Lighting/Bloom">Bloom </a>
+			</li>
+			<li id="Advanced-Lighting/Deferred-Shading">
+				<a href="https://learnopengl.com/Advanced-Lighting/Deferred-Shading">Deferred Shading </a>
+			</li>
+			<li id="Advanced-Lighting/SSAO">
+				<a href="https://learnopengl.com/Advanced-Lighting/SSAO">SSAO </a>
+			</li>
+		</ol>
+	</li>
+	<li id="PBR">
+		<span class="closed">PBR </span>
+		<ol>
+			<li id="PBR/Theory">
+				<a href="https://learnopengl.com/PBR/Theory">Theory </a>
+			</li>
+			<li id="PBR/Lighting">
+				<a href="https://learnopengl.com/PBR/Lighting">Lighting </a>
+			</li>
+			<li id="PBR/IBL">
+				<span class="closed">IBL </span>
+				<ol>
+					<li id="PBR/IBL/Diffuse-irradiance">
+						<a href="https://learnopengl.com/PBR/IBL/Diffuse-irradiance">Diffuse irradiance </a>
+					</li>
+					<li id="PBR/IBL/Specular-IBL">
+						<a href="https://learnopengl.com/PBR/IBL/Specular-IBL">Specular IBL </a>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="In-Practice">
+		<span class="closed">In Practice </span>
+		<ol>
+			<li id="In-Practice/Debugging">
+				<a href="https://learnopengl.com/In-Practice/Debugging">Debugging </a>
+			</li>
+			<li id="In-Practice/Text-Rendering">
+				<a href="https://learnopengl.com/In-Practice/Text-Rendering">Text Rendering </a>
+			</li>
+			<li id="In-Practice/2D-Game">
+				<span class="closed">2D Game </span>
+				<ol>
+					<li id="In-Practice/2D-Game/Breakout">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Breakout">Breakout </a>
+					</li>
+					<li id="In-Practice/2D-Game/Setting-up">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Setting-up">Setting up </a>
+					</li>
+					<li id="In-Practice/2D-Game/Rendering-Sprites">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Rendering-Sprites">Rendering Sprites </a>
+					</li>
+					<li id="In-Practice/2D-Game/Levels">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Levels">Levels </a>
+					</li>
+					<li id="In-Practice/2D-Game/Collisions">
+						<span class="closed">Collisions </span>
+						<ol>
+							<li id="In-Practice/2D-Game/Collisions/Ball">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Ball">Ball </a>
+							</li>
+							<li id="In-Practice/2D-Game/Collisions/Collision-detection">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Collision-detection">Collision detection </a>
+							</li>
+							<li id="In-Practice/2D-Game/Collisions/Collision-resolution">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Collision-resolution">Collision resolution </a>
+							</li>
+						</ol>
+					</li>
+					<li id="In-Practice/2D-Game/Particles">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Particles">Particles </a>
+					</li>
+					<li id="In-Practice/2D-Game/Postprocessing">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Postprocessing">Postprocessing </a>
+					</li>
+					<li id="In-Practice/2D-Game/Powerups">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Powerups">Powerups </a>
+					</li>
+					<li id="In-Practice/2D-Game/Audio">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Audio">Audio </a>
+					</li>
+					<li id="In-Practice/2D-Game/Render-text">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Render-text">Render text </a>
+					</li>
+					<li id="In-Practice/2D-Game/Final-thoughts">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Final-thoughts">Final thoughts </a>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="Guest-Articles">
+		<span class="closed">Guest Articles </span>
+		<ol>
+			<li id="Guest-Articles/How-to-publish">
+				<a href="https://learnopengl.com/Guest-Articles/How-to-publish">How to publish </a>
+			</li>
+			<li id="Guest-Articles/2020">
+				<span class="closed">2020 </span>
+				<ol>
+					<li id="Guest-Articles/2020/OIT">
+						<span class="closed">OIT </span>
+						<ol>
+							<li id="Guest-Articles/2020/OIT/Introduction">
+								<a href="https://learnopengl.com/Guest-Articles/2020/OIT/Introduction">Introduction </a>
+							</li>
+							<li id="Guest-Articles/2020/OIT/Weighted-Blended">
+								<a href="https://learnopengl.com/Guest-Articles/2020/OIT/Weighted-Blended">Weighted Blended </a>
+							</li>
+						</ol>
+					</li>
+					<li id="Guest-Articles/2020/Skeletal-Animation">
+						<a href="https://learnopengl.com/Guest-Articles/2020/Skeletal-Animation">Skeletal Animation </a>
+					</li>
+				</ol>
+			</li>
+			<li id="Guest-Articles/2021">
+				<span class="closed">2021 </span>
+				<ol>
+					<li id="Guest-Articles/2021/CSM">
+						<a href="https://learnopengl.com/Guest-Articles/2021/CSM">CSM </a>
+					</li>
+					<li id="Guest-Articles/2021/Scene">
+						<span class="closed">Scene </span>
+						<ol>
+							<li id="Guest-Articles/2021/Scene/Scene-Graph">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Scene/Scene-Graph">Scene Graph </a>
+							</li>
+							<li id="Guest-Articles/2021/Scene/Frustum-Culling">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Scene/Frustum-Culling">Frustum Culling </a>
+							</li>
+						</ol>
+					</li>
+					<li id="Guest-Articles/2021/Tessellation">
+						<span class="closed">Tessellation </span>
+						<ol>
+							<li id="Guest-Articles/2021/Tessellation/Height-map">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Tessellation/Height-map">Height map </a>
+							</li>
+						</ol>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="Code-repository">
+		<a href="https://learnopengl.com/Code-repository">Code repository </a>
+	</li>
+	<li id="Translations">
+		<a href="https://learnopengl.com/Translations">Translations </a>
+	</li>
+	<li id="About">
+		<a href="https://learnopengl.com/About">About </a>
+	</li>
+</ol>
+	</nav>
+	<main>
+    <h1 id="content-title">Powerups</h1>
+<h1 id="content-url" style='display:none;'>In-Practice/2D-Game/Powerups</h1>
+<p>
+  Breakout is close to finished, but it would be cool to add at least one more gameplay mechanic so it's not your average standard Breakout clone; what about powerups?
+</p>
+
+<p>
+  The idea is that whenever a brick is destroyed, the brick has a small chance of spawning a powerup block. Such a block will slowly fall downwards and if it collides with the player paddle, an interesting effect occurs based on the type of powerup. For example, one powerup makes the paddle larger, and another powerup allows the ball to pass through objects. We also include several negative powerups that affect the player in a negative way.
+</p>
+
+<p>
+  We can model a powerup as a <fun>GameObject</fun> with a few extra properties. That's why we define a class <fun>PowerUp</fun> that inherits from <fun>GameObject</fun>:
+</p>
+
+<pre><code>
+const glm::vec2 SIZE(60.0f, 20.0f);
+const glm::vec2 VELOCITY(0.0f, 150.0f);
+
+class PowerUp : public GameObject 
+{
+public:
+    // powerup state
+    std::string Type;
+    float       Duration;	
+    bool        Activated;
+    // constructor
+    PowerUp(std::string type, glm::vec3 color, float duration, 
+            glm::vec2 position, Texture2D texture) 
+        : GameObject(position, SIZE, texture, color, VELOCITY), 
+          Type(type), Duration(duration), Activated() 
+    { }
+};  
+</code></pre>
+
+<p>
+  A <fun>PowerUp</fun> is just a <fun>GameObject</fun> with extra state, so we can simply define it in a single header file which you can find <a href="/code_viewer_gh.php?code=src/7.in_practice/3.2d_game/0.full_source/power_up.h" target="_blank">here</a>.
+</p>
+
+<p>
+  Each powerup defines its type as a string, a duration for how long it is active, and whether it is currently activated. Within Breakout we're going to feature a total of 4 positive powerups and 2 negative powerups:
+</p>
+
+<img src="/img/in-practice/breakout/powerups.png" class="clean" alt="PowerUps used in OpenGL Breakoout"/>
+  
+<ul>
+  <li><strong>Speed</strong>: increases the velocity of the ball by 20%. </li> 
+  <li><strong>Sticky</strong>: when the ball collides with the paddle, the ball remains stuck to the paddle unless the spacebar is pressed again. This allows the player to better position the ball before releasing it. </li> 
+  <li><strong>Pass-Through</strong>: collision resolution is disabled for non-solid blocks, allowing the ball to pass through multiple blocks.</li> 
+  <li><strong>Pad-Size-Increase</strong>: increases the width of the paddle by 50 pixels.</li> 
+  <li><strong>Confuse</strong>: activates the confuse postprocessing effect for a short period of time, confusing the user. </li> 
+  <li><strong>Chaos</strong>: activates the chaos postprocessing effect for a short period of time, heavily disorienting the user.</li> 
+</ul>
+  
+<p>
+ You can find the textures here:
+</p>
+  
+<ul>
+  <li><strong>Textures</strong>: <a href="/img/in-practice/breakout/textures/powerup_speed.png" target="_blank">Speed</a>, <a href="/img/in-practice/breakout/textures/powerup_sticky.png" target="_blank">Sticky</a>, <a href="/img/in-practice/breakout/textures/powerup_passthrough.png" target="_blank">Pass-Through</a>, <a href="/img/in-practice/breakout/textures/powerup_increase.png" target="_blank">Pad-Size-Increase</a>, <a href="/img/in-practice/breakout/textures/powerup_confuse.png" target="_blank">Confuse</a>, <a href="/img/in-practice/breakout/textures/powerup_chaos.png" target="_blank">Chaos</a>.
+</ul>
+  
+<p>
+   Similar to the level block textures, each of the powerup textures is completely grayscale. This makes sure the color of the powerups remain balanced whenever we multiply them with a color vector. 
+</p>
+  
+<p>
+  Because powerups have state, a duration, and certain effects associated with them, we would like to keep track of all the powerups currently active in the game; we store them in a vector:
+</p>
+  
+<pre><code>
+class Game {
+    public:
+        [...]
+        std::vector&lt;PowerUp&gt;  PowerUps;
+        [...]
+        void SpawnPowerUps(GameObject &block);
+        void UpdatePowerUps(float dt);
+};
+</code></pre>
+  
+<p>
+  We've also defined two functions for managing powerups. <fun>SpawnPowerUps</fun> spawns a powerups at the location of a given block and <fun>UpdatePowerUps</fun> manages all powerups currently active within the game.
+</p>
+  
+<h3>Spawning PowerUps</h3>
+<p>
+  Each time a block is destroyed we would like to, given a small chance, spawn a powerup. This functionality is found inside the game's <fun>SpawnPowerUps</fun> function:
+</p>
+  
+<pre><code>
+bool ShouldSpawn(unsigned int chance)
+{
+    unsigned int random = rand() % chance;
+    return random == 0;
+}
+void Game::SpawnPowerUps(GameObject &block)
+{
+    if (ShouldSpawn(75)) // 1 in 75 chance
+        this-&gt;PowerUps.push_back(
+             PowerUp("speed", glm::vec3(0.5f, 0.5f, 1.0f), 0.0f, block.Position, tex_speed
+         ));
+    if (ShouldSpawn(75))
+        this-&gt;PowerUps.push_back(
+            PowerUp("sticky", glm::vec3(1.0f, 0.5f, 1.0f), 20.0f, block.Position, tex_sticky 
+        );
+    if (ShouldSpawn(75))
+        this-&gt;PowerUps.push_back(
+            PowerUp("pass-through", glm::vec3(0.5f, 1.0f, 0.5f), 10.0f, block.Position, tex_pass
+        ));
+    if (ShouldSpawn(75))
+        this-&gt;PowerUps.push_back(
+            PowerUp("pad-size-increase", glm::vec3(1.0f, 0.6f, 0.4), 0.0f, block.Position, tex_size    
+        ));
+    if (ShouldSpawn(15)) // negative powerups should spawn more often
+        this-&gt;PowerUps.push_back(
+            PowerUp("confuse", glm::vec3(1.0f, 0.3f, 0.3f), 15.0f, block.Position, tex_confuse
+        ));
+    if (ShouldSpawn(15))
+        this-&gt;PowerUps.push_back(
+            PowerUp("chaos", glm::vec3(0.9f, 0.25f, 0.25f), 15.0f, block.Position, tex_chaos
+        ));
+}  
+</code></pre>
+  
+<p>
+  The <fun>SpawnPowerUps</fun> function creates a new <fun>PowerUp</fun> object based on a given chance (1 in 75 for normal powerups and 1 in 15 for negative powerups) and sets their properties. Each powerup is given a specific color to make them more recognizable for the user and a duration in seconds based on its type; here a duration of <code>0.0f</code> means its duration is infinite. Additionally, each powerup is given the position of the destroyed block and one of the textures from the beginning of this chapter.
+</p>
+  
+<h3>Activating PowerUps</h3>
+<p>
+  We then have to update the game's <fun>DoCollisions</fun> function to not only check for brick and paddle collisions, but also collisions between the paddle and each non-destroyed PowerUp. Note that we call <fun>SpawnPowerUps</fun> directly after a block is destroyed.
+</p>
+  
+<pre><code>
+void Game::DoCollisions()
+{
+    for (GameObject &box : this-&gt;Levels[this-&gt;Level].Bricks)
+    {
+        if (!box.Destroyed)
+        {
+            Collision collision = CheckCollision(*Ball, box);
+            if (std::get&lt;0&gt;(collision)) // if collision is true
+            {
+                // destroy block if not solid
+                if (!box.IsSolid)
+                {
+                    box.Destroyed = true;
+                    this-&gt;SpawnPowerUps(box);
+                }
+                [...]
+            }
+        }
+    }        
+    [...] 
+    for (PowerUp &powerUp : this-&gt;PowerUps)
+    {
+        if (!powerUp.Destroyed)
+        {
+            if (powerUp.Position.y &gt;= this-&gt;Height)
+                powerUp.Destroyed = true;
+            if (CheckCollision(*Player, powerUp))
+            {	// collided with player, now activate powerup
+                ActivatePowerUp(powerUp);
+                powerUp.Destroyed = true;
+                powerUp.Activated = true;
+            }
+        }
+    }  
+}
+</code></pre>
+
+<p>
+  For all powerups not yet destroyed, we check if the powerup either reached the bottom edge of the screen or collided with the paddle. In both cases the powerup is destroyed, but when collided with the paddle, it is also activated.
+</p>
+  
+<p>
+  Activating a powerup is accomplished by settings its <var>Activated</var> property to <code>true</code> and enabling the powerup's effect by giving it to the <fun>ActivatePowerUp</fun> function:
+</p>
+  
+<pre><code>
+void ActivatePowerUp(PowerUp &powerUp)
+{
+    if (powerUp.Type == "speed")
+    {
+        Ball-&gt;Velocity *= 1.2;
+    }
+    else if (powerUp.Type == "sticky")
+    {
+        Ball-&gt;Sticky = true;
+        Player-&gt;Color = glm::vec3(1.0f, 0.5f, 1.0f);
+    }
+    else if (powerUp.Type == "pass-through")
+    {
+        Ball-&gt;PassThrough = true;
+        Ball-&gt;Color = glm::vec3(1.0f, 0.5f, 0.5f);
+    }
+    else if (powerUp.Type == "pad-size-increase")
+    {
+        Player-&gt;Size.x += 50;
+    }
+    else if (powerUp.Type == "confuse")
+    {
+        if (!Effects-&gt;Chaos)
+            Effects-&gt;Confuse = true; // only activate if chaos wasn't already active
+    }
+    else if (powerUp.Type == "chaos")
+    {
+        if (!Effects-&gt;Confuse)
+            Effects-&gt;Chaos = true;
+    }
+} 
+</code></pre>
+  
+<p>
+  The purpose of <fun>ActivatePowerUp</fun> is exactly as it sounds: it activates the effect of a powerup as we've described at the start of this chapter. We check the type of the powerup and change the game state accordingly. For the <code>"sticky"</code> and <code>"pass-through"</code> effect, we also change the color of the paddle and the ball respectively to give the user some feedback as to which effect is currently active.
+</p>
+  
+<p>
+   Because the sticky and pass-through effects somewhat change the game logic we store their effect as a property of the ball object; this way we can change the game logic based on whatever effect on the ball is currently active. The only thing we've changed in the <fun>BallObject</fun> header is the addition of these two properties, but for completeness' sake its updated code is listed below:
+</p>
+  
+<ul>
+  <li><strong>BallObject</strong>: <a href="/code_viewer_gh.php?code=src/7.in_practice/3.2d_game/0.full_source/ball_object.h" target="_blank">header</a>, <a href="/code_viewer_gh.php?code=src/7.in_practice/3.2d_game/0.full_source/ball_object.cpp" target="_blank">code</a>.</li>
+</ul>
+  
+<p>
+  We can then easily implement the sticky effect by slightly updating the <fun>DoCollisions</fun> function at the collision code between the ball and the paddle:
+</p>
+  
+<pre><code>
+if (!Ball-&gt;Stuck && std::get&lt;0&gt;(result))
+{
+    [...]
+    Ball-&gt;Stuck = Ball-&gt;Sticky;
+}
+</code></pre>
+  
+<p>
+  Here we set the ball's <var>Stuck</var> property equal to the ball's <var>Sticky</var> property. If the sticky effect is activated, the ball will end up stuck to the player paddle whenever it collides; the user then has to press the spacebar again to release the ball.
+</p>
+  
+<p>
+  A similar small change is made for the pass-through effect within the same <fun>DoCollisions</fun> function. When the ball's <var>PassThrough</var> property is set to <code>true</code> we do not perform any collision resolution on the non-solid bricks.
+</p>
+  
+<pre><code>
+Direction dir = std::get&lt;1&gt;(collision);
+glm::vec2 diff_vector = std::get&lt;2&gt;(collision);
+if (!(Ball-&gt;PassThrough && !box.IsSolid)) 
+{
+    if (dir == LEFT || dir == RIGHT) // horizontal collision
+    {
+        [...]
+    }
+    else 
+    {
+        [...]
+    }
+}  
+</code></pre>
+  
+<p>
+  The other effects are activated by simply modifying the game's state like the ball's velocity, the paddle's size, or an effect of the <fun>PostProcesser</fun> object.
+</p>
+  
+<h3>Updating PowerUps</h3>
+<p>
+  Now all that is left to do is make sure that powerups are able to move once they've spawned and that they're deactivated as soon as their duration runs out; otherwise powerups will stay active forever.
+</p>
+  
+<p>
+  Within the game's <fun>UpdatePowerUps</fun> function we move the powerups based on their velocity and decrease the active powerups their duration. Whenever a powerup's duration is decreased to <code>0.0f</code>, its effect is deactivated and the relevant variables are reset to their original state:
+</p>
+  
+<pre><code>
+void Game::UpdatePowerUps(float dt)
+{
+    for (PowerUp &powerUp : this-&gt;PowerUps)
+    {
+        powerUp.Position += powerUp.Velocity * dt;
+        if (powerUp.Activated)
+        {
+            powerUp.Duration -= dt;
+
+            if (powerUp.Duration &lt;= 0.0f)
+            {
+                // remove powerup from list (will later be removed)
+                powerUp.Activated = false;
+                // deactivate effects
+                if (powerUp.Type == "sticky")
+                {
+                    if (!isOtherPowerUpActive(this-&gt;PowerUps, "sticky"))
+                    {	// only reset if no other PowerUp of type sticky is active
+                        Ball-&gt;Sticky = false;
+                        Player-&gt;Color = glm::vec3(1.0f);
+                    }
+                }
+                else if (powerUp.Type == "pass-through")
+                {
+                    if (!isOtherPowerUpActive(this-&gt;PowerUps, "pass-through"))
+                    {	// only reset if no other PowerUp of type pass-through is active
+                        Ball-&gt;PassThrough = false;
+                        Ball-&gt;Color = glm::vec3(1.0f);
+                    }
+                }
+                else if (powerUp.Type == "confuse")
+                {
+                    if (!isOtherPowerUpActive(this-&gt;PowerUps, "confuse"))
+                    {	// only reset if no other PowerUp of type confuse is active
+                        Effects-&gt;Confuse = false;
+                    }
+                }
+                else if (powerUp.Type == "chaos")
+                {
+                    if (!isOtherPowerUpActive(this-&gt;PowerUps, "chaos"))
+                    {	// only reset if no other PowerUp of type chaos is active
+                        Effects-&gt;Chaos = false;
+                    }
+                }                
+            }
+        }
+    }
+    this-&gt;PowerUps.erase(std::remove_if(this-&gt;PowerUps.begin(), this-&gt;PowerUps.end(),
+        [](const PowerUp &powerUp) { return powerUp.Destroyed && !powerUp.Activated; }
+    ), this-&gt;PowerUps.end());
+}  
+</code></pre>
+  
+<p>
+  You can see that for each effect we disable it by resetting the relevant items to their original state. We also set the powerup's <var>Activated</var> property to <code>false</code>. At the end of <fun>UpdatePowerUps</fun> we then loop through the <var>PowerUps</var> vector and erase each powerup if they are destroyed <strong>and</strong> deactivated. We use the <fun>remove_if</fun> function from the <fun>algorithm</fun> header to erase these items given a lambda predicate.
+</p>
+  
+<note>
+  The <fun>remove_if</fun> function moves all elements for which the lambda predicate is true to the end of the container object and returns an iterator to the start of this <em>removed elements</em> range. The container's <fun>erase</fun> function then takes this iterator and the vector's end iterator to remove all the elements between these two iterators.
+</note>
+  
+<p>
+  It may happen that while one of the powerup effects is active, another powerup of the same type collides with the player paddle. In that case we have more than 1 powerup of that type currently active within the game's <var>PowerUps</var> vector. Whenever one of these powerups gets deactivated, we don't want to disable its effects yet since another powerup of the same type may still be active. For this reason we use the <fun>IsOtherPowerUpActive</fun> function to check if there is still another powerup active of the same type. Only if this function returns <code>false</code> we deactivate the powerup. This way, the powerup's duration of a given type is extended to the duration of its last activated powerup:
+</p>
+  
+<pre><code>
+bool IsOtherPowerUpActive(std::vector&lt;PowerUp&gt; &powerUps, std::string type)
+{
+    for (const PowerUp &powerUp : powerUps)
+    {
+        if (powerUp.Activated)
+            if (powerUp.Type == type)
+                return true;
+    }
+    return false;
+}  
+</code></pre>
+
+<p>
+  The function checks for all activated powerups if there is still a powerup active of the same type and if so, returns <code>true</code>.
+</p>
+  
+<p>
+  The last thing left to do is render the powerups:
+</p>
+  
+<pre><code>
+void Game::Render()
+{
+    if (this->State == GAME_ACTIVE)
+    {
+        [...]
+        for (PowerUp &powerUp : this-&gt;PowerUps)
+            if (!powerUp.Destroyed)
+                powerUp.Draw(*Renderer);
+        [...]
+    }
+}    
+</code></pre>
+  
+<p>
+  Combine all this functionality and we have a working powerup system that not only makes the game more fun, but also a lot more challenging. It'll look a bit like this:
+</p>
+
+<div class="video paused" onclick="ClickVideo(this)">
+  <video width="600" height="450" loop>
+    <source src="/video/in-practice/breakout/powerups.mp4" type="video/mp4" />
+    <img src="/img/in-practice/breakout/powerups_video.png" class="clean"/>
+  </video>
+</div>
+  
+<p>
+  You can find the updated game code here (there we also reset all powerup effects whenever the level is reset):
+</p>
+  
+<ul>
+  <li><strong>Game</strong>: <a href="/code_viewer_gh.php?code=src/7.in_practice/3.2d_game/0.full_source/progress/8.game.h" target="_blank">header</a>, <a href="/code_viewer_gh.php?code=src/7.in_practice/3.2d_game/0.full_source/progress/8.game.cpp" target="_blank">code</a>.</li>
+</ul>  
+       
+
+    </div>
+    
+    <div id="hover">
+        HI
+    </div>
+   <!-- 728x90/320x50 sticky footer -->
+<div id="waldo-tag-6196"></div>
+
+   <div id="disqus_thread"></div>
+
+    
+
+
+</div> <!-- container div -->
+
+
+</div> <!-- super container div -->
+</body>
+</html>
+	</main>
+</body>
+</html>

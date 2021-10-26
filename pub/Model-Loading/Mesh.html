@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="ja"> 
+<head>
+    <meta charset="utf-8"/>
+    <title>LearnOpenGL</title>
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico"  />
+	<link rel="stylesheet" href="../static/style.css" />
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"> </script>
+	<script src="/static/functions.js"></script>
+</head>
+<body>
+	<nav>
+<ol>
+	<li id="Introduction">
+		<a href="https://learnopengl.com/Introduction">はじめに</a>
+	</li>
+	<li id="Getting-started">
+		<span class="closed">入門</span>
+		<ol>
+			<li id="Getting-started/OpenGL">
+				<a href="https://learnopengl.com/Getting-started/OpenGL">OpenGL </a>
+			</li>
+			<li id="Getting-started/Creating-a-window">
+				<a href="https://learnopengl.com/Getting-started/Creating-a-window">ウィンドウの作成</a>
+			</li>
+			<li id="Getting-started/Hello-Window">
+				<a href="https://learnopengl.com/Getting-started/Hello-Window">最初のウィンドウ</a>
+			</li>
+			<li id="Getting-started/Hello-Triangle">
+				<a href="https://learnopengl.com/Getting-started/Hello-Triangle">最初の三角形</a>
+			</li>
+			<li id="Getting-started/Shaders">
+				<a href="https://learnopengl.com/Getting-started/Shaders">シェーダー</a>
+			</li>
+			<li id="Getting-started/Textures">
+				<a href="https://learnopengl.com/Getting-started/Textures">テクスチャ</a>
+			</li>
+			<li id="Getting-started/Transformations">
+				<a href="https://learnopengl.com/Getting-started/Transformations">座標変換</a>
+			</li>
+			<li id="Getting-started/Coordinate-Systems">
+				<a href="https://learnopengl.com/Getting-started/Coordinate-Systems">座標系</a>
+			</li>
+			<li id="Getting-started/Camera">
+				<a href="https://learnopengl.com/Getting-started/Camera">カメラ</a>
+			</li>
+			<li id="Getting-started/Review">
+				<a href="https://learnopengl.com/Getting-started/Review">まとめ</a>
+			</li>
+		</ol>
+	</li>
+	<li id="Lighting">
+		<span class="closed">Lighting </span>
+		<ol>
+			<li id="Lighting/Colors">
+				<a href="https://learnopengl.com/Lighting/Colors">Colors </a>
+			</li>
+			<li id="Lighting/Basic-Lighting">
+				<a href="https://learnopengl.com/Lighting/Basic-Lighting">Basic Lighting </a>
+			</li>
+			<li id="Lighting/Materials">
+				<a href="https://learnopengl.com/Lighting/Materials">Materials </a>
+			</li>
+			<li id="Lighting/Lighting-maps">
+				<a href="https://learnopengl.com/Lighting/Lighting-maps">Lighting maps </a>
+			</li>
+			<li id="Lighting/Light-casters">
+				<a href="https://learnopengl.com/Lighting/Light-casters">Light casters </a>
+			</li>
+			<li id="Lighting/Multiple-lights">
+				<a href="https://learnopengl.com/Lighting/Multiple-lights">Multiple lights </a>
+			</li>
+			<li id="Lighting/Review">
+				<a href="https://learnopengl.com/Lighting/Review">Review </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Model-Loading">
+		<span class="closed">Model Loading </span>
+		<ol>
+			<li id="Model-Loading/Assimp">
+				<a href="https://learnopengl.com/Model-Loading/Assimp">Assimp </a>
+			</li>
+			<li id="Model-Loading/Mesh">
+				<a href="https://learnopengl.com/Model-Loading/Mesh">Mesh </a>
+			</li>
+			<li id="Model-Loading/Model">
+				<a href="https://learnopengl.com/Model-Loading/Model">Model </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Advanced-OpenGL">
+		<span class="closed">Advanced OpenGL </span>
+		<ol>
+			<li id="Advanced-OpenGL/Depth-testing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Depth-testing">Depth testing </a>
+			</li>
+			<li id="Advanced-OpenGL/Stencil-testing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Stencil-testing">Stencil testing </a>
+			</li>
+			<li id="Advanced-OpenGL/Blending">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Blending">Blending </a>
+			</li>
+			<li id="Advanced-OpenGL/Face-culling">
+				<a href="https://learnopengl.cm/Advanced-OpenGL/Face-culling">Face culling </a>
+			</li>
+			<li id="Advanced-OpenGL/Framebuffers">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Framebuffers">Framebuffers </a>
+			</li>
+			<li id="Advanced-OpenGL/Cubemaps">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Cubemaps">Cubemaps </a>
+			</li>
+			<li id="Advanced-OpenGL/Advanced-Data">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Advanced-Data">Advanced Data </a>
+			</li>
+			<li id="Advanced-OpenGL/Advanced-GLSL">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Advanced-GLSL">Advanced GLSL </a>
+			</li>
+			<li id="Advanced-OpenGL/Geometry-Shader">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Geometry-Shader">Geometry Shader </a>
+			</li>
+			<li id="Advanced-OpenGL/Instancing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Instancing">Instancing </a>
+			</li>
+			<li id="Advanced-OpenGL/Anti-Aliasing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Anti-Aliasing">Anti Aliasing </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Advanced-Lighting">
+		<span class="closed">Advanced Lighting </span>
+		<ol>
+			<li id="Advanced-Lighting/Advanced-Lighting">
+				<a href="https://learnopengl.com/Advanced-Lighting/Advanced-Lighting">Advanced Lighting </a>
+			</li>
+			<li id="Advanced-Lighting/Gamma-Correction">
+				<a href="https://learnopengl.com/Advanced-Lighting/Gamma-Correction">Gamma Correction </a>
+			</li>
+			<li id="Advanced-Lighting/Shadows">
+				<span class="closed">Shadows </span>
+				<ol>
+					<li id="Advanced-Lighting/Shadows/Shadow-Mapping">
+						<a href="https://learnopengl.com/Advanced-Lighting/Shadows/Shadow-Mapping">Shadow Mapping </a>
+					</li>
+					<li id="Advanced-Lighting/Shadows/Point-Shadows">
+						<a href="https://learnopengl.com/Advanced-Lighting/Shadows/Point-Shadows">Point Shadows </a>
+					</li>
+				</ol>
+			</li>
+			<li id="Advanced-Lighting/Normal-Mapping">
+				<a href="https://learnopengl.com/Advanced-Lighting/Normal-Mapping">Normal Mapping </a>
+			</li>
+			<li id="Advanced-Lighting/Parallax-Mapping">
+				<a href="https://learnopengl.com/Advanced-Lighting/Parallax-Mapping">Parallax Mapping </a>
+			</li>
+			<li id="Advanced-Lighting/HDR">
+				<a href="https://learnopengl.com/Advanced-Lighting/HDR">HDR </a>
+			</li>
+			<li id="Advanced-Lighting/Bloom">
+				<a href="https://learnopengl.com/Advanced-Lighting/Bloom">Bloom </a>
+			</li>
+			<li id="Advanced-Lighting/Deferred-Shading">
+				<a href="https://learnopengl.com/Advanced-Lighting/Deferred-Shading">Deferred Shading </a>
+			</li>
+			<li id="Advanced-Lighting/SSAO">
+				<a href="https://learnopengl.com/Advanced-Lighting/SSAO">SSAO </a>
+			</li>
+		</ol>
+	</li>
+	<li id="PBR">
+		<span class="closed">PBR </span>
+		<ol>
+			<li id="PBR/Theory">
+				<a href="https://learnopengl.com/PBR/Theory">Theory </a>
+			</li>
+			<li id="PBR/Lighting">
+				<a href="https://learnopengl.com/PBR/Lighting">Lighting </a>
+			</li>
+			<li id="PBR/IBL">
+				<span class="closed">IBL </span>
+				<ol>
+					<li id="PBR/IBL/Diffuse-irradiance">
+						<a href="https://learnopengl.com/PBR/IBL/Diffuse-irradiance">Diffuse irradiance </a>
+					</li>
+					<li id="PBR/IBL/Specular-IBL">
+						<a href="https://learnopengl.com/PBR/IBL/Specular-IBL">Specular IBL </a>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="In-Practice">
+		<span class="closed">In Practice </span>
+		<ol>
+			<li id="In-Practice/Debugging">
+				<a href="https://learnopengl.com/In-Practice/Debugging">Debugging </a>
+			</li>
+			<li id="In-Practice/Text-Rendering">
+				<a href="https://learnopengl.com/In-Practice/Text-Rendering">Text Rendering </a>
+			</li>
+			<li id="In-Practice/2D-Game">
+				<span class="closed">2D Game </span>
+				<ol>
+					<li id="In-Practice/2D-Game/Breakout">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Breakout">Breakout </a>
+					</li>
+					<li id="In-Practice/2D-Game/Setting-up">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Setting-up">Setting up </a>
+					</li>
+					<li id="In-Practice/2D-Game/Rendering-Sprites">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Rendering-Sprites">Rendering Sprites </a>
+					</li>
+					<li id="In-Practice/2D-Game/Levels">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Levels">Levels </a>
+					</li>
+					<li id="In-Practice/2D-Game/Collisions">
+						<span class="closed">Collisions </span>
+						<ol>
+							<li id="In-Practice/2D-Game/Collisions/Ball">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Ball">Ball </a>
+							</li>
+							<li id="In-Practice/2D-Game/Collisions/Collision-detection">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Collision-detection">Collision detection </a>
+							</li>
+							<li id="In-Practice/2D-Game/Collisions/Collision-resolution">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Collision-resolution">Collision resolution </a>
+							</li>
+						</ol>
+					</li>
+					<li id="In-Practice/2D-Game/Particles">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Particles">Particles </a>
+					</li>
+					<li id="In-Practice/2D-Game/Postprocessing">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Postprocessing">Postprocessing </a>
+					</li>
+					<li id="In-Practice/2D-Game/Powerups">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Powerups">Powerups </a>
+					</li>
+					<li id="In-Practice/2D-Game/Audio">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Audio">Audio </a>
+					</li>
+					<li id="In-Practice/2D-Game/Render-text">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Render-text">Render text </a>
+					</li>
+					<li id="In-Practice/2D-Game/Final-thoughts">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Final-thoughts">Final thoughts </a>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="Guest-Articles">
+		<span class="closed">Guest Articles </span>
+		<ol>
+			<li id="Guest-Articles/How-to-publish">
+				<a href="https://learnopengl.com/Guest-Articles/How-to-publish">How to publish </a>
+			</li>
+			<li id="Guest-Articles/2020">
+				<span class="closed">2020 </span>
+				<ol>
+					<li id="Guest-Articles/2020/OIT">
+						<span class="closed">OIT </span>
+						<ol>
+							<li id="Guest-Articles/2020/OIT/Introduction">
+								<a href="https://learnopengl.com/Guest-Articles/2020/OIT/Introduction">Introduction </a>
+							</li>
+							<li id="Guest-Articles/2020/OIT/Weighted-Blended">
+								<a href="https://learnopengl.com/Guest-Articles/2020/OIT/Weighted-Blended">Weighted Blended </a>
+							</li>
+						</ol>
+					</li>
+					<li id="Guest-Articles/2020/Skeletal-Animation">
+						<a href="https://learnopengl.com/Guest-Articles/2020/Skeletal-Animation">Skeletal Animation </a>
+					</li>
+				</ol>
+			</li>
+			<li id="Guest-Articles/2021">
+				<span class="closed">2021 </span>
+				<ol>
+					<li id="Guest-Articles/2021/CSM">
+						<a href="https://learnopengl.com/Guest-Articles/2021/CSM">CSM </a>
+					</li>
+					<li id="Guest-Articles/2021/Scene">
+						<span class="closed">Scene </span>
+						<ol>
+							<li id="Guest-Articles/2021/Scene/Scene-Graph">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Scene/Scene-Graph">Scene Graph </a>
+							</li>
+							<li id="Guest-Articles/2021/Scene/Frustum-Culling">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Scene/Frustum-Culling">Frustum Culling </a>
+							</li>
+						</ol>
+					</li>
+					<li id="Guest-Articles/2021/Tessellation">
+						<span class="closed">Tessellation </span>
+						<ol>
+							<li id="Guest-Articles/2021/Tessellation/Height-map">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Tessellation/Height-map">Height map </a>
+							</li>
+						</ol>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="Code-repository">
+		<a href="https://learnopengl.com/Code-repository">Code repository </a>
+	</li>
+	<li id="Translations">
+		<a href="https://learnopengl.com/Translations">Translations </a>
+	</li>
+	<li id="About">
+		<a href="https://learnopengl.com/About">About </a>
+	</li>
+</ol>
+	</nav>
+	<main>
+    <div id="content">
+    <h1 id="content-title">Mesh</h1>
+<h1 id="content-url" style='display:none;'>Model-Loading/Mesh</h1>
+<p>
+  With Assimp we can load many different models into the application, but once loaded they're all stored in Assimp's data structures. What we eventually want is to transform that data to a format that OpenGL understands so that we can render the objects. We learned from the previous chapter that a mesh represents a single drawable entity, so let's start by defining a mesh class of our own.
+</p>
+
+<p>
+  Let's review a bit of what we've learned so far to think about what a mesh should minimally have as its data. A mesh should at least need a set of vertices, where each vertex contains a position vector, a normal vector, and a texture coordinate vector. A mesh should also contain indices for indexed drawing, and material data in the form of textures (diffuse/specular maps).
+</p>
+
+<p>
+  Now that we set the minimal requirements for a mesh class we can define a vertex in OpenGL:
+</p>
+
+<pre><code>
+struct Vertex {
+    glm::vec3 Position;
+    glm::vec3 Normal;
+    glm::vec2 TexCoords;
+};
+</code></pre>
+
+<p>
+  We store each of the required vertex attributes in a struct called <fun>Vertex</fun>. Next to a <fun>Vertex</fun> struct we also want to organize the texture data in a <fun>Texture</fun> struct:
+</p>
+
+<pre><code>
+struct Texture {
+    unsigned int id;
+    string type;
+};  
+</code></pre>
+
+<p>
+  We store the id of the texture and its type e.g. a diffuse or specular texture.
+</p>
+
+<p>
+  Knowing the actual representation of a vertex and a texture we can start defining the structure of the mesh class:
+</p>
+
+<pre><code>
+class Mesh {
+    public:
+        // mesh data
+        vector&lt;Vertex&gt;       vertices;
+        vector&lt;unsigned int&gt; indices;
+        vector&lt;Texture&gt;      textures;
+
+        Mesh(vector&lt;Vertex&gt; vertices, vector&lt;unsigned int&gt; indices, vector&lt;Texture&gt; textures);
+        void Draw(Shader &shader);
+    private:
+        //  render data
+        unsigned int VAO, VBO, EBO;
+
+        void setupMesh();
+};  
+</code></pre>
+
+<p>
+  As you can see, the class isn't too complicated. In the constructor we give the mesh all the necessary data, we initialize the buffers in the <fun>setupMesh</fun> function, and finally draw the mesh via the <fun>Draw</fun> function. Note that we give a shader to the <fun>Draw</fun> function; by passing the shader to the mesh we can set several uniforms before drawing (like linking samplers to texture units).
+</p>
+
+<p>
+  The function content of the constructor is pretty straightforward. We simply set the class's public variables with the constructor's corresponding argument variables. We also call the <fun>setupMesh</fun> function in the constructor:
+</p>
+
+<pre><code>
+Mesh(vector&lt;Vertex&gt; vertices, vector&lt;unsigned int&gt; indices, vector&lt;Texture&gt; textures)
+{
+    this-&gt;vertices = vertices;
+    this-&gt;indices = indices;
+    this-&gt;textures = textures;
+
+    setupMesh();
+}
+</code></pre>
+
+<p>
+  Nothing special going on here. Let's delve right into the <fun>setupMesh</fun> function now.
+</p>
+
+<h2>Initialization</h2>
+<p>
+  Thanks to the constructor we now have large lists of mesh data that we can use for rendering. We do need to setup the appropriate buffers and specify the vertex shader layout via vertex attribute pointers. By now you should have no trouble with these concepts, but we've spiced it up a bit this time with the introduction of vertex data in structs:
+</p>
+
+<pre><code>
+void setupMesh()
+{
+    <function id='33'>glGenVertexArrays</function>(1, &VAO);
+    <function id='12'>glGenBuffers</function>(1, &VBO);
+    <function id='12'>glGenBuffers</function>(1, &EBO);
+  
+    <function id='27'>glBindVertexArray</function>(VAO);
+    <function id='32'>glBindBuffer</function>(GL_ARRAY_BUFFER, VBO);
+
+    <function id='31'>glBufferData</function>(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), &vertices[0], GL_STATIC_DRAW);  
+
+    <function id='32'>glBindBuffer</function>(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    <function id='31'>glBufferData</function>(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), 
+                 &indices[0], GL_STATIC_DRAW);
+
+    // vertex positions
+    <function id='29'><function id='60'>glEnable</function>VertexAttribArray</function>(0);	
+    <function id='30'>glVertexAttribPointer</function>(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)0);
+    // vertex normals
+    <function id='29'><function id='60'>glEnable</function>VertexAttribArray</function>(1);	
+    <function id='30'>glVertexAttribPointer</function>(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, Normal));
+    // vertex texture coords
+    <function id='29'><function id='60'>glEnable</function>VertexAttribArray</function>(2);	
+    <function id='30'>glVertexAttribPointer</function>(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, TexCoords));
+
+    <function id='27'>glBindVertexArray</function>(0);
+}  
+</code></pre>
+
+<p>
+  The code is not much different from what you'd expect, but a few little tricks were used with the help of the <fun>Vertex</fun> struct.
+</p>
+
+<p>
+  Structs have a great property in C++ that their memory layout is sequential. That is, if we were to represent a struct as an array of data, it would only contain the struct's variables in sequential order which directly translates to a float (actually byte) array that we want for an array buffer. For example, if we have a filled <fun>Vertex</fun> struct, its memory layout would be equal to:
+</p>
+
+<pre><code>
+Vertex vertex;
+vertex.Position  = glm::vec3(0.2f, 0.4f, 0.6f);
+vertex.Normal    = glm::vec3(0.0f, 1.0f, 0.0f);
+vertex.TexCoords = glm::vec2(1.0f, 0.0f);
+// = [0.2f, 0.4f, 0.6f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f];
+</code></pre>
+
+<p>
+  Thanks to this useful property we can directly pass a pointer to a large list of <fun>Vertex</fun> structs as the buffer's data and they translate perfectly to what <fun><function id='31'>glBufferData</function></fun> expects as its argument: 
+</p>
+
+<pre><code>
+<function id='31'>glBufferData</function>(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), vertices[0], GL_STATIC_DRAW);    
+</code></pre>
+
+<p>
+  Naturally the <code>sizeof</code> operator can also be used on the struct for the appropriate size in bytes. This should be <code>32</code> bytes (<code>8</code> floats * <code>4</code> bytes each).
+</p>
+
+<p>
+  Another great use of structs is a preprocessor directive called <code>offsetof(s,m)</code> that takes as its first argument a struct and as its second argument a variable name of the struct. The macro returns the byte offset of that variable from the start of the struct. This is perfect for defining the offset parameter of the <fun><function id='30'>glVertexAttribPointer</function></fun> function:
+</p>
+
+<pre><code>
+<function id='30'>glVertexAttribPointer</function>(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, Normal));  
+</code></pre>
+
+<p>
+  The offset is now defined using the <fun>offsetof</fun> macro that, in this case, sets the byte offset of the normal vector equal to the byte offset of the normal attribute in the struct which is <code>3</code> floats and thus <code>12</code> bytes.
+</p>
+
+<p>
+  Using a struct like this doesn't only get us more readable code, but also allows us to easily extend the structure. If we want another vertex attribute we can simply add it to the struct and due to its flexible nature, the rendering code won't break.
+</p>
+
+<h2>Rendering</h2>
+<p>
+  The last function we need to define for the <fun>Mesh</fun> class to be complete is its <fun>Draw</fun> function. Before rendering the mesh, we first want to bind the appropriate textures before calling <fun><function id='2'>glDrawElements</function></fun>. However, this is somewhat difficult since we don't know from the start how many (if any) textures the mesh has and what type they may have. So how do we set the texture units and samplers in the shaders?
+</p>
+
+<p>
+  To solve the issue we're going to assume a certain naming convention: each diffuse texture is named <code>texture_diffuseN</code>, and each specular texture should be named <code>texture_specularN</code> where <code>N</code> is any number ranging from <code>1</code> to the maximum number of texture samplers allowed. Let's say we have 3 diffuse textures and 2 specular textures for a particular mesh, their texture samplers should then be called: 
+</p>
+
+<pre><code>
+uniform sampler2D texture_diffuse1;
+uniform sampler2D texture_diffuse2;
+uniform sampler2D texture_diffuse3;
+uniform sampler2D texture_specular1;
+uniform sampler2D texture_specular2;
+</code></pre>
+
+<p>
+  By this convention we can define as many texture samplers as we want in the shaders (up to OpenGL's maximum) and if a mesh actually does contain (so many) textures, we know what their names are going to be. By this convention we can process any amount of textures on a single mesh and the shader developer is free to use as many of those as he wants by defining the proper samplers.
+</p>
+
+<note>
+  There are many solutions to problems like this and if you don't like this particular solution it is up to you to get creative and come up with your own approach.
+</note>
+
+<p>
+  The resulting drawing code then becomes:
+</p>
+
+<pre><code>
+void Draw(Shader &shader) 
+{
+    unsigned int diffuseNr = 1;
+    unsigned int specularNr = 1;
+    for(unsigned int i = 0; i &lt; textures.size(); i++)
+    {
+        <function id='49'>glActiveTexture</function>(GL_TEXTURE0 + i); // activate proper texture unit before binding
+        // retrieve texture number (the N in diffuse_textureN)
+        string number;
+        string name = textures[i].type;
+        if(name == "texture_diffuse")
+            number = std::to_string(diffuseNr++);
+        else if(name == "texture_specular")
+            number = std::to_string(specularNr++);
+
+        shader.setFloat(("material." + name + number).c_str(), i);
+        <function id='48'>glBindTexture</function>(GL_TEXTURE_2D, textures[i].id);
+    }
+    <function id='49'>glActiveTexture</function>(GL_TEXTURE0);
+
+    // draw mesh
+    <function id='27'>glBindVertexArray</function>(VAO);
+    <function id='2'>glDrawElements</function>(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
+    <function id='27'>glBindVertexArray</function>(0);
+}  
+</code></pre>
+
+<p>
+  We first calculate the N-component per texture type and concatenate it to the texture's type string to get the appropriate uniform name. We then locate the appropriate sampler, give it the location value to correspond with the currently active texture unit, and bind the texture. This is also the reason we need the shader in the <fun>Draw</fun> function. 
+</p>
+
+<p>
+ We also added <code>"material."</code> to the resulting uniform name because we usually store the textures in a material struct (this may differ per implementation).
+</p>
+
+<note>
+  Note that we increment the diffuse and specular counters the moment we convert them to <code>string</code>. In C++ the increment call: <code>variable++</code> returns the variable as is and <strong>then</strong> increments the variable while <code>++variable</code> <strong>first</strong> increments the variable and <strong>then</strong> returns it. In our case the value passed to <code>std::string</code> is the original counter value. After that the value is incremented for the next round.
+</note>
+
+<p>
+  You can find the full source code of the <fun>Mesh</fun> class <a href="/code_viewer_gh.php?code=includes/learnopengl/mesh.h" target="_blank">here</a>.
+</p>
+
+<p>
+  The <fun>Mesh</fun> class we just defined is an abstraction for many of the topics we've discussed in the early chapters. In the <a href="https://learnopengl.com/Model-Loading/Model" target="_blank">next</a> chapter we'll create a model that acts as a container for several mesh objects and implements Assimp's loading interface.
+</p>
+       
+
+    </div>
+    
+	</main>
+</body>
+</html>

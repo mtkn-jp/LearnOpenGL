@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="ja"> 
+<head>
+    <meta charset="utf-8"/>
+    <title>LearnOpenGL</title>
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico"  />
+	<link rel="stylesheet" href="../static/style.css" />
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"> </script>
+	<script src="/static/functions.js"></script>
+</head>
+<body>
+	<nav>
+<ol>
+	<li id="Introduction">
+		<a href="https://learnopengl.com/Introduction">はじめに</a>
+	</li>
+	<li id="Getting-started">
+		<span class="closed">入門</span>
+		<ol>
+			<li id="Getting-started/OpenGL">
+				<a href="https://learnopengl.com/Getting-started/OpenGL">OpenGL </a>
+			</li>
+			<li id="Getting-started/Creating-a-window">
+				<a href="https://learnopengl.com/Getting-started/Creating-a-window">ウィンドウの作成</a>
+			</li>
+			<li id="Getting-started/Hello-Window">
+				<a href="https://learnopengl.com/Getting-started/Hello-Window">最初のウィンドウ</a>
+			</li>
+			<li id="Getting-started/Hello-Triangle">
+				<a href="https://learnopengl.com/Getting-started/Hello-Triangle">最初の三角形</a>
+			</li>
+			<li id="Getting-started/Shaders">
+				<a href="https://learnopengl.com/Getting-started/Shaders">シェーダー</a>
+			</li>
+			<li id="Getting-started/Textures">
+				<a href="https://learnopengl.com/Getting-started/Textures">テクスチャ</a>
+			</li>
+			<li id="Getting-started/Transformations">
+				<a href="https://learnopengl.com/Getting-started/Transformations">座標変換</a>
+			</li>
+			<li id="Getting-started/Coordinate-Systems">
+				<a href="https://learnopengl.com/Getting-started/Coordinate-Systems">座標系</a>
+			</li>
+			<li id="Getting-started/Camera">
+				<a href="https://learnopengl.com/Getting-started/Camera">カメラ</a>
+			</li>
+			<li id="Getting-started/Review">
+				<a href="https://learnopengl.com/Getting-started/Review">まとめ</a>
+			</li>
+		</ol>
+	</li>
+	<li id="Lighting">
+		<span class="closed">Lighting </span>
+		<ol>
+			<li id="Lighting/Colors">
+				<a href="https://learnopengl.com/Lighting/Colors">Colors </a>
+			</li>
+			<li id="Lighting/Basic-Lighting">
+				<a href="https://learnopengl.com/Lighting/Basic-Lighting">Basic Lighting </a>
+			</li>
+			<li id="Lighting/Materials">
+				<a href="https://learnopengl.com/Lighting/Materials">Materials </a>
+			</li>
+			<li id="Lighting/Lighting-maps">
+				<a href="https://learnopengl.com/Lighting/Lighting-maps">Lighting maps </a>
+			</li>
+			<li id="Lighting/Light-casters">
+				<a href="https://learnopengl.com/Lighting/Light-casters">Light casters </a>
+			</li>
+			<li id="Lighting/Multiple-lights">
+				<a href="https://learnopengl.com/Lighting/Multiple-lights">Multiple lights </a>
+			</li>
+			<li id="Lighting/Review">
+				<a href="https://learnopengl.com/Lighting/Review">Review </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Model-Loading">
+		<span class="closed">Model Loading </span>
+		<ol>
+			<li id="Model-Loading/Assimp">
+				<a href="https://learnopengl.com/Model-Loading/Assimp">Assimp </a>
+			</li>
+			<li id="Model-Loading/Mesh">
+				<a href="https://learnopengl.com/Model-Loading/Mesh">Mesh </a>
+			</li>
+			<li id="Model-Loading/Model">
+				<a href="https://learnopengl.com/Model-Loading/Model">Model </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Advanced-OpenGL">
+		<span class="closed">Advanced OpenGL </span>
+		<ol>
+			<li id="Advanced-OpenGL/Depth-testing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Depth-testing">Depth testing </a>
+			</li>
+			<li id="Advanced-OpenGL/Stencil-testing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Stencil-testing">Stencil testing </a>
+			</li>
+			<li id="Advanced-OpenGL/Blending">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Blending">Blending </a>
+			</li>
+			<li id="Advanced-OpenGL/Face-culling">
+				<a href="https://learnopengl.cm/Advanced-OpenGL/Face-culling">Face culling </a>
+			</li>
+			<li id="Advanced-OpenGL/Framebuffers">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Framebuffers">Framebuffers </a>
+			</li>
+			<li id="Advanced-OpenGL/Cubemaps">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Cubemaps">Cubemaps </a>
+			</li>
+			<li id="Advanced-OpenGL/Advanced-Data">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Advanced-Data">Advanced Data </a>
+			</li>
+			<li id="Advanced-OpenGL/Advanced-GLSL">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Advanced-GLSL">Advanced GLSL </a>
+			</li>
+			<li id="Advanced-OpenGL/Geometry-Shader">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Geometry-Shader">Geometry Shader </a>
+			</li>
+			<li id="Advanced-OpenGL/Instancing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Instancing">Instancing </a>
+			</li>
+			<li id="Advanced-OpenGL/Anti-Aliasing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Anti-Aliasing">Anti Aliasing </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Advanced-Lighting">
+		<span class="closed">Advanced Lighting </span>
+		<ol>
+			<li id="Advanced-Lighting/Advanced-Lighting">
+				<a href="https://learnopengl.com/Advanced-Lighting/Advanced-Lighting">Advanced Lighting </a>
+			</li>
+			<li id="Advanced-Lighting/Gamma-Correction">
+				<a href="https://learnopengl.com/Advanced-Lighting/Gamma-Correction">Gamma Correction </a>
+			</li>
+			<li id="Advanced-Lighting/Shadows">
+				<span class="closed">Shadows </span>
+				<ol>
+					<li id="Advanced-Lighting/Shadows/Shadow-Mapping">
+						<a href="https://learnopengl.com/Advanced-Lighting/Shadows/Shadow-Mapping">Shadow Mapping </a>
+					</li>
+					<li id="Advanced-Lighting/Shadows/Point-Shadows">
+						<a href="https://learnopengl.com/Advanced-Lighting/Shadows/Point-Shadows">Point Shadows </a>
+					</li>
+				</ol>
+			</li>
+			<li id="Advanced-Lighting/Normal-Mapping">
+				<a href="https://learnopengl.com/Advanced-Lighting/Normal-Mapping">Normal Mapping </a>
+			</li>
+			<li id="Advanced-Lighting/Parallax-Mapping">
+				<a href="https://learnopengl.com/Advanced-Lighting/Parallax-Mapping">Parallax Mapping </a>
+			</li>
+			<li id="Advanced-Lighting/HDR">
+				<a href="https://learnopengl.com/Advanced-Lighting/HDR">HDR </a>
+			</li>
+			<li id="Advanced-Lighting/Bloom">
+				<a href="https://learnopengl.com/Advanced-Lighting/Bloom">Bloom </a>
+			</li>
+			<li id="Advanced-Lighting/Deferred-Shading">
+				<a href="https://learnopengl.com/Advanced-Lighting/Deferred-Shading">Deferred Shading </a>
+			</li>
+			<li id="Advanced-Lighting/SSAO">
+				<a href="https://learnopengl.com/Advanced-Lighting/SSAO">SSAO </a>
+			</li>
+		</ol>
+	</li>
+	<li id="PBR">
+		<span class="closed">PBR </span>
+		<ol>
+			<li id="PBR/Theory">
+				<a href="https://learnopengl.com/PBR/Theory">Theory </a>
+			</li>
+			<li id="PBR/Lighting">
+				<a href="https://learnopengl.com/PBR/Lighting">Lighting </a>
+			</li>
+			<li id="PBR/IBL">
+				<span class="closed">IBL </span>
+				<ol>
+					<li id="PBR/IBL/Diffuse-irradiance">
+						<a href="https://learnopengl.com/PBR/IBL/Diffuse-irradiance">Diffuse irradiance </a>
+					</li>
+					<li id="PBR/IBL/Specular-IBL">
+						<a href="https://learnopengl.com/PBR/IBL/Specular-IBL">Specular IBL </a>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="In-Practice">
+		<span class="closed">In Practice </span>
+		<ol>
+			<li id="In-Practice/Debugging">
+				<a href="https://learnopengl.com/In-Practice/Debugging">Debugging </a>
+			</li>
+			<li id="In-Practice/Text-Rendering">
+				<a href="https://learnopengl.com/In-Practice/Text-Rendering">Text Rendering </a>
+			</li>
+			<li id="In-Practice/2D-Game">
+				<span class="closed">2D Game </span>
+				<ol>
+					<li id="In-Practice/2D-Game/Breakout">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Breakout">Breakout </a>
+					</li>
+					<li id="In-Practice/2D-Game/Setting-up">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Setting-up">Setting up </a>
+					</li>
+					<li id="In-Practice/2D-Game/Rendering-Sprites">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Rendering-Sprites">Rendering Sprites </a>
+					</li>
+					<li id="In-Practice/2D-Game/Levels">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Levels">Levels </a>
+					</li>
+					<li id="In-Practice/2D-Game/Collisions">
+						<span class="closed">Collisions </span>
+						<ol>
+							<li id="In-Practice/2D-Game/Collisions/Ball">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Ball">Ball </a>
+							</li>
+							<li id="In-Practice/2D-Game/Collisions/Collision-detection">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Collision-detection">Collision detection </a>
+							</li>
+							<li id="In-Practice/2D-Game/Collisions/Collision-resolution">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Collision-resolution">Collision resolution </a>
+							</li>
+						</ol>
+					</li>
+					<li id="In-Practice/2D-Game/Particles">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Particles">Particles </a>
+					</li>
+					<li id="In-Practice/2D-Game/Postprocessing">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Postprocessing">Postprocessing </a>
+					</li>
+					<li id="In-Practice/2D-Game/Powerups">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Powerups">Powerups </a>
+					</li>
+					<li id="In-Practice/2D-Game/Audio">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Audio">Audio </a>
+					</li>
+					<li id="In-Practice/2D-Game/Render-text">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Render-text">Render text </a>
+					</li>
+					<li id="In-Practice/2D-Game/Final-thoughts">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Final-thoughts">Final thoughts </a>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="Guest-Articles">
+		<span class="closed">Guest Articles </span>
+		<ol>
+			<li id="Guest-Articles/How-to-publish">
+				<a href="https://learnopengl.com/Guest-Articles/How-to-publish">How to publish </a>
+			</li>
+			<li id="Guest-Articles/2020">
+				<span class="closed">2020 </span>
+				<ol>
+					<li id="Guest-Articles/2020/OIT">
+						<span class="closed">OIT </span>
+						<ol>
+							<li id="Guest-Articles/2020/OIT/Introduction">
+								<a href="https://learnopengl.com/Guest-Articles/2020/OIT/Introduction">Introduction </a>
+							</li>
+							<li id="Guest-Articles/2020/OIT/Weighted-Blended">
+								<a href="https://learnopengl.com/Guest-Articles/2020/OIT/Weighted-Blended">Weighted Blended </a>
+							</li>
+						</ol>
+					</li>
+					<li id="Guest-Articles/2020/Skeletal-Animation">
+						<a href="https://learnopengl.com/Guest-Articles/2020/Skeletal-Animation">Skeletal Animation </a>
+					</li>
+				</ol>
+			</li>
+			<li id="Guest-Articles/2021">
+				<span class="closed">2021 </span>
+				<ol>
+					<li id="Guest-Articles/2021/CSM">
+						<a href="https://learnopengl.com/Guest-Articles/2021/CSM">CSM </a>
+					</li>
+					<li id="Guest-Articles/2021/Scene">
+						<span class="closed">Scene </span>
+						<ol>
+							<li id="Guest-Articles/2021/Scene/Scene-Graph">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Scene/Scene-Graph">Scene Graph </a>
+							</li>
+							<li id="Guest-Articles/2021/Scene/Frustum-Culling">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Scene/Frustum-Culling">Frustum Culling </a>
+							</li>
+						</ol>
+					</li>
+					<li id="Guest-Articles/2021/Tessellation">
+						<span class="closed">Tessellation </span>
+						<ol>
+							<li id="Guest-Articles/2021/Tessellation/Height-map">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Tessellation/Height-map">Height map </a>
+							</li>
+						</ol>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="Code-repository">
+		<a href="https://learnopengl.com/Code-repository">Code repository </a>
+	</li>
+	<li id="Translations">
+		<a href="https://learnopengl.com/Translations">Translations </a>
+	</li>
+	<li id="About">
+		<a href="https://learnopengl.com/About">About </a>
+	</li>
+</ol>
+	</nav>
+	<main>
+    <h1 id="content-title">Coordinate Systems</h1>
+    <h1 id="content-title">座標系</h1>
+<h1 id="content-url" style='display:none;'>Getting-started/Coordinate-Systems</h1>
+<p>
+  In the last chapter we learned how we can use matrices to our advantage by transforming all vertices with transformation matrices. OpenGL expects all the vertices, that we want to become visible, to be in normalized device coordinates after each vertex shader run. That is, the <code>x</code>, <code>y</code> and <code>z</code> coordinates of each vertex should be between <code>-1.0</code> and <code>1.0</code>; coordinates outside this range will not be visible. What we usually do, is specify the coordinates in a range (or space) we determine ourselves and in the vertex shader transform these coordinates to normalized device coordinates (NDC). These NDC are then given to the rasterizer to transform them to 2D coordinates/pixels on your screen.
+  前章において行列の便利な使い方、すなわち全ての頂点を変換行列により座標変換する方法を学びました。OpenGLでは画面に表示すべき全ての頂点は頂点シェーダーから出力される段階で正規化座標に納まっていないといけません。つまり各頂点の<code>x</code>、<code>y</code>、<code>z</code>座標が<code>-1.0</code>と<code>1.0</code>の間にないといけないということです。この範囲外のものは表示されません。開発者がすべきことは、表示したい範囲を決定し、頂点シェーダーにおいてその座標を正規化座標（NDC）に変換することです。そうすればNDCがラスターライザに渡され、画面に対応した2次元座標、あるいはピクセルに変換されます。
+</p>
+
+<p>
+  Transforming coordinates to NDC is usually accomplished in a step-by-step fashion where we transform an object's vertices to several coordinate systems before finally transforming them to NDC. The advantage of transforming them to several <em>intermediate</em> coordinate systems is that some operations/calculations are easier in certain coordinate systems as will soon become apparent. There are a total of 5 different coordinate systems that are of importance to us:
+  座標をNDCに変換する作業は段階的に行われます。NDCに落とし込まれるまでに物体の頂点はいくつかの座標系を経由するのです。<em>中間的な</em>座標系を経由するのは、後程説明するようにある種の操作や計算が、特定の座標系において行うのが適しているからです。重要な座標系が5つあります:
+</p>
+
+  <ul>
+    <li>Local space (or Object space)</li>
+	<li>局所空間（物体空間）</li>
+    <li>World space</li>
+	<li>大域空間</li>
+    <li>View space (or Eye space)</li>
+	<li>視野空間</li>
+    <li>Clip space</li>
+	<li>クリップ空間</li>
+    <li>Screen space</li>
+	<li>スクリーン空間</li>
+  </ul>
+ 
+<p>
+	Those are all a different state at which our vertices will be transformed in before finally ending up as fragments. 
+	上記の空間は頂点が座標変換によってフラグメントになるまでに通過するものです。
+</p>
+
+<p>
+  You're probably quite confused by now by what a space or coordinate system actually is so we'll explain them in a more high-level fashion first by showing the total picture and what each specific space represents.
+  これらの空間あるいは座標系がいったい何のことなのかと混乱していることでしょう。これからもう少し詳しく説明します。まずは各空間が何を表しているのか、全体像を提示するところから始めます。
+</p>
+
+<h2>The global picture</h2>
+<h2>全体像</h2>
+<p>
+  To transform the coordinates from one space to the next coordinate space we'll use several transformation matrices of which the most important are the <def>model</def>, <def>view</def> and <def>projection</def> matrix. Our vertex coordinates first start in <def>local space</def> as <def>local coordinates</def> and are then further processed to <def>world coordinates</def>, <def>view coordinates</def>, <def>clip coordinates</def> and eventually end up as <def>screen coordinates</def>. The following image displays the process and shows what each transformation does:
+  ある座標系から次の座標系に変換する際、変換行列をいくつか用います。中でも重要なのが、<def>モデル</def>、<def>ビュー</def>、<def>射影変換</def>行列です。
+
+</p>
+
+<img src="/img/getting-started/coordinate_systems.png" class="clean"/>
+
+  <ol>
+    <li>Local coordinates are the coordinates of your object relative to its local origin; they're the coordinates your object begins in. </li>
+	<li>局所座標は物体ごとの座標です。各物体が自身の局所座標中で定義されます。</li>
+    <li>The next step is to transform the local coordinates to world-space coordinates which are coordinates in respect of a larger world. These coordinates are relative to some global origin of the world, together with many other objects also placed relative to this world's origin.</li>
+	<li>次の作業は局所座標を大域座標に変換することです。大域座標は大きな世界の座標です。この座標は世界のある原点に対する相対的な位置で表され、多くの物体が配置されるものです。</li>
+    <li>Next we transform the world coordinates to view-space coordinates in such a way that each coordinate is as seen from the camera or viewer's point of view. </li>
+	<li>続いて大域座標を視野座標に変換します。この座標系はカメラから見たときの座標です。</li>
+    <li>After the coordinates are in view space we want to project them to clip coordinates. Clip coordinates are processed to the <code>-1.0</code> and <code>1.0</code> range and determine which vertices will end up on the screen. Projection to clip-space coordinates can add perspective if using perspective projection. </li>
+	<li>座標が視野空間に納まったら、クリップ座標にそれを投射します。クリップ座標系は<code>-1.0</code>と<code>1.0</code>の範囲の座標系で、最終的に画面に表示されるものを決定します。透視投影を利用するのであればこのクリップ座標系への投射の段階で行います。</li>
+    <li>
+      And lastly we transform the clip coordinates to screen coordinates in a process we call <def>viewport transform</def> that transforms the coordinates from <code>-1.0</code> and <code>1.0</code> to the coordinate range defined by <fun><function id='22'>glViewport</function></fun>. The resulting coordinates are then sent to the rasterizer to turn them into fragments.
+    </li>   
+	<li>最後に、クリップ座標を画面の座標系に変換します。この処理は<def>ビューポート変換</def>と呼ばれ、<code>-1.0</code>から<code>1.0</code>の座標を<fun><function id='22'>glViewport</function></fun>で定義された範囲の座標に変換するものです。変換を終えた座標はラスタライザに送られ、フラグメントに加工されます。</li>
+  </ol>
+
+<p>
+  You probably got a slight idea what each individual space is used for. The reason we're transforming our vertices into all these different spaces is that some operations make more sense or are easier to use in certain coordinate systems. For example, when modifying your object it makes most sense to do this in local space, while calculating certain operations on the object with respect to the position of other objects makes most sense in world coordinates and so on. If we want, we could define one transformation matrix that goes from local space to clip space all in one go, but that leaves us with less flexibility.
+  それぞれの空間がなにを意味するのか多少雰囲気を掴めたでしょうか。頂点をいくつもの空間に変換していくのは、ある種の処理が特定の空間において良く意味をなし、あるいはその空間において利用しやすいからです。例えば物体自体を変形させる操作はその物体の局所座標においてするのがいいでしょうし、他の物体との位置関係を計算するのであれば大域座標においてするのが分かりやすいでしょう。もちろん局所座標からクリップ座標への変換にひとつの変換行列だけを用いることもできますが、それでは柔軟性が非常に低くなります。
+</p>
+
+<p>
+  We'll discuss each coordinate system in more detail below.
+  それでは各座標空間について更に詳しく見ていきましょう。
+</p>
+
+<h2>Local space</h2>
+<h2>局所空間</h2>
+<p>
+  Local space is the coordinate space that is local to your object, i.e. where your object begins in. Imagine that you've created your cube in a modeling software package (like Blender). The origin of your cube is probably at <code>(0,0,0)</code> even though your cube may end up at a different location in your final application. Probably all the models you've created all have <code>(0,0,0)</code> as their initial position. All the vertices of your model are therefore in <em>local</em> space: they are all local to your object. 
+  局所空間は物体に結び付いた座標系です。ブレンダーのようなモデリングソフトで立方体を作成しているところを想像して下さい。最終的にアプリケーションの中で立方体がどこに置かれるか分かりませんが、モデリングソフトにおいては立方体の原点は<code>(0, 0, 0)</code>でしょう。他の全ての物体に関しても、作成時の最初の座標は<code>(0, 0, 0)</code>であるはずです。作成した物体の頂点の座標は全てその物体に<em>固有</em>のものであるということです。
+</p>
+
+<p>
+  The vertices of the container we've been using were specified as coordinates between <code>-0.5</code> and <code>0.5</code> with <code>0.0</code> as its origin. These are local coordinates.
+  今回使っている箱の頂点の座標は<code>-0.5</code>と<code>0.5</code>の間にあり、原点は<code>0.0</code>ですが、これがこの箱の局所座標です。
+</p>
+
+<h2>World space</h2>
+<h2>大域空間</h2>
+<p>
+  If we would import all our objects directly in the application they would probably all be somewhere positioned inside each other at the world's origin of <code>(0,0,0)</code> which is not what we want. We want to define a position for each object to position them inside a larger world. The coordinates in world space are exactly what they sound like: the coordinates of all your vertices relative to a (game) world. This is the coordinate space where you want your objects transformed to in such a way that they're all scattered around the place (preferably in a realistic fashion). The coordinates of your object are transformed from local to world space; this is accomplished with the <def>model</def> matrix.
+  全ての物体を直接アプリケーションに読み込んだとすると、それらは世界の原点<code>(0, 0, 0)</code>において互いに重なり合ってしまいます。大きな世界の中でそれらの物体を適切な場所に配置したいものです。大域空間の座標はこの目的のために存在します。（ゲームの）世界における頂点の相対的な位置を表わすのがこの座標です。現実世界と同じように、この座標空間に向けて物体を座標変換して、それらを世界のあちこちに配置することができます。物体の局所座標が大域座標に変換されます。この変換を行うのが<def>モデル</def>行列です。
+</p>
+
+<p>
+  The model matrix is a transformation matrix that translates, scales and/or rotates your object to place it in the world at a location/orientation they belong to. Think of it as transforming a house by scaling it down (it was a bit too large in local space), translating it to a suburbia town and rotating it a bit to the left on the y-axis so that it neatly fits with the neighboring houses. You could think of the matrix in the previous chapter to position the container all over the scene as a sort of model matrix as well; we transformed the local coordinates of the container to some different place in the scene/world.
+  モデル行列は物体を平行移動し、拡大縮小し、あるいは回転することでアプリケーションの中の世界での位置や向きを決定する変換行列です。例えば局所座標の状態では大きすぎる家を縮小し、平行移動により郊外に移動させ、y軸に沿った回転により周囲の家にきちんと並ぶようにするような変換を考えることができます。また、前章で箱を移動させた行列も、ひとつのモデル行列だと考えることができます。箱の局所座標を変換して画面、あるいは世界の別の場所に置いたのです。
+</p>
+
+<h2>View space</h2>
+<h2>視野空間</h2>
+<p>
+  The view space is what people usually refer to as the <def>camera</def> of OpenGL (it is sometimes also known as <def>camera space</def> or <def>eye space</def>). The view space is the result of transforming your world-space coordinates to coordinates that are in front of the user's view. The view space is thus the space as seen from the camera's point of view. This is usually accomplished  with a combination of translations and rotations to translate/rotate the scene so that certain items are transformed to the front of the camera. These combined transformations are generally stored inside a <def>view matrix</def> that transforms world coordinates to view space. In the next chapter we'll extensively discuss how to create such a view matrix to simulate a camera.
+  視野空間はOpenGLの<def>カメラ</def>とも言われます。また、<def>カメラ空間</def>や、<def>eye space</def>とも呼ばれるものです。視野空間は大域空間の座標を変換してユーザーの目から見た座標にしたものです。つまり視野空間というのはカメラから見た空間です。この変換は通常平行移動と回転の組み合わせにより行われます。このような変換の組み合わせは一般的に<def>視野行列</def>に保存されます。この行列は大域座標系を視野空間に変換するものです。次章ではこの視野行列の作り方、カメラの動かし方を詳しく議論します。
+</p>
+
+<h2>Clip space</h2>
+<h2>クリップ空間</h2>
+<p>
+  At the end of each vertex shader run, OpenGL expects the coordinates to be within a specific range and any coordinate that falls outside this range is <def>clipped</def>. Coordinates that are clipped are discarded, so the remaining coordinates will end up as fragments visible on your screen. This is also where <def>clip space</def> gets its name from.
+  各頂点シェーダーからの出力はある範囲に納まっていることが期待され、その範囲の外の座標は<def>切り落さ</def>れます。切り落された座標は捨てられ、のこった座標が最終的に画面上に表示されます。切り抜きは英語でクリップ（clip）というのでこれがこの空間の名前の由来です。
+</p>
+
+<p>
+  Because specifying all the visible coordinates to be within the range <code>-1.0</code> and <code>1.0</code> isn't really intuitive, we specify our own coordinate set to work in and convert those back to NDC as OpenGL expects them.
+  <code>-1.0</code>から<code>1.0</code>の範囲だけが表示されるというのはあまり直感的とは言えません。そのためもっと分かり易い座標系で作業した後、OpenGLが期待するNDCに変換するのです。
+</p>
+
+<p>
+  To transform vertex coordinates from view to clip-space we define a so called <def>projection matrix</def> that specifies a range of coordinates e.g. <code>-1000</code> and <code>1000</code> in each dimension. The projection matrix then transforms coordinates within this specified range to normalized device coordinates (<code>-1.0</code>, <code>1.0</code>). All coordinates outside this range will not be mapped between <code>-1.0</code> and <code>1.0</code> and therefore be clipped. With this range we specified in the projection matrix, a coordinate of (<code>1250</code>, <code>500</code>, <code>750</code>) would not be visible, since the <code>x</code> coordinate is out of range and thus gets converted to a coordinate higher than <code>1.0</code> in NDC and is therefore clipped.
+  頂点座標を視野空間からクリップ空間に変換する為に、<def>射影行列</def>という行列を定義します。この行列は特定の範囲、例えば<code>-1000</code>から<code>1000</code>にある座標を正規化デバイス座標（<code>-1.0</code>から<code>1.0</code>）に変換します。この範囲外の座標は<code>-1.0</code>から<code>1.0</code>の中には入らず、切り落されます。射影行列でこのような範囲を指定した場合、<code>(1250, 500, 750)</code>というような座標は、<code>x</code>座標が範囲外にあり、NDCにおいて<code>1.0</code>より大きい値になるので、切り落され、表示されません。
+</p>
+
+<note>
+  Note that if only a part of a primitive e.g. a triangle is outside the <def>clipping volume</def> OpenGL will reconstruct the triangle as one or more triangles to fit inside the clipping range.
+  プリミティブの一部、例えば三角形の一部が<def>クリッピングボリューム</def>の外にある場合、OpenGLは三角形を増やしてNDCに納まるように変更します。
+</note>
+
+<p>
+  This <em>viewing box</em> a projection matrix creates is called a <def>frustum</def> and each coordinate that ends up inside this frustum will end up on the user's screen. The total process to convert coordinates within a specified range to NDC that can easily be mapped to 2D view-space coordinates is called <def>projection</def> since the projection matrix <def>projects</def> 3D coordinates to the easy-to-map-to-2D normalized device coordinates.  
+  射影行列が生成するこの<em>可視領域</em>は<def>視錐台</def>と呼ばれます。この視錐台の中にある座標が最終的に画面に表示されます。ある範囲の座標をNDCに落とし込み、2次元の視野空間に変換しやすくする一連の処理は<def>投影</def>と呼ばれます。射影行列により3次元の座標を2次元に変換し易い正規化デバイス座標に<def>投影</def>する処理だからです。
+</p>
+
+<p>
+  Once all the vertices are transformed to clip space a final operation called <def>perspective division</def> is performed where we divide the <code>x</code>, <code>y</code> and <code>z</code> components of the position vectors by the vector's homogeneous <code>w</code> component; perspective division is what transforms the 4D clip space coordinates to 3D normalized device coordinates. This step is performed automatically at the end of the vertex shader step. 
+  全ての頂点がクリップ空間に変換された後、<def>透視除算</def>という操作が最後に行われます。これは位置ベクトルの<code>x</code>、<code>y</code>、<code>z</code>座標を同次座標<code>w</code>で割り算する操作です。4次元のクリップ空間の座標を3次元のNDCに変換するものであるとも言えます。透視除算は頂点シェーダーの処理の最後に自動的に行われます。
+</p>
+
+<p>
+  It is after this stage where the resulting coordinates are mapped to screen coordinates (using the settings of <fun><function id='22'>glViewport</function></fun>) and turned into fragments.
+  この後、出力された座標が<fun><function id='22'>glViewport</function></fun>の設定を利用して画面の座標に射影されフラグメントに加工されます。
+</p>
+
+<p>
+  The projection matrix to transform view coordinates to clip coordinates usually takes two different forms, where each form defines its own unique frustum. We can either create an <def>orthographic</def> projection matrix or a <def>perspective</def> projection matrix.
+  視野座標をクリップ座標に変換する射影行列には通常2つの種類があり、それぞれ特有の視錐台を作成します。それらは<def>平行投影</def>行列、<def>透視投影</def>行列と呼ばれるものです。
+</p>
+
+<h3>Orthographic projection</h3>
+<h3>平行投影</h3>
+<p>
+  An orthographic projection matrix defines a cube-like frustum box that defines the clipping space where each vertex outside this box is clipped. When creating an orthographic projection matrix we specify the width, height and length of the visible frustum. All the coordinates inside this frustum will end up within the NDC range after transformed by its matrix and thus won't be clipped. The frustum looks a bit like a container:
+  平行投影行列は直方体の視錐台を作り、その外側を切り落します。平行投影行列の作成には視錐台の幅、高さ、長さを指定する必要があります。この視錐台の中の座標はこの行列による変換でNDCの範囲に納まり、切り落されません。この視錐台は箱のようなものです:
+</p>
+
+<img src="/img/getting-started/orthographic_frustum.png" class="clean"/>
+
+<p>
+  The frustum defines the visible coordinates and is specified by a width, a height and a <def>near</def> and <def>far</def> plane. Any coordinate in front of the near plane is clipped and the same applies to coordinates behind the far plane. The orthographic frustum <strong>directly</strong> maps all coordinates inside the frustum to normalized device coordinates without any special side effects since it won't touch the <code>w</code> component of the transformed vector; if the <code>w</code> component remains equal to <code>1.0</code> perspective division won't change the coordinates.
+  視錐台は可視領域を既定し、幅、高さ、そして<def>前端面（near plane）</def>と<def>後端面（far plane）</def>により決まります。前端面より手前のものや、後端面より後ろのものは切り落されます。平行投影による視錐台は<strong>直接</strong>NDCに射影され、変換されるベクトルの<code>w</code>座標には触れないのでほかの特別な効果はありません。もし<code>w</code>座標が<code>1.0</code>のままであれば透視除算によりなんの変化も起きないのです。
+</p>
+
+<p>
+  To create an orthographic projection matrix we make use of GLM's built-in function <code><function id='59'>glm::ortho</function></code>:
+  平行投影行列を作成するにはGLMの組込み関数<code><function id='59'>glm::ortho</function></code>を利用します:
+</p>
+
+<pre><code>
+<function id='59'>glm::ortho</function>(0.0f, 800.0f, 0.0f, 600.0f, 0.1f, 100.0f);
+</code></pre>
+
+<p>
+  The first two parameters specify the left and right coordinate of the frustum and the third and fourth parameter specify the bottom and top part of the frustum. With those 4 points we've defined the size of the near and far planes and the 5th and 6th parameter then define the distances between the near and far plane. This specific projection matrix transforms all coordinates between these <code>x</code>, <code>y</code> and <code>z</code> range values to normalized device coordinates. 
+  最初の2つの引数は視錐台の左端と右端の座標で、3つ目と4つ目は下端と上端の座標です。この4つの引数で前端面の大きさが決まり、5つ目と6つ目の引数で前端面と後端面の距離を決定します。この投影行列はここで指定した範囲にある<code>x</code>、<code>y</code>、<code>z</code>座標をNDCに変換します。
+</p>
+
+<p>
+  An orthographic projection matrix directly maps coordinates to the 2D plane that is your screen, but in reality a direct projection produces unrealistic results since the projection doesn't take <def>perspective</def> into account. That is something the <def>perspective projection</def> matrix fixes for us.
+  平行投影行列は座標を直接2次元の画面に射影しますが、これはあまり現実的な映像にはなりません。<def>遠近法（perspective）</def>を考慮していない為です。この問題を解決するには<def>透視投影行列</def>を用います。
+</p>
+
+<h3>Perspective projection</h3>
+<h3>透視投影</h3>
+<p>
+  If you ever were to enjoy the graphics the <em>real life</em> has to offer you'll notice that objects that are farther away appear much smaller. This weird effect is something we call  <def>perspective</def>. Perspective is especially noticeable when looking down the end of an infinite motorway or railway as seen in the following image:
+  <em>現実世界</em>が提供するグラフィックスを楽しんだことがあれば、遠くの物体は小さく見えることに気が付くでしょう。この奇妙な現象は<def>遠近法</def>によるものです。遠近法は下図のような、無限に続く道路や線路を見た時に特に目立ちます:
+</p>
+
+<img src="/img/getting-started/perspective.png" class="clean"/>
+
+<p>
+  As you can see, due to perspective the lines seem to coincide at a far enough distance. This is exactly the effect perspective projection tries to mimic and it does so using a <def>perspective projection matrix</def>. The projection matrix maps a given frustum range to clip space, but also manipulates the <code>w</code> value of each vertex coordinate in such a way that the further away a vertex coordinate is from the viewer, the higher this <code>w</code> component becomes. Once the coordinates are transformed to clip space they are in the range <code>-w</code> to <code>w</code> (anything outside this range is clipped). OpenGL requires that the visible coordinates fall between the range <code>-1.0</code> and <code>1.0</code> as the final vertex shader output, thus once the coordinates are in clip space, perspective division is applied to the clip space coordinates:
+  見ての通り、遠近法によって2つの線が無限のかなたで交差しているように見えます。これこそが<def>透視投影行列</def>を用いて透視投影が再現しようとしている現象です。この投影行列は視錐台をクリップ空間に変換しますが、それだけでなく各頂点の<code>w</code>の値も変更します。カメラから遠い頂点座標ほど、この<code>w</code>の値が大きくなるようにするのです。クリップ空間に変換されたらその座標は<code>-w</code>と<code>w</code>の間に落ち着きます（この外のものは切り落されます）。OpenGLにおいて表示されるべき座標は頂点シェーダーからの出力の段階で、<code>-1.0</code>と<code>1.0</code>の間になければいけないので、クリップ空間の中にある座標に対して透視除算が適応されます:
+
+  \[ out = \begin{pmatrix} x /w \\ y / w \\ z / w \end{pmatrix} \]
+  
+  Each component of the vertex coordinate is divided by its <code>w</code> component giving smaller vertex coordinates the further away a vertex is from the viewer. This is another reason why the <code>w</code> component is important, since it helps us with perspective projection. The resulting coordinates are then in normalized device space. If you're interested to figure out how the orthographic and perspective projection matrices are actually calculated (and aren't too scared of the mathematics) I can recommend <a href="http://www.songho.ca/opengl/gl_projectionmatrix.html" target="_blank">this excellent article</a> by Songho.
+  頂点座標の各要素は<code>w</code>要素の値で割り算されるので、遠くの頂点ほど小さい座標になります。このように、<code>w</code>要素は透視投影において重要な役割を果たします。以上の変換の結果出力される座標はNDSに納まります。もし平行投影行列や透視投影行列の導出に興味があるのであれば（そして数学を恐れないのであれば）Songhoによる<a href="http://www.songho.ca/opengl/gl_projectionmatrix.html" target="_blank">このすばらしい記事</a>をお薦めします。
+</p>
+
+<p>
+  A perspective projection matrix can be created in GLM as follows:
+  透視投影行列はGLMにおいて以下のように作成できます:
+</p>
+
+<pre><code>
+glm::mat4 proj = <function id='58'>glm::perspective</function>(<function id='63'>glm::radians</function>(45.0f), (float)width/(float)height, 0.1f, 100.0f);
+</code></pre>
+
+<p>
+  What <code><function id='58'>glm::perspective</function></code> does is again create a large <em>frustum</em> that defines the visible space, anything outside the frustum will not end up in the clip space volume and will thus become clipped. A perspective frustum can be visualized as a non-uniformly shaped box from where each coordinate inside this box will be mapped to a point in clip space. An image of a perspective frustum is seen below:
+  <code><function id='58'>glm::perspective</function></code>が行うのは、可視領域である大きな<em>視錐台</em>を作ることです。この視錐台の外のものはクリップ空間に入らず、切り落とされてしまいます。透視投影による視錐台は歪んだ箱のようになります。この箱の中身がクリップ空間に射影されます。透視投影の視錐台は以下の画像のようなものです:
+</p>
+
+<img src="/img/getting-started/perspective_frustum.png" class="clean"/>
+
+  
+<p>
+Its first parameter defines the <def>fov</def> value, that stands for <def>field of view</def> and sets how large the viewspace is. For a realistic view it is usually set to 45 degrees, but for more doom-style results you could set it to a higher value. The second parameter sets the aspect ratio which is calculated by dividing the viewport's width by its height. The third and fourth parameter set the <em>near</em> and <em>far</em> plane of the frustum. We usually set the near distance to <code>0.1</code> and the far distance to <code>100.0</code>. All the vertices between the near and far plane and inside the frustum will be rendered.
+1つ目の引数で<def>視野角（fov）</def>を定義します。これは<def>field of view</def>の省略で、見える範囲の広さを規定します。現実に近い値として通常45度を指定しますが、doomというゲームのような雰囲気にしたい場合もっと大きな値にすることもできます。2つ目の変数ではアスペクト比を指定します。アスペクト比は表示領域の幅を高さで割った値です。3つ目と4つ目の引数は視錐台の<em>前端面</em>と<em>後端面</em>を規定します。通常前端面までの距離には<code>0.1</code>を、後端面までの距離には<code>100.0</code>を指定します。視錐台においてこの前端面と後端面の間にある全ての頂点が描画されます。
+</p>
+
+<note> 
+  Whenever the <em>near</em> value of your perspective matrix is set too high (like <code>10.0</code>), OpenGL will clip all coordinates close to the camera (between <code>0.0</code> and <code>10.0</code>), which can give a visual result you maybe have seen before in videogames where you could see through certain objects when moving uncomfortably close to them. 
+  透視投影行列において<em>前端面</em>までの距離としてもっと大きな値（例えば<code>10.0</code>）を与えると、OpenGLはそれよりカメラに近い座標（<code>0.0</code>と<code>10.0</code>の間のもの）は切り捨てられます。ゲームで遊んでいる時、何かに異常に近付くとその物体の中が見えた経験があるかと思いますが、そのような結果になります。
+</note>
+
+<p>
+  When using orthographic projection, each of the vertex coordinates are directly mapped to clip space without any fancy perspective division (it still does perspective division, but the <code>w</code> component is not manipulated (it stays <code>1</code>) and thus has no effect). Because the orthographic projection doesn't use perspective projection, objects farther away do not seem smaller, which produces a weird visual output. For this reason the orthographic projection is mainly used for 2D renderings and for some architectural or engineering applications where we'd rather not have vertices distorted by perspective. Applications like <em>Blender</em> that are used for 3D modeling sometimes use orthographic projection for modeling, because it more accurately depicts each object's dimensions. Below you'll see a comparison of both projection methods in Blender:   
+  平行投影では各頂点は直接クリップ空間に射影され、透視除算による面白い効果は得られません（透視除算は行なわれていますが、<code>w</code>が<code>1.0</code>のままなので影響がないのです）。平行投影は遠近法を適応していないので、遠くの物も小さくならず、奇妙な視覚効果が得られます。その為、平行投影は主に2次元の描画や、建築あるいは設計といった、遠近法による歪みが無い方がいい用途のアプリケーションで利用されます。<em>ブレンダー</em>のような3次元のモデリングに利用されるアプリケーションでも平行投影は時として利用されます。物体の寸法が正確に表示される為です。下図はブレンダーにおける両方の投影方法の比較です:
+</p>
+
+<img src="/img/getting-started/perspective_orthographic.png" class="clean"/>
+
+<p>
+  You can see that with perspective projection, the vertices farther away appear much smaller, while in orthographic projection each vertex has the same distance to the user. 
+  ご覧の様に透視投影では遠くの頂点は小さくなり、平行投影では各頂点のユーザーからの距離は同じままです。
+</p>
+
+<h2>Putting it all together</h2>
+<h2>まとめ</h2>
+<p>
+  We create a transformation matrix for each of the aforementioned steps: model, view and projection matrix. A vertex coordinate is then transformed to clip coordinates as follows:
+	各段階に対する変換行列である、モデル変換行列、視野行列、投影行列を作成しました。これらを用いると、頂点の座標はクリップ座標に対して以下のように変換されます:
+  
+ 	\[ V_{clip} = M_{projection} \cdot M_{view} \cdot M_{model} \cdot V_{local} \]
+  
+Note that the order of matrix multiplication is reversed (remember that we need to read matrix multiplication from right to left). The resulting vertex should then be assigned to <var>gl_Position</var> in the vertex shader and OpenGL will then automatically perform perspective division and clipping.
+行列の積の順番が逆であることに注意してください。行列の積は右から左に読む必要があります。この積の結果が頂点シェーダーにおいて<var>gl_Position</var>に格納され、OpenGLが自動的に透視除算及び切り落としを行います。
+</p>
+
+<note>
+  <strong>And then?</strong><br/>
+  <strong>ほんで？</strong><br/>
+  The output of the vertex shader requires the coordinates to be in clip-space which is what we just did with the transformation matrices. OpenGL then performs <em>perspective division</em> on the <em>clip-space coordinates</em> to transform them to <em>normalized-device coordinates</em>. OpenGL then uses the parameters from <fun><function id='22'>glViewPort</function></fun> to map the normalized-device coordinates to <em>screen coordinates</em> where each coordinate corresponds to a point on your screen (in our case a 800x600 screen). This process is called the <em>viewport transform</em>. 
+  今行ったように、頂点シェーダーからの出力となる座標はクリップ空間に納まっていなければいけません。この後OpenGLはクリップ空間において<em>透視除算</em>を行い、<em>NDC</em>に変換します。そして<fun><function id='22'>glViewPort</function></fun>から値を取得し、NDCを<em>画面の座標系</em>に変換します。画面の座標は画面の各点に対応する座標で、今回の場合その大きさは800x600です。この処理は<em>ビューポート変換（viewport transform）</em>と呼ばれます。
+</note>
+
+<p>
+  This is a difficult topic to understand so if you're still not exactly sure about what each space is used for you don't have to worry. Below you'll see how we can actually put these coordinate spaces to good use and enough examples will follow in the upcoming chapters.
+  本章の内容は難解で、各空間が何の為の物なのか理解し辛いかもしれませんが、心配は無用です。以下にこれらの座標空間の使い方を十分な例と共に示します。
+</p>
+
+<h1>Going 3D</h1>
+<h1>3次元の世界へ</h1>
+<p>
+  Now that we know how to transform 3D coordinates to 2D coordinates we can start rendering real 3D objects instead of the lame 2D plane we've been showing so far.
+  3次元の座標を2次元に変換する方法が分かったので、ここまで見てきたようなつまらない平面の画像ではなく、現実世界のような3次元の物体の描画に進む準備が整いました。
+</p>
+
+<p>
+  To start drawing in 3D we'll first create a model matrix. The model matrix consists of  translations, scaling and/or rotations we'd like to apply to <em>transform</em> all object's vertices  to the global world space. Let's transform our plane a bit by rotating it on the x-axis so it looks like it's laying on the floor. The model matrix then looks like this:
+  3次元のものを描画するにあたり、まずはモデル行列を作成しましょう。モデル行列は平行移動、拡大縮小、及び回転から構成されます。これらの変換は物体の各頂点を大域空間に<em>変換</em>する為の物です。とりあえず平面をx軸に沿って少し回転させ、床に敷かれているかのようにしてみましょう。このようなモデル行列は以下のようになります:
+</p>
+
+<pre><code>
+glm::mat4 model = glm::mat4(1.0f);
+model = <function id='57'>glm::rotate</function>(model, <function id='63'>glm::radians</function>(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f)); 
+</code></pre>
+
+<p>
+By multiplying the vertex coordinates with this model matrix we're transforming the vertex coordinates to world coordinates. Our plane that is slightly on the floor thus represents the plane in the global world. 
+頂点座標にモデル行列を掛けることで、頂点の座標を大域座標に変換しています。この操作により、この平面は大域的な世界での平面になりました。
+    </p>
+  
+<p>
+  Next we need to create a view matrix. We want to move slightly backwards in the scene so the object becomes visible (when in world space we're located at the origin <code>(0,0,0)</code>). To move around the scene, think about the following:
+  次に視野行列を作成します。物体が見えるように少し後ろに下がりましょう（現状、大域空間の原点<code>(0, 0, 0)</code>に居ます）。この世界で移動する為に以下のように考えます:
+  <ul>
+    <li>To move a camera backwards, is the same as moving the entire scene forward.</li>
+	<li>カメラを手前に動かすのは世界全体を奥に動かすのと同じこと。</li>
+  </ul>
+  That is exactly what a view matrix does, we move the entire scene around inversed to where we want the camera to move.<br/>
+  Because we want to move backwards and since OpenGL is a right-handed system we have to move in the positive z-axis. We do this by translating the scene towards the negative z-axis. This gives the impression that we are moving backwards. 
+  これはまさに視野行列が行うことです。カメラを動かしたい方向と逆向きに世界を動かします。<br/>
+  今回はカメラを手前に動かしたいのですが、OpenGLの世界は右手の法則に従っているので、これはz軸の正の方向への移動になります。そのために世界をz軸の負の方向に移動させます。これにより自分自身が後ろに下ったように見えます。
+</p>
+
+
+<note>
+  <strong>Right-handed system</strong>
+  <strong>右手の法則</strong>
+  <p>
+    By convention, OpenGL is a right-handed system. What this basically says is that the positive x-axis is to your right, the positive y-axis is up and the positive z-axis is backwards. Think of your screen being the center of the 3 axes and the positive z-axis going through your screen towards you. The axes are drawn as follows:
+	慣例的にOpenGLは右手の法則を採用しています。これは座標空間の各軸が従う規則で、右側がx軸正の方向、上側がy軸正の方向、手前側がz軸正の方向になるようなものです。画面が座標空間の原点に位置し、z軸が手前を向いているとすると、以下のようになります:
+</p>
+  <img src="/img/getting-started/coordinate_systems_right_handed.png" class="clean"/>
+  <p>
+    To understand why it's called right-handed do the following:
+	これが右手の法則と呼ばれるのは以下の理由からです:
+    <ul>
+      <li>Stretch your right-arm along the positive y-axis with your hand up top.</li>
+	  <li>右手をy軸に沿うように上に向けます。</li>
+      <li>Let your thumb point to the right.</li>
+	  <li>親指を右に向けます。</li>
+      <li>Let your pointing finger point up.</li>
+	  <li>人差し指を上に向けます。</li>
+      <li>Now bend your middle finger downwards 90 degrees.</li>
+	  <li>中指を90度折ります。</li>
+    </ul>
+    If you did things right, your thumb should point towards the positive x-axis, the pointing finger towards the positive y-axis and your middle finger towards the positive z-axis. If you were to do this with your left-arm you would see the z-axis is reversed. This is known as a left-handed system and is commonly used by DirectX. Note that in normalized device coordinates OpenGL actually uses a left-handed system (the projection matrix switches the handedness).
+	そうすると親指がx軸、人差し指がy軸、中指がz軸に対応するようになるはずです。左手で同じことをするとz軸は反対を向くであほう。これは左手の法則と呼ばれ、DirectXで利用されます。ただしNDCにおいて実際はOpenGLも左手の法則を利用しており、投影行列が反転しています。
+  </p>
+</note>
+
+<p>
+  We'll discuss how to move around the scene in more detail in the next chapter. For now the view matrix looks like this:
+次章において空間上の移動を詳しく解説します。今のところ視野行列は以下のようになっています:
+</p>
+
+<pre><code>
+glm::mat4 view = glm::mat4(1.0f);
+// note that we're translating the scene in the reverse direction of where we want to move
+view = <function id='55'>glm::translate</function>(view, glm::vec3(0.0f, 0.0f, -3.0f)); 
+</code></pre>
+
+<p>
+  The last thing we need to define is the projection matrix. We want to use perspective projection for our scene so we'll declare the projection matrix like this:
+最後に投影行列を定義します。遠近法を利用したいので、投影行列を以下のように宣言します:
+</p>
+
+<pre><code>
+glm::mat4 projection;
+projection = <function id='58'>glm::perspective</function>(<function id='63'>glm::radians</function>(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
+</code></pre>
+
+<p>
+  Now that we created the transformation matrices we should pass them to our shaders. First let's declare the transformation matrices as uniforms in the vertex shader and multiply them with the vertex coordinates:
+  以上でシェーダーに渡す変換行列を全て作成しました。それではそれらの変換行列を頂点シェーダーにおいてユニフォームとして定義し頂点座標と共に掛け合わせます:
+</p>
+
+<pre><code>
+#version 330 core
+layout (location = 0) in vec3 aPos;
+...
+uniform mat4 model;
+uniform mat4 view;
+uniform mat4 projection;
+
+void main()
+{
+    // note that we read the multiplication from right to left
+    gl_Position = projection * view * model * vec4(aPos, 1.0);
+    ...
+}
+</code></pre>
+
+<p>
+  We should also send the matrices to the shader (this is usually done each frame since  transformation matrices tend to change a lot):
+  それから行列をシェーダーに送信しなければなりません。変換行列は通常頻繁に変更されるので行列の送信はフレーム毎に行います:
+</p>
+
+<pre><code>
+int modelLoc = <function id='45'>glGetUniformLocation</function>(ourShader.ID, "model");
+<function id='44'>glUniform</function>Matrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+... // same for View Matrix and Projection Matrix
+... // 視野行列、投影行列についても同様
+</code></pre>
+
+<p>
+  Now that our vertex coordinates are transformed via the model, view and projection matrix the final object should be:
+  これにて頂点座標がモデル、視野、投影行列により変換され、最終的な物体は以下のようになります:
+  
+  <ul>
+    <li>Tilted backwards to the floor. </li>
+	<li>傾いて床に置かれている。</li>
+    <li>A bit farther away from us.</li>
+	<li>カメラから少し離れている。</li>
+    <li>Be displayed with perspective (it should get smaller, the further its vertices are).</li>
+	<li>遠近法を用いて描画されている（遠くの頂点ほど小さい）。</li>
+  </ul>
+  
+  Let's check if the result actually does fulfill these requirements:
+  本当にこのような結果になるか確かめましょう:
+</p>
+
+<img src="/img/getting-started/coordinate_systems_result.png" class="clean"/>
+
+<p>
+  It does indeed look like the plane is a 3D plane that's resting at some imaginary floor. If you're not getting the same result, compare your code with the complete  <a href="/code_viewer_gh.php?code=src/1.getting_started/6.1.coordinate_systems/coordinate_systems.cpp" target="_blank">source code</a>.
+  確かに平面は3次元空間上で床に敷かれているように見えます。同じ結果にならなければ、自分のコードを完全な<a href="/code_viewer_gh.php?code=src/1.getting_started/6.1.coordinate_systems/coordinate_systems.cpp" target="_blank">ソースコード</a>と照らし合わせて下さい。
+</p>
+
+<h2>More 3D</h2>
+<h2>もっと3次元</h2>
+<p>
+  So far we've been working with a 2D plane, even in 3D space, so let's take the adventurous  route and extend our 2D plane to a 3D cube. To render a cube we need a total of 36 vertices (6 faces * 2 triangles * 3 vertices each). 36 vertices are a lot to sum up so you can retrieve them from <a href="/code_viewer.php?code=getting-started/cube_vertices" target="_blank">here</a>. 
+  ここまで空間が3次元になったとはいえ物体自体は2次元の平面でした。今度はもう少し冒険して、3次元の立方体を扱ってみましょう。立方体を描写するには頂点が36個も必要です（6つの面 * 2つの三角形 * 3つの頂点）。多すぎるので<a href="/code_viewer.php?code=getting-started/cube_vertices" target="_blank">ここ</a>からコピーして下さい。
+</p>
+
+<p>
+ For fun, we'll let the cube rotate over time:  
+ さらに面白くするためにこの立方体を時間と共に回転させましょう:
+</p>
+
+<pre><code>
+model = <function id='57'>glm::rotate</function>(model, (float)<function id='47'>glfwGetTime</function>() * <function id='63'>glm::radians</function>(50.0f), glm::vec3(0.5f, 1.0f, 0.0f));  
+</code></pre>
+
+<p>
+  And then we'll draw the cube using <fun><function id='1'>glDrawArrays</function></fun> (as we didn't specify indices), but this time with a count of 36 vertices.
+  それでは<fun><function id='1'>glDrawArrays</function></fun>により立方体を描写しましょう。今までは頂点の個数を指定しませんでしたが今回は36を指定します。
+</p>
+
+<pre class="cpp"><code>
+<function id='1'>glDrawArrays</function>(GL_TRIANGLES, 0, 36);
+</code></pre>
+
+<p>
+  You should get something similar to the following:
+  以下のような結果が得られたでしょうか:
+</p>
+
+<div class="video paused" onclick="ClickVideo(this)">
+  <video width="600" height="450" loop>
+    <source src="/video/getting-started/coordinate_system_no_depth.mp4" type="video/mp4" />
+    <img src="/img/getting-started/coordinate_systems_no_depth.png" class="clean"/>
+  </video>
+</div>
+
+
+<p>
+  It does resemble a cube slightly but something's off. Some sides of the cubes are being drawn over other sides of the cube. This happens because when OpenGL draws your cube triangle-by-triangle, fragment by fragment, it will overwrite any pixel color that may have already been drawn there before. Since OpenGL gives no guarantee on the order of triangles rendered (within the same draw call), some triangles are drawn on top of each other even though one should clearly be in front of the other.
+  立方体のようにも見えますが、なにかが足りないようです。立方体のいくつかの面が他の面の後ろに描画されています。OpenGLはこの立方体を描画する際、各三角形を順番に、そしてフラグメントを順番に描き、先に描かれた部分を後に描かれた部分が上書きしてしまうのでこのような結果になります。単一の描画命令中に三角形をどの順番で描くのか、OpenGLは何も規定していないので、手前に描画されるべきものの上から別のものを描いてしまうことがあるのです。
+</p>
+
+<p>
+  Luckily, OpenGL stores depth information in a buffer called the <def>z-buffer</def> that allows OpenGL to decide when to draw over a pixel and when not to. Using the z-buffer we can configure OpenGL to do depth-testing.
+  幸いOpenGLは深度の情報を<def>zバッファ</def>と呼ばれるバッファに保存しており、これを用いてピクセルを上書きすべきかどうか判断できます。zバッファを利用して、深度テストを行うようにOpenGLを設定できます。
+</p>
+
+<h3>Z-buffer</h3>
+<h3>zバッファ</h3>
+<p>
+  OpenGL stores all its depth information in a z-buffer, also known as a <def>depth buffer</def>. GLFW automatically creates such a buffer for you (just like it has a color-buffer that stores the colors of the output image). The depth is stored within each fragment (as the fragment's <code>z</code> value) and whenever the fragment wants to output its color, OpenGL compares its depth values with the z-buffer. If the current fragment is behind the other fragment it is discarded, otherwise overwritten. This process is called <def>depth testing</def> and is done automatically by OpenGL.
+  OpenGLは深度の情報をzバッファに格納しています。zバッファは<def>深度バッファ</def>とも呼ばれます。GLFWは自動的にこのバッファを作成します。これは出力となる色の情報を格納するカラーバッファと同様です。深度情報は<code>z</code>の値として各フラグメントに保存され、フラグメントが自身の色を出力しようとする際に、OpenGLがその深度値をzバッファと比較します。そのフラグメントが他のフラグメントの後ろに隠れていればそのフラグメントは破棄され、そうでなければ上書きされます。この処理を<def>深度テスト</def>と言い、OpenGLにより自動で行われます。
+</p>
+
+<p>
+  However, if we want to make sure OpenGL actually performs the depth testing we first need to tell OpenGL we want to enable depth testing; it is disabled by default. We can enable depth testing using <fun><function id='60'>glEnable</function></fun>. The <fun><function id='60'>glEnable</function></fun> and <fun>glDisable</fun> functions allow us to enable/disable certain functionality in OpenGL. That functionality is then enabled/disabled until another call is made to disable/enable it. Right now we want to enable depth testing by enabling <var>GL_DEPTH_TEST</var>:
+  しかしopenGLが確実に深度テストを行ってくれるようにするには、深度テストを有効化するように明記する必要があります。デフォルトでは無効になっている為です。<fun><function id='60'>glEnable</function></fun>を用いてこれを有効化できます。<fun><function id='60'>glEnable</function></fun>と<fun>glDisable</fun>はOpenGLの様々な機能を有効化、無効化するものです。ある機能を有効化、あるいは無効化すれば、次に明示的にそれを無効化、あるいは有効化するまでその機能は有効、あるいは無効です。今回深度テストを行いたいので、<var>GL_DEPTH_TEST</var>を有効化します:
+</p>
+
+<pre><code>
+<function id='60'>glEnable</function>(GL_DEPTH_TEST);  
+</code></pre>
+
+<p>
+  Since we're using a depth buffer we also want to clear the depth buffer before each render iteration (otherwise the depth information of the previous frame stays in the buffer). Just like clearing the color buffer, we can clear the depth buffer by specifying the <var>DEPTH_BUFFER_BIT</var> bit in the <fun><function id='10'>glClear</function></fun> function:
+  深度バッファを利用するので、描画の度にそれを消去する必要があります（そうしないと前のフレームがこのバッファに残ったままになります）。カラーバッファと同様に<fun><function id='10'>glClear</function></fun>に<var>DEPTH_BUFFER_BIT</var>を渡すことで削除できます。
+</p>
+
+<pre><code>
+<function id='10'>glClear</function>(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+</code></pre>
+
+<p>
+  Let's re-run our program and see if OpenGL now performs depth testing:
+  それでは再びプログラムを実行し、深度テストが行われているか確認しましょう:
+</p>
+
+<div class="video paused" onclick="ClickVideo(this)">
+  <video width="600" height="450" loop>
+    <source src="/video/getting-started/coordinate_system_depth.mp4" type="video/mp4" />
+    <img src="/img/getting-started/coordinate_systems_with_depth.png" class="clean"/>
+  </video>
+</div>
+
+
+<p>
+  There we go! A fully textured cube with proper depth testing that rotates over time. Check the source code <a href="/code_viewer_gh.php?code=src/1.getting_started/6.2.coordinate_systems_depth/coordinate_systems_depth.cpp" target="_blank">here</a>.
+  ええやん。前面にテクスチャの施された立方体が、適切な深度テストが行われた上で時間と共に回転するようになりました。<a href="/code_viewer_gh.php?code=src/1.getting_started/6.2.coordinate_systems_depth/coordinate_systems_depth.cpp" target="_blank">ここ</a>からソースコードを確認して下さい。
+</p>
+
+
+
+<h3>More cubes!</h3>
+<h3>もっと沢山の立方体</h3>
+<p>
+  Say we wanted to display 10 of our cubes on screen. Each cube will look the same but will only differ in where it's located in the world with each a different rotation. The graphical layout of the cube is already defined so we don't have to change our buffers or attribute arrays when rendering more objects. The only thing we have to change for each object is its model matrix where we transform the cubes into the world.
+  今度は10個の立方体を表示してみましょう。同じ立方体を場所と角度を変えて描画しましょう。立方体の形やテクスチャは既に定義しているので、複数の立方体を表示させるからといってバッファや属性配列を変える必要はありません。必要なのはモデル行列を各物体毎に変え、それぞれを大域空間の別の場所に座標変換することです。
+</p>
+
+<p>
+  First, let's define a translation vector for each cube that specifies its position in world space. We'll define 10 cube positions in a <code>glm::vec3</code> array:
+  まずは大域空間中の各立方体の場所を示す平行移動ベクトルを定義しましょう。<code>glm::vec3</code>の配列として、10個の立方体の位置を指定します:
+</p>
+
+<pre><code>
+glm::vec3 cubePositions[] = {
+    glm::vec3( 0.0f,  0.0f,  0.0f), 
+    glm::vec3( 2.0f,  5.0f, -15.0f), 
+    glm::vec3(-1.5f, -2.2f, -2.5f),  
+    glm::vec3(-3.8f, -2.0f, -12.3f),  
+    glm::vec3( 2.4f, -0.4f, -3.5f),  
+    glm::vec3(-1.7f,  3.0f, -7.5f),  
+    glm::vec3( 1.3f, -2.0f, -2.5f),  
+    glm::vec3( 1.5f,  2.0f, -2.5f), 
+    glm::vec3( 1.5f,  0.2f, -1.5f), 
+    glm::vec3(-1.3f,  1.0f, -1.5f)  
+};
+</code></pre>
+
+<p>
+  Now, within the render loop we want to call <fun><function id='1'>glDrawArrays</function></fun> 10 times, but this time send a different model matrix to the vertex shader each time before we send out the draw call. We will create a small loop within the render loop that renders our object 10 times with a different model matrix each time. Note that we also add a small unique rotation to each container.
+  次に描画ループの中で<fun><function id='1'>glDrawArrays</function></fun>を10回呼びます。ただし今回は描画命令の前にそれぞれ別のモデル行列を頂点シェーダーに送信します。描画ループの中で小さなループを作成し、10個の物体をそれぞれ別のモデル行列により描写します。ついでにそれぞれ別の角度だけ回転を加えましょう:
+</p>
+
+<pre><code>
+<function id='27'>glBindVertexArray</function>(VAO);
+for(unsigned int i = 0; i &lt; 10; i++)
+{
+    glm::mat4 model = glm::mat4(1.0f);
+    model = <function id='55'>glm::translate</function>(model, cubePositions[i]);
+    float angle = 20.0f * i; 
+    model = <function id='57'>glm::rotate</function>(model, <function id='63'>glm::radians</function>(angle), glm::vec3(1.0f, 0.3f, 0.5f));
+    ourShader.setMat4("model", model);
+
+    <function id='1'>glDrawArrays</function>(GL_TRIANGLES, 0, 36);
+}
+</code></pre>
+
+<p>
+  This snippet of code will update the model matrix each time a new cube is drawn and do this 10 times in total. Right now we should be looking into a world filled with 10 oddly rotated cubes:
+  このコードにより新しい立方体が描画される度にモデル行列が更新されます。今回は少し回転した立方体が10個ちりばめられた世界が描画されるはずです。
+</p>
+
+<img src="/img/getting-started/coordinate_systems_multiple_objects.png" class="clean"/>
+
+<p>
+  Perfect! It looks like our container found some like-minded friends. If you're stuck see if you can compare your code with the  <a href="/code_viewer_gh.php?code=src/1.getting_started/6.3.coordinate_systems_multiple/coordinate_systems_multiple.cpp" target="_blank">source code</a>.
+  完の璧です。箱が気の合う仲間を見付けたようです。どこかで詰まってしまったのであれば<a href="/code_viewer_gh.php?code=src/1.getting_started/6.3.coordinate_systems_multiple/coordinate_systems_multiple.cpp" target="_blank">ソースコード</a>と比較してください。
+</p>
+
+<h2>Exercises</h2>
+<h2>演習問題</h2>
+<ul>
+  <li>Try experimenting with the <code>FoV</code> and <code>aspect-ratio</code> parameters of GLM's <code>projection</code> function. See if you can figure out how those affect the perspective frustum.</li>
+  <li>GLMの<code>projection</code>関数の<code>FoV</code>と<code>aspect-ratio</code>を色々変化させて何が起こるか実験して下さい。透視投影の視錐台にどう影響するでしょうか。</li>
+  <li>Play with the view matrix by translating in several directions and see how the scene changes. Think of the view matrix as a camera object.</li>  
+  <li>視野行列を色々な方向に平行移動し、画面がどう変化するか実験して下さい。視野行列をカメラオブジェクトだと考えましょう。</li>
+  <li>Try to make every 3rd container (including the 1st) rotate over time, while leaving the other containers static using just the model matrix: <a href="/code_viewer_gh.php?code=src/1.getting_started/6.4.coordinate_systems_exercise3/coordinate_systems_exercise3.cpp" target="_blank">solution</a>.</li>
+  <li>モデル行列だけを利用し、1つ目の箱を含み3つおきの箱を時間と共に回転させて下さい。他の箱は固定したままにして下さい: <a href="/code_viewer_gh.php?code=src/1.getting_started/6.4.coordinate_systems_exercise3/coordinate_systems_exercise3.cpp" target="_blank">解答</a>。</li>
+</ul>       
+
+    </div>
+</body>
+</html>
+	</main>
+</body>
+</html>

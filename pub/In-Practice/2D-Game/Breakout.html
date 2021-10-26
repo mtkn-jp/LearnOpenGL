@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ja"> 
+<head>
+    <meta charset="utf-8"/>
+    <title>LearnOpenGL</title>
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico"  />
+	<link rel="stylesheet" href="../static/style.css" />
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"> </script>
+	<script src="/static/functions.js"></script>
+</head>
+<body>
+	<nav>
+<ol>
+	<li id="Introduction">
+		<a href="https://learnopengl.com/Introduction">はじめに</a>
+	</li>
+	<li id="Getting-started">
+		<span class="closed">入門</span>
+		<ol>
+			<li id="Getting-started/OpenGL">
+				<a href="https://learnopengl.com/Getting-started/OpenGL">OpenGL </a>
+			</li>
+			<li id="Getting-started/Creating-a-window">
+				<a href="https://learnopengl.com/Getting-started/Creating-a-window">ウィンドウの作成</a>
+			</li>
+			<li id="Getting-started/Hello-Window">
+				<a href="https://learnopengl.com/Getting-started/Hello-Window">最初のウィンドウ</a>
+			</li>
+			<li id="Getting-started/Hello-Triangle">
+				<a href="https://learnopengl.com/Getting-started/Hello-Triangle">最初の三角形</a>
+			</li>
+			<li id="Getting-started/Shaders">
+				<a href="https://learnopengl.com/Getting-started/Shaders">シェーダー</a>
+			</li>
+			<li id="Getting-started/Textures">
+				<a href="https://learnopengl.com/Getting-started/Textures">テクスチャ</a>
+			</li>
+			<li id="Getting-started/Transformations">
+				<a href="https://learnopengl.com/Getting-started/Transformations">座標変換</a>
+			</li>
+			<li id="Getting-started/Coordinate-Systems">
+				<a href="https://learnopengl.com/Getting-started/Coordinate-Systems">座標系</a>
+			</li>
+			<li id="Getting-started/Camera">
+				<a href="https://learnopengl.com/Getting-started/Camera">カメラ</a>
+			</li>
+			<li id="Getting-started/Review">
+				<a href="https://learnopengl.com/Getting-started/Review">まとめ</a>
+			</li>
+		</ol>
+	</li>
+	<li id="Lighting">
+		<span class="closed">Lighting </span>
+		<ol>
+			<li id="Lighting/Colors">
+				<a href="https://learnopengl.com/Lighting/Colors">Colors </a>
+			</li>
+			<li id="Lighting/Basic-Lighting">
+				<a href="https://learnopengl.com/Lighting/Basic-Lighting">Basic Lighting </a>
+			</li>
+			<li id="Lighting/Materials">
+				<a href="https://learnopengl.com/Lighting/Materials">Materials </a>
+			</li>
+			<li id="Lighting/Lighting-maps">
+				<a href="https://learnopengl.com/Lighting/Lighting-maps">Lighting maps </a>
+			</li>
+			<li id="Lighting/Light-casters">
+				<a href="https://learnopengl.com/Lighting/Light-casters">Light casters </a>
+			</li>
+			<li id="Lighting/Multiple-lights">
+				<a href="https://learnopengl.com/Lighting/Multiple-lights">Multiple lights </a>
+			</li>
+			<li id="Lighting/Review">
+				<a href="https://learnopengl.com/Lighting/Review">Review </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Model-Loading">
+		<span class="closed">Model Loading </span>
+		<ol>
+			<li id="Model-Loading/Assimp">
+				<a href="https://learnopengl.com/Model-Loading/Assimp">Assimp </a>
+			</li>
+			<li id="Model-Loading/Mesh">
+				<a href="https://learnopengl.com/Model-Loading/Mesh">Mesh </a>
+			</li>
+			<li id="Model-Loading/Model">
+				<a href="https://learnopengl.com/Model-Loading/Model">Model </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Advanced-OpenGL">
+		<span class="closed">Advanced OpenGL </span>
+		<ol>
+			<li id="Advanced-OpenGL/Depth-testing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Depth-testing">Depth testing </a>
+			</li>
+			<li id="Advanced-OpenGL/Stencil-testing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Stencil-testing">Stencil testing </a>
+			</li>
+			<li id="Advanced-OpenGL/Blending">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Blending">Blending </a>
+			</li>
+			<li id="Advanced-OpenGL/Face-culling">
+				<a href="https://learnopengl.cm/Advanced-OpenGL/Face-culling">Face culling </a>
+			</li>
+			<li id="Advanced-OpenGL/Framebuffers">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Framebuffers">Framebuffers </a>
+			</li>
+			<li id="Advanced-OpenGL/Cubemaps">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Cubemaps">Cubemaps </a>
+			</li>
+			<li id="Advanced-OpenGL/Advanced-Data">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Advanced-Data">Advanced Data </a>
+			</li>
+			<li id="Advanced-OpenGL/Advanced-GLSL">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Advanced-GLSL">Advanced GLSL </a>
+			</li>
+			<li id="Advanced-OpenGL/Geometry-Shader">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Geometry-Shader">Geometry Shader </a>
+			</li>
+			<li id="Advanced-OpenGL/Instancing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Instancing">Instancing </a>
+			</li>
+			<li id="Advanced-OpenGL/Anti-Aliasing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Anti-Aliasing">Anti Aliasing </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Advanced-Lighting">
+		<span class="closed">Advanced Lighting </span>
+		<ol>
+			<li id="Advanced-Lighting/Advanced-Lighting">
+				<a href="https://learnopengl.com/Advanced-Lighting/Advanced-Lighting">Advanced Lighting </a>
+			</li>
+			<li id="Advanced-Lighting/Gamma-Correction">
+				<a href="https://learnopengl.com/Advanced-Lighting/Gamma-Correction">Gamma Correction </a>
+			</li>
+			<li id="Advanced-Lighting/Shadows">
+				<span class="closed">Shadows </span>
+				<ol>
+					<li id="Advanced-Lighting/Shadows/Shadow-Mapping">
+						<a href="https://learnopengl.com/Advanced-Lighting/Shadows/Shadow-Mapping">Shadow Mapping </a>
+					</li>
+					<li id="Advanced-Lighting/Shadows/Point-Shadows">
+						<a href="https://learnopengl.com/Advanced-Lighting/Shadows/Point-Shadows">Point Shadows </a>
+					</li>
+				</ol>
+			</li>
+			<li id="Advanced-Lighting/Normal-Mapping">
+				<a href="https://learnopengl.com/Advanced-Lighting/Normal-Mapping">Normal Mapping </a>
+			</li>
+			<li id="Advanced-Lighting/Parallax-Mapping">
+				<a href="https://learnopengl.com/Advanced-Lighting/Parallax-Mapping">Parallax Mapping </a>
+			</li>
+			<li id="Advanced-Lighting/HDR">
+				<a href="https://learnopengl.com/Advanced-Lighting/HDR">HDR </a>
+			</li>
+			<li id="Advanced-Lighting/Bloom">
+				<a href="https://learnopengl.com/Advanced-Lighting/Bloom">Bloom </a>
+			</li>
+			<li id="Advanced-Lighting/Deferred-Shading">
+				<a href="https://learnopengl.com/Advanced-Lighting/Deferred-Shading">Deferred Shading </a>
+			</li>
+			<li id="Advanced-Lighting/SSAO">
+				<a href="https://learnopengl.com/Advanced-Lighting/SSAO">SSAO </a>
+			</li>
+		</ol>
+	</li>
+	<li id="PBR">
+		<span class="closed">PBR </span>
+		<ol>
+			<li id="PBR/Theory">
+				<a href="https://learnopengl.com/PBR/Theory">Theory </a>
+			</li>
+			<li id="PBR/Lighting">
+				<a href="https://learnopengl.com/PBR/Lighting">Lighting </a>
+			</li>
+			<li id="PBR/IBL">
+				<span class="closed">IBL </span>
+				<ol>
+					<li id="PBR/IBL/Diffuse-irradiance">
+						<a href="https://learnopengl.com/PBR/IBL/Diffuse-irradiance">Diffuse irradiance </a>
+					</li>
+					<li id="PBR/IBL/Specular-IBL">
+						<a href="https://learnopengl.com/PBR/IBL/Specular-IBL">Specular IBL </a>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="In-Practice">
+		<span class="closed">In Practice </span>
+		<ol>
+			<li id="In-Practice/Debugging">
+				<a href="https://learnopengl.com/In-Practice/Debugging">Debugging </a>
+			</li>
+			<li id="In-Practice/Text-Rendering">
+				<a href="https://learnopengl.com/In-Practice/Text-Rendering">Text Rendering </a>
+			</li>
+			<li id="In-Practice/2D-Game">
+				<span class="closed">2D Game </span>
+				<ol>
+					<li id="In-Practice/2D-Game/Breakout">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Breakout">Breakout </a>
+					</li>
+					<li id="In-Practice/2D-Game/Setting-up">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Setting-up">Setting up </a>
+					</li>
+					<li id="In-Practice/2D-Game/Rendering-Sprites">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Rendering-Sprites">Rendering Sprites </a>
+					</li>
+					<li id="In-Practice/2D-Game/Levels">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Levels">Levels </a>
+					</li>
+					<li id="In-Practice/2D-Game/Collisions">
+						<span class="closed">Collisions </span>
+						<ol>
+							<li id="In-Practice/2D-Game/Collisions/Ball">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Ball">Ball </a>
+							</li>
+							<li id="In-Practice/2D-Game/Collisions/Collision-detection">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Collision-detection">Collision detection </a>
+							</li>
+							<li id="In-Practice/2D-Game/Collisions/Collision-resolution">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Collision-resolution">Collision resolution </a>
+							</li>
+						</ol>
+					</li>
+					<li id="In-Practice/2D-Game/Particles">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Particles">Particles </a>
+					</li>
+					<li id="In-Practice/2D-Game/Postprocessing">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Postprocessing">Postprocessing </a>
+					</li>
+					<li id="In-Practice/2D-Game/Powerups">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Powerups">Powerups </a>
+					</li>
+					<li id="In-Practice/2D-Game/Audio">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Audio">Audio </a>
+					</li>
+					<li id="In-Practice/2D-Game/Render-text">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Render-text">Render text </a>
+					</li>
+					<li id="In-Practice/2D-Game/Final-thoughts">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Final-thoughts">Final thoughts </a>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="Guest-Articles">
+		<span class="closed">Guest Articles </span>
+		<ol>
+			<li id="Guest-Articles/How-to-publish">
+				<a href="https://learnopengl.com/Guest-Articles/How-to-publish">How to publish </a>
+			</li>
+			<li id="Guest-Articles/2020">
+				<span class="closed">2020 </span>
+				<ol>
+					<li id="Guest-Articles/2020/OIT">
+						<span class="closed">OIT </span>
+						<ol>
+							<li id="Guest-Articles/2020/OIT/Introduction">
+								<a href="https://learnopengl.com/Guest-Articles/2020/OIT/Introduction">Introduction </a>
+							</li>
+							<li id="Guest-Articles/2020/OIT/Weighted-Blended">
+								<a href="https://learnopengl.com/Guest-Articles/2020/OIT/Weighted-Blended">Weighted Blended </a>
+							</li>
+						</ol>
+					</li>
+					<li id="Guest-Articles/2020/Skeletal-Animation">
+						<a href="https://learnopengl.com/Guest-Articles/2020/Skeletal-Animation">Skeletal Animation </a>
+					</li>
+				</ol>
+			</li>
+			<li id="Guest-Articles/2021">
+				<span class="closed">2021 </span>
+				<ol>
+					<li id="Guest-Articles/2021/CSM">
+						<a href="https://learnopengl.com/Guest-Articles/2021/CSM">CSM </a>
+					</li>
+					<li id="Guest-Articles/2021/Scene">
+						<span class="closed">Scene </span>
+						<ol>
+							<li id="Guest-Articles/2021/Scene/Scene-Graph">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Scene/Scene-Graph">Scene Graph </a>
+							</li>
+							<li id="Guest-Articles/2021/Scene/Frustum-Culling">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Scene/Frustum-Culling">Frustum Culling </a>
+							</li>
+						</ol>
+					</li>
+					<li id="Guest-Articles/2021/Tessellation">
+						<span class="closed">Tessellation </span>
+						<ol>
+							<li id="Guest-Articles/2021/Tessellation/Height-map">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Tessellation/Height-map">Height map </a>
+							</li>
+						</ol>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="Code-repository">
+		<a href="https://learnopengl.com/Code-repository">Code repository </a>
+	</li>
+	<li id="Translations">
+		<a href="https://learnopengl.com/Translations">Translations </a>
+	</li>
+	<li id="About">
+		<a href="https://learnopengl.com/About">About </a>
+	</li>
+</ol>
+	</nav>
+	<main>
+    <h1 id="content-title">Breakout</h1>
+<h1 id="content-url" style='display:none;'>In-Practice/2D-Game/Breakout</h1>
+<p>
+  Over these chapters we learned a fair share about OpenGL's inner workings and how we can use them to create fancy graphics. However, aside from a lot of tech demos, we haven't really created a practical application with OpenGL. This is the introduction of a larger series about creating a relatively simple 2D game using OpenGL. The next chapters will demonstrate how we can use OpenGL in a larger, more complicated, setting. Note that the series does not necessarily introduce new OpenGL concepts but more or less show how we can apply these concepts to a larger whole.
+</p>
+
+<p>
+  Because we rather keep things simple, we're going to base our 2D game on an already existing 2D arcade game. Introducing <def>Breakout</def>, a classic 2D game released in 1976 on the Atari 2600 console. Breakout requires the player, who controls a small horizontal paddle, to destroy all the bricks by bouncing a small ball against each brick without allowing the ball to reach the bottom edge. Once the player destroys all bricks, he completes the game. 
+</p>
+
+<p>
+  Below we can see how Breakout originally looked on the Atari 2600:
+</p>
+
+<img src="/img/in-practice/breakout/breakout2600.png" class="medium" alt="Image of Atari 2600's Breakout"/>
+
+<p>
+  The game has the following mechanics:
+</p>
+
+<ul>
+  <li>A small paddle is controlled by the player and can only move horizontally within the bounds of the screen.</li>
+  <li>The ball travels across the screen and each collision results in the ball changing its direction based on where it hit; this applies to the screen bounds, the bricks, and the paddle.</li>
+  <li>If the ball reaches the bottom edge of the screen, the player is either game over or loses a life.</li>
+  <li>As soon as a brick touches the ball, the brick is destroyed.</li>
+  <li>The player wins as soon as all bricks are destroyed.</li>
+  <li>The direction of the ball can be manipulated by how far the ball bounces from the paddle's center.</li>
+</ul>
+
+<p>
+ Because from time to time the ball may find a small gap reaching the area above the brick wall, it will continue to bounce up and forth between the top edge of the level and the top edge of the brick layer. The ball keeps this up, until it eventually finds a gap again. This is logically where the game obtained its name from, since the ball has to <em>break out</em>.
+</p>
+
+<h1>OpenGL Breakout</h1>
+<p>
+  We're going to take this classic arcade game as the basis of a 2D game that we'll completely implement with OpenGL. This version of Breakout will render its graphics on the GPU which gives us the ability to enhance the classical Breakout game with some nice extra features.
+</p>
+
+<p>
+  Other than the classic mechanics, our version of Breakout will feature:
+</p>
+
+<ul>
+  <li>Amazing graphics!</li>
+  <li>Particles</li>
+  <li>Text rendering</li>
+  <li>Power-ups</li>
+  <li>Postprocessing effects</li>  
+  <li>Multiple (customizable) levels</li>
+</ul>
+
+<p>
+  To get you excited you can see what the game will look like after you've finished these chapters:
+</p>
+
+<img src="/img/in-practice/breakout/cover.png"  alt="OpenGL version of Breakout"/>
+
+<p>
+  These chapters will combine a large number of concepts from previous chapters and demonstrate how they can work together as a whole. Therefore, it is important to have at least finished the <a href="https://learnopengl.com/Getting-started/OpenGL" target="_blank">Getting started</a> chapters before working your way through these series.
+</p>
+
+<p>
+  Also, several chapters will require concepts from other chapters (<def>Framebuffers</def> for example from the <a href="https://learnopengl.com/Advanced-OpenGL/Framebuffers" target="_blank">Advanced OpenGL</a> section) so where necessary, the required chapters are listed.
+</p>
+
+<p>
+  If you believe you're ready to get your hands dirty then move on to the <a href="https://learnopengl.com/In-Practice/2D-Game/Setting-up" target="_blank">next</a> chapter.
+</p>       
+
+    </div>
+    
+    <div id="hover">
+        HI
+    </div>
+   <!-- 728x90/320x50 sticky footer -->
+<div id="waldo-tag-6196"></div>
+
+   <div id="disqus_thread"></div>
+
+    
+
+
+</div> <!-- container div -->
+
+
+</div> <!-- super container div -->
+</body>
+</html>
+	</main>
+</body>
+</html>

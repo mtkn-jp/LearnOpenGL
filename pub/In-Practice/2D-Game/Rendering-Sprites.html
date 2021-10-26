@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="ja"> 
+<head>
+    <meta charset="utf-8"/>
+    <title>LearnOpenGL</title>
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico"  />
+	<link rel="stylesheet" href="../static/style.css" />
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"> </script>
+	<script src="/static/functions.js"></script>
+</head>
+<body>
+	<nav>
+<ol>
+	<li id="Introduction">
+		<a href="https://learnopengl.com/Introduction">はじめに</a>
+	</li>
+	<li id="Getting-started">
+		<span class="closed">入門</span>
+		<ol>
+			<li id="Getting-started/OpenGL">
+				<a href="https://learnopengl.com/Getting-started/OpenGL">OpenGL </a>
+			</li>
+			<li id="Getting-started/Creating-a-window">
+				<a href="https://learnopengl.com/Getting-started/Creating-a-window">ウィンドウの作成</a>
+			</li>
+			<li id="Getting-started/Hello-Window">
+				<a href="https://learnopengl.com/Getting-started/Hello-Window">最初のウィンドウ</a>
+			</li>
+			<li id="Getting-started/Hello-Triangle">
+				<a href="https://learnopengl.com/Getting-started/Hello-Triangle">最初の三角形</a>
+			</li>
+			<li id="Getting-started/Shaders">
+				<a href="https://learnopengl.com/Getting-started/Shaders">シェーダー</a>
+			</li>
+			<li id="Getting-started/Textures">
+				<a href="https://learnopengl.com/Getting-started/Textures">テクスチャ</a>
+			</li>
+			<li id="Getting-started/Transformations">
+				<a href="https://learnopengl.com/Getting-started/Transformations">座標変換</a>
+			</li>
+			<li id="Getting-started/Coordinate-Systems">
+				<a href="https://learnopengl.com/Getting-started/Coordinate-Systems">座標系</a>
+			</li>
+			<li id="Getting-started/Camera">
+				<a href="https://learnopengl.com/Getting-started/Camera">カメラ</a>
+			</li>
+			<li id="Getting-started/Review">
+				<a href="https://learnopengl.com/Getting-started/Review">まとめ</a>
+			</li>
+		</ol>
+	</li>
+	<li id="Lighting">
+		<span class="closed">Lighting </span>
+		<ol>
+			<li id="Lighting/Colors">
+				<a href="https://learnopengl.com/Lighting/Colors">Colors </a>
+			</li>
+			<li id="Lighting/Basic-Lighting">
+				<a href="https://learnopengl.com/Lighting/Basic-Lighting">Basic Lighting </a>
+			</li>
+			<li id="Lighting/Materials">
+				<a href="https://learnopengl.com/Lighting/Materials">Materials </a>
+			</li>
+			<li id="Lighting/Lighting-maps">
+				<a href="https://learnopengl.com/Lighting/Lighting-maps">Lighting maps </a>
+			</li>
+			<li id="Lighting/Light-casters">
+				<a href="https://learnopengl.com/Lighting/Light-casters">Light casters </a>
+			</li>
+			<li id="Lighting/Multiple-lights">
+				<a href="https://learnopengl.com/Lighting/Multiple-lights">Multiple lights </a>
+			</li>
+			<li id="Lighting/Review">
+				<a href="https://learnopengl.com/Lighting/Review">Review </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Model-Loading">
+		<span class="closed">Model Loading </span>
+		<ol>
+			<li id="Model-Loading/Assimp">
+				<a href="https://learnopengl.com/Model-Loading/Assimp">Assimp </a>
+			</li>
+			<li id="Model-Loading/Mesh">
+				<a href="https://learnopengl.com/Model-Loading/Mesh">Mesh </a>
+			</li>
+			<li id="Model-Loading/Model">
+				<a href="https://learnopengl.com/Model-Loading/Model">Model </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Advanced-OpenGL">
+		<span class="closed">Advanced OpenGL </span>
+		<ol>
+			<li id="Advanced-OpenGL/Depth-testing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Depth-testing">Depth testing </a>
+			</li>
+			<li id="Advanced-OpenGL/Stencil-testing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Stencil-testing">Stencil testing </a>
+			</li>
+			<li id="Advanced-OpenGL/Blending">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Blending">Blending </a>
+			</li>
+			<li id="Advanced-OpenGL/Face-culling">
+				<a href="https://learnopengl.cm/Advanced-OpenGL/Face-culling">Face culling </a>
+			</li>
+			<li id="Advanced-OpenGL/Framebuffers">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Framebuffers">Framebuffers </a>
+			</li>
+			<li id="Advanced-OpenGL/Cubemaps">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Cubemaps">Cubemaps </a>
+			</li>
+			<li id="Advanced-OpenGL/Advanced-Data">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Advanced-Data">Advanced Data </a>
+			</li>
+			<li id="Advanced-OpenGL/Advanced-GLSL">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Advanced-GLSL">Advanced GLSL </a>
+			</li>
+			<li id="Advanced-OpenGL/Geometry-Shader">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Geometry-Shader">Geometry Shader </a>
+			</li>
+			<li id="Advanced-OpenGL/Instancing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Instancing">Instancing </a>
+			</li>
+			<li id="Advanced-OpenGL/Anti-Aliasing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Anti-Aliasing">Anti Aliasing </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Advanced-Lighting">
+		<span class="closed">Advanced Lighting </span>
+		<ol>
+			<li id="Advanced-Lighting/Advanced-Lighting">
+				<a href="https://learnopengl.com/Advanced-Lighting/Advanced-Lighting">Advanced Lighting </a>
+			</li>
+			<li id="Advanced-Lighting/Gamma-Correction">
+				<a href="https://learnopengl.com/Advanced-Lighting/Gamma-Correction">Gamma Correction </a>
+			</li>
+			<li id="Advanced-Lighting/Shadows">
+				<span class="closed">Shadows </span>
+				<ol>
+					<li id="Advanced-Lighting/Shadows/Shadow-Mapping">
+						<a href="https://learnopengl.com/Advanced-Lighting/Shadows/Shadow-Mapping">Shadow Mapping </a>
+					</li>
+					<li id="Advanced-Lighting/Shadows/Point-Shadows">
+						<a href="https://learnopengl.com/Advanced-Lighting/Shadows/Point-Shadows">Point Shadows </a>
+					</li>
+				</ol>
+			</li>
+			<li id="Advanced-Lighting/Normal-Mapping">
+				<a href="https://learnopengl.com/Advanced-Lighting/Normal-Mapping">Normal Mapping </a>
+			</li>
+			<li id="Advanced-Lighting/Parallax-Mapping">
+				<a href="https://learnopengl.com/Advanced-Lighting/Parallax-Mapping">Parallax Mapping </a>
+			</li>
+			<li id="Advanced-Lighting/HDR">
+				<a href="https://learnopengl.com/Advanced-Lighting/HDR">HDR </a>
+			</li>
+			<li id="Advanced-Lighting/Bloom">
+				<a href="https://learnopengl.com/Advanced-Lighting/Bloom">Bloom </a>
+			</li>
+			<li id="Advanced-Lighting/Deferred-Shading">
+				<a href="https://learnopengl.com/Advanced-Lighting/Deferred-Shading">Deferred Shading </a>
+			</li>
+			<li id="Advanced-Lighting/SSAO">
+				<a href="https://learnopengl.com/Advanced-Lighting/SSAO">SSAO </a>
+			</li>
+		</ol>
+	</li>
+	<li id="PBR">
+		<span class="closed">PBR </span>
+		<ol>
+			<li id="PBR/Theory">
+				<a href="https://learnopengl.com/PBR/Theory">Theory </a>
+			</li>
+			<li id="PBR/Lighting">
+				<a href="https://learnopengl.com/PBR/Lighting">Lighting </a>
+			</li>
+			<li id="PBR/IBL">
+				<span class="closed">IBL </span>
+				<ol>
+					<li id="PBR/IBL/Diffuse-irradiance">
+						<a href="https://learnopengl.com/PBR/IBL/Diffuse-irradiance">Diffuse irradiance </a>
+					</li>
+					<li id="PBR/IBL/Specular-IBL">
+						<a href="https://learnopengl.com/PBR/IBL/Specular-IBL">Specular IBL </a>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="In-Practice">
+		<span class="closed">In Practice </span>
+		<ol>
+			<li id="In-Practice/Debugging">
+				<a href="https://learnopengl.com/In-Practice/Debugging">Debugging </a>
+			</li>
+			<li id="In-Practice/Text-Rendering">
+				<a href="https://learnopengl.com/In-Practice/Text-Rendering">Text Rendering </a>
+			</li>
+			<li id="In-Practice/2D-Game">
+				<span class="closed">2D Game </span>
+				<ol>
+					<li id="In-Practice/2D-Game/Breakout">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Breakout">Breakout </a>
+					</li>
+					<li id="In-Practice/2D-Game/Setting-up">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Setting-up">Setting up </a>
+					</li>
+					<li id="In-Practice/2D-Game/Rendering-Sprites">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Rendering-Sprites">Rendering Sprites </a>
+					</li>
+					<li id="In-Practice/2D-Game/Levels">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Levels">Levels </a>
+					</li>
+					<li id="In-Practice/2D-Game/Collisions">
+						<span class="closed">Collisions </span>
+						<ol>
+							<li id="In-Practice/2D-Game/Collisions/Ball">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Ball">Ball </a>
+							</li>
+							<li id="In-Practice/2D-Game/Collisions/Collision-detection">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Collision-detection">Collision detection </a>
+							</li>
+							<li id="In-Practice/2D-Game/Collisions/Collision-resolution">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Collision-resolution">Collision resolution </a>
+							</li>
+						</ol>
+					</li>
+					<li id="In-Practice/2D-Game/Particles">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Particles">Particles </a>
+					</li>
+					<li id="In-Practice/2D-Game/Postprocessing">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Postprocessing">Postprocessing </a>
+					</li>
+					<li id="In-Practice/2D-Game/Powerups">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Powerups">Powerups </a>
+					</li>
+					<li id="In-Practice/2D-Game/Audio">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Audio">Audio </a>
+					</li>
+					<li id="In-Practice/2D-Game/Render-text">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Render-text">Render text </a>
+					</li>
+					<li id="In-Practice/2D-Game/Final-thoughts">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Final-thoughts">Final thoughts </a>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="Guest-Articles">
+		<span class="closed">Guest Articles </span>
+		<ol>
+			<li id="Guest-Articles/How-to-publish">
+				<a href="https://learnopengl.com/Guest-Articles/How-to-publish">How to publish </a>
+			</li>
+			<li id="Guest-Articles/2020">
+				<span class="closed">2020 </span>
+				<ol>
+					<li id="Guest-Articles/2020/OIT">
+						<span class="closed">OIT </span>
+						<ol>
+							<li id="Guest-Articles/2020/OIT/Introduction">
+								<a href="https://learnopengl.com/Guest-Articles/2020/OIT/Introduction">Introduction </a>
+							</li>
+							<li id="Guest-Articles/2020/OIT/Weighted-Blended">
+								<a href="https://learnopengl.com/Guest-Articles/2020/OIT/Weighted-Blended">Weighted Blended </a>
+							</li>
+						</ol>
+					</li>
+					<li id="Guest-Articles/2020/Skeletal-Animation">
+						<a href="https://learnopengl.com/Guest-Articles/2020/Skeletal-Animation">Skeletal Animation </a>
+					</li>
+				</ol>
+			</li>
+			<li id="Guest-Articles/2021">
+				<span class="closed">2021 </span>
+				<ol>
+					<li id="Guest-Articles/2021/CSM">
+						<a href="https://learnopengl.com/Guest-Articles/2021/CSM">CSM </a>
+					</li>
+					<li id="Guest-Articles/2021/Scene">
+						<span class="closed">Scene </span>
+						<ol>
+							<li id="Guest-Articles/2021/Scene/Scene-Graph">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Scene/Scene-Graph">Scene Graph </a>
+							</li>
+							<li id="Guest-Articles/2021/Scene/Frustum-Culling">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Scene/Frustum-Culling">Frustum Culling </a>
+							</li>
+						</ol>
+					</li>
+					<li id="Guest-Articles/2021/Tessellation">
+						<span class="closed">Tessellation </span>
+						<ol>
+							<li id="Guest-Articles/2021/Tessellation/Height-map">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Tessellation/Height-map">Height map </a>
+							</li>
+						</ol>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="Code-repository">
+		<a href="https://learnopengl.com/Code-repository">Code repository </a>
+	</li>
+	<li id="Translations">
+		<a href="https://learnopengl.com/Translations">Translations </a>
+	</li>
+	<li id="About">
+		<a href="https://learnopengl.com/About">About </a>
+	</li>
+</ol>
+	</nav>
+	<main>
+    <h1 id="content-title">Rendering Sprites</h1>
+<h1 id="content-url" style='display:none;'>In-Practice/2D-Game/Rendering-Sprites</h1>
+<p>
+  To bring some life to the currently black abyss of our game world, we will render sprites to fill the void. A <def>sprite</def> has many definitions, but it's effectively not much more than a 2D image used together with some data to position it in a larger world (e.g. position, rotation, and size). Basically, sprites are the render-able image/texture objects we use in a 2D game.
+</p>
+
+<p>
+  We can, just like we did in previous chapters, create a 2D shape out of vertex data, pass all data to the GPU, and transform it all by hand. However, in a larger application like this we rather have some abstractions on rendering 2D shapes. If we were to manually define these shapes and transformations for each object, it'll quickly get messy. 
+</p>
+
+<p>
+  In this chapter we'll define a rendering class that allows us to render a large amount of unique sprites with a minimal amount of code. This way, we're abstracting the gameplay code from the gritty OpenGL rendering code as is commonly done in larger projects. First, we have to set up a proper projection matrix though.
+</p>
+
+<h2>2D projection matrix</h2>
+<p>
+  We know from the <a href="https://learnopengl.com/Getting-started/Coordinate-Systems" target="_blank">coordinate systems</a> chapter that a projection matrix converts all view-space coordinates to clip-space (and then to normalized device) coordinates. By generating the appropriate projection matrix we can  work with different coordinates that are easier to work with, compared to directly specifying all coordinates as normalized device coordinates.  
+</p>
+
+<p>
+  We don't need any perspective applied to the coordinates, since the game is entirely in 2D, so an orthographic projection matrix would suit the rendering quite well. Because an orthographic projection matrix directly transforms all coordinates to normalized device coordinates, we can choose to specify the world coordinates as screen coordinates by defining the projection matrix as follows:
+</p>
+
+<pre><code>
+glm::mat4 projection = <function id='59'>glm::ortho</function>(0.0f, 800.0f, 600.0f, 0.0f, -1.0f, 1.0f);  
+</code></pre>
+
+<p>
+  The first four arguments specify in order the left, right, bottom, and top part of the projection frustum. This projection matrix transforms all <code>x</code> coordinates between <code>0</code> and <code>800</code> to <code>-1</code> and <code>1</code>, and all <code>y</code> coordinates between <code>0</code> and <code>600</code> to <code>-1</code> and <code>1</code>. Here we specified that the top of the frustum has a <code>y</code> coordinate of <code>0</code>, while the bottom has a <code>y</code> coordinate of <code>600</code>. The result is that the top-left coordinate of the scene will be at (<code>0,0</code>) and the bottom-right part of the screen is at coordinate (<code>800,600</code>), just like screen coordinates; the world-space coordinates directly correspond to the resulting pixel coordinates.
+</p>
+
+<img src="/img/in-practice/breakout/projection.png" class="clean" alt="Orthographic projection in OpenGL"/>
+
+<p>
+  This allows us to specify all vertex coordinates equal to the pixel coordinates they end up in on the screen, which is rather intuitive for 2D games.
+</p>
+
+<h2>Rendering sprites</h2>
+<p>
+  Rendering an actual sprite shouldn't be too complicated. We create a textured quad that we can transform with a model matrix, after which we project it using the previously defined orthographic projection matrix.
+</p>
+
+<note>
+  Since Breakout is a single-scene game, there is no need for a view/camera matrix. Using the projection matrix we can directly transform the world-space coordinates to normalized device coordinates.
+</note>
+
+<p>
+  To transform a sprite, we use the following vertex shader:
+</p>
+
+<pre><code>
+#version 330 core
+layout (location = 0) in vec4 vertex; // &lt;vec2 position, vec2 texCoords&gt;
+
+out vec2 TexCoords;
+
+uniform mat4 model;
+uniform mat4 projection;
+
+void main()
+{
+    TexCoords = vertex.zw;
+    gl_Position = projection * model * vec4(vertex.xy, 0.0, 1.0);
+}
+</code></pre>
+
+<p>
+  Note that we store both the position and texture-coordinate data in a single <fun>vec4</fun> variable. Because both the position and texture coordinates contain two floats, we can combine them in a single vertex attribute.
+</p>
+
+<p>
+  The fragment shader is relatively straightforward as well. We take a texture and a color vector that both affect the final color of the fragment. By having a uniform color vector, we can easily change the color of sprites from the game-code:
+</p>
+
+<pre><code>
+#version 330 core
+in vec2 TexCoords;
+out vec4 color;
+
+uniform sampler2D image;
+uniform vec3 spriteColor;
+
+void main()
+{    
+    color = vec4(spriteColor, 1.0) * texture(image, TexCoords);
+}  
+</code></pre>
+
+<p>
+  To make the rendering of sprites more organized, we define a <fun>SpriteRenderer</fun> class that is able to render a sprite with just a single function. Its definition is as follows:
+</p>
+
+<pre><code>
+class SpriteRenderer
+{
+    public:
+        SpriteRenderer(Shader &shader);
+        ~SpriteRenderer();
+
+        void DrawSprite(Texture2D &texture, glm::vec2 position, 
+            glm::vec2 size = glm::vec2(10.0f, 10.0f), float rotate = 0.0f, 
+            glm::vec3 color = glm::vec3(1.0f));
+    private:
+        Shader       shader; 
+        unsigned int quadVAO;
+
+        void initRenderData();
+};
+</code></pre>
+
+<p>
+  The <def>SpriteRenderer</def> class hosts a shader object, a single vertex array object, and a render and initialization function. Its constructor takes a shader object that it uses for all future rendering.
+</p>
+
+<h3>Initialization</h3>
+<p>
+  First, let's delve into the <fun>initRenderData</fun> function that configures the <var>quadVAO</var>:
+</p>
+
+<pre><code>
+void SpriteRenderer::initRenderData()
+{
+    // configure VAO/VBO
+    unsigned int VBO;
+    float vertices[] = { 
+        // pos      // tex
+        0.0f, 1.0f, 0.0f, 1.0f,
+        1.0f, 0.0f, 1.0f, 0.0f,
+        0.0f, 0.0f, 0.0f, 0.0f, 
+    
+        0.0f, 1.0f, 0.0f, 1.0f,
+        1.0f, 1.0f, 1.0f, 1.0f,
+        1.0f, 0.0f, 1.0f, 0.0f
+    };
+
+    <function id='33'>glGenVertexArrays</function>(1, &this-&gt;quadVAO);
+    <function id='12'>glGenBuffers</function>(1, &VBO);
+    
+    <function id='32'>glBindBuffer</function>(GL_ARRAY_BUFFER, VBO);
+    <function id='31'>glBufferData</function>(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+    <function id='27'>glBindVertexArray</function>(this-&gt;quadVAO);
+    <function id='29'><function id='60'>glEnable</function>VertexAttribArray</function>(0);
+    <function id='30'>glVertexAttribPointer</function>(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0);
+    <function id='32'>glBindBuffer</function>(GL_ARRAY_BUFFER, 0);  
+    <function id='27'>glBindVertexArray</function>(0);
+}
+</code></pre>
+
+<p>
+  Here we first define a set of vertices with (<code>0,0</code>) being the top-left corner of the quad. This means that when we apply translation or scaling transformations on the quad, they're transformed from the top-left position of the quad. This is commonly accepted in 2D graphics and/or GUI systems where elements' positions correspond to the top-left corner of the elements.
+</p>
+
+<p>
+  Next we simply sent the vertices to the GPU and configure the vertex attributes, which in this case is a single vertex attribute. We only have to define a single VAO for the sprite renderer since all sprites share the same vertex data.
+</p>
+
+<h3>Rendering</h3>
+<p>
+  Rendering sprites is not too difficult; we use the sprite renderer's shader, configure a model matrix, and set the relevant uniforms. What is important here is the order of transformations:
+</p>
+
+<pre><code>
+void SpriteRenderer::DrawSprite(Texture2D &texture, glm::vec2 position, 
+  glm::vec2 size, float rotate, glm::vec3 color)
+{
+    // prepare transformations
+    this-&gt;shader.Use();
+    glm::mat4 model = glm::mat4(1.0f);
+    model = <function id='55'>glm::translate</function>(model, glm::vec3(position, 0.0f));  
+
+    model = <function id='55'>glm::translate</function>(model, glm::vec3(0.5f * size.x, 0.5f * size.y, 0.0f)); 
+    model = <function id='57'>glm::rotate</function>(model, <function id='63'>glm::radians</function>(rotate), glm::vec3(0.0f, 0.0f, 1.0f)); 
+    model = <function id='55'>glm::translate</function>(model, glm::vec3(-0.5f * size.x, -0.5f * size.y, 0.0f));
+
+    model = <function id='56'>glm::scale</function>(model, glm::vec3(size, 1.0f)); 
+  
+    this-&gt;shader.SetMatrix4("model", model);
+    this-&gt;shader.SetVector3f("spriteColor", color);
+  
+    <function id='49'>glActiveTexture</function>(GL_TEXTURE0);
+    texture.Bind();
+
+    <function id='27'>glBindVertexArray</function>(this-&gt;quadVAO);
+    <function id='1'>glDrawArrays</function>(GL_TRIANGLES, 0, 6);
+    <function id='27'>glBindVertexArray</function>(0);
+}  
+</code></pre>
+
+<p>
+  When trying to position objects somewhere in a scene with rotation and scaling transformations, it is advised to first scale, then rotate, and finally translate the object. Because multiplying matrices occurs from right to left, we transform the matrix in reverse order: translate, rotate, and then scale. 
+</p>
+
+<p>
+  The rotation transformation may still seem a bit daunting. We know from the <a href="https://learnopengl.com/Getting-started/Transformations" target="_blank">transformations</a> chapter that rotations always revolve around the origin (<code>0,0</code>). Because we specified the quad's vertices with (<code>0,0</code>) as the top-left coordinate, all rotations will rotate around this point of (<code>0,0</code>). The <def>origin of rotation</def> is at the top-left of the quad, which produces undesirable results. What we want to do is move the origin of rotation to the center of the quad so the quad neatly rotates around this origin, instead of rotating around the top-left of the quad. We solve this by translating the quad by half its size first, so its center is at coordinate (<code>0,0</code>) before rotating.
+</p>
+
+<img src="/img/in-practice/breakout/rotation-origin.png" class="clean" alt="Properly rotating at the center of origin of the quad"/>
+
+<p>
+  Since we first scale the quad, we have to take the size of the sprite into account when translating to the sprite's center, which is why we multiply with the sprite's <var>size</var> vector. Once the rotation transformation is applied, we reverse the previous translation.
+</p>
+
+<p>
+  Combining all these transformations, we can position, scale, and rotate each sprite in any way we like. Below you can find the complete source code of the sprite renderer:
+</p>
+
+<ul>
+  <li><strong>SpriteRenderer</strong>: <a href="/code_viewer_gh.php?code=src/7.in_practice/3.2d_game/0.full_source/sprite_renderer.h" target="_blank">header</a>, <a href="/code_viewer_gh.php?code=src/7.in_practice/3.2d_game/0.full_source/sprite_renderer.cpp" target="_blank">code</a> </li>
+</ul>
+
+<h2>Hello sprite</h2>
+<p>
+  With the <fun>SpriteRenderer</fun> class we finally have the ability to render actual images to the screen! Let's initialize one within the game code and load our favorite <a href="/img/textures/awesomeface.png" target="_blank">texture</a> while we're at it:
+</p>
+
+<pre><code>
+SpriteRenderer  *Renderer;
+  
+void Game::Init()
+{
+    // load shaders
+    ResourceManager::LoadShader("shaders/sprite.vs", "shaders/sprite.frag", nullptr, "sprite");
+    // configure shaders
+    glm::mat4 projection = <function id='59'>glm::ortho</function>(0.0f, static_cast&lt;float&gt;(this-&gt;Width), 
+        static_cast&lt;float&gt;(this-&gt;Height), 0.0f, -1.0f, 1.0f);
+    ResourceManager::GetShader("sprite").Use().SetInteger("image", 0);
+    ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
+    // set render-specific controls
+    Renderer = new SpriteRenderer(ResourceManager::GetShader("sprite"));
+    // load textures
+    ResourceManager::LoadTexture("textures/awesomeface.png", true, "face");
+}
+</code></pre>
+
+<p>
+  Then within the render function we can render our beloved mascot to see if everything works as it should:
+</p>
+
+<pre><code>
+void Game::Render()
+{
+    Renderer-&gt;DrawSprite(ResourceManager::GetTexture("face"), 
+        glm::vec2(200.0f, 200.0f), glm::vec2(300.0f, 400.0f), 45.0f, glm::vec3(0.0f, 1.0f, 0.0f));
+}  
+</code></pre>
+
+<p>
+  Here we position the sprite somewhat close to the center of the screen with its height being slightly larger than its width. We also rotate it by 45 degrees and give it a green color. Note that the position we give the sprite equals the top-left vertex of the sprite's quad.
+</p>
+
+<p>
+  If you did everything right you should get the following output:
+</p>
+
+<img src="/img/in-practice/breakout/rendering-sprites.png" class="clean" alt="Image of a rendered sprite using our custom-made OpenGL's SpriteRenderer class"/>
+
+<p>
+  You can find the updated game class's source code <a href="/code_viewer_gh.php?code=src/7.in_practice/3.2d_game/0.full_source/progress/3.game.cpp" target="_blank">here</a>.
+</p>
+
+<p>
+  Now that we got the render systems working, we can put it to good use in the <a href="https://learnopengl.com/In-Practice/2D-Game/Levels" target="_blank">next</a> chapter where  we'll work on building the game's levels.
+</p>       
+
+    </div>
+    
+    <div id="hover">
+        HI
+    </div>
+   <!-- 728x90/320x50 sticky footer -->
+<div id="waldo-tag-6196"></div>
+
+   <div id="disqus_thread"></div>
+
+    
+
+
+</div> <!-- container div -->
+
+
+</div> <!-- super container div -->
+</body>
+</html>
+	</main>
+</body>
+</html>

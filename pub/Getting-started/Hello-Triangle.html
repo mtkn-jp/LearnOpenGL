@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="ja"> 
+<head>
+    <meta charset="utf-8"/>
+    <title>LearnOpenGL</title>
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico"  />
+	<link rel="stylesheet" href="../static/style.css" />
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"> </script>
+	<script src="/static/functions.js"></script>
+</head>
+<body>
+	<nav>
+<ol>
+	<li id="Introduction">
+		<a href="https://learnopengl.com/Introduction">はじめに</a>
+	</li>
+	<li id="Getting-started">
+		<span class="closed">入門</span>
+		<ol>
+			<li id="Getting-started/OpenGL">
+				<a href="https://learnopengl.com/Getting-started/OpenGL">OpenGL </a>
+			</li>
+			<li id="Getting-started/Creating-a-window">
+				<a href="https://learnopengl.com/Getting-started/Creating-a-window">ウィンドウの作成</a>
+			</li>
+			<li id="Getting-started/Hello-Window">
+				<a href="https://learnopengl.com/Getting-started/Hello-Window">最初のウィンドウ</a>
+			</li>
+			<li id="Getting-started/Hello-Triangle">
+				<a href="https://learnopengl.com/Getting-started/Hello-Triangle">最初の三角形</a>
+			</li>
+			<li id="Getting-started/Shaders">
+				<a href="https://learnopengl.com/Getting-started/Shaders">シェーダー</a>
+			</li>
+			<li id="Getting-started/Textures">
+				<a href="https://learnopengl.com/Getting-started/Textures">テクスチャ</a>
+			</li>
+			<li id="Getting-started/Transformations">
+				<a href="https://learnopengl.com/Getting-started/Transformations">座標変換</a>
+			</li>
+			<li id="Getting-started/Coordinate-Systems">
+				<a href="https://learnopengl.com/Getting-started/Coordinate-Systems">座標系</a>
+			</li>
+			<li id="Getting-started/Camera">
+				<a href="https://learnopengl.com/Getting-started/Camera">カメラ</a>
+			</li>
+			<li id="Getting-started/Review">
+				<a href="https://learnopengl.com/Getting-started/Review">まとめ</a>
+			</li>
+		</ol>
+	</li>
+	<li id="Lighting">
+		<span class="closed">Lighting </span>
+		<ol>
+			<li id="Lighting/Colors">
+				<a href="https://learnopengl.com/Lighting/Colors">Colors </a>
+			</li>
+			<li id="Lighting/Basic-Lighting">
+				<a href="https://learnopengl.com/Lighting/Basic-Lighting">Basic Lighting </a>
+			</li>
+			<li id="Lighting/Materials">
+				<a href="https://learnopengl.com/Lighting/Materials">Materials </a>
+			</li>
+			<li id="Lighting/Lighting-maps">
+				<a href="https://learnopengl.com/Lighting/Lighting-maps">Lighting maps </a>
+			</li>
+			<li id="Lighting/Light-casters">
+				<a href="https://learnopengl.com/Lighting/Light-casters">Light casters </a>
+			</li>
+			<li id="Lighting/Multiple-lights">
+				<a href="https://learnopengl.com/Lighting/Multiple-lights">Multiple lights </a>
+			</li>
+			<li id="Lighting/Review">
+				<a href="https://learnopengl.com/Lighting/Review">Review </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Model-Loading">
+		<span class="closed">Model Loading </span>
+		<ol>
+			<li id="Model-Loading/Assimp">
+				<a href="https://learnopengl.com/Model-Loading/Assimp">Assimp </a>
+			</li>
+			<li id="Model-Loading/Mesh">
+				<a href="https://learnopengl.com/Model-Loading/Mesh">Mesh </a>
+			</li>
+			<li id="Model-Loading/Model">
+				<a href="https://learnopengl.com/Model-Loading/Model">Model </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Advanced-OpenGL">
+		<span class="closed">Advanced OpenGL </span>
+		<ol>
+			<li id="Advanced-OpenGL/Depth-testing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Depth-testing">Depth testing </a>
+			</li>
+			<li id="Advanced-OpenGL/Stencil-testing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Stencil-testing">Stencil testing </a>
+			</li>
+			<li id="Advanced-OpenGL/Blending">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Blending">Blending </a>
+			</li>
+			<li id="Advanced-OpenGL/Face-culling">
+				<a href="https://learnopengl.cm/Advanced-OpenGL/Face-culling">Face culling </a>
+			</li>
+			<li id="Advanced-OpenGL/Framebuffers">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Framebuffers">Framebuffers </a>
+			</li>
+			<li id="Advanced-OpenGL/Cubemaps">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Cubemaps">Cubemaps </a>
+			</li>
+			<li id="Advanced-OpenGL/Advanced-Data">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Advanced-Data">Advanced Data </a>
+			</li>
+			<li id="Advanced-OpenGL/Advanced-GLSL">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Advanced-GLSL">Advanced GLSL </a>
+			</li>
+			<li id="Advanced-OpenGL/Geometry-Shader">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Geometry-Shader">Geometry Shader </a>
+			</li>
+			<li id="Advanced-OpenGL/Instancing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Instancing">Instancing </a>
+			</li>
+			<li id="Advanced-OpenGL/Anti-Aliasing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Anti-Aliasing">Anti Aliasing </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Advanced-Lighting">
+		<span class="closed">Advanced Lighting </span>
+		<ol>
+			<li id="Advanced-Lighting/Advanced-Lighting">
+				<a href="https://learnopengl.com/Advanced-Lighting/Advanced-Lighting">Advanced Lighting </a>
+			</li>
+			<li id="Advanced-Lighting/Gamma-Correction">
+				<a href="https://learnopengl.com/Advanced-Lighting/Gamma-Correction">Gamma Correction </a>
+			</li>
+			<li id="Advanced-Lighting/Shadows">
+				<span class="closed">Shadows </span>
+				<ol>
+					<li id="Advanced-Lighting/Shadows/Shadow-Mapping">
+						<a href="https://learnopengl.com/Advanced-Lighting/Shadows/Shadow-Mapping">Shadow Mapping </a>
+					</li>
+					<li id="Advanced-Lighting/Shadows/Point-Shadows">
+						<a href="https://learnopengl.com/Advanced-Lighting/Shadows/Point-Shadows">Point Shadows </a>
+					</li>
+				</ol>
+			</li>
+			<li id="Advanced-Lighting/Normal-Mapping">
+				<a href="https://learnopengl.com/Advanced-Lighting/Normal-Mapping">Normal Mapping </a>
+			</li>
+			<li id="Advanced-Lighting/Parallax-Mapping">
+				<a href="https://learnopengl.com/Advanced-Lighting/Parallax-Mapping">Parallax Mapping </a>
+			</li>
+			<li id="Advanced-Lighting/HDR">
+				<a href="https://learnopengl.com/Advanced-Lighting/HDR">HDR </a>
+			</li>
+			<li id="Advanced-Lighting/Bloom">
+				<a href="https://learnopengl.com/Advanced-Lighting/Bloom">Bloom </a>
+			</li>
+			<li id="Advanced-Lighting/Deferred-Shading">
+				<a href="https://learnopengl.com/Advanced-Lighting/Deferred-Shading">Deferred Shading </a>
+			</li>
+			<li id="Advanced-Lighting/SSAO">
+				<a href="https://learnopengl.com/Advanced-Lighting/SSAO">SSAO </a>
+			</li>
+		</ol>
+	</li>
+	<li id="PBR">
+		<span class="closed">PBR </span>
+		<ol>
+			<li id="PBR/Theory">
+				<a href="https://learnopengl.com/PBR/Theory">Theory </a>
+			</li>
+			<li id="PBR/Lighting">
+				<a href="https://learnopengl.com/PBR/Lighting">Lighting </a>
+			</li>
+			<li id="PBR/IBL">
+				<span class="closed">IBL </span>
+				<ol>
+					<li id="PBR/IBL/Diffuse-irradiance">
+						<a href="https://learnopengl.com/PBR/IBL/Diffuse-irradiance">Diffuse irradiance </a>
+					</li>
+					<li id="PBR/IBL/Specular-IBL">
+						<a href="https://learnopengl.com/PBR/IBL/Specular-IBL">Specular IBL </a>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="In-Practice">
+		<span class="closed">In Practice </span>
+		<ol>
+			<li id="In-Practice/Debugging">
+				<a href="https://learnopengl.com/In-Practice/Debugging">Debugging </a>
+			</li>
+			<li id="In-Practice/Text-Rendering">
+				<a href="https://learnopengl.com/In-Practice/Text-Rendering">Text Rendering </a>
+			</li>
+			<li id="In-Practice/2D-Game">
+				<span class="closed">2D Game </span>
+				<ol>
+					<li id="In-Practice/2D-Game/Breakout">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Breakout">Breakout </a>
+					</li>
+					<li id="In-Practice/2D-Game/Setting-up">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Setting-up">Setting up </a>
+					</li>
+					<li id="In-Practice/2D-Game/Rendering-Sprites">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Rendering-Sprites">Rendering Sprites </a>
+					</li>
+					<li id="In-Practice/2D-Game/Levels">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Levels">Levels </a>
+					</li>
+					<li id="In-Practice/2D-Game/Collisions">
+						<span class="closed">Collisions </span>
+						<ol>
+							<li id="In-Practice/2D-Game/Collisions/Ball">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Ball">Ball </a>
+							</li>
+							<li id="In-Practice/2D-Game/Collisions/Collision-detection">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Collision-detection">Collision detection </a>
+							</li>
+							<li id="In-Practice/2D-Game/Collisions/Collision-resolution">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Collision-resolution">Collision resolution </a>
+							</li>
+						</ol>
+					</li>
+					<li id="In-Practice/2D-Game/Particles">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Particles">Particles </a>
+					</li>
+					<li id="In-Practice/2D-Game/Postprocessing">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Postprocessing">Postprocessing </a>
+					</li>
+					<li id="In-Practice/2D-Game/Powerups">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Powerups">Powerups </a>
+					</li>
+					<li id="In-Practice/2D-Game/Audio">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Audio">Audio </a>
+					</li>
+					<li id="In-Practice/2D-Game/Render-text">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Render-text">Render text </a>
+					</li>
+					<li id="In-Practice/2D-Game/Final-thoughts">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Final-thoughts">Final thoughts </a>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="Guest-Articles">
+		<span class="closed">Guest Articles </span>
+		<ol>
+			<li id="Guest-Articles/How-to-publish">
+				<a href="https://learnopengl.com/Guest-Articles/How-to-publish">How to publish </a>
+			</li>
+			<li id="Guest-Articles/2020">
+				<span class="closed">2020 </span>
+				<ol>
+					<li id="Guest-Articles/2020/OIT">
+						<span class="closed">OIT </span>
+						<ol>
+							<li id="Guest-Articles/2020/OIT/Introduction">
+								<a href="https://learnopengl.com/Guest-Articles/2020/OIT/Introduction">Introduction </a>
+							</li>
+							<li id="Guest-Articles/2020/OIT/Weighted-Blended">
+								<a href="https://learnopengl.com/Guest-Articles/2020/OIT/Weighted-Blended">Weighted Blended </a>
+							</li>
+						</ol>
+					</li>
+					<li id="Guest-Articles/2020/Skeletal-Animation">
+						<a href="https://learnopengl.com/Guest-Articles/2020/Skeletal-Animation">Skeletal Animation </a>
+					</li>
+				</ol>
+			</li>
+			<li id="Guest-Articles/2021">
+				<span class="closed">2021 </span>
+				<ol>
+					<li id="Guest-Articles/2021/CSM">
+						<a href="https://learnopengl.com/Guest-Articles/2021/CSM">CSM </a>
+					</li>
+					<li id="Guest-Articles/2021/Scene">
+						<span class="closed">Scene </span>
+						<ol>
+							<li id="Guest-Articles/2021/Scene/Scene-Graph">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Scene/Scene-Graph">Scene Graph </a>
+							</li>
+							<li id="Guest-Articles/2021/Scene/Frustum-Culling">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Scene/Frustum-Culling">Frustum Culling </a>
+							</li>
+						</ol>
+					</li>
+					<li id="Guest-Articles/2021/Tessellation">
+						<span class="closed">Tessellation </span>
+						<ol>
+							<li id="Guest-Articles/2021/Tessellation/Height-map">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Tessellation/Height-map">Height map </a>
+							</li>
+						</ol>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="Code-repository">
+		<a href="https://learnopengl.com/Code-repository">Code repository </a>
+	</li>
+	<li id="Translations">
+		<a href="https://learnopengl.com/Translations">Translations </a>
+	</li>
+	<li id="About">
+		<a href="https://learnopengl.com/About">About </a>
+	</li>
+</ol>
+	</nav>
+	<main>
+    <h1 id="content-title">Hello Triangle</h1>
+    <h1 id="content-title">はじめての三角形</h1>
+<h1 id="content-url" style='display:none;'>Getting-started/Hello-Triangle</h1>
+<p>
+   In OpenGL everything is in 3D space, but the screen or window is a 2D array of pixels so a large part of OpenGL's work is about transforming all 3D coordinates to 2D pixels that fit on your screen. The process of transforming 3D coordinates to 2D pixels is managed by the <def>graphics pipeline</def> of OpenGL. The graphics pipeline can be divided into two large parts: the first transforms your 3D coordinates into 2D coordinates and the second part transforms the 2D coordinates into actual colored pixels. In this chapter we'll briefly discuss the graphics pipeline and how we can use it to our advantage to create fancy pixels.
+OpenGLにおいてあらゆることは三次元空間上でおこります。しかしスクリーンやウィンドウはピクセルの二次元配列です。OpenGLの仕事のほとんどは三次元空間でのできごとを二次元のピクセルにおとしこむことです。三次元から二次元への変換は<def>グラフィックパイプライン</def>により処理されます。グラフィックパイプラインは大きくわけて二つのことに分割できます: ひとつめは三次元の座標を二次元に変換すること、ふたつめはその二次元の座標を実際の色に変換することです。この章ではグラフィックパイプラインの概要およびそれを使っていい感じに描画する方法をざっくりと説明します。
+</p>
+
+<!--<note>
+  There is a difference between a 2D coordinate and a pixel. A 2D coordinate is a very precise representation of where a point is in 2D space, while a 2D pixel is an approximation of that point limited by the resolution of your screen/window.
+</note>-->
+
+<p>
+  The graphics pipeline takes as input a set of 3D coordinates and transforms these to colored 2D pixels on your screen. The graphics pipeline can be divided into several steps where each step requires the output of the previous step as its input. All of these steps are highly specialized (they have one specific function) and can easily be executed in parallel. Because of their parallel nature, graphics cards of today have thousands of small processing cores to quickly process your data within the graphics pipeline. The processing cores run small programs on the GPU for each step of the pipeline. These small programs are called <def>shaders</def>.
+グラフィックパイプラインは三次元の座標を入力として受けとり、色の付いた二次元のピクセルをスクリーンに表示します。グラフィックパイプラインはいくつかのステップに分割できます。それぞれのステップでは入力として前のステップの出力を受けとります。各ステップはそれぞれの仕事に特化していて（それぞれの仕事に特化した関数をもっています）、簡単に並列化することができます。そのため今日のグラフィックカードは何千もの小さな演算装置を持ち、グラフィックパイプライン中で高速に処理できるようになっています。パイプラインの各ステップで、演算装置が小さなプログラムを実行します。この小さなプログラムを<def>シェーダー</def>といいます。
+</p>
+
+<p>
+  Some of these shaders are configurable by the developer which allows us to write our own shaders to replace the existing default shaders. This gives us much more fine-grained control over specific parts of the pipeline and because they run on the GPU, they can also save us valuable CPU time. Shaders are written in the <def>OpenGL Shading Language</def> (<def>GLSL</def>) and we'll delve more into that in the next chapter.
+シェーダーのうちいくつかのものはデフォルトのものを開発者自身によって書いたものに変更できます。これによりパイプラインの特定の場所をより細かくコントロールできます。されにシェーダーがGPU上で実行されているので、貴重なCPUの時間を節約できます。シェーダーは<def>OpenGLシェーディンク言語</def>（<def>GLSL</def>）で記載されます。GLSLについては次の章で詳しく解説します。
+</p>
+
+<p>
+    Below you'll find an abstract representation of all the stages of the graphics pipeline. Note that the blue sections represent sections where we can inject our own shaders.
+以下にグラフィックパイプラインのおおまかな流れを示します。青い部分は自作のシェーダーを指しこめる場所を表しています。
+</p>
+
+<img src="/img/getting-started/pipeline.png" class="clean" alt="The OpenGL graphics pipeline with shader stages" />
+
+
+<p>
+  As you can see, the graphics pipeline contains a large number of sections that each handle one specific part of converting your vertex data to a fully rendered pixel. We will briefly explain each  part of the pipeline in a simplified way to give you a good overview of how the pipeline operates.
+ごらんのように、グラフィックパイプラインにはたくさんの処理が含まれます。頂点のデータを描画用のピクセルに変換する過程でそれぞれの役割を分担しているのです。パイプラインの動きの概観をつかんでいただくために、それぞれの処理内容を簡単に見ていきましょう。
+</p>
+
+<p>
+  As input to the graphics pipeline we pass in a list of three 3D coordinates that should form a triangle in an array here called <code>Vertex Data</code>; this vertex data is a collection of vertices. A <def>vertex</def> is a collection of data per 3D coordinate. This vertex's data is represented using <def>vertex attributes</def> that can contain any data we'd like, but for simplicity's sake let's assume that each vertex consists of just a 3D position and some color value.
+グラフィックパイプラインの入力として、三次元空間に三角形を構成する三つの座標を用意します。この入力のような、頂点の組を<code>頂点データ</code>と呼びます。<def>頂点</def>とは、三次元のそれぞれの座標軸にそった値の組です。頂点データは<def>頂点属性</def>といい、任意の情報を持たせることができます。ここでは簡単のために各頂点が座標と色の情報だけを保持しているものとします。
+</p>
+
+<note>
+  In order for OpenGL to know what to make of your collection of coordinates and color values OpenGL requires you to hint what kind of render types you want to form with the data. Do we want the data rendered as a collection of points, a collection of triangles or perhaps just one long line? Those hints are called <def>primitives</def> and are given to OpenGL while calling any of the drawing commands. Some of these hints are <var>GL_POINTS</var>, <var>GL_TRIANGLES</var> and <var>GL_LINE_STRIP</var>.
+座標や色の組からなにをしたいかをOpenGLに伝えるために、描画のタイプを指定する必要があります。点を描画するのか、三角形か、あるいは一本の長い線か。このような描画タイプのことを<def>プリミティブ</def>といい、OpenGLがなにかを描くときに利用されます。プリミティブには<var>GL_POINTS</var>、<var>GL_TRIANGLES</var>、<var>GL_LINE_STRIP</var>等があります。
+</note>
+
+<p>
+  The first part of the pipeline is the <def>vertex shader</def> that takes as input a single vertex. The main purpose of the vertex shader is to transform 3D coordinates into different 3D coordinates (more on that later) and the vertex shader allows us to do some basic processing on the vertex attributes. 
+パイプラインの最初の処理は入力としてひとつの頂点をとる<def>頂点シェーダー</def>です。頂点シェーダーの主な目的は三次元の座標を別の三次元の座標に変換することです（あとで詳しく説明します）。頂点シェーターでは頂点属性に対する基本的な処理も可能です。
+</p>
+
+<p>
+  The <def>primitive assembly</def> stage takes as input all the vertices (or vertex if <var>GL_POINTS</var> is chosen) from the vertex shader that form a primitive and assembles all the point(s) in the primitive shape given; in this case a triangle.
+<def>プリミティブアセンブリ</def>では入力として頂点シェーダからプリミティブを構成する頂点の組（<var>GL_POINTS</var>の場合はひとつだけ）をとり、指定されたプリミティブ（今回の場合は三角形）を形成します。
+</p>
+
+<p>
+  The output of the primitive assembly stage is passed to the <def>geometry shader</def>. The geometry shader takes as input a collection of vertices that form a primitive and has the ability to generate other shapes by emitting new vertices to form new (or other) primitive(s). In this example case, it generates a second triangle out of the given shape.
+プリミティブアセンブリからの出力は<def>ジオメトリシェーダー</def>に渡されます。ジオメトリシェーダーは入力としてプリミティブを構成する頂点の組をとり、頂点を追加することで新しい（あるいは他の）プリミティブを作成することができます。こんかいの例では与えられた図形からふたつ目の三角形を生み出しています。
+
+</p>
+
+<p>
+  The output of the geometry shader is then passed on to the <def>rasterization stage</def> where it maps the resulting primitive(s) to the corresponding pixels on the final screen, resulting in fragments for the fragment shader to use. Before the fragment shaders run, <def>clipping</def> is performed. Clipping discards all fragments that are outside your view, increasing performance.
+ジオメトリシェーダーの出力は<def>ラスタライザーステージ</def>に渡されます。ここでは出力されたプリミティブを最終的にスクリーンに表示されるピクセルと対応したデータに落しこまれ、フラグメントシェーダーが利用できるフラグメントになります。フラグメントシェーダーが実行される前に、<def>クリッピング</def>が行われます。これは画面の外に隠れて見えなくなる部分のフラグメントを捨て、処理速度を向上させるものです。
+</p>
+
+<note>
+  A fragment in OpenGL is all the data required for OpenGL to render a single pixel. 
+フラグメントとは、OpenGLがひとつのピクセルを表示するために必要なすべてのデータのことです。
+</note>
+
+<p>
+  The main purpose of the <def>fragment shader</def> is to calculate the final color of a pixel and this is usually the stage where all the advanced OpenGL effects occur. Usually the fragment shader contains data about the 3D scene that it can use to calculate the final pixel color (like lights, shadows, color of the light and so on).
+<def>フラグメントシェーター</def>の主な目的は最終的なピクセルの色を計算することです。通常このシェーダーにおいてすべての先進的な効果が適用されます。フラグメントシェーダーは普通、最終的なピクセルの色を決定するために利用する三次元空間上の情報を持っています（照明、影、光の色などです）。
+</p>
+
+
+<p>
+  After all the corresponding color values have been determined, the final object will then pass through one more stage that we call the <def>alpha test</def> and <def>blending</def> stage. This stage checks the corresponding depth (and stencil) value (we'll get to those later) of the fragment and uses those to check if the resulting fragment is in front or behind other objects and should be discarded accordingly. The stage also checks for <def>alpha</def> values (alpha values define the opacity of an object) and <def>blends</def> the objects accordingly. So even if a pixel output color is calculated in the fragment shader, the final pixel color could still be something entirely different when rendering multiple triangles.
+すべての色が決定されたあと、出力されたオブジェクトは<def>アルファテスト</def>および<def>ブレンディング</def>ステージとよばれるもうひとつのステージで処理されます。フラグメントの深度およびステンシル値（あとで詳しく見ます）がチェックされ、フラグメントどうしの前後関係を確認し、表示すべきかどうかを決定します。このステージで<def>アルファ</def>値（物体の透明度）も確認され、その値に応じてオブジェクトが<def>ブレンド</def>されます。そのためフラグメントシェーダーによってピクセルの色が計算されても、複数の三角形を描画する場合、その出力値が実際に表示されるものとまったく違ったものになる可能性があります。
+</p>
+
+<p>
+  As you can see, the graphics pipeline is quite a complex whole and contains many configurable parts. However, for almost all the cases we only have to work with the vertex and fragment shader. The geometry shader is optional and usually left to its default shader. There is also the tessellation stage and transform feedback loop that we haven't depicted here, but that's something for later. 
+ここまで見てきたようにグラフィックスパイプラインは設定可能な部分を多く含み、全体として非常に複雑です。しかし基本的には頂点シェーダーとフラグメントシェーダー以外をさわることはありません。ジオメトリシェーダーは通常デフォルトのシェーダーのままにしておきます。この他にもテッセレーションステージや変換フィードバックループといったものもありますが、それらについては後で説明します。
+</p>
+
+<p>
+  In modern OpenGL we are <strong>required</strong> to define at least a vertex and fragment shader of our own (there are no default vertex/fragment shaders on the GPU). For this reason it is often quite difficult to start learning modern OpenGL since a great deal of knowledge is required before being able to render your first triangle. Once you do get to finally render your triangle at the end  of this chapter you will end up knowing a lot more about graphics programming.
+現在のOpenGLではすくなくとも頂点シェーダーとフラグメントシェーダーは自分で用意することが<strong>必要</strong>です（デフォルトのシェーダーは存在しません）。そのため初学者が初めて三角形を表示させるために要求される知識量が多くなり、これがOpenGLの学習を難しくしている要因です。この章を読み、最初の三角形を描画することができたときには、グラフィックプログラミングに関して多くの知識を得ていることでしょう。
+</p>
+
+<h2>Vertex input</h2>
+<h2>頂点の入力</h2>
+<p>
+   To start drawing something we have to first give OpenGL some input vertex data. OpenGL is a 3D graphics library so all coordinates that we specify in OpenGL are in 3D (<code>x</code>, <code>y</code> and <code>z</code> coordinate). OpenGL doesn't simply transform <strong>all</strong> your 3D coordinates to 2D pixels on your screen; OpenGL only processes 3D coordinates when they're in a specific range between <code>-1.0</code> and <code>1.0</code> on all 3 axes (<code>x</code>, <code>y</code> and <code>z</code>). All coordinates within this so called <def>normalized device coordinates</def> range will end up visible on your screen (and all coordinates outside this region won't). 
+描画するためにはまずOpenGLに頂点のデータを入力として与えなければなりません。OpenGLは三次元のグラフィックライブラリなので、すべての座標は三次元です（<code>x</code>座標、<code>y</code>座標、そして<code>z</code>座標です）。OpenGLは<strong>すべて</strong>の三次元座標を単に二次元のピクセルに変換するわけではありません。<code>x</code>、<code>y</code>、<code>z</code>のすべての座標が<code>-1.0</code>と<code>1.0</code>のあいだにあるものだけを処理します。この範囲にある座標は<def>正規化デバイス座標系</def>と呼ばれます。この範囲にあるものだけが最終的にスクリーンに表示され、この外側のものは表示されません。
+</p>
+
+<p>
+  Because we want to render a single triangle we want to specify a total of three vertices with each vertex having a 3D position. We define them in normalized device coordinates (the visible region of OpenGL) in a <code>float</code> array:
+ここでは三角形を表示したいので、三次元空間上のみっつの頂点を指定します。<code>float</code>の配列として、正規化デバイス座標系（OpenGLにおいて可視の領域）中に定義しましょう:
+</p>
+
+<pre><code>
+float vertices[] = {
+    -0.5f, -0.5f, 0.0f,
+     0.5f, -0.5f, 0.0f,
+     0.0f,  0.5f, 0.0f
+};  
+</code></pre>
+
+<p>
+  Because OpenGL works in 3D space we render a 2D triangle with each vertex having a <code>z</code> coordinate of <code>0.0</code>. This way the <em>depth</em> of the triangle remains the same making it look like it's 2D.
+OpenGLは三次元空間上で動作するので、二次元の三角形を描画する場合は各頂点の<code>z</code>座標を<code>0.0</code>にします。こうすることで各頂点の<em>深度</em>が同じになり、二次元であるように見えます。
+</p>
+
+<note>
+  <strong>Normalized Device Coordinates (NDC)</strong><br/>
+  <strong>正規化デバイス座標系（NDC）</strong><br/>
+  <p>
+  Once your vertex coordinates have been processed in the vertex shader, they should be in <def>normalized device coordinates</def> which is a small space where the <code>x</code>, <code>y</code> and <code>z</code> values vary from <code>-1.0</code> to <code>1.0</code>. Any coordinates that fall outside this range will be discarded/clipped and won't be visible on your screen. Below you can see the triangle we specified within normalized device coordinates (ignoring the <code>z</code> axis):
+  頂点シェーダーで処理された頂点の座標は<def>正規化デバイス座標系</def>の中におさまらなければいけません。正規化デバイス座標系とは、<code>x</code>、<code>y</code>、<code>z</code>座標がすべて<code>-1.0</code>と<code>1.0</code>のあいだにあるような小さな立方体の空間です。この座標の外にあるものはすべて切り捨てられ、スクリーン上では見えなくなります。下の画像は先程正規化デバイス座標系におさまるように指定した三角形です（<code>z</code>軸は無視しています）。
+  </p>
+  <img src="/img/getting-started/ndc.png" class="clean" alt="2D Normalized Device Coordinates as shown in a graph"/>
+  <p>
+  Unlike usual screen coordinates the positive y-axis points in the up-direction and the <code>(0,0)</code> coordinates are at the center of the graph, instead of top-left. Eventually you want all the (transformed) coordinates to end up in this coordinate space, otherwise they won't be visible.
+  通常のスクリーンの座標系とは違い、y軸は上を指し、原点は左上ではなく中央に位置します。最終的に変換後のすべての座標がこの中におさまるようにしましょう。さもなければ表示されません。
+</p>
+<p>
+  Your NDC coordinates will then be transformed to <def>screen-space coordinates</def> via the <def>viewport transform</def> using the data you provided with <fun><function id='22'>glViewport</function></fun>. The resulting screen-space coordinates are then transformed to fragments as inputs to your fragment shader.
+NDCにおとしこんだ座標は<def>ビューポート変換</def>により<def>スクリーン座標系</def>に変換されます。ビューポート変換は<fun><function id='22'>glViewport</function></fun>で設定した情報を利用します。スクリーン座標系の座標はフラグメントシェーダーの入力となるフラグメントに変換されます。
+  </p>
+</note>
+
+<p>
+  With the vertex data defined we'd like to send it as input to the first process of the graphics pipeline: the vertex shader. This is done by creating memory on the GPU where we store the vertex data, configure how OpenGL should interpret the memory and specify how to send the data to the graphics card. The vertex shader then processes as much vertices as we tell it to from its memory.
+先程定義した頂点のデータを、グラフィックスパイプラインの最初の処理である頂点シェーダーに入力として送りましょう。そのためにまず頂点データを格納する上のメモリを確保し、OpenGLにそのメモリ中にどんなデータが入っているのか、およびどのようにデータをグラフィックカードに送信するのかを設定します。そうすることで頂点シェーダーがGPUのメモリを読み、指定した分だけ頂点のデータを処理してくれます。
+</p>
+
+<p>
+  We manage this memory via so called <def>vertex buffer objects</def> (<def>VBO</def>) that can store a large number of vertices in the GPU's memory. The advantage of using those buffer objects is that we can send large batches of data all at once to the graphics card, and keep it there if there's enough memory left, without having to send data one vertex at a time. Sending data to the graphics card from the CPU is relatively slow, so wherever we can we try to send as much data as possible at once. Once the data is in the graphics card's memory the vertex shader has almost instant access to the vertices making it extremely fast
+このメモリはGPUのメモリに大量の頂点を保持できる<def>頂点バッファオブジェクト</def>（<def>VBO</def>）を通して管理されます。このバッファの利点は大きなかたまりになったデータをいっぺんにグラフィックカードに送信し、メモリに十分な空きがなくてもそのデータを保持し続けてくれることです。頂点データをひとつずつ送信しなくてすむのです。CPUからグラフィックカードへのデータの送信は比較的遅いので、可能な限り多くのデータを一度に送りたいのです。いったん頂点データがグラフィックカードのメモリに置かれると、頂点シェーダーが即座にデータを参照できるので高速な処理が可能になります。
+</p>
+
+<p>
+  A vertex buffer object is our first occurrence of an OpenGL object as we've discussed in the <a href="https://learnopengl.com/Getting-Started/OpenGL" target="_blank">OpenGL</a> chapter. Just like any object in OpenGL, this buffer has a unique ID corresponding to that buffer, so we can generate one with a buffer ID using the <fun><function id='12'>glGenBuffers</function></fun> function: 
+<a href="https://learnopengl.com/Getting-Started/OpenGL" target="_blank">OpenGL</a>の章で議論したように、頂点バッファオブジェクトはわれわれが最初に遭遇したOpenGLオブジェクトです。このバッファもOpenGLの他のオブジェクトと同様、一意のIDを割り当てられるので、<fun><function id='12'>glGenBuffers</function></fun>を使ってオブジェクトを作成すると同時にバッファIDを取得できます:
+</p>
+
+<pre class="cpp"><code>
+unsigned int VBO;
+<function id='12'>glGenBuffers</function>(1, &amp;VBO);  
+</code></pre>
+
+<p>
+  OpenGL has many types of buffer objects and the buffer type of a vertex buffer object is <var>GL_ARRAY_BUFFER</var>. OpenGL allows us to bind to several buffers at once as long as they have a different buffer type. We can bind the newly created buffer to the <var>GL_ARRAY_BUFFER</var> target with the <fun><function id='32'>glBindBuffer</function></fun> function:
+OpenGLにはさまざまな型のバッファオブジェクトがあります。頂点バッファオブジェクトの型は<var>GL_ARRAY_BUFFER</var>です。型が異なる限り、同時に複数のバッファを紐付けすることができます。新しく作ったバッファは<fun><function id='32'>glBindBuffer</function></fun>により<var>GL_ARRAY_BUFFER</var>に紐付けできます:
+</p>
+
+<pre><code>
+<function id='32'>glBindBuffer</function>(GL_ARRAY_BUFFER, VBO);  
+</code></pre>
+
+<p>
+  From that point on any buffer calls we make (on the <var>GL_ARRAY_BUFFER</var> target) will be used to configure the currently bound buffer, which is <var>VBO</var>. Then we can make a call to the 
+  <fun><function id='31'>glBufferData</function></fun> function that copies the previously defined vertex data into the buffer's memory:
+上記のようにバッファを紐付けすることで、以降われわれが行うバッファの操作（<var>GL_ARRAY_BUFFER</var>をターゲットとするもの）は現在紐付いているもの（ここでは<var>VBO</var>）にたいして行われます。バッファの紐付けができたら、<fun><function id='31'>glBufferData</function></fun>を呼び、先程定義した頂点データをバッファのメモリにコピーしましょう:
+</p>
+
+<pre><code>
+<function id='31'>glBufferData</function>(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+</code></pre>
+
+<p>
+  <fun><function id='31'>glBufferData</function></fun> is a function specifically targeted to copy user-defined data into the currently bound buffer. Its first argument is the type of the buffer we want to copy data into: the vertex buffer object currently bound to the <var>GL_ARRAY_BUFFER</var> target. The second argument specifies the size of the data (in bytes) we want to pass to the buffer; a simple <code>sizeof</code> of the vertex data suffices. The third parameter is the actual data we want to send.
+<fun><function id='31'>glBufferData</function></fun>は現在紐付いているバッファに、ユーザーが独自に定義したデータをコピーするための関数です。最初の引数はデータをコピーしたいバッファの型です。この例において現在頂点バッファオブジェクトは<var>GL_ARRAY_BUFFER</var>に紐付いています。二番目の引数はバッファに渡したいデータのサイズ（バイト単位）です。頂点データに<code>sizeof</code>を適応したもので十分です。三番目はコピーするデータです。
+</p>
+
+<p>
+  The fourth parameter specifies how we want the graphics card to manage the given data. This can take 3 forms:
+四番目の引数ではコピーしたデータをグラフィックカードがどのように管理するかを指定します。管理方法は以下の三つから選びます:
+</p>
+
+  <ul>
+    <li><var>GL_STREAM_DRAW</var>: the data is set only once and used by the GPU at most a few times.</li>
+    <li><var>GL_STATIC_DRAW</var>: the data is set only once and used many times.</li>
+    <li><var>GL_DYNAMIC_DRAW</var>: the data is changed a lot and used many times.</li>
+  </ul>
+  <ul>
+    <li><var>GL_STREAM_DRAW</var>: データは一度だけセットされ、GPUは最大でも数回程度しか利用しない。</li>
+    <li><var>GL_STATIC_DRAW</var>: データは一度だけセットされ、繰り返し利用される。</li>
+    <li><var>GL_DYNAMIC_DRAW</var>: データは頻繁に変更され、繰り返し利用される。</li>
+  </ul>
+
+<p>
+  The position data of the triangle does not change, is used a lot, and stays the same for every render call so its usage type should best be <var>GL_STATIC_DRAW</var>. If, for instance, one would have a buffer with data that is likely to change frequently, a usage type of <var>GL_DYNAMIC_DRAW</var> ensures the graphics card will place the data in memory that allows for faster writes.
+三角形の位置のデータは変更されることはなく、何度も利用されるので、<var>GL_STATIC_DRAW</var>を指定します。これが例えば頻繁にデータの書き換えがおこるバッファであれば、<var>GL_DYNAMIC_DRAW</var>を選ぶことでグラフィックカードはメモリにおいてより高速に書き換えられる場所にデータを配置します。
+</p>
+
+<p>
+  As of now we stored the vertex data within memory on the graphics card as managed by a vertex buffer object named <var>VBO</var>. Next we want to create a vertex and fragment shader that actually processes this data, so let's start building those.
+これで<var>VBO</var>と呼ばれる頂点バッファオブジェクトによって管理されているグラフィックカードのメモリ上に頂点データを配置できました。続いて頂点シェーダーとフラグメントシェーダーを作成し、このデータを実際に処理していきましょう。
+</p>
+
+<h2>Vertex shader</h2>
+<h2>頂点シェーダー</h2>
+<p>
+  The vertex shader is one of the shaders that are programmable by people like us. Modern OpenGL requires that we at least set up a vertex and fragment shader if we want to do some rendering so we will briefly introduce shaders and configure two very simple shaders for drawing our first triangle. In the next chapter we'll discuss shaders in more detail.
+頂点シェーダーはわれわれがプログラミングできるシェーダーです。現行のOpenGLにおいて、描画のためには少なくとも頂点シェーダーとフラグメントシェーダーを自分達で用意する必要があります。ここでは簡単にシェーダーについて紹介し、最初の三角形を描画するための簡単なシェーダーを作成します。次の節ではシェーダーについてもっと詳しく見ていきます。
+</p>
+
+<p>
+  The first thing we need to do is write the vertex shader in the shader language GLSL (OpenGL Shading Language) and then compile this shader so we can use it in our application. Below you'll find the source code of a very basic vertex shader in GLSL:
+最初に必要なのはGLSL（OpenGL Shading Language）というシェーダー言語により、頂点シェーダーを書き、アプリケーションで利用できるようにコンパイルすることです。以下にGLSLで記述された最も基本的な頂点シェーダーを示します:
+</p>
+
+<pre><code>
+#version 330 core
+layout (location = 0) in vec3 aPos;
+
+void main()
+{
+    gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);
+}
+</code></pre>
+
+<p>
+  As you can see, GLSL looks similar to C. Each shader begins with a declaration of its version. Since OpenGL 3.3 and higher the version numbers of GLSL match the version of OpenGL (GLSL version 420 corresponds to OpenGL version 4.2 for example). We also explicitly mention we're using core profile functionality.
+ご覧のようにGLSLはC言語に近いです。シェーダーはバージョンの宣言から記述します。OpenGL 3.3以降ではGLSLのバージョンはOpenGLのバージョンと呼応します（例えばGLSLバージョン420はOpenGLのバージョン4.2に対応します）。加えてコアプロファイルを仕様することを明記します。
+</p>
+
+<p>
+  Next we declare all the input vertex attributes in the vertex shader with the <code>in</code> keyword. Right now we only care about position data so we only need a single vertex attribute. GLSL has a vector datatype that contains 1 to 4 floats based on its postfix digit. Since each vertex has a 3D coordinate we create a <code>vec3</code> input variable with the name <var>aPos</var>. We also specifically set the location of the input variable via <code>layout (location = 0)</code> and you'll later see that why we're going to need that location.
+続いて<code>in</code>というキーワードで、入力となる頂点属性をすべて宣言します。とりあえず位置のデータだけを処理するので、必要な頂点属性はひとつだけです。GLSLは<code>float</code>の1から4つ持つベクトルのデータ型をもちます。ベクトルの次元はデータ型の後ろに付いている数字に対応しています。頂点の座標は三次元なので<code>vec3</code>型の入力を<var>aPos</var>という名前で作成します。<code>layout (location = 0)</code>という記述により、入力となる変数の位置も指定します。なぜこのような場所の指定が必要になるのかは後ほど説明します。
+</p>
+
+<note>
+  <strong>Vector</strong><br/>
+  <strong>ベクトル</strong><br/>
+  In graphics programming we use the mathematical concept of a vector quite often, since it neatly represents positions/directions in any space and has useful mathematical properties. A vector in GLSL has a maximum size of 4 and each of its values can be retrieved via <code>vec.x</code>, <code>vec.y</code>, <code>vec.z</code> and <code>vec.w</code> respectively where each of them represents a coordinate in space. Note that the <code>vec.w</code> component is not used as a position in space (we're dealing with 3D, not 4D) but is used for something called <def>perspective division</def>. We'll discuss vectors in much greater depth in a later chapter.
+グラフィックプログラミングにおいて、数学の概念であるベクトルがよく利用されます。空間上での位置や方向をうまく記述でき、その数学的な性質が有用だからです。GLSLにおけるベクトルのサイズは最大で4です。要素は<code>vec.x</code>、<code>vec.y</code>、<code>vec.z</code>、<code>vec.w</code>により利用でき、空間上でのそれぞれの座標をあらわします。ただしわれわれが扱っているのは三次元空間であり四次元ではないので、<code>vec.w</code>は空間上の位置をあらわしていないことに注意してください。これは<def>パースペクティブディビジョン</def>を行うために利用されるものです。あとの節でベクトルについてさらに深掘りします。
+</note>
+
+<p>
+  To set the output of the vertex shader we have to assign the position data to the predefined <var>gl_Position</var> variable which is a <code>vec4</code> behind the scenes. At the end of the <fun>main</fun> function, whatever we set <var>gl_Position</var> to will be used as the output of the  vertex shader. Since our input is a vector of size 3 we have to cast this to a vector of size 4. We can do this by inserting the <code>vec3</code> values inside the constructor of <code>vec4</code> and set its <code>w</code> component to <code>1.0f</code> (we will explain why in a later chapter).
+頂点シェーダーの出力を設定するためには、あらかじめ定義された四次元ベクトルである<var>gl_Position</var>という変数に位置のデータを割り当てる必要があります。<fun>main</fun>関数の終了時点で<var>gl_Position</var>に割り当てられているものが、頂点シェーダーの出力となります。入力のベクトルは三次元なので、これを四次元に変換する必要があります。ここでは<code>vec3</code>の値を<code>vec4</code>のコンストラクタ内にさしこみ、<code>w</code>の値は<code>1.0f</code>としておきましょう（あとで詳しく説明します）。
+</p>
+
+<p>
+  The current vertex shader is probably the most simple vertex shader we can imagine because we did no processing whatsoever on the input data and simply forwarded it to the shader's output. In real applications the input data is usually not already in normalized device coordinates so we first have to transform the input data to coordinates that fall within OpenGL's visible region.
+こうして構成した頂点シェーダーはなんの処理も行わずに入力値をそのまま出力しているだけなので、おそらく最も単純なものです。実際のアプリケーションでは通常入力データは正規化されていないのでまずはOpenGLの可視領域におさまるように変換しないといけません。
+</p>
+
+<h2>Compiling a shader</h2>
+<h2>シェーダーのコンパイル</h2>
+<p>
+  We take the source code for the vertex shader and store it in a const C string at the top of the code file for now: 
+それではコードの一番上にC言語のの文字列定数として頂点シェーダーのソースコードを記述しましょう:
+</p>
+
+<pre><code>
+const char *vertexShaderSource = "#version 330 core\n"
+    "layout (location = 0) in vec3 aPos;\n"
+    "void main()\n"
+    "{\n"
+    "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
+    "}\0";
+</code></pre>
+
+<p>
+  In order for OpenGL to use the shader it has to dynamically compile it at run-time from its source code. The first thing we need to do is create a shader object, again referenced by an ID. So we store the vertex shader as an <code>unsigned int</code> and create the shader with <fun><function id='37'>glCreateShader</function></fun>:
+OpenGLがシェーダーを利用するには実行時にソースコード内から動的にコンパイルする必要があります。まずはじめにこれまたIDにより参照されるシェーダーオブジェクトを作成しないといけません。頂点シェーダーを<code>unsigned int</code>として保存し、シェーダーを<fun><function id='37'>glCreateShader</function></fun>により作成します:
+</p>
+
+<pre><code>
+unsigned int vertexShader;
+vertexShader = <function id='37'>glCreateShader</function>(GL_VERTEX_SHADER);
+</code></pre>
+
+<p>
+  We provide the type of shader we want to create as an argument to <fun><function id='37'>glCreateShader</function></fun>. Since we're creating a vertex shader we pass in <var>GL_VERTEX_SHADER</var>.
+作成するシェーダーの種類は<fun><function id='37'>glCreateShader</function></fun>の引数で指定します。今回作成するのは頂点シェーダーなので、<var>GL_VERTEX_SHADER</var>を渡します。
+</p>
+
+<p>
+  Next we attach the shader source code to the shader object and compile the shader:
+次にシェーダーのソースコードをシェーダーオブジェクトに割り当てコンパイルします:
+</p>
+
+<pre class="cpp"><code>
+<function id='42'>glShaderSource</function>(vertexShader, 1, &amp;vertexShaderSource, NULL);
+<function id='38'>glCompileShader</function>(vertexShader);
+</code></pre>
+
+<p>
+  The <fun><function id='42'>glShaderSource</function></fun> function takes the shader object to compile to as its first argument. The second argument specifies how many strings we're passing as source code, which is only one. The third parameter is the actual source code of the vertex shader and we can leave the 4th parameter to <code>NULL</code>.
+<fun><function id='42'>glShaderSource</function></fun>はコンパイルするシェーダーオブジェクトを最初の引数にとります。二つ目の引数はソースコードとしていくつの文字列を渡すかを指定します。ここでは一つだけなので1を指定します。三番目は頂点シェーダーのソースコードそのもので、四番目は<code>NULL</code>のままで大丈夫です。
+</p>
+
+<note>
+  <p>
+    You probably want to check if compilation was successful after the call to <fun><function id='38'>glCompileShader</function></fun> and if not, what errors were found so you can fix those. Checking for compile-time errors is accomplished as follows:
+<fun><function id='38'>glCompileShader</function></fun>を呼び出した後、コンパイルが通ったかどうか、どのようなエラーが発生したか確認したいものです。コンパイル時のエラーの確認は以下のようにできます:
+  </p>
+  
+<pre class="cpp"><code>
+int  success;
+char infoLog[512];
+<function id='39'>glGetShaderiv</function>(vertexShader, GL_COMPILE_STATUS, &amp;success);
+</code></pre>
+  
+<p>
+   First we define an integer to indicate success and a storage container for the error messages (if any). Then we check if compilation was successful with <fun><function id='39'>glGetShaderiv</function></fun>. If compilation failed, we should retrieve the error message with <fun><function id='40'>glGetShaderInfoLog</function></fun> and print the error message.
+はじめに成功したかどうかを格納するための整数と、エラーメッセージがでた場合にそれを格納するための変数を宣言します。その後<fun><function id='39'>glGetShaderiv</function></fun>によりコンパイルが成功したかどうか確認します。失敗していた場合、<fun><function id='40'>glGetShaderInfoLog</function></fun>を用いてエラーメッセージを取り出し、表示するようにします。
+  </p>
+  
+<pre><code>
+if(!success)
+{
+    <function id='40'>glGetShaderInfoLog</function>(vertexShader, 512, NULL, infoLog);
+    std::cout &lt;&lt; "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" &lt;&lt; infoLog &lt;&lt; std::endl;
+}
+</code></pre>
+</note>
+
+<p>
+  If no errors were detected while compiling the vertex shader it is now compiled.
+エラーが出なければシェーダーのコンパイルは成功です。
+</p>
+
+<h2>Fragment shader</h2>
+<h2>フラグメントシェーダー</h2>
+<p>
+  The fragment shader is the second and final shader we're going to create for rendering a triangle. The fragment shader is all about calculating the color output of your pixels. To keep things simple the fragment shader will always output an orange-ish color.
+フラグメントシェーダーは三角形を描画するために作成する二つ目にして最後のシェーダーです。フラグメントシェーダーはピクセルの色を計算するためのシェーダーです。ここでは簡単のためにフラグメントシェーダーは常にオレンジ色を出力するようにします。
+</p>
+
+<note>
+  Colors in computer graphics are represented as an array of 4 values: the red, green, blue and alpha (opacity) component, commonly abbreviated to RGBA. When defining a color in OpenGL or GLSL we set the strength of each component to a value between <code>0.0</code> and <code>1.0</code>. If, for example, we would set red to <code>1.0</code> and green to <code>1.0</code> we would get a mixture of both colors and get the color yellow. Given those 3 color components we can generate over 16 million different colors!
+コンピュータグラフィックスにおいて、色は4つの数値で表現されます。赤、緑、青、アルファ（透明度）の4つで、一般的にRGBAと略記されます。OpenGLやGLSLにおいて色を定義する場合、それぞれの要素を<code>0.0</code>と<code>1.0</code>のあいだの数値で表現します。例えば赤を<code>1.0</code>、緑を<code>1.0</code>にした場合、赤と緑をまぜた色である黄色が得られます。3色の組み合わせにより、160万色以上を表現できます。
+</note>
+
+<pre><code>
+#version 330 core
+out vec4 FragColor;
+
+void main()
+{
+    FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);
+} 
+</code></pre>
+
+<p>
+  The fragment shader only requires one output variable and that is a vector of size 4 that defines the final color output that we should calculate ourselves. We can declare output values with the <code>out</code> keyword, that we here promptly named <var>FragColor</var>. Next we simply assign a <code>vec4</code> to the color output as an orange color with an alpha value of <code>1.0</code> (<code>1.0</code> being completely opaque).
+フラグメントシェーダーに必要な出力は最終的な色を決定する四次元ベクトルだけです。このベクトルはわれわれ自身で計算しなければいけません。出力値は<code>out</code>で指定でき、ここでは<var>FragColor</var>という名前にしています。続いて単に<code>vec4</code>にアルファ値が<code>1.0</code>のオレンジ色を割り当てます（アルファ値<code>1.0</code>は完全に不透明であることを意味します）。
+</p>
+
+<p>
+  The process for compiling a fragment shader is similar to the vertex shader, although this time we use the <var>GL_FRAGMENT_SHADER</var> constant as the shader type:
+フラグメントシェーダーのコンパイルは頂点シェーダーとほぼ同じです。ただし今回はシェーダーの種類として<var>GL_FRAGMENT_SHADER</var>を指定します:
+</p>
+
+<pre class="cpp"><code>
+unsigned int fragmentShader;
+fragmentShader = <function id='37'>glCreateShader</function>(GL_FRAGMENT_SHADER);
+<function id='42'>glShaderSource</function>(fragmentShader, 1, &amp;fragmentShaderSource, NULL);
+<function id='38'>glCompileShader</function>(fragmentShader);
+</code></pre>
+
+<p>
+  Both the shaders are now compiled and the only thing left to do is link both shader objects into a <def>shader program</def> that we can use for rendering. Make sure to check for compile errors here as well!
+これでシェーダーはどちらもコンパイルできたので最後に、描画に利用する<def>シェーダープログラム</def>にふたつのシェーダーをリンクします。ここでもコンパイルエラーを確認してください。
+</p>
+
+<h3>Shader program</h3>
+<h3>シェーダープログラム</h3>
+<p>
+ A shader program object is the final linked version of multiple shaders combined. To use the recently compiled shaders we have to <def>link</def> them to a shader program object and then activate this shader program when rendering objects. The activated shader program's shaders will be used when we issue render calls. 
+シェーダープログラムオブジェクトは複数のシェーダーをリンクしたものです。今コンパイルしたシェーダーを利用するにはそれらをシェーダープログラムオブジェクトにリンクして描画時にこのプログラムをアクティベートする必要があります。アクティブなシェーダープログラムのシェーダーが描画命令を実行する際に利用されます。
+</p>
+
+<p>
+  When linking the shaders into a program it links the outputs of each shader to the inputs of the next shader. This is also where you'll get linking errors if your outputs and inputs do not match. </p>
+シェーダーをひとつのプログラムとしてリンクする際、各シェーダーの出力が次のシェーダーの入力に繋がれます。この出力と入力が合致しないと、リンクエラーが発生します。
+<p>
+  Creating a program object is easy:
+プログラムオブジェクトの作成は簡単です:
+</p>
+
+<pre><code>
+unsigned int shaderProgram;
+shaderProgram = <function id='36'>glCreateProgram</function>();
+</code></pre>
+
+<p>
+  The <fun><function id='36'>glCreateProgram</function></fun> function creates a program and returns the ID reference to the newly created program object. Now we need to attach the previously compiled shaders to the program object and then link them with <fun><function id='35'>glLinkProgram</function></fun>:
+<fun><function id='36'>glCreateProgram</function></fun>はプログラムを作成し、そのプログラムオブジェクトを参照するIDを返します。次に、先程コンパイルしたシェーダーを今作ったプログラムオブジェクトに関連付け、<fun><function id='35'>glLinkProgram</function></fun>によりリンクします:
+</p>
+
+<pre><code>
+<function id='34'>glAttachShader</function>(shaderProgram, vertexShader);
+<function id='34'>glAttachShader</function>(shaderProgram, fragmentShader);
+<function id='35'>glLinkProgram</function>(shaderProgram);
+</code></pre>
+
+<p>
+  The code should be pretty self-explanatory, we attach the shaders to the program and link them via <fun><function id='35'>glLinkProgram</function></fun>. 
+このコードは見たままのことを行います。シェーダーをプログラムに関連付け、<fun><function id='35'>glLinkProgram</function></fun>によりリンクします。
+</p>
+
+<note>
+  Just like shader compilation we can also check if linking a shader program failed and retrieve the corresponding log. However, instead of using <fun><function id='39'>glGetShaderiv</function></fun> and <fun><function id='40'>glGetShaderInfoLog</function></fun> we now use:
+シェーダーのコンパイルと同様、シェーダープログラムのリンクが成功したかどうか、そのログとともに確かめることができます。ただし今回使う関数は<fun><function id='39'>glGetShaderiv</function></fun>と<fun><function id='40'>glGetShaderInfoLog</function></fun>ではなく以下のものです:
+
+<pre class="cpp"><code>
+<function id='41'>glGetProgramiv</function>(shaderProgram, GL_LINK_STATUS, &success);
+if(!success) {
+    glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
+    ...
+}
+</code></pre>
+</note>
+
+<p>
+  The result is a program object that we can activate by calling <fun><function id='28'>glUseProgram</function></fun> with the newly created program object as its argument:
+こうして得られたプログラムオブジェクトはそれ自身を<fun><function id='28'>glUseProgram</function></fun>の第一引数に渡すことでアクティベートできます:
+</p>
+
+<pre><code>
+<function id='28'>glUseProgram</function>(shaderProgram);
+</code></pre>
+
+<p>
+  Every shader and rendering call after <fun><function id='28'>glUseProgram</function></fun> will now use this program object (and thus the shaders).
+<fun><function id='28'>glUseProgram</function></fun>の呼び出し以降、シェーダーや描画命令はこのプログラムオブジェクトおよびシェーダーを利用します。
+</p>
+
+<p>
+  Oh yeah, and don't forget to delete the shader objects once we've linked them into the program object; we no longer need them anymore:
+これでよし。プログラムオブジェクトにリンクし終ったシェーダーオブジェクトはもう必要ないので忘れずに削除してください:
+</p>
+
+<pre><code>
+<function id='46'>glDeleteShader</function>(vertexShader);
+<function id='46'>glDeleteShader</function>(fragmentShader);  
+</code></pre>
+
+<p>
+  Right now we sent the input vertex data to the GPU and instructed the GPU how it should process the vertex data within a vertex and fragment shader. We're almost there, but not quite yet. OpenGL does not yet know how it should interpret the vertex data in memory and how it should connect the vertex data to the vertex shader's attributes. We'll be nice and tell OpenGL how to do that.
+これで、頂点データをGPUに送信し、頂点シェーダーとフラグメントシェーダーにおいてそのデータの処理方法を指定できました。ゴールまであと一歩です。OpenGLはメモリ内の頂点データをどのように解釈し、頂点シェーダーの属性にどう対応させるかをまだ知りません。OpenGLにその方法を教えてあげましょう。
+</p>
+
+<h2>Linking Vertex Attributes</h2>
+<h2>頂点属性のリンク</h2>
+<p>
+  The vertex shader allows us to specify any input we want in the form of vertex attributes and while this allows for great flexibility, it does mean we have to manually specify what part of our input data goes to which vertex attribute in the vertex shader. This means we have to specify how OpenGL should interpret the vertex data before rendering.
+頂点シェーダーに対して頂点属性をどのようなかたちで渡すかは自由です。そのため非常に柔軟性が高い一方、入力となるデータが頂点シェーダーにおいてどのように頂点属性に対応するのかを自分の手で設定しなければなりません。描画の前に、OpenGLがどのように頂点データを解釈するのか指定しなければならないということです。
+</p>
+
+<p>
+  Our vertex buffer data is formatted as follows:
+われわれの頂点バッファデータは以下のような形式です:
+</p>
+
+<img src="/img/getting-started/vertex_attribute_pointer.png" class="clean" alt="Vertex attribte pointer setup of OpenGL VBO"/>
+
+  <ul>
+    <li>The position data is stored as 32-bit (4 byte) floating point values.</li>
+    <li>位置データは32ビット（4バイト）の浮動小数点数です。</li>
+    <li>Each position is composed of 3 of those values.</li>
+    <li>それぞれの位置データは3つの数値からなります。</li>
+    <li>There is no space (or other values) between each set of 3 values. The values are <def>tightly packed</def> in the array.</li>
+    <li>位置データどうしの間には隙間や他のデータはありません。数値はデータ列中で<def>稠密</def>です。</li>
+    <li>The first value in the data is at the beginning of the buffer.</li>
+    <li>データ中の一番目の数値はバッファの先頭に位置します。</li>
+  </ul>
+  
+<p>
+   With this knowledge we can tell OpenGL how it should interpret the vertex data (per vertex attribute) using <fun><function id='30'>glVertexAttribPointer</function></fun>:
+以上の情報を基にOpenGLが頂点データを（頂点属性ごとに）どのように解釈するか、<fun><function id='30'>glVertexAttribPointer</function></fun>により指定します:
+</p>
+
+<pre class="cpp"><code>
+<function id='30'>glVertexAttribPointer</function>(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+<function id='29'><function id='60'>glEnable</function>VertexAttribArray</function>(0);  
+</code></pre>
+
+<p>
+  The function <fun><function id='30'>glVertexAttribPointer</function></fun> has quite a few parameters so let's carefully walk through them:
+<fun><function id='30'>glVertexAttribPointer</function></fun>はたくさんの引数を取るので丁寧に見ていきましょう:
+</p>
+  
+  <ul>
+    <li>The first parameter specifies which vertex attribute we want to configure. Remember that we specified the location of the <var>position</var> vertex attribute in the vertex shader with <code>layout (location = 0)</code>. This sets the location of the vertex attribute to <code>0</code> and since we want to pass data to this vertex attribute, we pass in <code>0</code>.</li>
+    <li>最初の引数はどの頂点属性を設定するのかを指定します。頂点シェーダーにおいて<var>位置</var>属性を<code>layout (location = 0)</code>によって設定したのを思いだしてください。このとき頂点属性の位置を<code>0</code>にしており、この頂点属性にデータを渡したいので、このひとつめの引数は<code>0</code>にします。</li>
+    <li>The next argument specifies the size of the vertex attribute. The vertex attribute is a <code>vec3</code> so it is composed of <code>3</code> values.</li>
+    <li>次の引数は頂点属性のサイズです。今回の頂点属性は<code>vec3</code>であり<code>3</code>つの数値からなります。</li>
+    
+    <li>The third argument specifies the type of the data which is <var>GL_FLOAT</var> (a <code>vec*</code> in GLSL consists of floating point values).</li>
+    <li>三番目の引数ではデータの型を指定します。ここでは<var>GL_FLOAT</var>です（GLSLにおいて<code>vec*</code>は浮動小数点数からなります）。</li>
+    
+    <li>The next argument specifies if we want the data to be normalized. If we're inputting integer data types (int, byte) and we've set this to <var>GL_TRUE</var>, the integer data is normalized to <code>0</code> (or <code>-1</code> for signed data) and <code>1</code> when converted to float. This is not relevant for us so we'll leave this at <var>GL_FALSE</var>.</li>
+    <li>次の引数はデータを正規化するかどうか指定します。データ型が整数（intやbyte）であり、かつこの引数を<var>GL_TRUE</var>にした場合、整数のデータは浮動小数点数に変換される際に<code>0</code>（符号付きの場合は<code>-1</code>）と<code>1</code>の間に納まるように正規化されます。今回は関係ありませんので<var>GL_FALSE</var>にしておきます。</li>
+    
+    <li>The fifth argument is known as the <def>stride</def> and tells us the space between consecutive vertex attributes. Since the next set of position data is located exactly 3 times the size of a <code>float</code> away we specify that value as the stride. Note that since we know that the array is tightly packed (there is no space between the next vertex attribute value) we could've also specified the stride as <code>0</code> to let OpenGL determine the stride (this only works when values are tightly packed). Whenever we have more vertex attributes we have to carefully define the spacing between each vertex attribute but we'll get to see more examples of that later on.</li>
+    <li>五番目の引数は<def>ストライド</def>と呼ばれるもので、連続する二つの頂点属性間の距離をあらわします。ある位置データから次の位置データまではちょうど<code>float</code>三つ分あるので、その値を指定します。頂点データの配列は稠密（頂点属性どうしの間に隙間がない）ので、<code>0</code>を指定してOpenGLがストライドを決定するようにすることもできます（データが稠密であるときにのみ有効です）。より多くの頂点属性がある場合は頂点属性間の距離をより慎重に設定しなければなりません。そのような例は後で詳しく紹介します。</li>
+    <li>The last parameter is of type <code>void*</code> and thus requires that weird cast. This is the <def>offset</def> of where the position data begins in the buffer. Since the position data is at the start of the data array this value is just <code>0</code>. We will explore this parameter in more detail later on</li>
+    <li>最後の引数は<code>void*</code>型なのでこのように奇妙な変換が必要です。これはバッファにおける位置データの開始位置で<def>オフセット</def>と呼ばれます。位置データはデータ配列の頭に位置しますので今回この値は<code>0</code>です。この引数についても後で詳しく解説します。</li>
+  </ul>
+
+  <note>
+Each vertex attribute takes its data from memory managed by a VBO and which VBO it takes its data from (you can have multiple VBOs) is determined by the VBO currently bound to <var>GL_ARRAY_BUFFER</var> when calling <fun><function id='30'>glVertexAttribPointer</function></fun>. Since the previously defined <var>VBO</var> is still bound before calling <fun><function id='30'>glVertexAttribPointer</function></fun> vertex attribute <code>0</code> is now associated with its vertex data. 
+頂点属性のデータはVBOが管理するメモリから読まれます。VBOは複数定義することができますが、<fun><function id='30'>glVertexAttribPointer</function></fun>を呼び出したときデータを読むのは現在<var>GL_ARRAY_BUFFER</var>に紐付いているVBOからです。以前定義したVBOが<fun><function id='30'>glVertexAttribPointer</function></fun>を呼び出す時点でまだ紐付いているので、頂点属性<code>0</code>はその頂点データに対応します。
+</note>
+
+
+<p>
+  Now that we specified how OpenGL should interpret the vertex data we should also enable the vertex attribute with <fun><function id='29'><function id='60'>glEnable</function>VertexAttribArray</function></fun> giving the vertex attribute location as its argument; vertex attributes are disabled by default. From that point on we have everything set up: we initialized the vertex data in a buffer using a vertex buffer object, set up a vertex and fragment shader and told OpenGL how to link the vertex data to the vertex shader's vertex attributes. Drawing an object in OpenGL would now look something like this:
+頂点データの解釈方法を設定したので、こんどは<fun><function id='29'><function id='60'>glEnable</function>VertexAttribArray</function></fun>を、その引数に頂点属性の位置を渡して呼び出すことにより頂点属性を有効化します（頂点属性はデフォルトで無効です）。これですべてのセットアップが完了しました: 頂点データを頂点バッファオブジェクトを用いてバッファ上に初期化し、頂点シェーダーとフラグメントシェーダーをセットアップし、頂点データと頂点シェーダー上の頂点属性との対応付けを指定しました。以上をまとめると、OpenGLでの描画は以下のようになります:
+</p>
+
+<pre><code>
+// 0. copy our vertices array in a buffer for OpenGL to use
+// 0. 頂点の配列をOpenGLが利用できるようにバッファにコピー
+<function id='32'>glBindBuffer</function>(GL_ARRAY_BUFFER, VBO);
+<function id='31'>glBufferData</function>(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+// 1. then set the vertex attributes pointers
+// 1. 頂点属性のポインタをセット
+<function id='30'>glVertexAttribPointer</function>(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+<function id='29'><function id='60'>glEnable</function>VertexAttribArray</function>(0);  
+// 2. use our shader program when we want to render an object
+// 2. 作成したシェーダープログラムを描画に利用
+<function id='28'>glUseProgram</function>(shaderProgram);
+// 3. now draw the object 
+// 3. 描画
+someOpenGLFunctionThatDrawsOurTriangle();   
+</code></pre>
+
+<p>
+  We have to repeat this process every time we want to draw an object. It may not look like that much, but imagine if we have over 5 vertex attributes and perhaps 100s of different objects (which is not uncommon). Binding the appropriate buffer objects and configuring all vertex attributes for each of those objects quickly becomes a cumbersome process. What if there was some way we could store all these state configurations into an object and simply bind this object to restore its state?
+この作業を描画のたびに繰返す必要があります。現状そんなに大変そうに思えませんが、これが例えば5つの頂点属性と100種類のオプジェクトだったらどうでしょう。この状況はそんなに有り得ないものではありません。バッファオブジェクトと適切に紐付け、すべての頂点属性ををれぞれのオブジェクトで設定するのは面倒です。もしこのような設定を保存しておけるオブジェクトがあり、それを紐付けるだけで保存した設定を読み込めたらどんなに楽でしょう。
+</p>
+
+<h3>Vertex Array Object</h3>
+<h3>頂点配列オブジェクト</h3>
+<p>
+  A <def>vertex array object</def> (also known as <def>VAO</def>) can be bound just like a vertex buffer object and any subsequent vertex attribute calls from that point on will be stored inside the VAO. This has the advantage that when configuring vertex attribute pointers you only have to make those calls once and whenever we want to draw the object, we can just bind the corresponding VAO. This makes switching between different vertex data and attribute configurations as easy as binding a different VAO. All the state we just set is stored inside the VAO.
+<def>頂点配列オブジェクト</def>（あるいは<def>VAO</def>）は頂点バッファオブジェクトと同様に紐付けることができ、それ以降の操作はそのVAOの内部に保存されます。これには大きな利点があります。頂点属性のポインターの設定を一度だけしておけば描画時には対応するVAOを紐付けるだけですむのです。別の頂点データと属性の設定を行き来する場合も、VAOの紐付けだけで完結するので簡単です。設定したすべての状態がVAO内に保存されます。
+</p>
+
+<warning>
+  Core OpenGL <strong>requires</strong> that we use a VAO so it knows what to do with our vertex inputs. If we fail to bind a VAO, OpenGL will most likely refuse to draw anything. 
+core OpenGLを利用する場合、OpenGLに頂点データの扱い方を指示するためにVAOが<strong>必要</strong>です。VAOの紐付けに失敗した場合、OpenGLはおそらく一切の描画を拒否します。
+</warning>
+  
+<p>
+  A vertex array object stores the following:
+VAOは以下のものを保持します:
+</p>
+  
+<ul>
+  <li>Calls to <fun><function id='29'><function id='60'>glEnable</function>VertexAttribArray</function></fun> or <fun>glDisableVertexAttribArray</fun>.</li>
+  <li><fun><function id='29'><function id='60'>glEnable</function>VertexAttribArray</function></fun>や<fun>glDisableVertexAttribArray</fun>の呼び出し。</li>
+  <li>Vertex attribute configurations via <fun><function id='30'>glVertexAttribPointer</function></fun>.</li>
+  <li><fun><function id='30'>glVertexAttribPointer</function></fun>による頂点属性の設定。</li>
+  <li>Vertex buffer objects associated with vertex attributes by calls to <fun><function id='30'>glVertexAttribPointer</function></fun>.</li>
+  <li><fun><function id='30'>glVertexAttribPointer</function></fun>により頂点属性に紐付いた頂点バッファオブジェクト。</li>
+</ul>
+  
+  <img src="/img/getting-started/vertex_array_objects.png" class="clean" alt="Image of how a VAO (Vertex Array Object) operates and what it stores in OpenGL"/>
+
+<p>
+  The process to generate a VAO looks similar to that of a VBO:
+VAOの作成はVBOと同様です:
+</p>
+
+<pre class="cpp"><code>
+unsigned int VAO;
+<function id='33'>glGenVertexArrays</function>(1, &amp;VAO);  
+</code></pre>
+
+<p>
+  To use a VAO all you have to do is bind the VAO using <fun><function id='27'>glBindVertexArray</function></fun>. From that point on we should bind/configure the corresponding VBO(s) and attribute pointer(s) and then unbind the VAO for later use. As soon as we want to draw an object, we simply bind the VAO with the preferred settings before drawing the object and that is it. In code this would look a bit like this:
+VAOを利用するために必要なのは<fun><function id='27'>glBindVertexArray</function></fun>によりVAOを紐付けることだけです。この後、対応するVBOや属性ポインタの紐付けや設定を行い、後々の利用にそなえてVAOの紐付けを解除します。ある物体を描画したい場合、描画の前にその物体の設定を保持したVAOを紐付けるだけで十分です。以上をコードに落し込むとこのようになります:
+</p>
+
+<pre><code>
+// ..:: Initialization code (done once (unless your object frequently changes)) :: ..
+// ..:: 初期化のコード（描画する物体を頻繁に変更しないのであれば一度だけ）::..
+// 1. bind Vertex Array Object
+// 1. VAOを紐付け
+<function id='27'>glBindVertexArray</function>(VAO);
+// 2. copy our vertices array in a buffer for OpenGL to use
+// 2. 頂点配列をバッファにコピー
+<function id='32'>glBindBuffer</function>(GL_ARRAY_BUFFER, VBO);
+<function id='31'>glBufferData</function>(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+// 3. then set our vertex attributes pointers
+// 3. 頂点属性のポインタを設定
+<function id='30'>glVertexAttribPointer</function>(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+<function id='29'><function id='60'>glEnable</function>VertexAttribArray</function>(0);  
+
+  
+[...]
+
+// ..:: Drawing code (in render loop) :: ..
+// ..:: 描画命令（描画ループ内）::..
+// 4. draw the object
+// 4. 描画
+<function id='28'>glUseProgram</function>(shaderProgram);
+<function id='27'>glBindVertexArray</function>(VAO);
+someOpenGLFunctionThatDrawsOurTriangle();   
+</code></pre>
+
+<p>
+  And that is it! Everything we did the last few million pages led up to this moment, a VAO that stores our vertex attribute configuration and which VBO to use. Usually when you have multiple objects you want to draw, you first generate/configure all the VAOs (and thus the required VBO and attribute pointers) and store those for later use. The moment we want to draw one of our objects, we take the corresponding VAO, bind it, then draw the object and unbind the VAO again.
+やりました。ここまでの数千ページに及ぶ努力がこの瞬間実を結びました。VAOが頂点属性の設定や描画に利用するVBOの情報を保持しています。複数の物体を描画したい場合は通常、まずそれぞれの物体に対してVAO（とそれに必要なVBOや属性のポインタ）を作成、設定し利用に供えて保存しておきます。そして描画が必要になった時、描画したい物体のVAOを紐付け、描画し、最後に紐付けを解除します。
+</p>
+
+<h3>The triangle we've all been waiting for</h3>
+<h3>待ち侘びた三角形</h3>
+<p>
+  To draw our objects of choice, OpenGL provides us with the <fun><function id='1'>glDrawArrays</function></fun> function that draws primitives using the currently active shader, the previously defined vertex attribute configuration and with the VBO's vertex data (indirectly bound via the VAO).
+好きなものを描画するために、OpenGLには<fun><function id='1'>glDrawArrays</function></fun>という関数が用意されています。この関数は、現在有効化されているシェーダー、以前定義した頂点属性の設定およびVBO（VAOを通して間接的に紐付けられたもの）を用いてプリミティブ（基本図形）を描きます。
+</p>
+
+<pre class="cpp"><code>
+<function id='28'>glUseProgram</function>(shaderProgram);
+<function id='27'>glBindVertexArray</function>(VAO);
+<function id='1'>glDrawArrays</function>(GL_TRIANGLES, 0, 3);
+</code></pre>
+
+<p>
+  The <fun><function id='1'>glDrawArrays</function></fun> function takes as its first argument the OpenGL primitive type we would like to draw. Since I said at the start we wanted to draw a triangle, and I don't like lying to you, we pass in <var>GL_TRIANGLES</var>. The second argument specifies the starting index of the vertex array we'd like to draw; we just leave this at <code>0</code>. The last argument specifies how many vertices we want to draw, which is <code>3</code> (we only render 1 triangle from our data, which is exactly 3 vertices long).
+<fun><function id='1'>glDrawArrays</function></fun>はひとつ目の引数に描きたいOpenGLのプリミティブをとります。冒頭で三角形を描画すると言い、嘘をつきたくないので、ここでは<var>GL_TRIANGLES</var>を渡します。ふたつ目の引数は頂点配列の何番目の頂点から描きはじめるかを指定します。ここでは<code>0</code>にしておきましょう。最後の引数はいくつの頂点を描くかを指定します。ひとつの三角形を描きたいので<code>3</code>を渡します。
+</p>
+
+<p>
+  Now try to compile the code and work your way backwards if any errors popped up. As soon as your application compiles, you should see the following result:
+それではコンパイルしてください。なにかエラーがでれば戻って確認してください。コンパイルが完了すれば、以下のような結果が見えるはずです。
+</p>
+
+<img src="/img/getting-started/hellotriangle.png" width="600px" class="clean" alt="An image of a basic triangle rendered in modern OpenGL" />
+
+<p>
+  The source code for the complete program can be found  <a href="/code_viewer_gh.php?code=src/1.getting_started/2.1.hello_triangle/hello_triangle.cpp" target="_blank">here</a> .
+完全なソースコードは<a href="/code_viewer_gh.php?code=src/1.getting_started/2.1.hello_triangle/hello_triangle.cpp" target="_blank">ここ</a>から確認できます。
+</p>
+
+<p>
+  If your output does not look the same you probably did something wrong along the way so check the complete source code and see if you missed anything.
+なにか別のものが表示されたのであれば、途中でなにか間違えているはずですので、完全なソースコードと比較してください。
+</p>
+
+<h2> Element Buffer Objects </h2>
+<h2>要素バッファオブジェクト</h2>
+<p>
+  There is one last thing we'd like to discuss when rendering vertices and that is <def>element buffer objects</def> abbreviated to EBO. To explain how element buffer objects work it's best to give an example: suppose we want to draw a rectangle instead of a triangle. We can draw a rectangle using two triangles (OpenGL mainly works with triangles). This will generate the following set of vertices:
+頂点を描画するにあたり紹介しておきたいものがもうひとつあります。EBOと略記される<def>要素バッファオブジェクト</def>です。例をあげて説明します。今、三角形ではなく四角形を描画したいとしましょう。OpenGLは主に三角形を描画するように作られているので、この四角形は二つの三角形として描くことになります。そのため以下のような頂点を作成することになります:
+</p>
+
+<pre><code>	
+float vertices[] = {
+    // first triangle
+     0.5f,  0.5f, 0.0f,  // top right
+     0.5f, -0.5f, 0.0f,  // bottom right
+    -0.5f,  0.5f, 0.0f,  // top left 
+    // second triangle
+     0.5f, -0.5f, 0.0f,  // bottom right
+    -0.5f, -0.5f, 0.0f,  // bottom left
+    -0.5f,  0.5f, 0.0f   // top left
+}; 
+</code></pre>
+
+<p>
+  As you can see, there is some overlap on the vertices specified. We specify <code>bottom right</code> and <code>top left</code> twice! This is an overhead of 50% since the same rectangle could also be specified with only 4 vertices, instead of 6. This will only get worse as soon as we have more complex models that have over 1000s of triangles where there will be large chunks that overlap. What would be a better solution is to store only the unique vertices and then specify the order at which we want to draw these vertices in. In that case we would only have to store 4 vertices for the rectangle, and then just specify at which order we'd like to draw them. Wouldn't it be great if OpenGL provided us with a feature like that?
+ご覧のように定義した頂点に重複があります。右下と左上が二回でてきます。四角形は6つではなく4つの頂点があれば記述できるのでこれは50%も無駄なことをしていることになります。これが例えば1000個以上の三角形からなる複雑なモデルの場合、さらにたくさんの重複が生じ、状況は悪くなる一方です。解決策としては各頂点を重複がないように保存し、頂点を描く順番をあとから指定する方法が考えられます。この場合四角形を描くために頂点を4つだけ保存し、どのような順番で描くのか指定すればいいのです。このような方法がOpenGLに備わっていたら嬉しいと思いませんか？
+</p>
+
+<p>
+	Thankfully, element buffer objects work exactly like that. An EBO is a buffer, just like a vertex buffer object, that stores indices that OpenGL uses to decide what vertices to draw. This so called <def>indexed drawing</def> is exactly the solution to our problem. To get started we first have to specify the (unique) vertices and the indices to draw them as a rectangle:
+ありがたいことに、EBOがその役割を担ってくれます。EBOは頂点バッファオブジェクト同様バッファであり、OpenGLがどの頂点を描くのかを決定するためのインデックスを保持します。この、<def>インデックスによる描画</def>と呼ばれる方法がわれわれの問題を解決してくれます。これを利用するためにはまず、頂点を重複なく指定し、インデックスを作成します:
+</p>
+
+<pre><code>
+float vertices[] = {
+     0.5f,  0.5f, 0.0f,  // top right
+     0.5f, -0.5f, 0.0f,  // bottom right
+    -0.5f, -0.5f, 0.0f,  // bottom left
+    -0.5f,  0.5f, 0.0f   // top left 
+};
+unsigned int indices[] = {  // note that we start from 0!
+    0, 1, 3,   // first triangle
+    1, 2, 3    // second triangle
+};  
+</code></pre>
+
+<p>
+  You can see that, when using indices, we only need 4 vertices instead of 6. Next we need to create the element buffer object:
+ご覧のようにインデックスを利用すれば必要な頂点は6個ではなく4個だけになります。次にEBOを作成します:
+</p>
+
+<pre class="cpp"><code>
+unsigned int EBO;
+<function id='12'>glGenBuffers</function>(1, &amp;EBO);
+</code></pre>
+
+<p>
+  Similar to the VBO we bind the EBO and copy the indices into the buffer with <fun><function id='31'>glBufferData</function></fun>. Also, just like the VBO we want to place those calls between a bind and an unbind call, although this time we specify <var>GL_ELEMENT_ARRAY_BUFFER</var> as the buffer type. 
+VBOと同じく、EBOを紐付け<fun><function id='31'>glBufferData</function></fun>によりインデックスをそのバッファにコピーします。さらにVBOと同様、これらの関数の呼び出しは紐付けた後、それを解除するまでの間に行います。ただし今回はバッファの種類として<var>GL_ELEMENT_ARRAY_BUFFER</var>を指定します。
+</p>
+
+<pre><code>
+<function id='32'>glBindBuffer</function>(GL_ELEMENT_ARRAY_BUFFER, EBO);
+<function id='31'>glBufferData</function>(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW); 
+</code></pre>
+
+<p>
+  Note that we're now giving <var>GL_ELEMENT_ARRAY_BUFFER</var> as the buffer target. The last thing left to do is replace the <fun><function id='1'>glDrawArrays</function></fun> call with <fun><function id='2'>glDrawElements</function></fun> to indicate we want to render the triangles from an index buffer. When using <fun><function id='2'>glDrawElements</function></fun> we're going to draw using indices provided in the element buffer object currently bound:
+今回は紐付けるバッファとして<var>GL_ELEMENT_ARRAY_BUFFER</var>を指定していることに注意してください。あとはバッファオブジェクトから三角形を描画するために<fun><function id='1'>glDrawArrays</function></fun>を<fun><function id='2'>glDrawElements</function></fun>で置きかえることだけです。<fun><function id='2'>glDrawElements</function></fun>を利用することで、現在紐付いているEBOのインデックスにより描画できます:
+</p>
+
+<pre class="cpp"><code>
+<function id='32'>glBindBuffer</function>(GL_ELEMENT_ARRAY_BUFFER, EBO);
+<function id='2'>glDrawElements</function>(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+</code></pre>
+
+<p>
+  The first argument specifies the mode we want to draw in, similar to <fun><function id='1'>glDrawArrays</function></fun>. The second argument is the count or number of elements we'd like to draw. We specified 6 indices so we want to draw 6 vertices in total. The third argument is the type of the indices which is of type <var>GL_UNSIGNED_INT</var>. The last argument allows us to specify an offset in the EBO (or pass in an index array, but that is when you're not using element buffer objects), but we're just going to leave this at 0.
+最初の引数は<fun><function id='1'>glDrawArrays</function></fun>と同様に描画するモードを指定します。二つ目の引数には描画する要素の数を渡します。6つのインデックスを指定したので6つの頂点を描画します。三番目はインデックスの型で、ここでは<var>GL_UNSIGNED_INT</var>です。最後の引数ではEBOの中でのデータの開始位置を指定できます（あるいはEBOを利用しない場合はインデックスへのポインタ）。今回は0のままにしておきます。
+</p>
+    
+<p>
+  The <fun><function id='2'>glDrawElements</function></fun> function takes its indices from the EBO currently bound to the <var>GL_ELEMENT_ARRAY_BUFFER</var> target. This means we have to bind the corresponding EBO each time we want to render an object with indices which again is a bit cumbersome. It just so happens that a vertex array object also keeps track of element buffer object bindings. The last element buffer object that gets bound while a VAO is bound, is stored as the VAO's element buffer object. Binding to a VAO then also automatically binds that EBO.
+<fun><function id='2'>glDrawElements</function></fun>はインデックスを現在<var>GL_ELEMENT_ARRAY_BUFFER</var>に紐付いているEBOからとります。つまり、インデックスを用いてなにか描画する際には、いちいちEBOを紐付ける必要があるということです。これも少し面倒です。しかしVAOがEBOの紐付けも追跡しているのでこの面倒は回避できます。VAOが紐付いている状態で最後に紐付けられたEBOを、VAOは記憶しています。VAOの紐付けによりEBOも自動で紐付くようになっているのです。
+</p>
+    
+<img src="/img/getting-started/vertex_array_objects_ebo.png" class="clean" alt="Image of VAO's structure / what it stores now also with EBO bindings."/>
+
+<warning>
+  A VAO stores the <fun><function id='32'>glBindBuffer</function></fun> calls when the target is <var>GL_ELEMENT_ARRAY_BUFFER</var>. This also means it stores its unbind calls so make sure you don't unbind the element array buffer before unbinding your VAO, otherwise it doesn't have an EBO configured.
+VAOは、<fun><function id='32'>glBindBuffer</function></fun>のターゲットが<var>GL_ELEMENT_ARRAY_BUFFER</var>の場合、その呼び出しを記憶しています。つまりVAOはEBOの紐付けの解除も記憶してしまうので、VAOの紐付けを解除するまえにEBOを解除しないようにしてください。そうしないとこのVAOがEBOの設定を破棄してしまいます。
+</warning>
+  
+<p>
+  The resulting initialization and drawing code now looks something like this:
+以上を踏まえると、初期化のコードは以下のようになります:
+</p>
+
+<pre><code>
+// ..:: Initialization code :: ..
+// ..:: 初期化のコード ::..
+// 1. bind Vertex Array Object
+// 1. VAOの紐付け
+<function id='27'>glBindVertexArray</function>(VAO);
+// 2. copy our vertices array in a vertex buffer for OpenGL to use
+// 2. 頂点配列を頂点バッファにコピー
+<function id='32'>glBindBuffer</function>(GL_ARRAY_BUFFER, VBO);
+<function id='31'>glBufferData</function>(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+// 3. copy our index array in a element buffer for OpenGL to use
+// 3. インデックス配列をEBOにコピー
+<function id='32'>glBindBuffer</function>(GL_ELEMENT_ARRAY_BUFFER, EBO);
+<function id='31'>glBufferData</function>(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+// 4. then set the vertex attributes pointers
+// 4. 頂点属性のポインタをセット
+<function id='30'>glVertexAttribPointer</function>(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+<function id='29'><function id='60'>glEnable</function>VertexAttribArray</function>(0);  
+
+[...]
+  
+// ..:: Drawing code (in render loop) :: ..
+// ..:: 描画命令（描画ループ内）::..
+<function id='28'>glUseProgram</function>(shaderProgram);
+<function id='27'>glBindVertexArray</function>(VAO);
+<function id='2'>glDrawElements</function>(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0)
+<function id='27'>glBindVertexArray</function>(0);
+</code></pre>
+
+<p>
+  Running the program should give an image as depicted below. The left image should look familiar and the right image is the rectangle drawn in <def>wireframe mode</def>. The wireframe rectangle shows that the rectangle indeed consists of two triangles.
+このプログラムを実行すると以下のような画像が出力されます。左の画像はこのプログラムが表示するものですが、右は<def>ワイヤーフレームモード</def>で描画したものです。ワーヤーフレームで表示した四角形は実際には二つの三角形で成り立っていることが分かります。
+</p>
+
+<img src="/img/getting-started/hellotriangle2.png" width="800px" class="clean" alt="A rectangle drawn using indexed rendering in OpenGL"/>
+
+<note>
+  <strong>Wireframe mode</strong><br/>
+  <strong>ワイヤーフレームモード</strong><br/>
+  To draw your triangles in wireframe mode, you can configure how OpenGL draws its primitives via <code><function id='43'>glPolygonMode</function>(GL_FRONT_AND_BACK, GL_LINE)</code>. The first argument says we want to apply it to the front and back of all triangles and the second line tells us to draw them as lines. Any subsequent drawing calls will render the triangles in wireframe mode until we set it back to its default using <code><function id='43'>glPolygonMode</function>(GL_FRONT_AND_BACK, GL_FILL)</code>.
+三角形をワイヤーフレームモードで表示することは、OpenGLがどのようにプリミティブを表示するかを<code><function id='43'>glPolygonMode</function>(GL_FRONT_AND_BACK, GL_LINE)</code>により指定することで可能です。最初の引数で三角形の前面と後面の両方に適応することを指定します。二つ目の引数は三角形の描画に線を用いることを指定します。以降のすべての描画命令では三角形をワイヤーフレームモードで描画します。もとに戻すには<code><function id='43'>glPolygonMode</function>(GL_FRONT_AND_BACK, GL_FILL)</code>を実行します。
+</note>
+
+<p>
+  If you have any errors, work your way backwards and see if you missed anything. You can find the complete source code <a href="/code_viewer_gh.php?code=src/1.getting_started/2.2.hello_triangle_indexed/hello_triangle_indexed.cpp" target="_blank">here</a>.
+もしエラーがでたら来た道を戻ってミスがないか確認してください。完全なソースコードは<a href="/code_viewer_gh.php?code=src/1.getting_started/2.2.hello_triangle_indexed/hello_triangle_indexed.cpp" target="_blank">ここ</a>にあります。
+</p>
+
+<p>
+  If you managed to draw a triangle or a rectangle just like we did then congratulations, you managed to make it past one of the hardest parts of modern OpenGL: drawing your first triangle. This is a difficult part since there is a large chunk of knowledge required before being able to draw your first triangle. Thankfully, we now made it past that barrier and the upcoming chapters will hopefully be much easier to understand.
+三角形や四角形を描画できた人は、おめでとうございます。あなたはOpenGLの学習で最も困難な部分を完了しました。最初の三角形を描画できたのです。最初の三角形を描画するためには多くの知識が必要なのです。その障壁を突破できたあなたは、以降の節を簡単に理解できるでしょう。
+</p>
+  
+<h2>Additional resources</h2>
+<h2>参考</h2>
+<ul>
+    <li><a href="http://antongerdelan.net/opengl/hellotriangle.html" target="_blank">antongerdelan.net/hellotriangle</a>: Anton Gerdelan's take on rendering the first triangle.</li>
+    <li><a href="http://antongerdelan.net/opengl/hellotriangle.html" target="_blank">antongerdelan.net/hellotriangle</a>: Anton Gerdelanによる最初の三角形のチュートリアル。</li>
+  <li><a href="https://open.gl/drawing" target="_blank">open.gl/drawing</a>: Alexander Overvoorde's take on rendering the first triangle.</li>
+  <li><a href="https://open.gl/drawing" target="_blank">open.gl/drawing</a>: Alexander Overvoordeによる最初の三角形のチュートリアル。 </li>
+  <li><a href="http://antongerdelan.net/opengl/vertexbuffers.html" target="_blank">antongerdelan.net/vertexbuffers</a>: some extra insights into vertex buffer objects.</li>
+  <li><a href="http://antongerdelan.net/opengl/vertexbuffers.html" target="_blank">antongerdelan.net/vertexbuffers</a>: VBOに関するさらなる情報。</li>
+  <li><a href="https://learnopengl.com/In-Practice/Debugging" target="_blank">learnopengl.com/In-Practice/Debugging</a>: there are a lot of steps involved in this chapter; if you're stuck it may be worthwhile to read a bit on debugging in OpenGL (up until the debug output section).</li>
+  <li><a href="https://learnopengl.com/In-Practice/Debugging" target="_blank">learnopengl.com/In-Practice/Debugging</a>: この節にはたくさんのステップがありました。どこかで嵌った場合、OpenGLのデバッグについて少し確認するのがいいでしょう（デバッグ情報の出力の節まで読んでみてください）。</li>
+</ul>
+
+<h1>Exercises</h1>
+<h1>演習</h1>
+<p>
+  To really get a good grasp of the concepts discussed a few exercises were set up. It is advised to work through them before continuing to the next subject to make sure you get a good grasp of what's going on.
+ここまで説明してきた概念をより深く理解するために演習問題を用意しました。なにが起こっているのかきちんと理解するために、次の話題に進む前にこの演習問題を解くことをおすすめします。
+</p>
+
+<ol>
+  <li>Try to draw 2 triangles next to each other using <fun><function id='1'>glDrawArrays</function></fun> by adding more vertices to your data:  <a href="/code_viewer_gh.php?code=src/1.getting_started/2.3.hello_triangle_exercise1/hello_triangle_exercise1.cpp" target="_blank">solution</a>.</li>
+  <li>頂点を追加し、<fun><function id='1'>glDrawArrays</function></fun>を使って二つの三角形を隣り合わせに描いてください: <a href="/code_viewer_gh.php?code=src/1.getting_started/2.3.hello_triangle_exercise1/hello_triangle_exercise1.cpp" target="_blank">回答</a>。</li>
+  <li>Now create the same 2 triangles using two different VAOs and VBOs for their data:  <a href="/code_viewer_gh.php?code=src/1.getting_started/2.4.hello_triangle_exercise2/hello_triangle_exercise2.cpp" target="_blank">solution</a>.</li>
+  <li>同じく二つの三角形を、それぞれのVAOとVBOを用意して描いてください:  <a href="/code_viewer_gh.php?code=src/1.getting_started/2.4.hello_triangle_exercise2/hello_triangle_exercise2.cpp" target="_blank">回答</a>。</li>
+  <li>Create two shader programs where the second program uses a different fragment shader that outputs the color yellow; draw both triangles again where one outputs the color yellow:  <a href="/code_viewer_gh.php?code=src/1.getting_started/2.5.hello_triangle_exercise3/hello_triangle_exercise3.cpp" target="_blank">solution</a>.</li>
+  <li>二つのシェーダープログラムを作成し、二つ目のプログラムのフラグメントシェーダーは黄色を出力するようにしてください。そして今回も二つの三角形を、片方は黄色になるように描いてください。:  <a href="/code_viewer_gh.php?code=src/1.getting_started/2.5.hello_triangle_exercise3/hello_triangle_exercise3.cpp" target="_blank">回答</a>.</li>
+</ol>
+ 
+       
+
+    </div>
+</body>
+</html>
+	</main>
+</body>
+</html>

@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="ja"> 
+<head>
+    <meta charset="utf-8"/>
+    <title>LearnOpenGL</title>
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico"  />
+	<link rel="stylesheet" href="../static/style.css" />
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"> </script>
+	<script src="/static/functions.js"></script>
+</head>
+<body>
+	<nav>
+<ol>
+	<li id="Introduction">
+		<a href="https://learnopengl.com/Introduction">はじめに</a>
+	</li>
+	<li id="Getting-started">
+		<span class="closed">入門</span>
+		<ol>
+			<li id="Getting-started/OpenGL">
+				<a href="https://learnopengl.com/Getting-started/OpenGL">OpenGL </a>
+			</li>
+			<li id="Getting-started/Creating-a-window">
+				<a href="https://learnopengl.com/Getting-started/Creating-a-window">ウィンドウの作成</a>
+			</li>
+			<li id="Getting-started/Hello-Window">
+				<a href="https://learnopengl.com/Getting-started/Hello-Window">最初のウィンドウ</a>
+			</li>
+			<li id="Getting-started/Hello-Triangle">
+				<a href="https://learnopengl.com/Getting-started/Hello-Triangle">最初の三角形</a>
+			</li>
+			<li id="Getting-started/Shaders">
+				<a href="https://learnopengl.com/Getting-started/Shaders">シェーダー</a>
+			</li>
+			<li id="Getting-started/Textures">
+				<a href="https://learnopengl.com/Getting-started/Textures">テクスチャ</a>
+			</li>
+			<li id="Getting-started/Transformations">
+				<a href="https://learnopengl.com/Getting-started/Transformations">座標変換</a>
+			</li>
+			<li id="Getting-started/Coordinate-Systems">
+				<a href="https://learnopengl.com/Getting-started/Coordinate-Systems">座標系</a>
+			</li>
+			<li id="Getting-started/Camera">
+				<a href="https://learnopengl.com/Getting-started/Camera">カメラ</a>
+			</li>
+			<li id="Getting-started/Review">
+				<a href="https://learnopengl.com/Getting-started/Review">まとめ</a>
+			</li>
+		</ol>
+	</li>
+	<li id="Lighting">
+		<span class="closed">Lighting </span>
+		<ol>
+			<li id="Lighting/Colors">
+				<a href="https://learnopengl.com/Lighting/Colors">Colors </a>
+			</li>
+			<li id="Lighting/Basic-Lighting">
+				<a href="https://learnopengl.com/Lighting/Basic-Lighting">Basic Lighting </a>
+			</li>
+			<li id="Lighting/Materials">
+				<a href="https://learnopengl.com/Lighting/Materials">Materials </a>
+			</li>
+			<li id="Lighting/Lighting-maps">
+				<a href="https://learnopengl.com/Lighting/Lighting-maps">Lighting maps </a>
+			</li>
+			<li id="Lighting/Light-casters">
+				<a href="https://learnopengl.com/Lighting/Light-casters">Light casters </a>
+			</li>
+			<li id="Lighting/Multiple-lights">
+				<a href="https://learnopengl.com/Lighting/Multiple-lights">Multiple lights </a>
+			</li>
+			<li id="Lighting/Review">
+				<a href="https://learnopengl.com/Lighting/Review">Review </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Model-Loading">
+		<span class="closed">Model Loading </span>
+		<ol>
+			<li id="Model-Loading/Assimp">
+				<a href="https://learnopengl.com/Model-Loading/Assimp">Assimp </a>
+			</li>
+			<li id="Model-Loading/Mesh">
+				<a href="https://learnopengl.com/Model-Loading/Mesh">Mesh </a>
+			</li>
+			<li id="Model-Loading/Model">
+				<a href="https://learnopengl.com/Model-Loading/Model">Model </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Advanced-OpenGL">
+		<span class="closed">Advanced OpenGL </span>
+		<ol>
+			<li id="Advanced-OpenGL/Depth-testing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Depth-testing">Depth testing </a>
+			</li>
+			<li id="Advanced-OpenGL/Stencil-testing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Stencil-testing">Stencil testing </a>
+			</li>
+			<li id="Advanced-OpenGL/Blending">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Blending">Blending </a>
+			</li>
+			<li id="Advanced-OpenGL/Face-culling">
+				<a href="https://learnopengl.cm/Advanced-OpenGL/Face-culling">Face culling </a>
+			</li>
+			<li id="Advanced-OpenGL/Framebuffers">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Framebuffers">Framebuffers </a>
+			</li>
+			<li id="Advanced-OpenGL/Cubemaps">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Cubemaps">Cubemaps </a>
+			</li>
+			<li id="Advanced-OpenGL/Advanced-Data">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Advanced-Data">Advanced Data </a>
+			</li>
+			<li id="Advanced-OpenGL/Advanced-GLSL">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Advanced-GLSL">Advanced GLSL </a>
+			</li>
+			<li id="Advanced-OpenGL/Geometry-Shader">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Geometry-Shader">Geometry Shader </a>
+			</li>
+			<li id="Advanced-OpenGL/Instancing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Instancing">Instancing </a>
+			</li>
+			<li id="Advanced-OpenGL/Anti-Aliasing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Anti-Aliasing">Anti Aliasing </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Advanced-Lighting">
+		<span class="closed">Advanced Lighting </span>
+		<ol>
+			<li id="Advanced-Lighting/Advanced-Lighting">
+				<a href="https://learnopengl.com/Advanced-Lighting/Advanced-Lighting">Advanced Lighting </a>
+			</li>
+			<li id="Advanced-Lighting/Gamma-Correction">
+				<a href="https://learnopengl.com/Advanced-Lighting/Gamma-Correction">Gamma Correction </a>
+			</li>
+			<li id="Advanced-Lighting/Shadows">
+				<span class="closed">Shadows </span>
+				<ol>
+					<li id="Advanced-Lighting/Shadows/Shadow-Mapping">
+						<a href="https://learnopengl.com/Advanced-Lighting/Shadows/Shadow-Mapping">Shadow Mapping </a>
+					</li>
+					<li id="Advanced-Lighting/Shadows/Point-Shadows">
+						<a href="https://learnopengl.com/Advanced-Lighting/Shadows/Point-Shadows">Point Shadows </a>
+					</li>
+				</ol>
+			</li>
+			<li id="Advanced-Lighting/Normal-Mapping">
+				<a href="https://learnopengl.com/Advanced-Lighting/Normal-Mapping">Normal Mapping </a>
+			</li>
+			<li id="Advanced-Lighting/Parallax-Mapping">
+				<a href="https://learnopengl.com/Advanced-Lighting/Parallax-Mapping">Parallax Mapping </a>
+			</li>
+			<li id="Advanced-Lighting/HDR">
+				<a href="https://learnopengl.com/Advanced-Lighting/HDR">HDR </a>
+			</li>
+			<li id="Advanced-Lighting/Bloom">
+				<a href="https://learnopengl.com/Advanced-Lighting/Bloom">Bloom </a>
+			</li>
+			<li id="Advanced-Lighting/Deferred-Shading">
+				<a href="https://learnopengl.com/Advanced-Lighting/Deferred-Shading">Deferred Shading </a>
+			</li>
+			<li id="Advanced-Lighting/SSAO">
+				<a href="https://learnopengl.com/Advanced-Lighting/SSAO">SSAO </a>
+			</li>
+		</ol>
+	</li>
+	<li id="PBR">
+		<span class="closed">PBR </span>
+		<ol>
+			<li id="PBR/Theory">
+				<a href="https://learnopengl.com/PBR/Theory">Theory </a>
+			</li>
+			<li id="PBR/Lighting">
+				<a href="https://learnopengl.com/PBR/Lighting">Lighting </a>
+			</li>
+			<li id="PBR/IBL">
+				<span class="closed">IBL </span>
+				<ol>
+					<li id="PBR/IBL/Diffuse-irradiance">
+						<a href="https://learnopengl.com/PBR/IBL/Diffuse-irradiance">Diffuse irradiance </a>
+					</li>
+					<li id="PBR/IBL/Specular-IBL">
+						<a href="https://learnopengl.com/PBR/IBL/Specular-IBL">Specular IBL </a>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="In-Practice">
+		<span class="closed">In Practice </span>
+		<ol>
+			<li id="In-Practice/Debugging">
+				<a href="https://learnopengl.com/In-Practice/Debugging">Debugging </a>
+			</li>
+			<li id="In-Practice/Text-Rendering">
+				<a href="https://learnopengl.com/In-Practice/Text-Rendering">Text Rendering </a>
+			</li>
+			<li id="In-Practice/2D-Game">
+				<span class="closed">2D Game </span>
+				<ol>
+					<li id="In-Practice/2D-Game/Breakout">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Breakout">Breakout </a>
+					</li>
+					<li id="In-Practice/2D-Game/Setting-up">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Setting-up">Setting up </a>
+					</li>
+					<li id="In-Practice/2D-Game/Rendering-Sprites">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Rendering-Sprites">Rendering Sprites </a>
+					</li>
+					<li id="In-Practice/2D-Game/Levels">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Levels">Levels </a>
+					</li>
+					<li id="In-Practice/2D-Game/Collisions">
+						<span class="closed">Collisions </span>
+						<ol>
+							<li id="In-Practice/2D-Game/Collisions/Ball">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Ball">Ball </a>
+							</li>
+							<li id="In-Practice/2D-Game/Collisions/Collision-detection">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Collision-detection">Collision detection </a>
+							</li>
+							<li id="In-Practice/2D-Game/Collisions/Collision-resolution">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Collision-resolution">Collision resolution </a>
+							</li>
+						</ol>
+					</li>
+					<li id="In-Practice/2D-Game/Particles">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Particles">Particles </a>
+					</li>
+					<li id="In-Practice/2D-Game/Postprocessing">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Postprocessing">Postprocessing </a>
+					</li>
+					<li id="In-Practice/2D-Game/Powerups">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Powerups">Powerups </a>
+					</li>
+					<li id="In-Practice/2D-Game/Audio">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Audio">Audio </a>
+					</li>
+					<li id="In-Practice/2D-Game/Render-text">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Render-text">Render text </a>
+					</li>
+					<li id="In-Practice/2D-Game/Final-thoughts">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Final-thoughts">Final thoughts </a>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="Guest-Articles">
+		<span class="closed">Guest Articles </span>
+		<ol>
+			<li id="Guest-Articles/How-to-publish">
+				<a href="https://learnopengl.com/Guest-Articles/How-to-publish">How to publish </a>
+			</li>
+			<li id="Guest-Articles/2020">
+				<span class="closed">2020 </span>
+				<ol>
+					<li id="Guest-Articles/2020/OIT">
+						<span class="closed">OIT </span>
+						<ol>
+							<li id="Guest-Articles/2020/OIT/Introduction">
+								<a href="https://learnopengl.com/Guest-Articles/2020/OIT/Introduction">Introduction </a>
+							</li>
+							<li id="Guest-Articles/2020/OIT/Weighted-Blended">
+								<a href="https://learnopengl.com/Guest-Articles/2020/OIT/Weighted-Blended">Weighted Blended </a>
+							</li>
+						</ol>
+					</li>
+					<li id="Guest-Articles/2020/Skeletal-Animation">
+						<a href="https://learnopengl.com/Guest-Articles/2020/Skeletal-Animation">Skeletal Animation </a>
+					</li>
+				</ol>
+			</li>
+			<li id="Guest-Articles/2021">
+				<span class="closed">2021 </span>
+				<ol>
+					<li id="Guest-Articles/2021/CSM">
+						<a href="https://learnopengl.com/Guest-Articles/2021/CSM">CSM </a>
+					</li>
+					<li id="Guest-Articles/2021/Scene">
+						<span class="closed">Scene </span>
+						<ol>
+							<li id="Guest-Articles/2021/Scene/Scene-Graph">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Scene/Scene-Graph">Scene Graph </a>
+							</li>
+							<li id="Guest-Articles/2021/Scene/Frustum-Culling">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Scene/Frustum-Culling">Frustum Culling </a>
+							</li>
+						</ol>
+					</li>
+					<li id="Guest-Articles/2021/Tessellation">
+						<span class="closed">Tessellation </span>
+						<ol>
+							<li id="Guest-Articles/2021/Tessellation/Height-map">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Tessellation/Height-map">Height map </a>
+							</li>
+						</ol>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="Code-repository">
+		<a href="https://learnopengl.com/Code-repository">Code repository </a>
+	</li>
+	<li id="Translations">
+		<a href="https://learnopengl.com/Translations">Translations </a>
+	</li>
+	<li id="About">
+		<a href="https://learnopengl.com/About">About </a>
+	</li>
+</ol>
+	</nav>
+	<main>
+    <div id="content">
+    <h1 id="content-title">Scene Graph</h1>
+<h1 id="content-url" style='display:none;'>Guest-Articles/2021/Scene/Scene-Graph</h1>
+<p>
+        In this article, we will talk about the <def>scene graph</def>.
+		A scene graph is not a class or an object, it's more like a pattern that allows you to create inheritance.
+		This pattern is used a lot in game engines.
+		For example, it is used in animation to manage bones.
+		If I move my arm, my hand needs to move too.
+		To obtain this result, I need a hierarchy with parents and children.
+		Thanks to it, my hand will be a child of my arm that is also a child of my body.
+		This hierarchy has the consequence of representing objects in global and local space.
+		Global space is based on position/rotation and scale based on the world and local space is based on its parent.
+		So, if I only move my hand, its local and global position will change but not the local and global position of my arm.
+		However, if I move my arm, its local and global position will change but also the global position of my hand.
+		Scene graphs can take a lot of forms: register or not the parent, list or contiguous buffer to store the children, flags...
+		Firstly, we will see a quick example of it.
+		In a second time, we will see simple optimizations to improve it.
+		So, talk less, code more ! ;D
+	</p>
+
+	<div class="box">
+      <img src="/img/guest/2021/scene_graph/graph.png" width="400" style="display: inline" alt="Graph example"/>
+      <img src="/img/guest/2021/scene_graph/sceneGraph.png" width="400" style="display: inline" alt="Scene graph example in editor"/>
+	</div>
+
+	<p>
+		First of all, let’s create a transform.
+		Transform will contain local and global space information about our entities
+	</p>
+
+	<pre><code>
+struct Transform
+{
+	/*SPACE INFORMATION*/
+	//Local space information
+	glm::vec3 pos = { 0.0f, 0.0f, 0.0f };
+	glm::vec3 eulerRot = { 0.0f, 0.0f, 0.0f };
+	glm::vec3 scale = { 1.0f, 1.0f, 1.0f };
+
+    //Global space information concatenate in matrix
+	glm::mat4 modelMatrix = glm::mat4(1.0f);
+};
+	</code></pre>
+
+	<note>
+		In this example, we use the Euler angle system.
+		The Euler system is easy to use and understand but it contains a lot of undesirable effects: <a href="https://en.wikipedia.org/wiki/Gimbal_lock" target="_blank">Gimbal lock</a>, shortest angle between to angle thanks to lerp is wrong, cost and size...
+        To avoid it, we need to use <strong>quaternion</strong> but it needs to be hidden because it's hard to represent a rotation thanks to it.
+		To have a better understanding of this tutorial we will use the Euler angle but I invite you to do some research on quaternion. 
+	</note>
+
+	<p>
+		Now we can represent local and global space information about an object.
+		We will make create a class called <funct>Entity</funct>.
+		This class will simply wrap the space information with a model for the visual demonstration.
+	</p>
+
+	<pre><code>
+class Entity : public Model
+{
+public:
+[...]
+
+Transform transform;
+
+	// constructor, expects a filepath to a 3D model.
+	Entity(string const& path, bool gamma = false) : Model(path, gamma)
+	{}
+};
+	</code></pre>
+	<p>
+		The scene graph is still missing. So, let's add it into the Entity class.
+	</p>
+	<pre><code>
+/*SCENE GRAPH*/
+std::list<std::unique_ptr<Entity>> children;
+	Entity* parent = nullptr;
+	</code></pre>
+	<p>
+		As we said, scene graphs can take a lot of forms: use std::vector instead of std::list, don't register its parent to simplify the size of the class...
+		In our example we used std::list. 
+		We don't want our entity address to change at all.
+		My parents’ address always needs to be valid.
+		Then, I used std::unique_ptr because it's the cleanest approach to avoid a leak.
+		Memory leak appears happens if you allocate memory thanks to new or malloc and forget to call delete or free when datas disappears.
+		Information is still in memory but you cannot have access to it.
+		If you want more information about it, many tutorials talk about it more clearly.
+	</p>
+
+	<p>
+		<dl>
+			<dt>
+				We need now to create a function to add a child to our entity.
+				This function will be easy:
+			</dt>
+			<dd>
+				1: Add entity
+			</dd>
+			<dd>
+				2: Register parent of this new entity as the current entity
+			</dd>
+		  </dl> 
+	</p>
+
+
+	<pre><code>
+template<typename... TArgs>
+void addChild(const TArgs&... args)
+{
+	children.emplace_back(std::make_unique<Entity>(args...));
+	children.back()->parent = this;
+}
+	</code></pre>
+
+	<note>
+        A variadic template allows us to create an entity with any constructor that you want to use without overloading the addChild function.
+		I used it in this example to awake your curiosity and show you a simple use of it.
+	</note>
+
+	<p>
+	Ok, perfect! It's almost done, courage!
+	Now we have scene graphs and space information but something is still missing.
+	When we want to send space information to our shader, we need a model matrix.
+	However, we don't see how to compute it thanks to our parents and our local information.
+	First, we need a function to create a local model matrix that represents an object in space based on its parent.
+	This function will be added to the transform class. 
+	</p>
+
+	<pre><code>
+glm::mat4 getLocalModelMatrix()
+{
+	const glm::mat4 transformX = <function id='57'>glm::rotate</function>(glm::mat4(1.0f),
+						 <function id='63'>glm::radians</function>(eulerRot.x),
+						 glm::vec3(1.0f, 0.0f, 0.0f));
+	const glm::mat4 transformY = <function id='57'>glm::rotate</function>(glm::mat4(1.0f),
+						 <function id='63'>glm::radians</function>(eulerRot.y),
+						 glm::vec3(0.0f, 1.0f, 0.0f));
+	const glm::mat4 transformZ = <function id='57'>glm::rotate</function>(glm::mat4(1.0f),
+						 <function id='63'>glm::radians</function>(eulerRot.z),
+						 glm::vec3(0.0f, 0.0f, 1.0f));
+
+	// Y * X * Z
+	const glm::mat4 roationMatrix = transformY * transformX * transformZ;
+
+	// translation * rotation * scale (also know as TRS matrix)
+	return <function id='55'>glm::translate</function>(glm::mat4(1.0f), pos) *
+				roationMatrix *
+				<function id='56'>glm::scale</function>(glm::mat4(1.0f), scale);
+}
+	</code></pre>
+
+	<p>
+		To combine multiple model matrices, we need to multiply them.
+		So if I multiply the local model matrix of my hand with the model matrix of the world with arm and arm with hand, I will obtain the global matrix of my hand!
+		So, let's implement a function in entity class that will do it for us: 
+	</p>
+
+	<pre><code>
+void updateSelfAndChild()
+{
+	if (parent)
+		modelMatrix = parent->modelMatrix * getLocalModelMatrix();
+	else
+		modelMatrix = getLocalModelMatrix();
+
+	for (auto&& child : children)
+	{
+		child->updateSelfAndChild();
+	}
+}
+	</code></pre>
+
+	<p>
+		Now, if I update the world, all of my entities contained will also be updated and our global model matrix will be computed.
+		Finally, we just need to add some code in the main function to add multiple moons with the same local distance and scale and code in the main loop to move the first entity.
+	</p>
+
+	<pre><code>
+/*BEFOR THE MAIN LOOP*/
+
+// load entities
+// -----------
+const char* pathStr = "resources/objects/planet/planet.obj";
+Entity ourEntity(FileSystem::getPath(pathStr));
+ourEntity.transform.pos.x = 10;
+const float scale = 0.75;
+ourEntity.transform.scale = { scale, scale, scale };
+
+{
+	Entity* lastEntity = &ourEntity;
+
+	for (unsigned int i = 0; i &lt; 10; ++i)
+	{
+		lastEntity->addChild(FileSystem::getPath(pathStr));
+		lastEntity = lastEntity->children.back().get();
+
+		//Set tranform values
+		lastEntity->transform.pos.x = 10;
+		lastEntity->transform.scale = { scale, scale, scale };
+	}
+}
+ourEntity.updateSelfAndChild();
+
+/*IN THE MAIN LOOP*/
+
+// draw our scene graph
+Entity* lastEntity = &ourEntity;
+while (lastEntity->children.size())
+{
+	ourShader.setMat4("model", lastEntity->transform.modelMatrix);
+	lastEntity->Draw(ourShader);
+	lastEntity = lastEntity->children.back().get();
+}
+
+ourEntity.transform.eulerRot.y += 20 * deltaTime;
+ourEntity.updateSelfAndChild();
+	</code></pre>
+	
+	<p>
+		We can see this result thanks to this code.
+	</p>
+
+      <img src="/img/guest/2021/scene_graph/result.png" alt="Graph example"/>
+
+	<h2>Optimization</h2>
+
+	<p>
+        Being pragmatic is essential to implement a new feature but now let's see how to optimize it.
+        Firstly, in the main loop, we always update the model matrix even if it doesn't move.
+		In programming, a pattern called a dirty flag can help us.
+        A dirty flag is a simple boolean called "isDirty" that allows us to know if an entity was moved during the previous frame.
+        So, if the user scales, rotates or translates it, we need to set this flag on.
+		Don't forget, the model matrix is based on the parent model matrix.
+		So if I change it, I also need to compute all its children's matrix.
+        This flag will be set off in the update function when the model matrix was recomputed.
+	</p>
+
+	<warning>
+        This pattern is very powerful but can be integrated easily only if you encapsulate your class correctly.
+		I haven’t done it to give you an example of rigid code without the possibility to evolve and change easily.
+		This code requires the programmer to code its functionality perfectly and is difficult to change, improve or optimize.
+		But in production, time is a precious resource and you sometimes need to implement the feature without optimizing.
+		One day, if your feature becomes the performance bottleneck, you need to change it easily.
+		Encapsulation, private/protected, getter/setter is C++ advantage that allows you to do it.
+		Encapsulation has its downsides too.
+		It can increase the size of your class and reduce its visibility.
+		It can also be laborious if you create a getter/setter for all your members.
+        An illarouse <a href="https://www.youtube.com/watch?v=-AQfQFcXac8" target="_blank">video</a> show the c++ limit but keep in mind this example and make do the balance in function of your situation.
+	</warning>
+
+	<p>
+		Let's remake do again transform function with encapsulation and dirty flag 
+	</p>
+
+	<pre><code>
+class Transform
+{
+protected:
+	//Local space information
+	glm::vec3 m_pos = { 0.0f, 0.0f, 0.0f };
+	glm::vec3 m_eulerRot = { 0.0f, 0.0f, 0.0f }; //In degrees
+	glm::vec3 m_scale = { 1.0f, 1.0f, 1.0f };
+
+	//Global space information concatenate in matrix
+	glm::mat4 m_modelMatrix = glm::mat4(1.0f);
+
+	//Dirty flag
+	bool m_isDirty = true;
+
+protected:
+	glm::mat4 getLocalModelMatrix()
+	{
+		const glm::mat4 transformX = <function id='57'>glm::rotate</function>(glm::mat4(1.0f),
+					<function id='63'>glm::radians</function>(m_eulerRot.x),
+					glm::vec3(1.0f, 0.0f, 0.0f));
+		const glm::mat4 transformY = <function id='57'>glm::rotate</function>(glm::mat4(1.0f),
+					<function id='63'>glm::radians</function>(m_eulerRot.y),
+					glm::vec3(0.0f, 1.0f, 0.0f));
+		const glm::mat4 transformZ = <function id='57'>glm::rotate</function>(glm::mat4(1.0f),
+					<function id='63'>glm::radians</function>(m_eulerRot.z),
+					glm::vec3(0.0f, 0.0f, 1.0f));
+
+		// Y * X * Z
+		const glm::mat4 roationMatrix = transformY * transformX * transformZ;
+
+		// translation * rotation * scale (also know as TRS matrix)
+		return <function id='55'>glm::translate</function>(glm::mat4(1.0f), m_pos) *
+					roationMatrix *
+					<function id='56'>glm::scale</function>(glm::mat4(1.0f), m_scale);
+	}
+public:
+
+	void computeModelMatrix()
+	{
+		m_modelMatrix = getLocalModelMatrix();
+	}
+
+	void computeModelMatrix(const glm::mat4& parentGlobalModelMatrix)
+	{
+		m_modelMatrix = parentGlobalModelMatrix * getLocalModelMatrix();
+	}
+
+	void setLocalPosition(const glm::vec3& newPosition)
+	{
+		m_pos = newPosition;
+		m_isDirty = true;
+	}
+
+	[...]
+
+	const glm::vec3& getLocalPosition()
+	{
+		return m_pos;
+	}
+
+	[...]
+
+	const glm::mat4& getModelMatrix()
+	{
+		return m_modelMatrix;
+	}
+
+	bool isDirty()
+	{
+		return m_isDirty;
+	}
+};
+
+
+class Entity : public Model
+{
+public:
+	//Scene graph
+	std::list<std::unique_ptr<Entity>> children;
+	Entity* parent = nullptr;
+
+	//Space information
+	Transform transform;
+
+	// constructor, expects a filepath to a 3D model.
+	Entity(string const& path, bool gamma = false) : Model(path, gamma)
+	{}
+
+	//Add child. Argument input is argument of any constructor that you create.
+	//By default you can use the default constructor and don't put argument input.
+	template<typename... TArgs>
+	void addChild(const TArgs&... args)
+	{
+		children.emplace_back(std::make_unique<Entity>(args...));
+		children.back()->parent = this;
+	}
+
+	//Update transform if it was changed
+	void updateSelfAndChild()
+	{
+		if (!transform.isDirty())
+			return;
+
+		forceUpdateSelfAndChild();
+	}
+
+	//Force update of transform even if local space don't change
+	void forceUpdateSelfAndChild()
+	{
+		if (parent)
+			transform.computeModelMatrix(parent->transform.getModelMatrix());
+		else
+			transform.computeModelMatrix();
+
+		for (auto&& child : children)
+		{
+			child->forceUpdateSelfAndChild();
+		}
+	}
+};
+	</code></pre>
+	
+	<p>
+	Perfect! Another solution to improve performance can be memorizing the local Model matrix.
+	Thanks to it, we avoid recomputing all child local model matrices if the parent is moved.
+	This solution improves performance but transforms become heavier.
+	This size is really important for your hardware.
+	We will see why in the limitation subchapter.
+	You can find the code <a href="https://learnopengl.com/code_viewer_gh.php?code=src/8.guest/2021/1.scene/1.scene_graph/scene_graph.cpp" target="_blank">here</a>.
+	</p>
+
+	<h2>Limitation</h2>
+
+	<p>
+		Do you ever hear about <def>data oriented design</def> ? No ? Let's talk brevely about it !
+	</p>
+	<p>
+		This design is based on how your hardware works.
+		In your computer, data is aligned into your memory.
+		When you use data like a variable, this data is sent to the cache.
+		The cache is a very fast memory but without a lot of space.
+		This memory is localized into your CPU.
+		For example, if you want to make a cake, you need to go to a supermarket (hard disk) to buy ingredients.
+		A supermarket is very big but is also very far from your home.
+		When you buy your ingredients, you store them in your fridge (RAM).
+		Your fridge contains ingredients that you need to live but I hope for you that you don't live only with cake ^^
+		It is also small but near to your kitchen worktop.
+		And finally, your kitchen worktop (the cache) is small and can't contain all your ingredients but is very near to your preparation.
+		It's the same for the PC!
+		When you need to process data, your system will copy your data but also all datas after in cache (depending on your cache line size).
+		So, if all your datas are not contiguous in your memory, you will be as slow as if you need to take eggs one by one in your fridge to make your cake.
+		std::list is a noncontiguous array.
+		std::map will probably make the job better but inheritance cannot be aligned into your memory because it's a tree.
+		So, if you want to make RTS for example, with an independent unit, you probably don't need or don't want a scene graph to manage your entities.
+	</p>
+
+	<note>
+		std::map is tree and is aligned in memory but scene graph will jump into this memory and will be slower than don't use inheritance.
+	</note>
+
+	<p>
+		You know now what a Scene graph is and how to use it with its limitations.
+		In the next chapter, we will talk about frustum culling with a scene graph.
+	</p>
+
+	<h2>Additional resources</h2>
+
+	<ul>
+		<li><a href="https://walterkuppens.com/post/wtf-is-a-scene-graph/" target="_blank">
+			walterkuppens article about scene graph</a>: An article by Walter Kuppens with another approach of the scene graph.</li>
+
+		<li><a href="https://webglfundamentals.org/webgl/lessons/webgl-scene-graph.html" target="_blank">
+			webglfundamentals article and demonstration about scene graph</a>: An article with animated webGL code and animated demonstration</li>			
+    </ul>
+	
+      <author>
+			<strong>Article by: </strong>Six Jonathan<br>
+			<strong>Contact: </strong><a href="Six-Jonathan@orange.fr" target="_blank">e-mail</a><br>
+			<strong>Date: </strong> 09/2021<br>
+			<div>
+				<a href="https://github.com/Renardjojo">
+					<svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" class="octicon octicon-mark-github v-align-middle">
+						<path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+					</svg>
+				</a>
+				<a href="https://www.linkedin.com/in/jonathan-six-4553611a9/">
+					<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 34 34" class="global-nav__logo">
+						<path d="M34,2.5v29A2.5,2.5,0,0,1,31.5,34H2.5A2.5,2.5,0,0,1,0,31.5V2.5A2.5,2.5,0,0,1,2.5,0h29A2.5,2.5,0,0,1,34,2.5ZM10,13H5V29h5Zm.45-5.5A2.88,2.88,0,0,0,7.59,4.6H7.5a2.9,2.9,0,0,0,0,5.8h0a2.88,2.88,0,0,0,2.95-2.81ZM29,19.28c0-4.81-3.06-6.68-6.1-6.68a5.7,5.7,0,0,0-5.06,2.58H17.7V13H13V29h5V20.49a3.32,3.32,0,0,1,3-3.58h.19c1.59,0,2.77,1,2.77,3.52V29h5Z" fill="currentColor"></path>
+					</svg>
+				</a>
+			</div>
+      </author>
+
+  
+       
+
+    </div>
+    
+	</main>
+</body>
+</html>

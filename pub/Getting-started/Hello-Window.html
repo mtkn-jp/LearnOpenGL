@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="ja"> 
+<head>
+    <meta charset="utf-8"/>
+    <title>LearnOpenGL</title>
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico"  />
+	<link rel="stylesheet" href="../static/style.css" />
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"> </script>
+	<script src="/static/functions.js"></script>
+</head>
+<body>
+	<nav>
+<ol>
+	<li id="Introduction">
+		<a href="https://learnopengl.com/Introduction">はじめに</a>
+	</li>
+	<li id="Getting-started">
+		<span class="closed">入門</span>
+		<ol>
+			<li id="Getting-started/OpenGL">
+				<a href="https://learnopengl.com/Getting-started/OpenGL">OpenGL </a>
+			</li>
+			<li id="Getting-started/Creating-a-window">
+				<a href="https://learnopengl.com/Getting-started/Creating-a-window">ウィンドウの作成</a>
+			</li>
+			<li id="Getting-started/Hello-Window">
+				<a href="https://learnopengl.com/Getting-started/Hello-Window">最初のウィンドウ</a>
+			</li>
+			<li id="Getting-started/Hello-Triangle">
+				<a href="https://learnopengl.com/Getting-started/Hello-Triangle">最初の三角形</a>
+			</li>
+			<li id="Getting-started/Shaders">
+				<a href="https://learnopengl.com/Getting-started/Shaders">シェーダー</a>
+			</li>
+			<li id="Getting-started/Textures">
+				<a href="https://learnopengl.com/Getting-started/Textures">テクスチャ</a>
+			</li>
+			<li id="Getting-started/Transformations">
+				<a href="https://learnopengl.com/Getting-started/Transformations">座標変換</a>
+			</li>
+			<li id="Getting-started/Coordinate-Systems">
+				<a href="https://learnopengl.com/Getting-started/Coordinate-Systems">座標系</a>
+			</li>
+			<li id="Getting-started/Camera">
+				<a href="https://learnopengl.com/Getting-started/Camera">カメラ</a>
+			</li>
+			<li id="Getting-started/Review">
+				<a href="https://learnopengl.com/Getting-started/Review">まとめ</a>
+			</li>
+		</ol>
+	</li>
+	<li id="Lighting">
+		<span class="closed">Lighting </span>
+		<ol>
+			<li id="Lighting/Colors">
+				<a href="https://learnopengl.com/Lighting/Colors">Colors </a>
+			</li>
+			<li id="Lighting/Basic-Lighting">
+				<a href="https://learnopengl.com/Lighting/Basic-Lighting">Basic Lighting </a>
+			</li>
+			<li id="Lighting/Materials">
+				<a href="https://learnopengl.com/Lighting/Materials">Materials </a>
+			</li>
+			<li id="Lighting/Lighting-maps">
+				<a href="https://learnopengl.com/Lighting/Lighting-maps">Lighting maps </a>
+			</li>
+			<li id="Lighting/Light-casters">
+				<a href="https://learnopengl.com/Lighting/Light-casters">Light casters </a>
+			</li>
+			<li id="Lighting/Multiple-lights">
+				<a href="https://learnopengl.com/Lighting/Multiple-lights">Multiple lights </a>
+			</li>
+			<li id="Lighting/Review">
+				<a href="https://learnopengl.com/Lighting/Review">Review </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Model-Loading">
+		<span class="closed">Model Loading </span>
+		<ol>
+			<li id="Model-Loading/Assimp">
+				<a href="https://learnopengl.com/Model-Loading/Assimp">Assimp </a>
+			</li>
+			<li id="Model-Loading/Mesh">
+				<a href="https://learnopengl.com/Model-Loading/Mesh">Mesh </a>
+			</li>
+			<li id="Model-Loading/Model">
+				<a href="https://learnopengl.com/Model-Loading/Model">Model </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Advanced-OpenGL">
+		<span class="closed">Advanced OpenGL </span>
+		<ol>
+			<li id="Advanced-OpenGL/Depth-testing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Depth-testing">Depth testing </a>
+			</li>
+			<li id="Advanced-OpenGL/Stencil-testing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Stencil-testing">Stencil testing </a>
+			</li>
+			<li id="Advanced-OpenGL/Blending">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Blending">Blending </a>
+			</li>
+			<li id="Advanced-OpenGL/Face-culling">
+				<a href="https://learnopengl.cm/Advanced-OpenGL/Face-culling">Face culling </a>
+			</li>
+			<li id="Advanced-OpenGL/Framebuffers">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Framebuffers">Framebuffers </a>
+			</li>
+			<li id="Advanced-OpenGL/Cubemaps">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Cubemaps">Cubemaps </a>
+			</li>
+			<li id="Advanced-OpenGL/Advanced-Data">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Advanced-Data">Advanced Data </a>
+			</li>
+			<li id="Advanced-OpenGL/Advanced-GLSL">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Advanced-GLSL">Advanced GLSL </a>
+			</li>
+			<li id="Advanced-OpenGL/Geometry-Shader">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Geometry-Shader">Geometry Shader </a>
+			</li>
+			<li id="Advanced-OpenGL/Instancing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Instancing">Instancing </a>
+			</li>
+			<li id="Advanced-OpenGL/Anti-Aliasing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Anti-Aliasing">Anti Aliasing </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Advanced-Lighting">
+		<span class="closed">Advanced Lighting </span>
+		<ol>
+			<li id="Advanced-Lighting/Advanced-Lighting">
+				<a href="https://learnopengl.com/Advanced-Lighting/Advanced-Lighting">Advanced Lighting </a>
+			</li>
+			<li id="Advanced-Lighting/Gamma-Correction">
+				<a href="https://learnopengl.com/Advanced-Lighting/Gamma-Correction">Gamma Correction </a>
+			</li>
+			<li id="Advanced-Lighting/Shadows">
+				<span class="closed">Shadows </span>
+				<ol>
+					<li id="Advanced-Lighting/Shadows/Shadow-Mapping">
+						<a href="https://learnopengl.com/Advanced-Lighting/Shadows/Shadow-Mapping">Shadow Mapping </a>
+					</li>
+					<li id="Advanced-Lighting/Shadows/Point-Shadows">
+						<a href="https://learnopengl.com/Advanced-Lighting/Shadows/Point-Shadows">Point Shadows </a>
+					</li>
+				</ol>
+			</li>
+			<li id="Advanced-Lighting/Normal-Mapping">
+				<a href="https://learnopengl.com/Advanced-Lighting/Normal-Mapping">Normal Mapping </a>
+			</li>
+			<li id="Advanced-Lighting/Parallax-Mapping">
+				<a href="https://learnopengl.com/Advanced-Lighting/Parallax-Mapping">Parallax Mapping </a>
+			</li>
+			<li id="Advanced-Lighting/HDR">
+				<a href="https://learnopengl.com/Advanced-Lighting/HDR">HDR </a>
+			</li>
+			<li id="Advanced-Lighting/Bloom">
+				<a href="https://learnopengl.com/Advanced-Lighting/Bloom">Bloom </a>
+			</li>
+			<li id="Advanced-Lighting/Deferred-Shading">
+				<a href="https://learnopengl.com/Advanced-Lighting/Deferred-Shading">Deferred Shading </a>
+			</li>
+			<li id="Advanced-Lighting/SSAO">
+				<a href="https://learnopengl.com/Advanced-Lighting/SSAO">SSAO </a>
+			</li>
+		</ol>
+	</li>
+	<li id="PBR">
+		<span class="closed">PBR </span>
+		<ol>
+			<li id="PBR/Theory">
+				<a href="https://learnopengl.com/PBR/Theory">Theory </a>
+			</li>
+			<li id="PBR/Lighting">
+				<a href="https://learnopengl.com/PBR/Lighting">Lighting </a>
+			</li>
+			<li id="PBR/IBL">
+				<span class="closed">IBL </span>
+				<ol>
+					<li id="PBR/IBL/Diffuse-irradiance">
+						<a href="https://learnopengl.com/PBR/IBL/Diffuse-irradiance">Diffuse irradiance </a>
+					</li>
+					<li id="PBR/IBL/Specular-IBL">
+						<a href="https://learnopengl.com/PBR/IBL/Specular-IBL">Specular IBL </a>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="In-Practice">
+		<span class="closed">In Practice </span>
+		<ol>
+			<li id="In-Practice/Debugging">
+				<a href="https://learnopengl.com/In-Practice/Debugging">Debugging </a>
+			</li>
+			<li id="In-Practice/Text-Rendering">
+				<a href="https://learnopengl.com/In-Practice/Text-Rendering">Text Rendering </a>
+			</li>
+			<li id="In-Practice/2D-Game">
+				<span class="closed">2D Game </span>
+				<ol>
+					<li id="In-Practice/2D-Game/Breakout">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Breakout">Breakout </a>
+					</li>
+					<li id="In-Practice/2D-Game/Setting-up">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Setting-up">Setting up </a>
+					</li>
+					<li id="In-Practice/2D-Game/Rendering-Sprites">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Rendering-Sprites">Rendering Sprites </a>
+					</li>
+					<li id="In-Practice/2D-Game/Levels">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Levels">Levels </a>
+					</li>
+					<li id="In-Practice/2D-Game/Collisions">
+						<span class="closed">Collisions </span>
+						<ol>
+							<li id="In-Practice/2D-Game/Collisions/Ball">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Ball">Ball </a>
+							</li>
+							<li id="In-Practice/2D-Game/Collisions/Collision-detection">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Collision-detection">Collision detection </a>
+							</li>
+							<li id="In-Practice/2D-Game/Collisions/Collision-resolution">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Collision-resolution">Collision resolution </a>
+							</li>
+						</ol>
+					</li>
+					<li id="In-Practice/2D-Game/Particles">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Particles">Particles </a>
+					</li>
+					<li id="In-Practice/2D-Game/Postprocessing">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Postprocessing">Postprocessing </a>
+					</li>
+					<li id="In-Practice/2D-Game/Powerups">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Powerups">Powerups </a>
+					</li>
+					<li id="In-Practice/2D-Game/Audio">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Audio">Audio </a>
+					</li>
+					<li id="In-Practice/2D-Game/Render-text">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Render-text">Render text </a>
+					</li>
+					<li id="In-Practice/2D-Game/Final-thoughts">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Final-thoughts">Final thoughts </a>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="Guest-Articles">
+		<span class="closed">Guest Articles </span>
+		<ol>
+			<li id="Guest-Articles/How-to-publish">
+				<a href="https://learnopengl.com/Guest-Articles/How-to-publish">How to publish </a>
+			</li>
+			<li id="Guest-Articles/2020">
+				<span class="closed">2020 </span>
+				<ol>
+					<li id="Guest-Articles/2020/OIT">
+						<span class="closed">OIT </span>
+						<ol>
+							<li id="Guest-Articles/2020/OIT/Introduction">
+								<a href="https://learnopengl.com/Guest-Articles/2020/OIT/Introduction">Introduction </a>
+							</li>
+							<li id="Guest-Articles/2020/OIT/Weighted-Blended">
+								<a href="https://learnopengl.com/Guest-Articles/2020/OIT/Weighted-Blended">Weighted Blended </a>
+							</li>
+						</ol>
+					</li>
+					<li id="Guest-Articles/2020/Skeletal-Animation">
+						<a href="https://learnopengl.com/Guest-Articles/2020/Skeletal-Animation">Skeletal Animation </a>
+					</li>
+				</ol>
+			</li>
+			<li id="Guest-Articles/2021">
+				<span class="closed">2021 </span>
+				<ol>
+					<li id="Guest-Articles/2021/CSM">
+						<a href="https://learnopengl.com/Guest-Articles/2021/CSM">CSM </a>
+					</li>
+					<li id="Guest-Articles/2021/Scene">
+						<span class="closed">Scene </span>
+						<ol>
+							<li id="Guest-Articles/2021/Scene/Scene-Graph">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Scene/Scene-Graph">Scene Graph </a>
+							</li>
+							<li id="Guest-Articles/2021/Scene/Frustum-Culling">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Scene/Frustum-Culling">Frustum Culling </a>
+							</li>
+						</ol>
+					</li>
+					<li id="Guest-Articles/2021/Tessellation">
+						<span class="closed">Tessellation </span>
+						<ol>
+							<li id="Guest-Articles/2021/Tessellation/Height-map">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Tessellation/Height-map">Height map </a>
+							</li>
+						</ol>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="Code-repository">
+		<a href="https://learnopengl.com/Code-repository">Code repository </a>
+	</li>
+	<li id="Translations">
+		<a href="https://learnopengl.com/Translations">Translations </a>
+	</li>
+	<li id="About">
+		<a href="https://learnopengl.com/About">About </a>
+	</li>
+</ol>
+	</nav>
+	<main>
+    <h1 id="content-title">Hello Window</h1>
+    <h1 id="content-title">はじめてのウィンドウ</h1>
+<h1 id="content-url" style='display:none;'>Getting-started/Hello-Window</h1>
+<p>
+  Let's see if we can get GLFW up and running. First, create a <code>.cpp</code> file and add the following includes to the top of your newly created file.
+GLFWを立ち上げ実行できるかどうか確認しましょう。はじめに<code>.cpp</code>ファイルを作成し、一番上に以下のインクルードディレクティブを書いてください:
+</p>
+
+<pre><code>
+#include &lt;glad/glad.h&gt;
+#include &lt;GLFW/glfw3.h&gt;
+</code></pre>。
+
+<warning>
+  Be sure to include GLAD before GLFW. The include file for GLAD includes the required OpenGL headers behind the scenes (like <code>GL/gl.h</code>) so be sure to include GLAD before other header files that require OpenGL (like GLFW). 
+必ずGLADをGLFWより前にインクルードしてください。GLADをインクルードすると、必要なOpenGLのヘッダーファイルを一緒にインクルードしてくれます（たとえば<code>GL/gl.h</code>のようなものです）。そのためGLFWのようなOpenGLを必要とするヘッダーのまえに、GLADをインクルードする必要があるのです。
+</warning>
+
+<p>
+  Next, we create the <fun>main</fun> function where we will instantiate the GLFW window:
+続いて<fun>main</fun>関数を作成し、GLFWをインスタンス化します:
+</p>
+
+<pre><code>
+int main()
+{
+    <function id='17'>glfwInit</function>();
+    <function id='18'>glfwWindowHint</function>(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    <function id='18'>glfwWindowHint</function>(GLFW_CONTEXT_VERSION_MINOR, 3);
+    <function id='18'>glfwWindowHint</function>(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    //<function id='18'>glfwWindowHint</function>(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+  
+    return 0;
+}
+</code></pre>。
+
+<p> 
+  In the main function we first initialize GLFW with <fun><function id='17'>glfwInit</function></fun>, after which we can configure GLFW using <fun><function id='18'>glfwWindowHint</function></fun>. The first argument of <fun><function id='18'>glfwWindowHint</function></fun> tells us what option we want to configure, where we can select the option from a large enum of possible options prefixed with <code>GLFW_</code>. The second argument is an integer that sets the value of our option. A list of all the possible options and its corresponding values can be found at <a href="http://www.glfw.org/docs/latest/window.html#window_hints" target="_blank">GLFW's window handling</a> documentation. If you try to run the application now and it gives a lot of <em>undefined reference</em> errors it means you didn't successfully link the GLFW library.
+main関数のはじめに<fun><function id='17'>glfwInit</function></fun>を使ってGLFWを初期化します。続いて<fun><function id='18'>glfwWindowHint</function></fun>によりGLFWの設定を行います。<fun><function id='18'>glfwWindowHint</function></fun>のひとつめの変数は設定したい項目で、頭に<code>GLFW_</code>がついた大きなenumのなかから選べます。ふたつめの変数は選んだオプションを設定する整数です。利用可能なオプションと対応する整数値は<a href="http://www.glfw.org/docs/latest/window.html#window_hints" target="_blank">GLFW's window handling</a>において確認できます。この時点でアプリケーションを実行して大量の<em>undefined reference</em>がでた場合、GLFWライブラリをうまくリンクできていないということです。
+</p>
+
+<p>
+  Since the focus of this book is on OpenGL version 3.3 we'd like to tell GLFW that 3.3 is the OpenGL version we want to use. This way GLFW can make the proper arrangements when creating the OpenGL context. This ensures that when a user does not have the proper OpenGL version GLFW fails to run. We set the major and minor version both to <code>3</code>. We also tell GLFW we want to explicitly use the core-profile. Telling GLFW we want to use the core-profile means we'll get access to a smaller subset of OpenGL features without backwards-compatible features we no longer need. Note that on Mac OS X you need to add <code><function id='18'>glfwWindowHint</function>(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);</code> to your initialization code for it to work.
+われわれはOpenGLのversion 3.3を利用したいので、GLFWにそのことを伝えます。こうすることで、OpenGLコンテクストを作成するにあたりGLFWが適切な変数を作成できるようになります。また、ユーザーのコンピュータにOpenGLの適切なバージョンが入っていない場合、GLFWの実行が失敗することが保証されます。メジャーバージョンとマイナーバージョンの両方を3に設定しましょう。さらに、core-profileを利用することを明記します。こうすることでわれわれには必要のない下位互換性を捨て、OpenGLをコンパクトに利用できます。あなたがMac OS Xを利用している場合、<code><function id='18'>glfwWindowHint</function>(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);</code>を追加する必要があります。
+</p>
+
+<note>
+  Make sure you have OpenGL versions 3.3 or higher installed on your system/hardware otherwise the application will crash or display undefined behavior. To find the OpenGL version on your machine either call <strong>glxinfo</strong> on Linux machines or use a utility like the <a href="http://download.cnet.com/OpenGL-Extensions-Viewer/3000-18487_4-34442.html" target="_blank">OpenGL Extension Viewer</a> for Windows. If your supported version is lower try to check if your video card supports OpenGL 3.3+ (otherwise it's really old) and/or update your drivers.
+あなたのシステム/ハードウェアにOpenGLバージョン3.3より新しいものがインストールされていることを確認してください。さもなければアプリケーションがクラッシュしたり、不定義の動作をすることがあります。コンピュータにインストールされたOpenGLのバージョンを調べるには、Linuxにおいては<strong>glxinfo</strong>を、Windowsにおいては<a href="http://download.cnet.com/OpenGL-Extensions-Viewer/3000-18487_4-34442.html" target="_blank">OpenGL Extension Viewer</a>のようなものを利用してください。OpenGLのバージョンが古い場合、ビデオカードがOpenGLの3.3以上をサポートしていないか確認し、ドライバをアップデートしてください（サポートしていないビデオカードは相当古いです）。
+</note>
+
+<p>
+  Next we're required to create a window object. This window object holds all the windowing data and is required by most of GLFW's other functions. 
+次はウィンドウオブジェクトの作成です。ウィンドウオブジェクトはウィンドウにかかるすべてのデータを保持しており、GLFWのほとんどの関数を利用するうえで必要となります。
+</p>
+
+<pre><code>
+GLFWwindow* window = <function id='20'>glfwCreateWindow</function>(800, 600, "LearnOpenGL", NULL, NULL);
+if (window == NULL)
+{
+    std::cout &lt;&lt; "Failed to create GLFW window" &lt;&lt; std::endl;
+    <function id='25'>glfwTerminate</function>();
+    return -1;
+}
+<function id='19'>glfwMakeContextCurrent</function>(window);
+</code></pre>
+
+<p>
+  The <fun><function id='20'>glfwCreateWindow</function></fun> function requires the window width and height as its first two arguments respectively. The third argument allows us to create a name for the window; for now we call it <code>&quot;LearnOpenGL&quot;</code> but you're allowed to name it however you like. We can ignore the last 2 parameters. The function returns a <fun>GLFWwindow</fun> object that we'll later need for other GLFW operations. After that we tell GLFW to make the context of our window the main context on the current thread.
+<fun><function id='20'>glfwCreateWindow</function></fun>関数はウィンドウの幅と高さをそれぞれ第一および第二引数としてとります。三番目の引数はウィンドウの名前です。ここでは<code>&quot;LearnOpenGL&quot;</code>としていますが、あなたの好きな名前でかまいません。あとのふたつの引数はここでは無視します。この関数は<fun>GLFWwindow</fun>オブジェクトを返します。このオブジェクトはGLFWでほかの操作をするときに必要なものです。ウィンドウオブジェクトを作成したあとは、コンテクストの作成です。先程作ったウィンドウのコンテクストをこれから利用するコンテクストとして宣言します。
+</p>
+
+<h2>GLAD</h2>
+<p>
+  In the previous chapter we mentioned that GLAD manages function pointers for OpenGL so we want to initialize GLAD before we call any OpenGL function:
+前の章でGLADが関数のポインタを制御するといいました。OpenGLの関数を呼びだすまえにGLADを初期化する方法を見ていきましょう。
+</p>
+
+<pre><code>
+if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+{
+    std::cout &lt;&lt; "Failed to initialize GLAD" &lt;&lt; std::endl;
+    return -1;
+}    
+</code></pre>
+
+<p>
+  We pass GLAD the function to load the address of the OpenGL function pointers which is OS-specific. GLFW gives us <fun>glfwGetProcAddress</fun> that defines the correct function based on which OS we're compiling for.
+GLADを上記の関数で処理することにより、OpenGLの関数へのポインタのアドレスをロードします。GLFWは<fun>glfwGetProcAddress</fun>により利用しているOSにあった関数を正確に定義します。
+</p>
+
+<h2>Viewport</h2>
+<h2>ビューポート</h2>
+<p>
+   Before we can start rendering we have to do one last thing. We have to tell OpenGL the size of the rendering window so OpenGL knows how we want to display the data and coordinates with respect to the window. We can set those <em>dimensions</em> via the <fun><function id='22'>glViewport</function></fun> function:
+描画をはじめる前に、もうひとつしておかなければならないことがあります。OpenGLに描画するウィンドウのサイズを伝え、ウィンドウ中にデータと座標をどのように表示させるかを決定することです。<fun><function id='22'>glViewport</function></fun>により画面の<em>寸法</em>を設定できます:
+</p>
+
+<pre class="cpp"><code>
+<function id='22'>glViewport</function>(0, 0, 800, 600);
+</code></pre>
+
+<p>
+  The first two parameters of <fun><function id='22'>glViewport</function></fun> set the location of the lower left corner of the window. The third and fourth parameter set the width and height of the rendering window in pixels, which we set equal to GLFW's window size. 
+<fun><function id='22'>glViewport</function></fun>のはじめのふたつの引数はウィンドウ左下の角の場所です。あとのふたつの引数で、ウィンドの幅と高さをピクセル単位で指定します。ここではGLFWのウィンドウと同じサイズにしましょう。
+</p>
+
+<p>
+  We could actually set the viewport dimensions at values smaller than GLFW's dimensions; then all the OpenGL rendering would be displayed in a smaller window and we could for example display other elements outside the OpenGL viewport.
+ビューポートの寸法をGLFWのものより小さくすることも可能です。そうすることで、OpenGLによる描画がウィンドウより小さくなり、あいたところに他のものを配置したりすることも可能になります。
+</p>
+
+<note>
+  Behind the scenes OpenGL uses the data specified via <fun><function id='22'>glViewport</function></fun> to transform the 2D coordinates it processed to coordinates on your screen. For example, a processed point of location <code>(-0.5,0.5)</code> would (as its final transformation) be mapped to <code>(200,450)</code> in screen coordinates. Note that processed coordinates in OpenGL are between -1 and 1 so we effectively map from the range (-1 to 1) to (0, 800) and (0, 600).
+OpenGLは、処理した二次元の座標をスクリーンの座標に変換するために、<fun><function id='22'>glViewport</function></fun>を通してあたえられたデータを利用します。たとえばOpenGLの処理により座標が<code>(-0.5,0.5)</code>になった点は、スクリーン上の<code>(200, 450)</code>に対応します。OpenGLで処理された座標は-1と1の間におさまることに留意してください。この縦横(-1, 1)の区間はそれぞれ(0, 800), (0, 600)に対応しています。
+</note>
+
+<p>
+  However, the moment a user resizes the window the viewport should be adjusted as well. We can register a callback function on the window that gets called each time the window is resized. This resize callback function has the following prototype: 
+しかしユーザーがウィンドウのサイズを変更した場合、それにあわせてビューポートも変化するべきです。そのためにコールバック関数をウィンドウに登録して、ウィンドウサイズが変更されるたびに呼ばれるようにできます。次にあげるのがサイズ変更のコールバック関数のプロトタイプです:
+</p>
+
+<pre><code>
+void framebuffer_size_callback(GLFWwindow* window, int width, int height);  
+</code></pre>
+
+<p>
+  The framebuffer size function takes a <fun>GLFWwindow</fun> as its first argument and two integers indicating the new window dimensions. Whenever the window changes in size, GLFW calls this function and fills in the proper arguments for you to process. 
+この関数は第一引数に<fun>GLFWwindow</fun>をとり、変更されたウィンドウの寸法を第二、第三引数にとります。ウィンドウサイズが変更されれば、GLFWがこの関数を呼び出し、処理に必要な変数を渡します。
+</p>
+
+<pre><code>
+void framebuffer_size_callback(GLFWwindow* window, int width, int height)
+{
+    <function id='22'>glViewport</function>(0, 0, width, height);
+}  
+</code></pre>
+
+<p>
+  We do have to tell GLFW we want to call this function on every window resize by registering it:
+ウィンドウサイズが変更されるたびにこの関数が呼び出されるよう、以下の通り登録します:
+</p>
+
+<pre><code>
+glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);  
+</code></pre>
+
+<p>
+  When the window is first displayed <fun>framebuffer_size_callback</fun> gets called as well with the resulting window dimensions. For retina displays <var>width</var> and <var>height</var> will end up significantly higher than the original input values.
+ウィンドウが初めて表示されたときも、<fun>framebuffer_size_callback</fun>は呼ばれ、実際に表示されたウィンドウの寸法が渡されます。レティナディスプレイでは<var>width</var>や<var>height</var>はもともと入力していた値よりもかなり大きくなります。
+</p>
+
+<p>
+  There are many callbacks functions we can set to register our own functions. For example, we can   make a callback function to process joystick input changes, process error messages etc. We register the callback functions after we've created the window and before the render loop is initiated.
+このほかにもコールバック関数として登録できるものはたくさんあります。ジョイスティックの入力値を処理する関数や、エラーメッセージを処理する関数等です。コールバック関数はウィンドウを作成した後、描画ループが始まる前に登録します。
+</p>
+
+<h1>Ready your engines</h1>
+<h1>エンジンの準備</h1>
+<p>
+  We don't want the application to draw a single image and then immediately quit and close the window. We want the application to keep drawing images and handling user input until the program has been explicitly told to stop. For this reason we have to create a while loop, that we now call the <def>render loop</def>, that keeps on running until we tell GLFW to stop. The following code shows a very simple render loop:
+アプリケーションがある画像を表示したあとすぐに終了してウィンドウを閉じてしまってはおもしろくありません。プログラムが終了するまで映像を出力し続け、ユーザーからの入力を処理してほしいものです。そのために<def>描画ループ</def>と呼ばれるwhileループを作成し、ユーザーがGLFWに終了を命じるまで動き続けるようにします。以下のコードは単純な描画ループの例です:
+</p>
+
+<pre><code>
+while(!<function id='14'>glfwWindowShouldClose</function>(window))
+{
+    <function id='24'>glfwSwapBuffers</function>(window);
+    <function id='23'>glfwPollEvents</function>();    
+}
+</code></pre>
+
+<p>
+  The <fun><function id='14'>glfwWindowShouldClose</function></fun> function checks at the start of each loop iteration if GLFW has been instructed to close. If so, the function returns <code>true</code> and the render loop stops running, after which we can close the application.<br/>
+  The <fun><function id='23'>glfwPollEvents</function></fun> function checks if any events are triggered (like keyboard input or mouse movement events), updates the window state, and calls the corresponding functions (which we can register via callback methods).
+  The <fun><function id='24'>glfwSwapBuffers</function></fun> will swap the color buffer (a large 2D buffer that contains color values for each pixel in GLFW's window) that is used to render to during this render iteration and show it as output to the screen.  
+<fun><function id='14'>glfwWindowShouldClose</function></fun>はループごとに、GLFWが終了の信号を受けとっていないか確認します。終了の信号を受けとっていればこの関数は<code>true</code>を返し描画ループが終了し、アプリケーションを終了させることができます。<fun><function id='23'>glfwPollEvents</function></fun>はキーボードからの入力やマウスの移動といったイベントが発生していないか確認し、ウィンドウの状態を更新し、コールバックとして登録した関数を呼び出します。<fun><function id='24'>glfwSwapBuffers</function></fun>はカラーバッファを入れ替えます。カラーバッファというのは大きな2次元のバッファで、GLFWウィンドウの各ピクセルの色を保持しており、この描画ループの中での描画および、その結果をスクリーンに出力するのに利用します。
+</p>
+
+<note>
+  <strong>Double buffer</strong><br/>
+  <strong>ダブルバッファ</strong><br/>
+  When an application draws in a single buffer the resulting image may display flickering issues. This is because the resulting output image is not drawn in an instant, but drawn pixel by pixel and usually from left to right and top to bottom. Because this image is not displayed at an instant to the user while still being rendered to, the result may contain artifacts. To circumvent these issues, windowing applications apply a double buffer for rendering. The <strong>front</strong> buffer contains the final output image that is shown at the screen, while all the rendering commands draw to the <strong>back</strong> buffer. As soon as all the rendering commands are finished we <strong>swap</strong> the back buffer to the front buffer so the image can be displayed without still being rendered to, removing all the aforementioned artifacts.
+アプリケーションがバッファをひとつだけ使って画像を表示すると、画面にチラつきが発生します。出力された画像がすぐに表示されるのではなく、一般的には左から右へ、上から下へと1ピクセルずつ表示されるためです。描画処理が完了していない画像がじわじわと表示されるので、不自然な結果になるのです。この問題を回避するためにアプリケーションの描画にダブルバッファを利用します。<strong>フロント</strong>バッファが最終的にスクリーンに表示される出力を保持し、描画処理は<strong>バック</strong>バッファにおいて行われます。描画処理がすべて終了すれば前後のバッファが<strong>交換</strong>されます。こうすることで描画処理が完了していない状態の画像を表示させないようにでき、前述の不具合が解消できます。
+</note>
+
+<h2>One last thing</h2>
+<h2>最後にひとつ</h2>
+  <p>
+    As soon as we exit the render loop we would like to properly clean/delete all of GLFW's resources that were allocated. We can do this via the <fun><function id='25'>glfwTerminate</function></fun> function that we call at the end of the <fun>main</fun> function.
+描画ループからぬけたあと、確保したメモリを開放するのがいいでしょう。この作業は<fun><function id='25'>glfwTerminate</function></fun>によって<fun>main</fun>関数の最後に行うことができます。
+  </p>
+
+<pre><code>
+<function id='25'>glfwTerminate</function>();
+return 0;
+</code></pre>
+
+  <p>
+    This will clean up all the resources and properly exit the application. Now try to compile your application and if everything went well you should see the following output:
+この関数により、メモリをすべて開放しアプリケーションを適切に終了させることができます。それではいちどアプリケーションをコンパイルしてみましょう。すべてうまくいっていれば以下のような出力が得られるはずです:
+  </p>
+
+  <img src="/img/getting-started/hellowindow.png" width="600px" class="clean" alt="Image of GLFW window output as most basic example"/>
+
+<p>
+  If it's a very dull and boring black image, you did things right! If you didn't get the right image or you're confused as to how everything fits together, check the full source code <a href="/code_viewer_gh.php?code=src/1.getting_started/1.1.hello_window/hello_window.cpp" target="_blank">here</a> (and if it started flashing different colors, keep reading).
+真っ黒でつまらない画像が表示された場合ここまでの作業がうまくいっているということです。黒い画面が表示されない場合や、各コードをどのように配置すればいいのかわからない場合は、<a href="/code_viewer_gh.php?code=src/1.getting_started/1.1.hello_window/hello_window.cpp" target="_blank">ここ</a>から完全なソースコードを確認してください（もし違う色の画像が表示された場合、とりあえずこの先を読み進んでください）。
+  </p>
+
+  <p>
+    If you have issues compiling the application, first make sure all your linker options are set correctly and that you properly included the right directories in your IDE (as explained in the previous chapter). Also make sure your code is correct; you can verify it by comparing it with the full source code. 
+コンパイルが通らなければ、まずは前章で説明した通りリンカのオプションがすべて正しく設定されているか、正しいインクルードディレクトリがIDEに読み込まれているか確認してください。そしてソースコードが正しく記述されているか確かめてください。上にあげた完全なソースコードとあなたのものを比較することで間違いがないか確認できます。
+  </p>
+  
+<h2>Input</h2>
+<h2>入力</h2>
+  <p>
+    We also want to have some form of input control in GLFW and we can achieve this with several of GLFW's input functions. We'll be using GLFW's <fun>glfwGetKey</fun> function that takes the window as input together with a key. The function returns whether this key is currently being pressed. We're creating a <fun>processInput</fun> function to keep all input code organized:
+GLFWにおいて入力の処理は、GLFWのいくつかの関数によって行うことができます。ここでは<fun>glfwGetKey</fun>を利用します。この関数はウィンドウと入力されたキーを引数にとり、そのキーが押されているかどうかを返します。<fun>processInput</fun>という関数を作成し、入力の処理を一元化しましょう:
+</p>
+
+<pre><code>
+void processInput(GLFWwindow *window)
+{
+    if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+        glfwSetWindowShouldClose(window, true);
+}
+</code></pre>
+
+<p>
+  Here we check whether the user has pressed the escape key (if it's not pressed, <fun>glfwGetKey</fun> returns <var>GLFW_RELEASE</var>). If the user did press the escape key, we close GLFW by setting its <var>WindowShouldClose</var> property to <code>true</code> using <fun>glfwSetwindowShouldClose</fun>. The next condition check of the main <code>while</code> loop will then fail and the application closes.
+ここではユーザーがエスケープキーを押したかどうかを確認しています（押されていなければ<fun>glfwGetKey</fun>は<var>GLFW_RELEASE</var>を返します）。エスケープが押されていた場合、<fun>glfwSetwindowShouldClose</fun>を通して<var>WindowShouldClose</var>を<code>true</code>にすることで、GLFWを終了させるようにします。こうすることで、<code>while</code>が次のループに進むかどうかの判定で偽が返り、ループから抜けだしアプリケーションが終了します。
+</p>
+
+<p>
+  We then call <fun>processInput</fun> every iteration of the render loop:
+それでは<fun>processInput</fun>を描画ループがまわるたびに呼び出すようにしましょう:
+</p>
+
+<pre><code>
+while (!<function id='14'>glfwWindowShouldClose</function>(window))
+{
+    processInput(window);
+
+    <function id='24'>glfwSwapBuffers</function>(window);
+    <function id='23'>glfwPollEvents</function>();
+}  
+</code></pre>
+  
+<p>
+  This gives us an easy way to check for specific key presses and react accordingly every <def>frame</def>. An iteration of the render loop is more commonly called a <def>frame</def>.
+これが、<def>フレーム</def>ごとになんらかのキーが入力されたかどうかを確認する簡単な方法です。描画ループの一回は一般に<def>フレーム</def>と呼ばれます。
+</p>
+
+<h2>Rendering</h2>
+<h2>描画</h2>
+<p>
+  We want to place all the rendering commands in the render loop, since we want to execute all the rendering commands each iteration or frame of the loop. This would look a bit like this:
+各フレームごとに描画処理を行いたいので、描画命令はすべて描画ループの中におきます。以下のような感じです:
+  </p>
+
+<pre><code>
+// 描画ループ
+while(!<function id='14'>glfwWindowShouldClose</function>(window))
+{
+    // 入力
+    processInput(window);
+
+    // 描画処理
+    ...
+
+    // check and call events and swap the buffers
+    // イベントの処理およびバッファの交換
+    <function id='23'>glfwPollEvents</function>();
+    <function id='24'>glfwSwapBuffers</function>(window);
+}
+</code></pre>
+
+  <p>
+    Just to test if things actually work we want to clear the screen with a color of our choice. At the start of frame we want to clear the screen. Otherwise we would still see the results from the previous frame (this could be the effect you're looking for, but usually you don't). We can clear the screen's color buffer using <fun><function id='10'>glClear</function></fun> where we pass in buffer bits to specify which buffer we would like to clear. The possible bits we can set are <var>GL_COLOR_BUFFER_BIT</var>, <var>GL_DEPTH_BUFFER_BIT</var> and <var>GL_STENCIL_BUFFER_BIT</var>. Right now we only care about the color values so we only clear the color buffer.
+ほんとうにうまくいっているのか確認するために、スクリーンの色を変更してみましょう。各フレームのはじめにスクリーンに表示されたものをすべて消します。そうしないと前のフレームで表示されていたものが次のフレームでもみえたままになります（ときにはこのわざとそうしたいこともありますが、多くの場合これは望まない結果でしょう）。スクリーンのカラーバッファは<fun><function id='10'>glClear</function></fun>を用いて削除します。バッファビットを通して消したいバッファを指定しましょう。選べるバッファビットは<var>GL_COLOR_BUFFER_BIT</var>、<var>GL_DEPTH_BUFFER_BIT</var>および<var>GL_STENCIL_BUFFER_BIT</var>です。
+  </p>
+  
+<pre><code>
+<function id='13'><function id='10'>glClear</function>Color</function>(0.2f, 0.3f, 0.3f, 1.0f);
+<function id='10'>glClear</function>(GL_COLOR_BUFFER_BIT);
+</code></pre>
+  
+  <p>
+    Note that we also specify the color to clear the screen with using <fun><function id='13'><function id='10'>glClear</function>Color</function></fun>. Whenever we call <fun><function id='10'>glClear</function></fun> and clear the color buffer, the entire color buffer will be filled with the color as configured by <fun><function id='13'><function id='10'>glClear</function>Color</function></fun>. This will result in a dark green-blueish color. 
+<fun><function id='13'><function id='10'>glClear</function>Color</function></fun>により、バッファを削除したあとの色も指定していることに注意してください。<fun><function id='10'>glClear</function></fun>を呼んでバッファを削除したときは<fun><function id='13'><function id='10'>glClear</function>Color</function></fun>により指定された色でバッファが満たされます。今回は深い青緑を指定しています。
+</p>
+    
+<note>
+  As you may recall from the <em>OpenGL</em> chapter, the <fun><function id='13'><function id='10'>glClear</function>Color</function></fun> function is a <em>state-setting</em> function and <fun><function id='10'>glClear</function></fun> is a <em>state-using</em> function in that it uses the current state to retrieve the clearing color from.
+<em>OpenGL</em>の章で状態遷移関数と状態利用関数について言及しました。ここにでてきた<fun><function id='13'><function id='10'>glClear</function>Color</function></fun>は<em>状態遷移</em>関数で、<fun><function id='10'>glClear</function></fun>は<em>状態利用</em>関数です。<fun><function id='10'>glClear</function></fun>が「バッファ削除後の色」という状態を利用しています。
+</note>
+  
+  <img src="/img/getting-started/hellowindow2.png" width="600px" class="clean" alt="Image of GLFW's window creation with <function id='13'><function id='10'>glClear</function>Color</function> defined"/>  
+  
+  <p>
+    The full source code of the application can be found <a href="/code_viewer_gh.php?code=src/1.getting_started/1.2.hello_window_clear/hello_window_clear.cpp" target="_blank">here</a>.
+今回作ったアプリケーションの完全なソースコードは<a href="/code_viewer_gh.php?code=src/1.getting_started/1.2.hello_window_clear/hello_window_clear.cpp" target="_blank">こちら</a>にあります。
+  </p>
+  
+<p>
+  So right now we got everything ready to fill the render loop with lots of rendering calls, but that's for the <a href="https://learnopengl.com/Getting-started/Hello-Triangle" target="_blank">next</a> chapter. I think we've been rambling long enough here.  
+描画ループにおいて様々なものを描くうえで必要な準備はすべて整いました。 <a href="https://learnopengl.com/Getting-started/Hello-Triangle" target="_blank">次</a>の章では実際に描画しましょう。
+</p>       
+
+    </div>
+</body>
+</html>
+	</main>
+</body>
+</html>

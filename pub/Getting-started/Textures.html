@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="ja"> 
+<head>
+    <meta charset="utf-8"/>
+    <title>LearnOpenGL</title>
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico"  />
+	<link rel="stylesheet" href="../static/style.css" />
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"> </script>
+	<script src="/static/functions.js"></script>
+</head>
+<body>
+	<nav>
+<ol>
+	<li id="Introduction">
+		<a href="https://learnopengl.com/Introduction">はじめに</a>
+	</li>
+	<li id="Getting-started">
+		<span class="closed">入門</span>
+		<ol>
+			<li id="Getting-started/OpenGL">
+				<a href="https://learnopengl.com/Getting-started/OpenGL">OpenGL </a>
+			</li>
+			<li id="Getting-started/Creating-a-window">
+				<a href="https://learnopengl.com/Getting-started/Creating-a-window">ウィンドウの作成</a>
+			</li>
+			<li id="Getting-started/Hello-Window">
+				<a href="https://learnopengl.com/Getting-started/Hello-Window">最初のウィンドウ</a>
+			</li>
+			<li id="Getting-started/Hello-Triangle">
+				<a href="https://learnopengl.com/Getting-started/Hello-Triangle">最初の三角形</a>
+			</li>
+			<li id="Getting-started/Shaders">
+				<a href="https://learnopengl.com/Getting-started/Shaders">シェーダー</a>
+			</li>
+			<li id="Getting-started/Textures">
+				<a href="https://learnopengl.com/Getting-started/Textures">テクスチャ</a>
+			</li>
+			<li id="Getting-started/Transformations">
+				<a href="https://learnopengl.com/Getting-started/Transformations">座標変換</a>
+			</li>
+			<li id="Getting-started/Coordinate-Systems">
+				<a href="https://learnopengl.com/Getting-started/Coordinate-Systems">座標系</a>
+			</li>
+			<li id="Getting-started/Camera">
+				<a href="https://learnopengl.com/Getting-started/Camera">カメラ</a>
+			</li>
+			<li id="Getting-started/Review">
+				<a href="https://learnopengl.com/Getting-started/Review">まとめ</a>
+			</li>
+		</ol>
+	</li>
+	<li id="Lighting">
+		<span class="closed">Lighting </span>
+		<ol>
+			<li id="Lighting/Colors">
+				<a href="https://learnopengl.com/Lighting/Colors">Colors </a>
+			</li>
+			<li id="Lighting/Basic-Lighting">
+				<a href="https://learnopengl.com/Lighting/Basic-Lighting">Basic Lighting </a>
+			</li>
+			<li id="Lighting/Materials">
+				<a href="https://learnopengl.com/Lighting/Materials">Materials </a>
+			</li>
+			<li id="Lighting/Lighting-maps">
+				<a href="https://learnopengl.com/Lighting/Lighting-maps">Lighting maps </a>
+			</li>
+			<li id="Lighting/Light-casters">
+				<a href="https://learnopengl.com/Lighting/Light-casters">Light casters </a>
+			</li>
+			<li id="Lighting/Multiple-lights">
+				<a href="https://learnopengl.com/Lighting/Multiple-lights">Multiple lights </a>
+			</li>
+			<li id="Lighting/Review">
+				<a href="https://learnopengl.com/Lighting/Review">Review </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Model-Loading">
+		<span class="closed">Model Loading </span>
+		<ol>
+			<li id="Model-Loading/Assimp">
+				<a href="https://learnopengl.com/Model-Loading/Assimp">Assimp </a>
+			</li>
+			<li id="Model-Loading/Mesh">
+				<a href="https://learnopengl.com/Model-Loading/Mesh">Mesh </a>
+			</li>
+			<li id="Model-Loading/Model">
+				<a href="https://learnopengl.com/Model-Loading/Model">Model </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Advanced-OpenGL">
+		<span class="closed">Advanced OpenGL </span>
+		<ol>
+			<li id="Advanced-OpenGL/Depth-testing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Depth-testing">Depth testing </a>
+			</li>
+			<li id="Advanced-OpenGL/Stencil-testing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Stencil-testing">Stencil testing </a>
+			</li>
+			<li id="Advanced-OpenGL/Blending">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Blending">Blending </a>
+			</li>
+			<li id="Advanced-OpenGL/Face-culling">
+				<a href="https://learnopengl.cm/Advanced-OpenGL/Face-culling">Face culling </a>
+			</li>
+			<li id="Advanced-OpenGL/Framebuffers">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Framebuffers">Framebuffers </a>
+			</li>
+			<li id="Advanced-OpenGL/Cubemaps">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Cubemaps">Cubemaps </a>
+			</li>
+			<li id="Advanced-OpenGL/Advanced-Data">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Advanced-Data">Advanced Data </a>
+			</li>
+			<li id="Advanced-OpenGL/Advanced-GLSL">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Advanced-GLSL">Advanced GLSL </a>
+			</li>
+			<li id="Advanced-OpenGL/Geometry-Shader">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Geometry-Shader">Geometry Shader </a>
+			</li>
+			<li id="Advanced-OpenGL/Instancing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Instancing">Instancing </a>
+			</li>
+			<li id="Advanced-OpenGL/Anti-Aliasing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Anti-Aliasing">Anti Aliasing </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Advanced-Lighting">
+		<span class="closed">Advanced Lighting </span>
+		<ol>
+			<li id="Advanced-Lighting/Advanced-Lighting">
+				<a href="https://learnopengl.com/Advanced-Lighting/Advanced-Lighting">Advanced Lighting </a>
+			</li>
+			<li id="Advanced-Lighting/Gamma-Correction">
+				<a href="https://learnopengl.com/Advanced-Lighting/Gamma-Correction">Gamma Correction </a>
+			</li>
+			<li id="Advanced-Lighting/Shadows">
+				<span class="closed">Shadows </span>
+				<ol>
+					<li id="Advanced-Lighting/Shadows/Shadow-Mapping">
+						<a href="https://learnopengl.com/Advanced-Lighting/Shadows/Shadow-Mapping">Shadow Mapping </a>
+					</li>
+					<li id="Advanced-Lighting/Shadows/Point-Shadows">
+						<a href="https://learnopengl.com/Advanced-Lighting/Shadows/Point-Shadows">Point Shadows </a>
+					</li>
+				</ol>
+			</li>
+			<li id="Advanced-Lighting/Normal-Mapping">
+				<a href="https://learnopengl.com/Advanced-Lighting/Normal-Mapping">Normal Mapping </a>
+			</li>
+			<li id="Advanced-Lighting/Parallax-Mapping">
+				<a href="https://learnopengl.com/Advanced-Lighting/Parallax-Mapping">Parallax Mapping </a>
+			</li>
+			<li id="Advanced-Lighting/HDR">
+				<a href="https://learnopengl.com/Advanced-Lighting/HDR">HDR </a>
+			</li>
+			<li id="Advanced-Lighting/Bloom">
+				<a href="https://learnopengl.com/Advanced-Lighting/Bloom">Bloom </a>
+			</li>
+			<li id="Advanced-Lighting/Deferred-Shading">
+				<a href="https://learnopengl.com/Advanced-Lighting/Deferred-Shading">Deferred Shading </a>
+			</li>
+			<li id="Advanced-Lighting/SSAO">
+				<a href="https://learnopengl.com/Advanced-Lighting/SSAO">SSAO </a>
+			</li>
+		</ol>
+	</li>
+	<li id="PBR">
+		<span class="closed">PBR </span>
+		<ol>
+			<li id="PBR/Theory">
+				<a href="https://learnopengl.com/PBR/Theory">Theory </a>
+			</li>
+			<li id="PBR/Lighting">
+				<a href="https://learnopengl.com/PBR/Lighting">Lighting </a>
+			</li>
+			<li id="PBR/IBL">
+				<span class="closed">IBL </span>
+				<ol>
+					<li id="PBR/IBL/Diffuse-irradiance">
+						<a href="https://learnopengl.com/PBR/IBL/Diffuse-irradiance">Diffuse irradiance </a>
+					</li>
+					<li id="PBR/IBL/Specular-IBL">
+						<a href="https://learnopengl.com/PBR/IBL/Specular-IBL">Specular IBL </a>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="In-Practice">
+		<span class="closed">In Practice </span>
+		<ol>
+			<li id="In-Practice/Debugging">
+				<a href="https://learnopengl.com/In-Practice/Debugging">Debugging </a>
+			</li>
+			<li id="In-Practice/Text-Rendering">
+				<a href="https://learnopengl.com/In-Practice/Text-Rendering">Text Rendering </a>
+			</li>
+			<li id="In-Practice/2D-Game">
+				<span class="closed">2D Game </span>
+				<ol>
+					<li id="In-Practice/2D-Game/Breakout">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Breakout">Breakout </a>
+					</li>
+					<li id="In-Practice/2D-Game/Setting-up">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Setting-up">Setting up </a>
+					</li>
+					<li id="In-Practice/2D-Game/Rendering-Sprites">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Rendering-Sprites">Rendering Sprites </a>
+					</li>
+					<li id="In-Practice/2D-Game/Levels">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Levels">Levels </a>
+					</li>
+					<li id="In-Practice/2D-Game/Collisions">
+						<span class="closed">Collisions </span>
+						<ol>
+							<li id="In-Practice/2D-Game/Collisions/Ball">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Ball">Ball </a>
+							</li>
+							<li id="In-Practice/2D-Game/Collisions/Collision-detection">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Collision-detection">Collision detection </a>
+							</li>
+							<li id="In-Practice/2D-Game/Collisions/Collision-resolution">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Collision-resolution">Collision resolution </a>
+							</li>
+						</ol>
+					</li>
+					<li id="In-Practice/2D-Game/Particles">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Particles">Particles </a>
+					</li>
+					<li id="In-Practice/2D-Game/Postprocessing">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Postprocessing">Postprocessing </a>
+					</li>
+					<li id="In-Practice/2D-Game/Powerups">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Powerups">Powerups </a>
+					</li>
+					<li id="In-Practice/2D-Game/Audio">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Audio">Audio </a>
+					</li>
+					<li id="In-Practice/2D-Game/Render-text">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Render-text">Render text </a>
+					</li>
+					<li id="In-Practice/2D-Game/Final-thoughts">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Final-thoughts">Final thoughts </a>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="Guest-Articles">
+		<span class="closed">Guest Articles </span>
+		<ol>
+			<li id="Guest-Articles/How-to-publish">
+				<a href="https://learnopengl.com/Guest-Articles/How-to-publish">How to publish </a>
+			</li>
+			<li id="Guest-Articles/2020">
+				<span class="closed">2020 </span>
+				<ol>
+					<li id="Guest-Articles/2020/OIT">
+						<span class="closed">OIT </span>
+						<ol>
+							<li id="Guest-Articles/2020/OIT/Introduction">
+								<a href="https://learnopengl.com/Guest-Articles/2020/OIT/Introduction">Introduction </a>
+							</li>
+							<li id="Guest-Articles/2020/OIT/Weighted-Blended">
+								<a href="https://learnopengl.com/Guest-Articles/2020/OIT/Weighted-Blended">Weighted Blended </a>
+							</li>
+						</ol>
+					</li>
+					<li id="Guest-Articles/2020/Skeletal-Animation">
+						<a href="https://learnopengl.com/Guest-Articles/2020/Skeletal-Animation">Skeletal Animation </a>
+					</li>
+				</ol>
+			</li>
+			<li id="Guest-Articles/2021">
+				<span class="closed">2021 </span>
+				<ol>
+					<li id="Guest-Articles/2021/CSM">
+						<a href="https://learnopengl.com/Guest-Articles/2021/CSM">CSM </a>
+					</li>
+					<li id="Guest-Articles/2021/Scene">
+						<span class="closed">Scene </span>
+						<ol>
+							<li id="Guest-Articles/2021/Scene/Scene-Graph">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Scene/Scene-Graph">Scene Graph </a>
+							</li>
+							<li id="Guest-Articles/2021/Scene/Frustum-Culling">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Scene/Frustum-Culling">Frustum Culling </a>
+							</li>
+						</ol>
+					</li>
+					<li id="Guest-Articles/2021/Tessellation">
+						<span class="closed">Tessellation </span>
+						<ol>
+							<li id="Guest-Articles/2021/Tessellation/Height-map">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Tessellation/Height-map">Height map </a>
+							</li>
+						</ol>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="Code-repository">
+		<a href="https://learnopengl.com/Code-repository">Code repository </a>
+	</li>
+	<li id="Translations">
+		<a href="https://learnopengl.com/Translations">Translations </a>
+	</li>
+	<li id="About">
+		<a href="https://learnopengl.com/About">About </a>
+	</li>
+</ol>
+	</nav>
+	<main>
+	<h1 id="content-title">Textures</h1>
+	<h1 id="content-title">テクスチャ</h1>
+<h1 id="content-url" style='display:none;'>Getting-started/Textures</h1>
+<p>
+	We learned that to add more detail to our objects we can use colors for each vertex to create some interesting images. However, to get a fair bit of realism we'd have to have many vertices so we could specify a lot of colors. This takes up a considerable amount of extra overhead, since each model needs a lot more vertices and for each vertex a color attribute as well.
+物体にディティールを追加して面白い画像を作るための方法として各頂点に色を着ける方法を学習しました。しかし、現実的な物体を描くためには大量の頂点を作成してそれぞれに色を指定しなければなりません。この方法では各モデルが大量の頂点と色の情報を必要とするので、処理にかかる負荷が非常に大きくなります。
+</p>
+<p>
+	What artists and programmers generally prefer is to use a <def>texture</def>. A texture is a 2D image (even 1D and 3D textures exist) used to add detail to an object; think of a texture as a piece of paper with a nice brick image (for example) on it neatly folded over your 3D house so it looks like your house has a stone exterior. Because we can insert a lot of detail in a single image, we can give the illusion the object is extremely detailed without having to specify extra vertices.
+アーティストやプログラマは一般には<def>テクスチャ</def>を利用する方法を好みます。テクスチャは二次元の画像で、物体にディティールを与えるために利用されます（一次元や三次元のテクスチャも存在します）。例えばお洒落なレンガが描かれた紙を想像してみてください。これが三次元の家を包んでいれば、その家はレンガ作りに見えるでしょう。一つの画像の中に多くのディティールを詰め込めるので、頂点を追加せずとも細部まで作りこまれているかのように見せることができるのです。
+</p>
+
+<note>
+	Next to images, textures can also be used to store a large collection of arbitrary data to send to the shaders, but we'll leave that for a different topic.
+テクスチャは画像に加え任意のデータを頂点シェーダーに送信するのに使えます。しかしこの話は別のトピックスとして取っておきます。
+</note>
+	
+<p>
+	Below you'll see a texture image of a <a href="/img/textures/wall.jpg" target="_blank">brick wall</a> mapped to the triangle from the previous chapter.
+以下に<a href="/img/textures/wall.jpg" target="_blank">レンガの壁</a>のテクスチャを貼り付けた三角形を示します。
+</p>
+
+<img src="/img/getting-started/textures.png" class="clean"/>
+
+<p>
+In order to map a texture to the triangle we need to tell each vertex of the triangle which part of the texture it corresponds to. Each vertex should thus have a <def>texture coordinate</def> associated with them that specifies what part of the texture image to sample from. Fragment interpolation then does the rest for the other fragments.
+三角形にテクスチャを貼り付けるには、各頂点がテクスチャのどの位置に対応するのかを指定する必要があります。そのため各頂点にはテクスチャ画像のどの部分に対応するかを示した<def>テクスチャ座標</def>が必要です。そうすれば他のフラグメントに対してはフラグメント補完がテクスチャを割り当ててくれます。
+</p>
+
+<p> 
+	Texture coordinates range from <code>0</code> to <code>1</code> in the <code>x</code> and <code>y</code> axis (remember that we use 2D texture images). Retrieving the texture color using texture coordinates is called <def>sampling</def>. Texture coordinates start at <code>(0,0)</code> for the lower left corner of a texture image to <code>(1,1)</code> for the upper right corner of a texture image. The following image shows how we map texture coordinates to the triangle:
+テクスチャ座標は<code>x</code>座標と<code>y</code>座標があり（テクスチャは二次元です）、それぞれ<code>0</code>から<code>1</code>の範囲で指定します。テクスチャ座標によりテクスチャの色を抽出することは<def>サンプリング</def>と呼ばれます。テクスチャ座標はテクスチャ画像の左下が<code>(0, 0)</code>で、右上が<code>(1, 1)</code>です。以下の画像はどのようにテクスチャ座標を三角形に対応させるかを示したものです:
+</p>
+
+<img src="/img/getting-started/tex_coords.png"/>
+
+<p>
+	We specify 3 texture coordinate points for the triangle. We want the bottom-left side of the  triangle to correspond with the bottom-left side of the texture so we use the <code>(0,0)</code> texture coordinate for the triangle's bottom-left vertex. The same applies to the bottom-right side with a <code>(1,0)</code> texture coordinate. The top of the triangle should correspond with the top-center of the texture image so we take <code>(0.5,1.0)</code> as its texture coordinate. We only have to pass 3 texture coordinates to the vertex shader, which then passes those to the fragment shader that neatly interpolates all the texture coordinates for each fragment.
+三角形に対して3つのテクスチャ座標を割り当てます。三角形の左下をテクスチャの左下に対応させたいので、この頂点には<code>(0, 0)</code>というテクスチャ座標を割り当てます。同様に右下の頂点のテクスチャ座標は<code>(1, 0)</code>にします。上の頂点はテクスチャ画像の上端中央を対応させるため<code>(0.5, 1.0)</code>というテクスチャ座標を割り当てます。3つのテクスチャ座標を頂点シェーダーに渡せば十分です。あとのフラグメントに関しては、フラグメントシェーダーにおいてきちんと補完されます。
+</p>
+
+<p>
+	The resulting texture coordinates would then look like this:
+その結果テクスチャ座標は以下のようになります:
+</p>
+
+<pre><code>
+float texCoords[] = {
+	0.0f, 0.0f,  // lower-left corner  
+	1.0f, 0.0f,  // lower-right corner
+	0.5f, 1.0f   // top-center corner
+};
+</code></pre>
+
+<p>
+	Texture sampling has a loose interpretation and can be done in many different ways. It is thus our job to tell OpenGL how it should <em>sample</em> its textures.
+テクスチャのサンプリングと一口に言っても多くの方法があります。そのためOpenGLがテクスチャをどのように<em>サンプリング</em>するかは自分達で指定しなければなりません。
+</p>
+
+<h2>Texture Wrapping</h2>
+<h2>テクスチャの繰り返し</h2>
+<p>
+	Texture coordinates usually range from <code>(0,0)</code> to <code>(1,1)</code> but what happens if we specify coordinates outside this range? The default behavior of OpenGL is to repeat the texture images (we basically ignore the integer part of the floating point texture coordinate), but there are more options OpenGL offers:
+テクスチャ座標は通常<code>(0, 0)</code>から<code>(1, 1)</code>までですが、この範囲外の座標を指定した場合なにが起こるでしょう。OpenGLのデフォルトの振舞いではテクスチャ画像を繰返します（テクスチャ座標の整数部分を基本的に無視します）が、他のオプションもあります:
+</p>
+	
+	<ul>
+	<li><var>GL_REPEAT</var>: The default behavior for textures. Repeats the texture image.</li>
+	<li><var>GL_REPEAT</var>: デフォルトの振舞。テクスチャ画像を繰返す。</li>
+	<li><var>GL_MIRRORED_REPEAT</var>: Same as <var>GL_REPEAT</var> but mirrors the image with each repeat.</li>
+	<li><var>GL_MIRRORED_REPEAT</var>: テクスチャ画像を鏡写しに繰返す。</li>
+	<li><var>GL_CLAMP_TO_EDGE</var>: Clamps the coordinates between <code>0</code> and <code>1</code>. The result is that higher coordinates become clamped to the edge, resulting in a stretched edge pattern.</li>
+	<li><var>GL_CLAMP_TO_EDGE</var>: 座標を<code>0</code>と<code>1</code>の間に固定。範囲外の座標は端に固定され、縁を引き伸ばしたようになる。</li>
+	<li><var>GL_CLAMP_TO_BORDER</var>: Coordinates outside the range are now given a user-specified border color.</li>
+	<li><var>GL_CLAMP_TO_BORDER</var>: 範囲外の座標にはユーザーが定めた境界線の色が与えられる。</li>
+	</ul>
+	
+<p>
+	Each of the options have a different visual output when using texture coordinates outside the default range. Let's see what these look like on a sample texture image (original image by Hólger Rezende): 
+各オプションはテクスチャ座標を用いたとき、範囲外においてそれぞれ違った見た目になります。どのような結果になるのか、サンプルのテクスチャ画像で検証してみましょう（テクスチャ画像はHólger Rezende氏作）:
+</p>
+
+<img src="/img/getting-started/texture_wrapping.png" class="clean"/>
+
+<p>
+	Each of the aforementioned options can be set per coordinate axis (<code>s</code>, <code>t</code> (and <code>r</code> if you're using 3D textures) equivalent to <code>x</code>,<code>y</code>,<code>z</code>) with the <fun><function id='15'>glTexParameter</function>*</fun> function:
+前述のオプションは<fun><function id='15'>glTexParameter</function>*</fun>により各座標軸毎に指定することも可能です（<code>s</code>、<code>t</code>（三次元のテクスチャの場合、<code>r</code>も）がそれぞれ<code>x</code>、<code>y</code>（、<code>z</code>）に対応）。
+</p>
+
+<pre><code>
+<function id='15'>glTexParameter</function>i(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
+<function id='15'>glTexParameter</function>i(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
+</code></pre>
+
+<p> 
+	The first argument specifies the texture target; we're working with 2D textures so the texture target is <var>GL_TEXTURE_2D</var>. The second argument requires us to tell what option we want to set and for which texture axis; we want to configure it for both the <code>S</code> and <code>T</code> axis. The last argument requires us to pass in the texture wrapping mode we'd like and in this case OpenGL will set its texture wrapping option on the currently active texture with <var>GL_MIRRORED_REPEAT</var>.
+最初の引数はテクスチャのターゲットです。ここでは二次元のテクスチャを利用しているのでこのターゲットは<var>GL_TEXTURE_2D</var>です。二番目の引数はどのオプションをどの座標軸に対して設定するのかを指定します。この例では<code>S</code>軸と<code>T</code>軸の両方を設定しています。最後の引数はテクスチャの繰り返し方を指定します。今回の場合、OpenGLは現在アクティブなテクスチャの繰り返し方を<var>GL_MIRRORED_REPEAT</var>にしています。
+</p>
+
+<p>
+	If we choose the <var>GL_CLAMP_TO_BORDER</var> option we should also specify a border color. This is done using the <code>fv</code> equivalent of the <fun><function id='15'>glTexParameter</function></fun> function with <var>GL_TEXTURE_BORDER_COLOR</var> as its option where we pass in a float array of the border's color value:
+<var>GL_CLAMP_TO_BORDER</var>を選択した場合、境界線の色も指定しなければなりません。これは<fun><function id='15'>glTexParameter</function></fun>の<code>fv</code>版にオプションとして<var>GL_TEXTURE_BORDER_COLOR</var>を指定し、境界線の色を浮動小数点数の配列として渡すことで行えます。
+</p>
+
+<pre><code>
+float borderColor[] = { 1.0f, 1.0f, 0.0f, 1.0f };
+<function id='15'>glTexParameter</function>fv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor);  
+</code></pre>
+
+<h2>Texture Filtering</h2>
+<h2>テクスチャフィルタリング</h2>
+<p>
+	Texture coordinates do not depend on resolution but can be any floating point value, thus OpenGL has to figure out which texture pixel (also known as a <def>texel</def> ) to map the texture coordinate to. This becomes especially important if you have a very large object and a low resolution texture. You probably guessed by now that OpenGL has options for this <def>texture filtering</def> as well. There are several options available but for now we'll discuss the most important options: <var>GL_NEAREST</var> and <var>GL_LINEAR</var>. 
+	テクスチャ座標は解像度に依存せず、任意の浮動小数点数で指定できます。そのためOpenGLはテクスチャのピクセル（<def>テクセル</def>）をどのようにテクスチャ座標に割り当てるかを決定しなければなりません。これは大きな物体に対して低解像度のテクスチャを割り当てる際に特に重要です。この<def>テクスチャフィルタリング</def>と呼ばれる操作に対してもOpenGLがオブションを用意しているのではないかと思われるかもしれません。予想通りいくつかのオプションがありますが、ここでは中でも重要な<var>GL_NEAREST</var>と<var>GL_LINEAR</var>を紹介します。
+</p>
+
+<p>
+	<var>GL_NEAREST</var> (also known as <def>nearest neighbor</def> or <def>point</def> filtering) is the default texture filtering method of OpenGL. When set to <var>GL_NEAREST</var>, OpenGL selects the texel that center is closest to the texture coordinate. Below you can see 4 pixels where the cross represents the exact texture coordinate. The upper-left texel has its center closest to the texture coordinate and is therefore chosen as the sampled color:
+	<var>GL_NEAREST</var>（あるいは<def>最近傍</def>または<def>ポイント</def>フィルタリング）はOpenGLにおけるデフォルトのテクスチャフィルタリングの方法です。<var>GL_NEAREST</var>が設定されている場合、テクセルのうちその中心がテクスチャ座標に最も近いものが選択されます。以下の図は4つのピクセルとテクスチャ座標を十字で示したものです。左上のテクセルの中心がテクスチャ座標に最も近いので、このテクセルがサンプルとして選択されます:
+</p>
+
+	<img src="/img/getting-started/filter_nearest.png" class="clean"/>
+	
+<p>
+	<var>GL_LINEAR</var> (also known as <def>(bi)linear filtering</def>) takes an interpolated value from the texture coordinate's neighboring texels, approximating a color between the texels. The smaller the distance from the texture coordinate to a texel's center, the more that texel's color contributes to the sampled color. Below we can see that a mixed color of the neighboring pixels is returned:
+	<var>GL_LINEAR</var>（あるいは<def>（双）線形フィルタリング</def>）はテクスチャ座標の周りにあるテクセルの色を近似することにより、周りのテクセルを補完した色を取ります。中心がテクスチャ座標に近いテクセルほどサンプルとして取られる色に対する寄与が大きくなります。以下の例から、周りのピクセルを混ぜた色が得られる様子が見てとれます:
+</p>
+	
+<img src="/img/getting-started/filter_linear.png" class="clean"/>
+	
+<p>
+	But what is the visual effect of such a texture filtering method? Let's see how these methods work when using a texture with a low resolution on a large object (texture is therefore scaled upwards and individual texels are noticeable):
+	ところでこのテクスチャフィルタリングの方法が視覚的にどう影響するのでしょう。この手法が低解像度のテクスチャを大きな物体に利用した（つまりテクスチャは個々のテクセルが確認できるほど引き伸ばされます）様子を見てみましょう:
+</p>
+
+	<img src="/img/getting-started/texture_filtering.png" class="clean"/>
+
+<p>
+	<var>GL_NEAREST</var> results in blocked patterns where we can clearly see the pixels that form the texture while <var>GL_LINEAR</var> produces a smoother pattern where the individual pixels are less visible. <var>GL_LINEAR</var> produces a more realistic output, but some developers prefer a more 8-bit look and as a result pick the <var>GL_NEAREST</var> option.
+	<var>GL_NEAREST</var>はテクスチャを構成するピクセルがはっきりと見えるくらいかくかくした結果になりました。一方<var>GL_LINEAR</var>は個々のピクセルが見えにくくなめらかな仕上りになりす。<var>GL_LINEAR</var>はより現実的な見た目になりますが、開発者のなかには8-bitっぽい見た目を好み、<var>GL_NEAREST</var>を選択する人もいます。
+	</p>
+
+<p>
+	Texture filtering can be set for <def>magnifying</def> and <def>minifying</def> operations (when scaling up or downwards) so you could for example use nearest neighbor filtering when textures are scaled downwards and linear filtering for upscaled textures. We thus have to specify the filtering method for both options via <fun><function id='15'>glTexParameter</function>*</fun>. The code should look similar to setting the wrapping method:
+	テクスチャフィルタリングは<def>拡大</def>と<def>縮小</def>の操作において設定できます。例えば縮小する場合には最近傍点フィルタリングを、拡大する際には線形フィルタリグをそれぞれ適応することができます。そのため両方に対して<fun><function id='15'>glTexParameter</function>*</fun>を用いてフィルタリング方式を設定する必要があります。そのようなコードはテクスチャの繰り返しを指定するコードと同様です:
+</p>
+
+<pre><code>
+<function id='15'>glTexParameter</function>i(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+<function id='15'>glTexParameter</function>i(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+</code></pre>
+
+<h3>Mipmaps</h3>
+<h3>ミップマップ</h3>
+<p>
+	Imagine we had a large room with thousands of objects, each with an attached texture. There will be objects far away that have the same high resolution texture attached as the objects close to the viewer. Since the objects are far away and probably only produce a few fragments, OpenGL has difficulties retrieving the right color value for its fragment from the high resolution texture, since it has to pick a texture color for a fragment that spans a large part of the texture. This will produce visible artifacts on small objects, not to mention the waste of memory bandwidth using high resolution textures on small objects.
+	部屋の中に数千もの物体があり、それぞれにテクスチャが割り当てられているのを想像してみてください。近くにある物体と同じような高解像度のテクスチャを割り当てられた物体が遠くにある場合もあります。そのような物体は、遠くにあるために少しのフラグメントしか生成しません。このようなフラグメントはテクスチャの広い範囲に渡り、そこから適切な色を取得しないといけないので、テクスチャが高解像度の場合OpenGLは苦労することになります。小さな物体に大きなテクスチャを利用するのは、メモリの帯域の無駄遣いであるだけでなく、視覚的にも奇妙な結果になります。
+</p>
+
+<p>
+	To solve this issue OpenGL uses a concept called <def>mipmaps</def> that is basically a collection of texture images where each subsequent texture is twice as small compared to the previous one. The idea behind mipmaps should be easy to understand: after a certain distance threshold from the viewer, OpenGL will use a different mipmap texture that best suits the distance to the object. Because the object is far away, the smaller resolution will not be noticeable to the user. OpenGL is then able to sample the correct texels, and there's less cache memory involved when sampling that part of the mipmaps. Let's take a closer look at what a mipmapped texture looks like:
+	この問題を解決するため、OpenGLは<def>ミップマップ</def>と呼ばれる概念を利用します。ミップマップとは、基本的にはテクスチャ画像の集合で、次の画像は前のものの半分の大きさになっています。ミップマップの考え方は簡単に理解できます。距離がある閾値を越えると、OpenGLがその距離に応じて適切なミップマップテクスチャを割り当てます。物体が遠くにあれば、解像度の低さにユーザーは気付きません。そうしてOpenGLは適切なテクセルをサンプリングでき、ミップマップの一部をサンプリングするうえでキャッシュメモリは少なくてすみます。テクスチャのミップマップがどのようなのか詳しく見てみましょう:
+</p>
+
+<img src="/img/getting-started/mipmaps.png" class="clean"/>
+
+<p>
+	Creating a collection of mipmapped textures for each texture image is cumbersome to do manually, but luckily OpenGL is able to do all the work for us with a single call to <fun><function id='51'>glGenerateMipmap</function>s</fun> after we've created a texture.
+	ミップマップ化されたテクスチャを手動で生成するのは面倒ですが、テクスチャを作成したあと<fun><function id='51'>glGenerateMipmap</function>s</fun>を呼ぶだけでOpenGLがこの仕事を肩代りしてくれます。
+</p>
+
+<p>
+	When switching between mipmaps levels during rendering OpenGL may show some artifacts like sharp edges visible between the two mipmap layers. Just like normal texture filtering, it is also possible to filter between mipmap levels using <var>NEAREST</var> and <var>LINEAR</var> filtering for switching between mipmap levels. To specify the filtering method between mipmap levels we can replace the original filtering methods with one of the following four options:
+	描画中ミップマップのサイズが切り替わる時にOpenGLは不自然な視覚効果を生じます。ミップマップのレイヤの間にくっきりした縁が見えたりするのです。通常のテクスチャフィルタリングと同様に、<var>NEAREST</var>と<var>LINEAR</var>フィルタリングにより、ミップマップレベルをフィルタリングできます。もとのフィルタリング方法を以下のいずれかのもので置き換えることで、ミップマップレベルの間のフィルタリング方法を指定できます:
+</p>
+	
+	<ul>
+	<li><var>GL_NEAREST_MIPMAP_NEAREST</var>: takes the nearest mipmap to match the pixel size and uses nearest neighbor interpolation for texture sampling.</li>
+	<li><var>GL_NEAREST_MIPMAP_NEAREST</var>: ピクセルサイズに一番近いミップマップを取り、それを最近傍点補完によりサンプリング。</li>
+	<li><var>GL_LINEAR_MIPMAP_NEAREST</var>: takes the nearest mipmap level and samples that level using linear interpolation. </li>
+	<li><var>GL_LINEAR_MIPMAP_NEAREST</var>: ピクセルサイズに一番近いミップマップを取り、それを線形補完によりサンプリング。</li>
+	<li><var>GL_NEAREST_MIPMAP_LINEAR</var>:  linearly interpolates between the two mipmaps that most closely match the size of a pixel and samples the interpolated level via nearest neighbor interpolation. </li>
+	<li><var>GL_NEAREST_MIPMAP_LINEAR</var>: ピクセルサイズに近いミップマップ二つを線形補完し、それを最近傍点補完によりサンプリング。</li>
+	<li><var>GL_LINEAR_MIPMAP_LINEAR</var>: linearly interpolates between the two closest mipmaps and samples the interpolated level via linear interpolation.</li>
+	<li><var>GL_LINEAR_MIPMAP_LINEAR</var>: ピクセルサイズに近いミップマップ二つを線形補間し、それを線形補間によりサンプリング。</li>
+	</ul>
+	
+<p>
+	Just like texture filtering we can set the filtering method to one of the 4 aforementioned methods using <fun><function id='15'>glTexParameter</function>i</fun>:
+	テクスチャフィルタリングと同様に、フィルタリング方式を上記4つの中から選び、<fun><function id='15'>glTexParameter</function>i</fun>により設定できます:
+</p>
+
+<pre><code>
+<function id='15'>glTexParameter</function>i(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+<function id='15'>glTexParameter</function>i(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+</code></pre>
+
+<p>
+	A common mistake is to set one of the mipmap filtering options as the magnification filter. This doesn't have any effect since mipmaps are primarily used for when textures get downscaled: texture magnification doesn't use mipmaps and giving it a mipmap filtering option will generate an OpenGL <var>GL_INVALID_ENUM</var> error code.
+	拡大時のフィルタリング方法としてミップマップフィルタリングを設定するのはよくある間違いです。ミップマップはテクスチャが小さくなる時に利用されるものなので、拡大時のフィルタリングとして設定しても意味がありません。テクスチャの拡大にはミップマップを利用しないので、OpenGLが<var>GL_INVALID_ENUM</var>エラーを生成します。
+</p>
+
+<h1>Loading and creating textures</h1>
+<h1>テクスチャの読み込みと作成</h1>
+<p>
+	The first thing we need to do to actually use textures is to load them into our application.
+	Texture images can be stored in dozens of file formats, each with their own structure and ordering of data, so how do we get those images in our application? One solution would be to choose a file format we'd like to use, say <code>.PNG</code> and write our own image loader to convert the image format into a large array of bytes. While it's not very hard to write your own image loader, it's still cumbersome and what if you want to support more file formats? You'd then have to write an image loader for each format you want to support.
+	テクスチャを利用するにあたりまず必要なのは、それをアプリケーションに読み込むことです。テクスチャ画像は様々なフォーマットで保存でき、データの構造と配置順序はそれぞればらばらです。このような画像をアプリケーションに読み込むにはどうすればよいでしょうか。ひとつの方法として、例えば<code>.PNG</code>といったフォーマットを選び、そのフォーマットの画像を読み込むプログラムを独自に作成し、大きなバイト列に格納するというものが考えられます。このような読込み機を作成するのはそんなに難しいことではないですが、面倒ですし、それにもし、たくさんのフォーマットに対応したいとすればどうでしょう。それぞれのフォーマットに対応した読込み機をすべて自分で作成することになります。
+</p>
+
+<p>
+	Another solution, and probably a good one, is to use an image-loading library that supports several popular formats and does all the hard work for us. A library like <code>stb_image.h</code>.
+	他のいい方法として、一般的なフォーマットをサポートした画像読込みライブラリを利用し、難儀な仕事を肩代わりさせるというものがあります。<code>stb_image.h</code>といったライブラリです。
+</p>
+
+<h2>stb_image.h</h2>
+<p>
+	<code>stb_image.h</code> is a very popular single header image loading library by <a href="https://github.com/nothings" target="_blank">Sean Barrett</a> that is able to load most popular file formats and is easy to integrate in your project(s). <code>stb_image.h</code> can be downloaded from <a href="https://github.com/nothings/stb/blob/master/stb_image.h" target="_blank">here</a>. Simply download the single header file, add it to your project as <code>stb_image.h</code>, and create an additional C++ file with the following code:
+	<code>stb_image.h</code>は<a href="https://github.com/nothings" target="_blank">Sean Barrett</a>による、ヘッダひとつの有名なライブラリです。このライブラリは一般的なフォーマットのファイルを読み込め、簡単に自分のプロジェクトに組込めます。<code>stb_image.h</code>は<a href="https://github.com/nothings/stb/blob/master/stb_image.h" target="_blank">ここ</a>からダウンドードできます。ヘッダファイルをひとつダウンロードし、<code>stb_image.h</code>という名前でプロジェクトに追加し、以下のようなC++のファイルを作成するだけです:
+</p>
+	
+<pre><code>
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
+</code></pre>
+	
+<p>
+	By defining <var>STB_IMAGE_IMPLEMENTATION</var> the preprocessor modifies the header file such that it only contains the relevant definition source code, effectively turning the header file into a <code>.cpp</code> file, and that's about it. Now simply include <code>stb_image.h</code> somewhere in your program and compile.
+	<var>STB_IMAGE_IMPLEMENTATION</var>を定義することでプリプロセッサが、関係のある定義を記述したソースコードのみを含むようにヘッダファイルを変更し、それを効率よく<code>.cpp</code>ファイルに変更します。それではプログラムのどこかで<code>stb_image.h</code>をインクルードしコンパイルしましょう。
+</p>
+
+<p>
+	For the following texture sections we're going to use an image of a <a href="/img/textures/container.jpg" target="_blank">wooden container</a>.
+	To load an image using <code>stb_image.h</code> we use its <fun>stbi_load</fun> function:
+	以降のテクスチャの章では<a href="/img/textures/container.jpg" target="_blank">木箱</a>の画像を利用します。<code>stb_image.h</code>により画像を読み込むには<fun>stbi_load</fun>関数を利用します:
+</p>
+
+<pre><code>
+int width, height, nrChannels;
+unsigned char *data = stbi_load("container.jpg", &amp;width, &amp;height, &amp;nrChannels, 0); 
+</code></pre>
+
+<p>
+	The function first takes as input the location of an image file. It then expects you to give three <code>ints</code> as its second, third and fourth argument that <code>stb_image.h</code> will fill with the resulting image's <em>width</em>, <em>height</em> and <em>number</em> of color channels. We need the image's width and height for generating textures later on. <!--The last argument allows us to force a number of channels. Let's say the image has 4 channels (RGBA) and we only want to load the 3 color channels (RGB) without alpha, we set its last argument to <code>3</code>. -->
+	この関数は最初の引数に画像ファイルの場所を取ります。2番から4番の引数には3つの<code>int</code>を取り、そこに読み込んだ画像の<em>幅</em>、<em>高さ</em>、そして色チャネルの<em>数</em>が<code>stb_image.h</code>により格納されます。幅と高さはこの後テクスチャを作成するのに必要です。
+</p>
+
+<h2>Generating a texture</h2>
+<h2>テクスチャの作成</h2>
+<p>
+	Like any of the previous objects in OpenGL, textures are referenced with an ID; let's create one:
+	ここまで登場したOpenGLのオブジェクトと同様、テクスチャもIDによって参照されます。ひとつ作成してみましょう:
+</p>
+
+<pre class="cpp"><code>
+unsigned int texture;
+<function id='50'>glGenTextures</function>(1, &amp;texture);  
+</code></pre>
+
+<p>
+	The <fun><function id='50'>glGenTextures</function></fun> function first takes as input how many textures we want to generate and stores them in a <code>unsigned int</code> array given as its second argument (in our case just a single <code>unsigned int</code>). Just like other objects we need to bind it so any subsequent texture commands will configure the currently bound texture:
+	<fun><function id='50'>glGenTextures</function></fun>関数は最初の入力として作成するテクスチャの数を受け取り、二番目の入力として与えられた<code>unsigned int</code>の配列にそれらを格納します（ここではひとつだけです）。他のオブジェクトと同様に、この後の設定がこのテクスチャに反映されるためにはこのテクスチャを紐付ける必要があります:
+</p>
+
+<pre><code>
+<function id='48'>glBindTexture</function>(GL_TEXTURE_2D, texture);  
+</code></pre>
+
+<p>
+	Now that the texture is bound, we can start generating a texture using the previously loaded image data. Textures are generated with <fun><function id='52'>glTexImage2D</function></fun>:
+	テクスチャを紐付けた後、先に読み込んでおいた画像を用いてテクスチャを生成することができます。テクスチャは<fun><function id='52'>glTexImage2D</function></fun>により生成されます:
+</p>
+
+<pre class="cpp"><code>
+<function id='52'>glTexImage2D</function>(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+<function id='51'>glGenerateMipmap</function>(GL_TEXTURE_2D);
+</code></pre>
+
+<p>
+	This is a large function with quite a few parameters so we'll walk through them step-by-step:
+	たくさんの引数を取る大きな関数なので一つづつ見ていきましょう:
+	<ul>
+	<li>The first argument specifies the texture target; setting this to <var>GL_TEXTURE_2D</var> means this operation will generate a texture on the currently bound texture object at the same target (so any textures bound to targets <var>GL_TEXTURE_1D</var> or <var>GL_TEXTURE_3D</var> will not be affected).</li>
+	<li>1つ目の引数はテクスチャのターゲットを指定します。この引数を<var>GL_TEXTURE_2D</var>にすることで、現在紐付いているテクスチャオブジェクトのうちこのターゲットのものに対してテクスチャを作成できます（現在紐付いている<var>GL_TEXTURE_1D</var>や<var>GL_TEXTURE_3D</var>には影響しません）。</li>
+	<li>The second argument specifies the mipmap level for which we want to create a texture for if you want to set each mipmap level manually, but we'll leave it at the base level which is <code>0</code>.</li>
+	<li>2つ目の引数ではテクスチャを作成する際のミップマップレベルを手動で設定したい場合にそのレベルを指定します。しかし今回は既定値の<code>0</code>にしておきましょう。</li>
+	<li>The third argument tells OpenGL in what kind of format we want to store the texture. Our image has only <code>RGB</code> values so we'll store the texture with <code>RGB</code> values as well.</li>
+	<li>3つ目はテクスチャを保存する形式を指定します。今回利用する画像は<code>RGB</code>の値のみを含むので、保存形式も<code>RGB</code>にしておきます。</li>
+	<li>The 4th and 5th argument sets the width and height of the resulting texture. We stored those earlier when loading the image so we'll use the corresponding variables.</li>
+	<li>4つ目と5つ目は出力されるテクスチャの幅と高さをそれぞれ指定します。先程画像を読み込む際にこれらの値を取得していたのでそのまま利用します。</li>
+	<li>The next argument should always be <code>0</code> (some legacy stuff).</li>
+	<li>次の引数は常に<code>0</code>にしておくべきです（過去の遺物です）。</li>
+	<li>The 7th and 8th argument specify the format and datatype of the source image. We loaded the image with <code>RGB</code> values and stored them as <code>char</code>s (bytes) so we'll pass in the corresponding values.</li>
+	<li>7つ目と8つ目では読み込む画像のデータ形式を指定します。<code>RGB</code>値の画像を読み込み、<code>char</code>形式（バイト形式）で保存したので、それらの形式をそれぞれ渡します。</li>
+	<li>The last argument is the actual image data.</li>
+	<li>最後の引数は実際の画像データです。</li>
+	</ul>
+</p>
+
+<p>
+	Once <fun><function id='52'>glTexImage2D</function></fun> is called, the currently bound texture object now has the texture image attached to it. However, currently it only has the base-level of the texture image loaded and if we want to use mipmaps we have to specify all the different images manually (by continually incrementing the second argument) or, we could call <fun><function id='51'>glGenerateMipmap</function></fun> after generating the texture. This will automatically generate all the required mipmaps for the currently bound texture.
+ひとたび<fun><function id='52'>glTexImage2D</function></fun>が呼ばれると、現在紐付いているテクスチャオブジェクトにテクスチャ画像が貼り付きます。しかしこれだけではテクスチャ画像の元のサイズのものが読み込まれただけなので、ミップマップを利用しようと思うといちいち別の画像を手動で（2つ目の引数を連続的に増加させることにより）指定しないといけません。しかし、別の方法として、テクスチャを生成した後<fun><function id='51'>glGenerateMipmap</function></fun>を呼ぶこともできます。これにより現在紐付いているテクスチャに必要なミップマップをすべて自動で作成されます。
+</p>
+
+<p> 
+	After we're done generating the texture and its corresponding mipmaps, it is good practice to free the image memory:
+	テクスチャとミップマップを作成した後は画像のメモリを開放するのがいいでしょう:
+</p>
+
+<pre class="cpp"><code>
+stbi_image_free(data);
+</code></pre>
+
+<p>
+	The whole process of generating a texture thus looks something like this:
+	以上をまとめると、テクスチャの作成手順は以下のようになります:
+</p>
+
+<pre><code>
+unsigned int texture;
+<function id='50'>glGenTextures</function>(1, &amp;texture);
+<function id='48'>glBindTexture</function>(GL_TEXTURE_2D, texture);
+// set the texture wrapping/filtering options (on the currently bound texture object)
+// テクスチャの繰り返しとフィルタリングの設定（現在紐付いているテクスチャオブジェクトに対して）
+<function id='15'>glTexParameter</function>i(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	
+<function id='15'>glTexParameter</function>i(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+<function id='15'>glTexParameter</function>i(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+<function id='15'>glTexParameter</function>i(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+// load and generate the texture
+// テクスチャの読込みと作成
+int width, height, nrChannels;
+unsigned char *data = stbi_load("container.jpg", &amp;width, &amp;height, &amp;nrChannels, 0);
+if (data)
+{
+	<function id='52'>glTexImage2D</function>(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+	<function id='51'>glGenerateMipmap</function>(GL_TEXTURE_2D);
+}
+else
+{
+	std::cout &lt;&lt; "Failed to load texture" &lt;&lt; std::endl;
+}
+stbi_image_free(data);
+</code></pre>
+
+<h2>Applying textures</h2>
+<h2>テクスチャの適応</h2>
+<p>
+	For the upcoming sections we will use the rectangle shape drawn with <fun><function id='2'>glDrawElements</function></fun> from  the final part of the <a href="https://learnopengl.com/Getting-started/Hello-Triangle" target="_blank">Hello Triangle</a> chapter. 
+	We need to inform OpenGL how to sample the texture so we'll have to update the vertex data with the texture coordinates:
+	以降の章では<a href="https://learnopengl.com/Getting-started/Hello-Triangle" target="_blank">はじめての三角形</a>の最後において<fun><function id='2'>glDrawElements</function></fun>を用いて描画した四角形を利用します。テクスチャのサンプリング方法をOpenGLに伝える必要があるので、頂点データにテクスチャ座標を追加します:
+</p>
+
+<pre><code>
+float vertices[] = {
+	// positions          // colors           // texture coords
+	0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // top right
+	0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // bottom right
+	-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // bottom left
+	-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // top left 
+};
+</code></pre>
+
+<p>
+	Since we've added an extra vertex attribute we again have to notify OpenGL of the new vertex format:
+	頂点属性を追加したのでOpenGLに新しい頂点のフォーマットを伝えます:
+</p>
+
+<img src="/img/getting-started/vertex_attribute_pointer_interleaved_textures.png" class="clean" alt="Image of VBO with interleaved position, color and texture data with strides and offsets shown for configuring vertex attribute pointers."/>
+
+<pre><code>
+<function id='30'>glVertexAttribPointer</function>(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+<function id='29'><function id='60'>glEnable</function>VertexAttribArray</function>(2);  
+</code></pre>
+
+<p>
+	Note that we have to adjust the stride parameter of the previous two vertex attributes to <code>8 * sizeof(float)</code> as well.
+	ほかの頂点属性に対するストライドの値を<code>8 * sizeof(float)</code>に変更する必要があることに注意してください。
+</p>
+
+<p>
+	Next we need to alter the vertex shader to accept the texture coordinates as a vertex attribute and then forward the coordinates to the fragment shader:
+	続いて頂点シェーダーを変更して、テクスチャ座標を頂点属性として受け取りフラグメントシェーダーに取り次ぐようにします:
+</p>
+
+<pre><code>
+#version 330 core
+layout (location = 0) in vec3 aPos;
+layout (location = 1) in vec3 aColor;
+layout (location = 2) in vec2 aTexCoord;
+
+out vec3 ourColor;
+out vec2 TexCoord;
+
+void main()
+{
+	gl_Position = vec4(aPos, 1.0);
+	ourColor = aColor;
+	TexCoord = aTexCoord;
+}
+</code></pre>
+
+<p>
+	The fragment shader should then accept the <code>TexCoord</code> output variable as an input variable. 
+	これで<code>TexCoord</code>という出力をフラグメントシェーダーが入力として受け取れるようになりました。
+</p>
+
+<p>
+	The fragment shader should also have access to the texture object, but how do we pass the texture object to the fragment shader? GLSL has a built-in data-type for texture objects called a  <def>sampler</def> that takes as a postfix the texture type we want e.g. <code>sampler1D</code>, <code>sampler3D</code> or in our case <code>sampler2D</code>. We can then add a texture to the fragment shader by simply declaring a <code>uniform sampler2D</code> that we later assign our texture to.
+	フラグメントシェーダーはテクスチャオブジェクトにもアクセスできるべきですが、どのようにしてテクスチャオブジェクトをフラグメントシェーダーに渡せるでしょうか。GLSLには<def>サンプラ</def>と呼ばれるテクスチャオブジェクトのデータ型が組込まれていて、語尾にテクスチャの種類を付けて利用できます。例えば<code>sampler1D</code>、<code>sampler2D</code>、<code>sampler3D</code>といったもので、今回は<code>sampler2D</code>を利用します。<code>uniform sampler2D</code>を宣言するだけで、フラグメントシェーダーにテクスチャを追加することができます。その後このユニフォームにテクスチャを割り当てます。
+</p>
+
+<pre><code>
+#version 330 core
+out vec4 FragColor;
+	
+in vec3 ourColor;
+in vec2 TexCoord;
+
+uniform sampler2D ourTexture;
+
+void main()
+{
+	FragColor = texture(ourTexture, TexCoord);
+}
+</code></pre>
+
+<p>
+	To sample the color of a texture we use GLSL's built-in <fun>texture</fun> function that takes as its first argument a texture sampler and as its second argument the corresponding texture coordinates. The <fun>texture</fun> function then samples the corresponding color value using the texture parameters we set earlier. The output of this fragment shader is then the (filtered) color of the texture at the (interpolated) texture coordinate.
+	テクスチャの色をサンプリングするには、GLSLに組込まれている<fun>texture</fun>関数を利用します。1つ目の引数はテクスチャのサンプラで、2つ目は対応するテクスチャ座標です。<fun>texture</fun>関数は先程設定したテクスチャの情報を用いて色をサンプリングします。これでフラグメントシェーダーの出力はテクスチャ座標の（補完された）各点におけるテクスチャの（フィルタリングされた）色になります。
+</p>
+
+<p>
+	All that's left to do now is to bind the texture before calling <fun><function id='2'>glDrawElements</function></fun> and it will then automatically assign the texture to the fragment shader's sampler:
+	最後にやり残したことは<fun><function id='2'>glDrawElements</function></fun>を呼ぶ前にテクスチャを紐付けることです。これによりフラグメントシェーダーのサンプラにテクスチャが自動的に割り当てられます:
+</p>
+
+<pre class="cpp"><code>
+<function id='48'>glBindTexture</function>(GL_TEXTURE_2D, texture);
+<function id='27'>glBindVertexArray</function>(VAO);
+<function id='2'>glDrawElements</function>(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+</code></pre>
+
+<p>
+	If you did everything right you should see the following image: 
+	すべて間違わずにできていれば以下のような画像が出力されるはずです:
+</p>
+
+<img src="/img/getting-started/textures2.png" class="clean"/>
+
+<p>
+	If your rectangle is completely white or black you probably made an error along the way. Check your shader logs and try to compare your code with the application's <a href="/code_viewer_gh.php?code=src/1.getting_started/4.1.textures/textures.cpp" target="_blank">source code</a>.
+	もし四角形が真っ白や真っ黒に表示されたら、どこかに手違いがあるはずです。シェーダーのログを確認し、自分のコードをアプリケーションの<a href="/code_viewer_gh.php?code=src/1.getting_started/4.1.textures/textures.cpp" target="_blank">ソースコード</a>と見比べて下さい。
+</p>
+	
+<warning>
+	If your texture code doesn't work or shows up as completely black, continue reading and work your way to the last example that <strong>should</strong> work. On some drivers it is <strong>required</strong> to assign a texture unit to each sampler uniform, which is something we'll discuss further in this chapter.
+	もしテクスチャのコードが動かなかったり真っ黒なものを表示した場合、とりあえず最後の例まで読み進めて下さい。最後の例は機能する<strong>はず</strong>です。ドライバによってはテクスチャユニットを各々のサンプラユニフォームに割り当てることが<strong>必要</strong>です。テクスチャユニットについてはこの章で詳しく議論します。
+</warning>
+
+<p>
+	To get a little funky we can also mix the resulting texture color with the vertex colors. We simply multiply the resulting texture color with the vertex color in the fragment shader to mix both colors:
+	少しイカしたことをするために出力されたテクスチャの色を頂点の色と混ぜてみましょう。この為にフラグメントシェーダーにおいてテクスチャの色と頂点の色を単に掛け合わせます:
+</p>
+
+<pre><code>
+FragColor = texture(ourTexture, TexCoord) * vec4(ourColor, 1.0);  
+</code></pre>
+
+<p>
+	The result should be a mixture of the vertex's color and the texture's color:
+	その結果、頂点の色とテクスチャの色が混ぜ合わせられます:
+</p>
+
+<img src="/img/getting-started/textures_funky.png" class="clean"/>
+
+<p>
+	I guess you could say our container likes to disco.
+	コンテナがディスコのように見えるでしょう。<!--平成生まれの役者にはなんのことやら。-->
+</p>
+
+<h2>Texture Units</h2>
+<h2>テクスチャユニット</h2>
+<p>
+	You probably wondered why the <code>sampler2D</code> variable is a uniform if we didn't even assign it some value with <fun><function id='44'>glUniform</function></fun>. Using <fun><function id='44'>glUniform</function>1i</fun> we can actually assign a <em>location</em> value to the texture sampler so we can set multiple textures at once in a  fragment shader. This location of a texture is more commonly known as a <def>texture unit</def>. The default texture unit for a texture is <code>0</code> which is the default active texture unit so we didn't need to assign a location in the previous section; note that not all graphics drivers assign a default texture unit so the previous section may not have rendered for you.
+	<fun><function id='44'>glUniform</function></fun>によって値を設定しない場合であっても<code>sampler2D</code>がユニフォームであることについて疑問に思うかもしれません。<fun><function id='44'>glUniform</function>1i</fun>を利用することで、テクスチャサンプラに<em>位置</em>を実際に割り当てられるので、フラグメントシェーダーにおいて複数のテクスチャを一度に指定することができます。このテクスチャの位置は一般に<def>テクスチャユニット</def>と呼ばれます。テクスチャユニットの既定値は<code>0</code>で、これがデフォルトのアクティブなテクスチャユニットなので、前の章において位置を割り当てる必要はなかったのです。ただし全てのグラフィックドライバがデフォルトのテクスチャユニットを割り当てるわけではないので、場合によっては前章のコードでは描画されないことがあるのです。
+</p>
+
+<p>
+	The main purpose of texture units is to allow us to use more than 1 texture in our shaders. By  assigning texture units to the samplers, we can bind to multiple textures at once as long as we activate the corresponding texture unit first. Just like <fun><function id='48'>glBindTexture</function></fun> we can activate texture units using <fun><function id='49'>glActiveTexture</function></fun> passing in the texture unit we'd like to use:
+	テクスチャユニットの主な目的はシェーダーにおいて複数のテクスチャを利用することです。サンプラにテクスチャユニットを割り当て、呼応するテクスチャユニットを最初にアクティベートしておけば、複数のテクスチャを一度に紐付けることができます。<fun><function id='48'>glBindTexture</function></fun>と同様に、<fun><function id='49'>glActiveTexture</function></fun>に、利用したいテクスチャユニットを渡すことで、それをアクティベートすることができます:
+</p>
+
+<pre class="cpp"><code>
+<function id='49'>glActiveTexture</function>(GL_TEXTURE0); // activate the texture unit first before binding texture
+<function id='49'>glActiveTexture</function>(GL_TEXTURE0); // テクスチャを紐付ける前にまずテクスチャユニットをアクティベート
+<function id='48'>glBindTexture</function>(GL_TEXTURE_2D, texture);
+</code></pre>
+
+<p>
+	After activating a texture unit, a subsequent <fun><function id='48'>glBindTexture</function></fun> call will bind that texture to the currently active texture unit. Texture unit <var>GL_TEXTURE0</var> is always by default activated, so we didn't have to activate any texture units in the previous example when using <fun><function id='48'>glBindTexture</function></fun>.
+	テクスチャユニットをアクティベートした後で<fun><function id='48'>glBindTexture</function></fun>を呼び出すとそのテクスチャが現在アクティブなテクスチャユニットに紐付きます。<var>GL_TEXTURE0</var>というテクスチャユニットはデフォルトで常にアクティブな状態なので、前の例において、<fun><function id='48'>glBindTexture</function></fun>を利用した際にテクスチャユニットをアクティベートする必要がなかったのです。
+</p>
+
+<note>
+	OpenGL should have a at least a minimum of 16 texture units for you to use which you can activate using <var>GL_TEXTURE0</var> to <var>GL_TEXTURE15</var>. They are defined in order so we could also get <var>GL_TEXTURE8</var> via <var>GL_TEXTURE0 + 8</var> for example, which is useful when we'd have to loop over several texture units.
+	OpenGLでは少なくとも16個のテクスチャユニットを利用でき、<var>GL_TEXTURE0</var>から<var>GL_TEXTURE15</var>を使ってアクティベートできます。これらのテクスチャユニットは例えば<var>GL_TEXTURE8</var>に<var>GL_TEXTURE0 + 8</var>という形でアクセスできるように定義されており、テクスチャユニットに対してループ処理を行う際に便利です。
+</note>
+
+<p>
+	We still however need to edit the fragment shader to accept another sampler. This should be  relatively straightforward now:
+	しかしまだフラグメントシェーダーが他のサンプラを受け入れるように変更を加える必要があります。これは比較的簡単です:
+</p>
+
+<pre><code>
+#version 330 core
+...
+
+uniform sampler2D texture1;
+uniform sampler2D texture2;
+
+void main()
+{
+	FragColor = mix(texture(texture1, TexCoord), texture(texture2, TexCoord), 0.2);
+}
+</code></pre>
+
+<p>
+	The final output color is now the combination of two texture lookups. GLSL's built-in <fun>mix</fun> function takes two values as input and linearly interpolates between them based on its third argument. If the third value is <code>0.0</code> it returns the first input; if it's <code>1.0</code> it returns the second input value. A value of <code>0.2</code> will return <code>80%</code> of the first input color and <code>20%</code> of the second input color, resulting in a mixture of both our textures.
+	最終的に出力される色がふたつのテクスチャの組み合わせになりました。GLSLの組み込み関数である<fun>mix</fun>は2つの入力値を受け取り、3つ目の引数に基づいてそれらの値を線形補完します。3つ目の値が<code>0.0</code>であれば1つ目の入力がそのまま返され、<code>1.0</code>であれば2つ目の入力が返ります。<code>0.2</code>であれば1つ目の入力の80%と2つ目の入力の20%が返り、結果としてふたつのテクスチャを混ぜたものになります。
+</p>
+
+<p>
+	We now want to load and create another texture; you should be familiar with the steps now. Make sure to create another texture object, load the image and generate the final texture using <fun><function id='52'>glTexImage2D</function></fun>. For the second texture we'll use an image of your <a href="/img/textures/awesomeface.png" target="_blank">facial expression while learning OpenGL</a>:
+	今度はもうひとつのテクスチャを読み込んで作成しましょう。手順はすでにご存知のはずです。テクスチャオブジェクトをもうひとつ作成し、画像を読込み<fun><function id='52'>glTexImage2D</function></fun>により最終的なテクスチャを生成します。ふたつ目のテクスチャには<a href="/img/textures/awesomeface.png" target="_blank">OpenGLを学習中の表情</a>の画像を利用しましょう:
+</p>
+	
+<pre><code>
+unsigned char *data = stbi_load("awesomeface.png", &amp;width, &amp;height, &amp;nrChannels, 0);
+if (data)
+{
+	<function id='52'>glTexImage2D</function>(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+	<function id='51'>glGenerateMipmap</function>(GL_TEXTURE_2D);
+}
+</code></pre>
+	
+<p>
+	Note that we now load a <code>.png</code> image that includes an alpha (transparency) channel. This means we now need to specify that the image data contains an alpha channel as well by using <var>GL_RGBA</var>; otherwise OpenGL will incorrectly interpret the image data.
+	今回読み込んだのは<code>.png</code>画像であり、アルファ（透明）チャネルを含むことに注意してください。今回は画像データにアルファチャネルが含まれていることも<var>GL_RGBA</var>を用いて示さなければなりません。そうしないとOenGLが正しく画像データを解釈してくれません。
+</p>
+
+<p> 
+	To use the second texture (and the first texture) we'd have to change the rendering procedure a bit by binding both textures to the corresponding texture unit:
+	ひとつ目のテクスチャに加えふたつ目のものを利用するには両方のテクスチャを対応するテクスチャユニットに紐付けるように描画処理を少し変更する必要があります:
+</p>
+
+<pre><code>
+<function id='49'>glActiveTexture</function>(GL_TEXTURE0);
+<function id='48'>glBindTexture</function>(GL_TEXTURE_2D, texture1);
+<function id='49'>glActiveTexture</function>(GL_TEXTURE1);
+<function id='48'>glBindTexture</function>(GL_TEXTURE_2D, texture2);
+
+<function id='27'>glBindVertexArray</function>(VAO);
+<function id='2'>glDrawElements</function>(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0); 
+</code></pre>
+	
+<p>
+	We also have to tell OpenGL to which texture unit each shader sampler belongs to by setting each sampler using <fun><function id='44'>glUniform</function>1i</fun>. We only have to set this once, so we can do this before we enter the render loop:
+	また各シェーダーサンプラを<fun><function id='44'>glUniform</function>1i</fun>により設定することで、そのサンプラがどのテクスチャユニットに属するかをOpenGLに伝える必要があります。これは一度だけでいいので、描画ループに入る前の段階で実行します:
+</p>
+	
+<pre><code>
+ourShader.use(); // don't forget to activate the shader before setting uniforms!  
+ourShader.use(); // ユニフォームを設定する前にシェーダーをアクティベートする
+<function id='44'>glUniform</function>1i(<function id='45'>glGetUniformLocation</function>(ourShader.ID, "texture1"), 0); // set it manually
+<function id='44'>glUniform</function>1i(<function id='45'>glGetUniformLocation</function>(ourShader.ID, "texture1"), 0); // 手動で設定
+ourShader.setInt("texture2", 1); // or with shader class
+ourShader.setInt("texture2", 1); // またはシェーダークラスを利用
+	
+while(...) 
+{
+	[...]
+}
+</code></pre>
+
+<p>
+	By setting the samplers via <fun><function id='44'>glUniform</function>1i</fun> we make sure each uniform sampler corresponds to the proper texture unit. You should get the following result:
+<fun><function id='44'>glUniform</function>1i</fun>によりサンプラを設定することで、各ユニフォームサンプラが適切なテクスチャユニットに確実に対応させます。以下の結果が得られるでしょう:
+</p>
+
+<img src="/img/getting-started/textures_combined.png" class="clean"/>
+
+<p>
+	You probably noticed that the texture is flipped upside-down! This happens because OpenGL expects the <code>0.0</code> coordinate on the y-axis to be on the bottom side of the image, but images usually have <code>0.0</code> at the top of the y-axis. Luckily for us, <code>stb_image.h</code> can flip the y-axis during image loading by adding the following statement before loading any image:
+	テクスチャが上下さかさになっていますね。これはOpenGLにおいてy軸上の<code>0.0</code>が画像の下端に対応しているからです。しかし普通y軸の<code>0.0</code>は上端です。有り難いことに<code>stb_image.h</code>は画像読込み前に以下の宣言をすることで読み込む画像を上下反転してくれます:
+	</p>
+	
+<pre><code>
+stbi_set_flip_vertically_on_load(true);  
+</code></pre>
+	
+<p>
+	After telling <code>stb_image.h</code> to flip the y-axis when loading images you should get the following result:
+	読み込み時にy軸に沿って画像を反転するように<code>stb_image.h</code>に伝えれば、以下のような結果が得られるでしょう:
+</p>
+
+<img src="/img/getting-started/textures_combined2.png" class="clean"/>
+
+<p>
+	If you see one happy container, you did things right. You can compare it with the <a href="/code_viewer_gh.php?code=src/1.getting_started/4.2.textures_combined/textures_combined.cpp" target="_blank">source code</a>.
+	幸せそうな箱が現れれば完璧です。<a href="/code_viewer_gh.php?code=src/1.getting_started/4.2.textures_combined/textures_combined.cpp" target="_blank">ソースコード</a>と比較してみて下さい。
+</p>
+
+<h2>Exercises</h2>
+<h2>演習問題</h2>
+<p>
+	To get more comfortable with textures it is advised to work through these exercises before continuing.
+	次の章に進む前に、以下の演習問題を解いてテクスチャに慣れておくのがいいでしょう。
+	<ul>
+	<li>Make sure <strong>only</strong> the happy face looks in the other/reverse direction by changing the fragment shader: <a href="/code_viewer_gh.php?code=src/1.getting_started/4.3.textures_exercise1/textures_exercise1.cpp" target="_blank">solution</a>.</li>
+	<li>フラグメントシェーダーを変更して笑顔<strong>だけ</strong>が別の方向に向くようにしてください: <a href="/code_viewer_gh.php?code=src/1.getting_started/4.3.textures_exercise1/textures_exercise1.cpp" target="_blank">解答</a>。</li>
+	<li>Experiment with the different texture wrapping methods by specifying texture coordinates in the range <code>0.0f</code> to <code>2.0f</code> instead of <code>0.0f</code> to <code>1.0f</code>. See if you can display 4 smiley faces on a single container image clamped at its edge: <a href="/code_viewer_gh.php?code=src/1.getting_started/4.4.textures_exercise2/textures_exercise2.cpp" target="_blank">solution</a>, <a href="/img/getting-started/textures_exercise2.png" target="_blank">result</a>. See if you can experiment with other wrapping methods as well.</li>
+	<li>テクスチャ座標を<code>0.0f</code>から<code>1.0f</code>ではなく<code>0.0</code>から<code>2.0f</code>に変更したうえで、テクスチャの繰り返し方法を別のものにして結果がどうなるか実験してください。箱の画像が端で引き伸ばされ、その上に笑顔が4つ表示されているようなものを作成できるでしょうか:<a href="/code_viewer_gh.php?code=src/1.getting_started/4.4.textures_exercise2/textures_exercise2.cpp" target="_blank">解答</a>、<a href="/img/getting-started/textures_exercise2.png" target="_blank">結果</a>。他の繰り返し方法でも試して下さい。</li>
+	<li>Try to display only the center pixels of the texture image on the rectangle in such a way that the individual pixels are getting visible by changing the texture coordinates. Try to set the texture filtering method to <var>GL_NEAREST</var> to see the pixels more clearly: <a href="/code_viewer_gh.php?code=src/1.getting_started/4.5.textures_exercise3/textures_exercise3.cpp" target="_blank">solution</a>.</li>
+	<li>ピクセルが認識できるようにテクスチャ座標を変更することで四角形の上にテクスチャ画像の中心のピクセルだけを表示させて下さい。さらにピクセルがくっきり見えるようにフィルタリング方法を<var>GL_NEAREST</var>にしてみてください:<a href="/code_viewer_gh.php?code=src/1.getting_started/4.5.textures_exercise3/textures_exercise3.cpp" target="_blank">解答</a>。</li>
+	<li>Use a uniform variable as the <fun>mix</fun> function's third parameter to vary the amount  the two textures are visible. Use the up and down arrow keys to change how much the container or the smiley face is visible: <a href="/code_viewer_gh.php?code=src/1.getting_started/4.6.textures_exercise4/textures_exercise4.cpp" target="_blank">solution</a>.</li>
+	</li>ふたつのテクスチャの見え方を変化させられるよう、<fun>mix</fun>関数の3つ目の引数にユニフォームを渡して下さい。上下の矢印キーにより箱と笑顔の見え方を変更できるようにしてください:<a href="/code_viewer_gh.php?code=src/1.getting_started/4.6.textures_exercise4/textures_exercise4.cpp" target="_blank">解答</a>。</li>
+	</ul>
+</p>
+	
+
+	</div>
+
+</body>
+</html>
+	</main>
+</body>
+</html>

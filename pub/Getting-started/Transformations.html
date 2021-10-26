@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="ja"> 
+<head>
+    <meta charset="utf-8"/>
+    <title>LearnOpenGL</title>
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico"  />
+	<link rel="stylesheet" href="../static/style.css" />
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"> </script>
+	<script src="/static/functions.js"></script>
+</head>
+<body>
+	<nav>
+<ol>
+	<li id="Introduction">
+		<a href="https://learnopengl.com/Introduction">はじめに</a>
+	</li>
+	<li id="Getting-started">
+		<span class="closed">入門</span>
+		<ol>
+			<li id="Getting-started/OpenGL">
+				<a href="https://learnopengl.com/Getting-started/OpenGL">OpenGL </a>
+			</li>
+			<li id="Getting-started/Creating-a-window">
+				<a href="https://learnopengl.com/Getting-started/Creating-a-window">ウィンドウの作成</a>
+			</li>
+			<li id="Getting-started/Hello-Window">
+				<a href="https://learnopengl.com/Getting-started/Hello-Window">最初のウィンドウ</a>
+			</li>
+			<li id="Getting-started/Hello-Triangle">
+				<a href="https://learnopengl.com/Getting-started/Hello-Triangle">最初の三角形</a>
+			</li>
+			<li id="Getting-started/Shaders">
+				<a href="https://learnopengl.com/Getting-started/Shaders">シェーダー</a>
+			</li>
+			<li id="Getting-started/Textures">
+				<a href="https://learnopengl.com/Getting-started/Textures">テクスチャ</a>
+			</li>
+			<li id="Getting-started/Transformations">
+				<a href="https://learnopengl.com/Getting-started/Transformations">座標変換</a>
+			</li>
+			<li id="Getting-started/Coordinate-Systems">
+				<a href="https://learnopengl.com/Getting-started/Coordinate-Systems">座標系</a>
+			</li>
+			<li id="Getting-started/Camera">
+				<a href="https://learnopengl.com/Getting-started/Camera">カメラ</a>
+			</li>
+			<li id="Getting-started/Review">
+				<a href="https://learnopengl.com/Getting-started/Review">まとめ</a>
+			</li>
+		</ol>
+	</li>
+	<li id="Lighting">
+		<span class="closed">Lighting </span>
+		<ol>
+			<li id="Lighting/Colors">
+				<a href="https://learnopengl.com/Lighting/Colors">Colors </a>
+			</li>
+			<li id="Lighting/Basic-Lighting">
+				<a href="https://learnopengl.com/Lighting/Basic-Lighting">Basic Lighting </a>
+			</li>
+			<li id="Lighting/Materials">
+				<a href="https://learnopengl.com/Lighting/Materials">Materials </a>
+			</li>
+			<li id="Lighting/Lighting-maps">
+				<a href="https://learnopengl.com/Lighting/Lighting-maps">Lighting maps </a>
+			</li>
+			<li id="Lighting/Light-casters">
+				<a href="https://learnopengl.com/Lighting/Light-casters">Light casters </a>
+			</li>
+			<li id="Lighting/Multiple-lights">
+				<a href="https://learnopengl.com/Lighting/Multiple-lights">Multiple lights </a>
+			</li>
+			<li id="Lighting/Review">
+				<a href="https://learnopengl.com/Lighting/Review">Review </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Model-Loading">
+		<span class="closed">Model Loading </span>
+		<ol>
+			<li id="Model-Loading/Assimp">
+				<a href="https://learnopengl.com/Model-Loading/Assimp">Assimp </a>
+			</li>
+			<li id="Model-Loading/Mesh">
+				<a href="https://learnopengl.com/Model-Loading/Mesh">Mesh </a>
+			</li>
+			<li id="Model-Loading/Model">
+				<a href="https://learnopengl.com/Model-Loading/Model">Model </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Advanced-OpenGL">
+		<span class="closed">Advanced OpenGL </span>
+		<ol>
+			<li id="Advanced-OpenGL/Depth-testing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Depth-testing">Depth testing </a>
+			</li>
+			<li id="Advanced-OpenGL/Stencil-testing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Stencil-testing">Stencil testing </a>
+			</li>
+			<li id="Advanced-OpenGL/Blending">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Blending">Blending </a>
+			</li>
+			<li id="Advanced-OpenGL/Face-culling">
+				<a href="https://learnopengl.cm/Advanced-OpenGL/Face-culling">Face culling </a>
+			</li>
+			<li id="Advanced-OpenGL/Framebuffers">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Framebuffers">Framebuffers </a>
+			</li>
+			<li id="Advanced-OpenGL/Cubemaps">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Cubemaps">Cubemaps </a>
+			</li>
+			<li id="Advanced-OpenGL/Advanced-Data">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Advanced-Data">Advanced Data </a>
+			</li>
+			<li id="Advanced-OpenGL/Advanced-GLSL">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Advanced-GLSL">Advanced GLSL </a>
+			</li>
+			<li id="Advanced-OpenGL/Geometry-Shader">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Geometry-Shader">Geometry Shader </a>
+			</li>
+			<li id="Advanced-OpenGL/Instancing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Instancing">Instancing </a>
+			</li>
+			<li id="Advanced-OpenGL/Anti-Aliasing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Anti-Aliasing">Anti Aliasing </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Advanced-Lighting">
+		<span class="closed">Advanced Lighting </span>
+		<ol>
+			<li id="Advanced-Lighting/Advanced-Lighting">
+				<a href="https://learnopengl.com/Advanced-Lighting/Advanced-Lighting">Advanced Lighting </a>
+			</li>
+			<li id="Advanced-Lighting/Gamma-Correction">
+				<a href="https://learnopengl.com/Advanced-Lighting/Gamma-Correction">Gamma Correction </a>
+			</li>
+			<li id="Advanced-Lighting/Shadows">
+				<span class="closed">Shadows </span>
+				<ol>
+					<li id="Advanced-Lighting/Shadows/Shadow-Mapping">
+						<a href="https://learnopengl.com/Advanced-Lighting/Shadows/Shadow-Mapping">Shadow Mapping </a>
+					</li>
+					<li id="Advanced-Lighting/Shadows/Point-Shadows">
+						<a href="https://learnopengl.com/Advanced-Lighting/Shadows/Point-Shadows">Point Shadows </a>
+					</li>
+				</ol>
+			</li>
+			<li id="Advanced-Lighting/Normal-Mapping">
+				<a href="https://learnopengl.com/Advanced-Lighting/Normal-Mapping">Normal Mapping </a>
+			</li>
+			<li id="Advanced-Lighting/Parallax-Mapping">
+				<a href="https://learnopengl.com/Advanced-Lighting/Parallax-Mapping">Parallax Mapping </a>
+			</li>
+			<li id="Advanced-Lighting/HDR">
+				<a href="https://learnopengl.com/Advanced-Lighting/HDR">HDR </a>
+			</li>
+			<li id="Advanced-Lighting/Bloom">
+				<a href="https://learnopengl.com/Advanced-Lighting/Bloom">Bloom </a>
+			</li>
+			<li id="Advanced-Lighting/Deferred-Shading">
+				<a href="https://learnopengl.com/Advanced-Lighting/Deferred-Shading">Deferred Shading </a>
+			</li>
+			<li id="Advanced-Lighting/SSAO">
+				<a href="https://learnopengl.com/Advanced-Lighting/SSAO">SSAO </a>
+			</li>
+		</ol>
+	</li>
+	<li id="PBR">
+		<span class="closed">PBR </span>
+		<ol>
+			<li id="PBR/Theory">
+				<a href="https://learnopengl.com/PBR/Theory">Theory </a>
+			</li>
+			<li id="PBR/Lighting">
+				<a href="https://learnopengl.com/PBR/Lighting">Lighting </a>
+			</li>
+			<li id="PBR/IBL">
+				<span class="closed">IBL </span>
+				<ol>
+					<li id="PBR/IBL/Diffuse-irradiance">
+						<a href="https://learnopengl.com/PBR/IBL/Diffuse-irradiance">Diffuse irradiance </a>
+					</li>
+					<li id="PBR/IBL/Specular-IBL">
+						<a href="https://learnopengl.com/PBR/IBL/Specular-IBL">Specular IBL </a>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="In-Practice">
+		<span class="closed">In Practice </span>
+		<ol>
+			<li id="In-Practice/Debugging">
+				<a href="https://learnopengl.com/In-Practice/Debugging">Debugging </a>
+			</li>
+			<li id="In-Practice/Text-Rendering">
+				<a href="https://learnopengl.com/In-Practice/Text-Rendering">Text Rendering </a>
+			</li>
+			<li id="In-Practice/2D-Game">
+				<span class="closed">2D Game </span>
+				<ol>
+					<li id="In-Practice/2D-Game/Breakout">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Breakout">Breakout </a>
+					</li>
+					<li id="In-Practice/2D-Game/Setting-up">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Setting-up">Setting up </a>
+					</li>
+					<li id="In-Practice/2D-Game/Rendering-Sprites">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Rendering-Sprites">Rendering Sprites </a>
+					</li>
+					<li id="In-Practice/2D-Game/Levels">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Levels">Levels </a>
+					</li>
+					<li id="In-Practice/2D-Game/Collisions">
+						<span class="closed">Collisions </span>
+						<ol>
+							<li id="In-Practice/2D-Game/Collisions/Ball">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Ball">Ball </a>
+							</li>
+							<li id="In-Practice/2D-Game/Collisions/Collision-detection">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Collision-detection">Collision detection </a>
+							</li>
+							<li id="In-Practice/2D-Game/Collisions/Collision-resolution">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Collision-resolution">Collision resolution </a>
+							</li>
+						</ol>
+					</li>
+					<li id="In-Practice/2D-Game/Particles">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Particles">Particles </a>
+					</li>
+					<li id="In-Practice/2D-Game/Postprocessing">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Postprocessing">Postprocessing </a>
+					</li>
+					<li id="In-Practice/2D-Game/Powerups">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Powerups">Powerups </a>
+					</li>
+					<li id="In-Practice/2D-Game/Audio">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Audio">Audio </a>
+					</li>
+					<li id="In-Practice/2D-Game/Render-text">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Render-text">Render text </a>
+					</li>
+					<li id="In-Practice/2D-Game/Final-thoughts">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Final-thoughts">Final thoughts </a>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="Guest-Articles">
+		<span class="closed">Guest Articles </span>
+		<ol>
+			<li id="Guest-Articles/How-to-publish">
+				<a href="https://learnopengl.com/Guest-Articles/How-to-publish">How to publish </a>
+			</li>
+			<li id="Guest-Articles/2020">
+				<span class="closed">2020 </span>
+				<ol>
+					<li id="Guest-Articles/2020/OIT">
+						<span class="closed">OIT </span>
+						<ol>
+							<li id="Guest-Articles/2020/OIT/Introduction">
+								<a href="https://learnopengl.com/Guest-Articles/2020/OIT/Introduction">Introduction </a>
+							</li>
+							<li id="Guest-Articles/2020/OIT/Weighted-Blended">
+								<a href="https://learnopengl.com/Guest-Articles/2020/OIT/Weighted-Blended">Weighted Blended </a>
+							</li>
+						</ol>
+					</li>
+					<li id="Guest-Articles/2020/Skeletal-Animation">
+						<a href="https://learnopengl.com/Guest-Articles/2020/Skeletal-Animation">Skeletal Animation </a>
+					</li>
+				</ol>
+			</li>
+			<li id="Guest-Articles/2021">
+				<span class="closed">2021 </span>
+				<ol>
+					<li id="Guest-Articles/2021/CSM">
+						<a href="https://learnopengl.com/Guest-Articles/2021/CSM">CSM </a>
+					</li>
+					<li id="Guest-Articles/2021/Scene">
+						<span class="closed">Scene </span>
+						<ol>
+							<li id="Guest-Articles/2021/Scene/Scene-Graph">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Scene/Scene-Graph">Scene Graph </a>
+							</li>
+							<li id="Guest-Articles/2021/Scene/Frustum-Culling">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Scene/Frustum-Culling">Frustum Culling </a>
+							</li>
+						</ol>
+					</li>
+					<li id="Guest-Articles/2021/Tessellation">
+						<span class="closed">Tessellation </span>
+						<ol>
+							<li id="Guest-Articles/2021/Tessellation/Height-map">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Tessellation/Height-map">Height map </a>
+							</li>
+						</ol>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="Code-repository">
+		<a href="https://learnopengl.com/Code-repository">Code repository </a>
+	</li>
+	<li id="Translations">
+		<a href="https://learnopengl.com/Translations">Translations </a>
+	</li>
+	<li id="About">
+		<a href="https://learnopengl.com/About">About </a>
+	</li>
+</ol>
+	</nav>
+	<main>
+    <h1 id="content-title">Transformations</h1>
+    <h1 id="content-title">変換</h1>
+<h1 id="content-url" style='display:none;'>Getting-started/Transformations</h1>
+<p>
+  We now know how to create objects, color them and/or give them a detailed appearance using textures, but they're still not that interesting since they're all static objects. We could try and make them move by changing their vertices and re-configuring their buffers each frame, but that's cumbersome and costs quite some processing power. There are much better ways to <def>transform</def> an object and that's by using (multiple) <def>matrix</def> objects. This doesn't mean we're going to talk about Kung Fu and a large digital artificial world. 
+  これまでオブジェクトを作成し、色を着け、あるいはテクスチャにより精細な見た目を与えることを学びました。しかしここまで作成した物体は静止したままで、あまり面白くありません。フレーム毎に頂点の座標を動かしバッファを再設定することで物体を動かすこともできましょうが、これは面倒であるうえに処理にコストがかかります。よりよい方法として、いくつかの行列を用いて物体を<def>変換</def>するというものがあります。ただし美味しいラーメン屋の話をするわけではありません。
+</p>
+
+<p>
+  Matrices are very powerful mathematical constructs that seem scary at first, but once you'll grow accustomed to them they'll prove extremely useful. When discussing matrices, we'll have to make a small dive into some mathematics and for the more mathematically inclined readers I'll post additional resources for further reading.
+  行列とはとても便利な数学の道具です。はじめは得体の知れないものかもしれませんが、一度慣れてしまえばその便利さは手放せません。行列の話をする上で、少しばかり数学に足を踏み入れなければなりません。また数学が好きな人の為にさらに発展的な内容の文献も挙げておきます。
+</p>
+
+<p> 
+  However, to fully understand transformations we first have to delve a bit deeper into vectors before discussing matrices. The focus of this chapter is to give you a basic mathematical background in topics we will require later on. If the subjects are difficult, try to understand them as much as you can and come back to this chapter later to review the concepts whenever you need them.
+  しかし変換について完全に理解するには行列の話をする前にもう少しベクトルについて深掘りする必要があります。この章では後程必要となる基礎的な数学的の知識を身に付けていただきます。もし難しく感じた場合、可能な限り理解しようとしたうえで、後から必要な概念についてこの章を振り返るようにしてください。
+</p>
+
+<h1>Vectors</h1>
+<h1>ベクトル</h1>
+<p>
+   In its most basic definition, vectors are directions and nothing more. A vector has a <def>direction</def> and a <def>magnitude</def> (also known as its strength or length). You can think of vectors like directions on a treasure map: 'go left 10 steps, now go north 3 steps and go right 5 steps';  here 'left' is the direction and '10 steps' is the magnitude of the vector. The directions for the treasure map thus contains 3 vectors. Vectors can have any dimension, but we usually work with dimensions of 2 to 4. If a vector has 2 dimensions it represents a direction on a plane (think of 2D graphs) and when it has 3 dimensions it can represent any direction in a 3D world. 
+   最も基本的な定義において、ベクトルとは矢印以外のなにものでもありません。ベクトルは<def>方向</def>と<def>大きさ</def>（あるいは強さや長さとも）を持ちます。ベクトルは宝の地図に書かれた指示のように捉えることができます: 「左に10歩進み、北に3歩、その後右に5歩進む」この場合「左」がベクトルの向きで「10歩」がベクトルの大きさです。つまりこの宝の地図には3つのベクトルがあります。ベクトルは任意の次元を持つことができますが、この本で利用するのはだいたい2次元から4次元までです。ベクトルが2次元であればそれは平面上の方向を表し（2次元の座標空間を思いうかべて下さい）、3次元であれば3次元空間での任意の方向を表わします。
+</p>
+
+<p>
+  Below you'll see 3 vectors where each vector is represented with <code>(x,y)</code> as arrows in a 2D graph. Because it is more intuitive to display vectors in 2D (rather than 3D) you can think of the 2D vectors as 3D vectors with a <code>z</code> coordinate of <code>0</code>. Since vectors represent directions, the origin of the vector does not change its value. In the graph below we can see that the vectors \({\color{red}\bar{v}}\) and \({\color{blue}\bar{w}}\) are equal even though their origin is different:
+  下の図は2次元の座標空間上に<code>(x, y)</code>と共に矢印で図示した3つのベクトルです。ベクトルは3次元より2次元で図示する方が直感的なので、2次元ベクトルは<code>z</code>座標が<code>0</code>である3次元ベクトルだと見做せます。ベクトルは方向を表わしたものなので、始点が変化してもベクトル自身は同じものです。下の図において2つのベクトル\({\color{red}\bar{v}}\)と\({\color{blue}\bar{w}}\)は始点は違いますがベクトルとしては同じものです:
+</p>
+
+<img src="/img/getting-started/vectors.png" class="clean" />
+
+<p>
+  When describing vectors mathematicians generally prefer to describe vectors as character symbols with a little bar over their head like \(\bar{v}\). Also, when displaying vectors in formulas they are generally displayed as follows:
+  数学者はよく\(\bar{v}\)のように文字の上に小さな棒を書いてベクトルを表わす書き方をします。そして数式の中にベクトルを書く際は一般に以下のような形になります:
+  
+  \[\bar{v} = \begin{pmatrix} {\color{red}x} \\ {\color{green}y} \\ {\color{blue}z} \end{pmatrix} \]
+</p>
+
+<p>
+  Because vectors are specified as directions it is sometimes hard to visualize them as positions. If we want to visualize vectors as positions we can imagine the origin of the direction vector to be <code>(0,0,0)</code> and then point towards a certain direction that specifies the point, making it a <def>position vector</def> (we could also specify a different origin and then say: 'this vector points to that point in space from this origin'). The position vector <code>(3,5)</code> would then point to <code>(3,5)</code> on the graph with an origin of <code>(0,0)</code>. Using vectors we can thus describe directions <strong>and</strong> positions in 2D and 3D space.
+  ベクトルは方向を表わすので、位置として可視化するのは困難です。ベクトルを位置として捉えるには<vode>(0, 0, 0)</code>をベクトルの始点としたときにそのベクトルが差す点をそのベクトルの位置とします。この見方でのベクトルを<def>位置ベクトル</def>といいます（他のある点を始点として見た場合、「このベクトルは空間上でその点を始点として見たときにあそこの点を差す」というような言い方をします）。<code>(3, 5)</code>という位置ベクトルは<code>(0, 0)</code>を始点と見たときに<code>(3, 5)</code>を指し示すようなベクトルです。ベクトルを利用することで、2次元空間や3次元空間での方向<strong>及び</strong>位置を表わせるようになりました。
+</p>
+
+<p>
+  Just like with normal numbers we can also define several operations on vectors (some of which you've already seen).
+  通常の数字と同様にベクトルに関してもいくつかの演算を定義できます（既に少しでてきました）。
+</p>
+
+<h2>Scalar vector operations</h2>
+<h2>スカラとベクトルの演算</h2>
+<p>
+  A <def>scalar</def> is a single digit. When adding/subtracting/multiplying or dividing a vector with a scalar we simply  add/subtract/multiply or divide each element of the vector by the scalar. For addition it would look like this:
+  <def>スカラ</def>というのは数字です。ベクトルに対してスカラを足す／引く／掛ける演算は単にベクトルの各要素に対してスカラを足す／引く／掛けるだけです。足し算は以下のようになります:
+  
+  \[ \begin{pmatrix} {\color{red}1} \\ {\color{green}2} \\ {\color{blue}3} \end{pmatrix} + x \rightarrow \begin{pmatrix} {\color{red}1} \\ {\color{green}2} \\ {\color{blue}3} \end{pmatrix} + \begin{pmatrix} x \\ x \\ x \end{pmatrix}  = \begin{pmatrix} {\color{red}1} + x \\ {\color{green}2} + x \\ {\color{blue}3} + x \end{pmatrix} \]
+  
+  Where \(+\) can be \(+\),\(-\),\(\cdot\) or \(\div\) where \(\cdot\) is the multiplication operator. 
+  \(+\)になっているところは\(+\)、\(-\)、\(\cdot\)あるいは\(\div\)が使えます。ただし\(\cdot\)は掛け算です。
+</p>
+
+<h2>Vector negation</h2>
+<h2>ベクトルの反転</h2>
+<p>
+  Negating a vector results in a vector in the reversed direction. A vector pointing north-east would point south-west after negation. To negate a vector we add a minus-sign to each component (you can also represent it as a scalar-vector multiplication with a scalar value of <code>-1</code>):
+  ベクトルを反転させるというのはベクトルの向きを逆にするということです。北東を向いていたベクトルは反転により南西を向くようになります。ベクトルを反転させるには各要素にマイナスの記号を付ければよいです（あるいはベクトルに対して<code>-1</code>を掛けることでも反転できます）:
+  
+  \[-\bar{v} = -\begin{pmatrix} {\color{red}v_x} \\ {\color{blue}v_y} \\ {\color{green}v_z} \end{pmatrix} = \begin{pmatrix} -{\color{red}v_x} \\ -{\color{blue}v_y} \\ -{\color{green}v_z} \end{pmatrix} \]
+</p>
+
+<h2>Addition and subtraction</h2>
+<h2>加法、減法</h2>
+<p>
+  Addition of two vectors is defined as <def>component-wise</def> addition, that is each component of one vector is added to the same component of the other vector like so:
+  2つのベクトルの足し算は<def>要素毎</def>の足し算として定義されます。つまり以下のように、一方のベクトルの各要素が他方のベクトルの同じ要素と足し合せられるということです:
+  
+  \[\bar{v} = \begin{pmatrix} {\color{red}1} \\ {\color{green}2} \\ {\color{blue}3} \end{pmatrix}, \bar{k} = \begin{pmatrix} {\color{red}4} \\ {\color{green}5} \\ {\color{blue}6} \end{pmatrix} \rightarrow \bar{v} + \bar{k} = \begin{pmatrix} {\color{red}1} + {\color{red}4} \\ {\color{green}2} + {\color{green}5} \\ {\color{blue}3} + {\color{blue}6} \end{pmatrix} = \begin{pmatrix} {\color{red}5} \\ {\color{green}7} \\ {\color{blue}9} \end{pmatrix} \]
+  
+  Visually, it looks like this on vectors <code>v=(4,2)</code> and <code>k=(1,2)</code>, where the second vector is added on top of the first vector's end to find the end point of the resulting vector (head-to-tail method):
+  視覚的には以下の図のように、2つのベクトル<code>v=(4, 2)</code>と<code>k=(1, 2)</code>を足す場合、2つ目のベクトルが1つ目のベクトルの終点から始まり、結果として足し合せられたベクトルは1つ目のベクトルの始点から2つ目のベクトルの終点を差すようになります:
+</p>
+
+  <img src="/img/getting-started/vectors_addition.png" class="clean"/>
+
+<p>
+  Just like normal addition and subtraction, vector subtraction is the same as addition with a negated second vector:
+  通常の加法、減法と同様に、ベクトルの引き算は2つ目のベクトルを反転させたものを足し合せるだけです:
+  
+  \[\bar{v} = \begin{pmatrix} {\color{red}1} \\ {\color{green}2} \\ {\color{blue}3} \end{pmatrix}, \bar{k} = \begin{pmatrix} {\color{red}4} \\ {\color{green}5} \\ {\color{blue}6} \end{pmatrix} \rightarrow \bar{v} + -\bar{k} = \begin{pmatrix} {\color{red}1} + (-{\color{red}4}) \\ {\color{green}2} + (-{\color{green}5}) \\ {\color{blue}3} + (-{\color{blue}6}) \end{pmatrix} = \begin{pmatrix} -{\color{red}3} \\ -{\color{green}3} \\ -{\color{blue}3} \end{pmatrix} \]
+    
+</p>
+
+<p>
+  Subtracting two vectors from each other results in a vector that's the difference of the positions both vectors are pointing at. This proves useful in certain cases where we need to retrieve a vector that's the difference between two points.
+  2つのベクトルの引き算の結果は、双方が差す位置の差分となります。この性質は2つのベクトルの指し示す位置の違いを得る必要がある場合に便利です。
+</p>
+
+<img src="/img/getting-started/vectors_subtraction.png" class="clean"/>                  
+
+
+<h2>Length</h2>
+<h2>長さ</h2>
+<p>
+  To retrieve the length/magnitude of a vector we use the <def>Pythagoras theorem</def> that you may remember from your math classes. A vector forms a triangle when you visualize its individual <code>x</code> and <code>y</code> component as two sides of a triangle:
+  ベクトルの長さを得るには数学の授業で習った<def>ピタゴラスの定理</def>を利用します。ベクトルの<code>x</code>と<code>y</code>の要素をそれぞれ三角形の辺と見ることで、ベクトルが三角形を形成します:
+</p>
+
+<img src="/img/getting-started/vectors_triangle.png" class="clean"/>
+
+<p>
+  Since the length of the two sides <code>(x, y)</code> are known and we want to know the length of the tilted side \({\color{red}\bar{v}}\) we can calculate it using the Pythagoras theorem as:
+  2辺の長さ<code>(x, y)</code>は既知なので、斜辺の長さはピタゴラスの定理より:
+  
+  \[||{\color{red}\bar{v}}|| = \sqrt{{\color{green}x}^2 + {\color{blue}y}^2} \]
+  
+  Where \(||{\color{red}\bar{v}}||\) is denoted as <em>the length of vector \({\color{red}\bar{v}}\)</em>. This is easily extended to 3D by adding \(z^2\) to the equation.
+  となります。ここで\(||{\color{red}\bar{v}}||\)は<em>ベクトル\({\color{red}\bar{v}}\)の長さ</em>を表わします。ここに\(z^2\)を加えることで簡単に3次元に拡張できます。
+</p>
+
+<p>
+  In this case the length of vector <code>(4, 2)</code> equals:
+  これを用いると、ベクトル<code>(4, 2)</code>の長さは:
+  
+  \[||{\color{red}\bar{v}}|| = \sqrt{{\color{green}4}^2 + {\color{blue}2}^2} = \sqrt{{\color{green}16} + {\color{blue}4}} = \sqrt{20} = 4.47  \]
+  
+  Which is <code>4.47</code>.
+  となり、これは<code>4.47</code>です。
+</p>
+
+
+
+<p>
+  There is also a special type of vector that we call a <def>unit vector</def>. A unit vector has one extra property and that is that its length is exactly 1. We can calculate a unit vector \(\hat{n}\) from any vector by dividing each of the vector's components by its length:
+  また、<def>単位ベクトル</def>と呼ばれる特別なベクトルもあります。単位ベクトルとはその長さがちょうど1であるベクトルです。単位ベクトル\(\hat{n}\)は任意のベクトルから、各要素をその長さで割ることで得られます:
+  
+  \[\hat{n} = \frac{\bar{v}}{||\bar{v}||}\]
+  
+  We call this <def>normalizing</def> a vector. Unit vectors are displayed with a little roof over their head and are generally easier to work with, especially when we only care about their directions (the direction does not change if we change a vector's length).
+  この操作はベクトルの<def>正規化と呼ばれます。単位ベクトルは記号の上に屋根を乗せて書きます。単位ベクトルは特にその方向だけが必要な場合に便利です（ベクトルの長さを変更してもその方向は不変です）。
+</p>
+
+<h2>Vector-vector multiplication</h2>
+<h2>ベクトルどうしの積</h2>
+<p>
+  Multiplying two vectors is a bit of a weird case. Normal multiplication isn't really defined on vectors since it has no visual meaning, but we have two specific cases that we could choose from when multiplying: one is the <def>dot product</def> denoted as \(\bar{v} \cdot \bar{k}\) and the other is the <def>cross product</def> denoted as \(\bar{v} \times \bar{k}\).
+  2つのベクトルを掛け合せるのは少し特殊です。通常の積は幾何学的な意味がないので定義されませんが、他の特殊な掛け算が存在します。ひとつは<def>内積</def>と呼ばれ、\(\bar{v} \cdot \bar{k}\)と表記されるもので、いまひとつは<def>外積</def>と呼ばれ、\(\bar{v} \times \bar{k}\)と表記されるものです。
+</p>
+
+<h3>Dot product</h3>
+<h3>内積</h3>
+<p>
+  The dot product of two vectors is equal to the scalar product of their lengths times the cosine of the angle between them. If this sounds confusing take a look at its formula:
+  ベクトルの内積はそれぞれの長さのスカラ積に、2つのベクトルがなす角のコサインを掛けたものに等しいものです。文字で書いてもややこしいので以下の式を見て下さい:
+  
+  \[\bar{v} \cdot \bar{k} = ||\bar{v}|| \cdot ||\bar{k}|| \cdot \cos \theta \]
+  
+  Where the angle between them is represented as theta (\(\theta\)). Why is this interesting? Well, imagine if \(\bar{v}\) and \(\bar{k}\) are unit vectors then their length would be equal to 1. This would effectively reduce the formula to:
+  ここで\(theta\)は2つのベクトルのなす角です。これのなにが面白いのでしょう。もし両方のベクトルが単位ベクトルであればその長さが1に等しいので、以下の式のように単純なものになります:
+  
+  \[\hat{v} \cdot \hat{k} = 1 \cdot 1 \cdot \cos \theta = \cos \theta\]
+  
+  Now the dot product <strong>only</strong> defines the angle between both vectors. You may remember that the cosine or cos function becomes <code>0</code> when the angle is 90 degrees or <code>1</code> when the angle is 0. This allows us to easily test if the two vectors are <def>orthogonal</def> or <def>parallel</def> to each other using the dot product (orthogonal means the vectors are at a <def>right-angle</def> to each other). In case you want to know more about the <code>sin</code> or the <code>cos</code> functions I'd suggest the following <a href="https://www.khanacademy.org/math/trigonometry/basic-trigonometry/basic_trig_ratios/v/basic-trigonometry" target="_blank">Khan Academy videos</a> about basic trigonometry.
+  この場合、内積は2つのベクトルのなす角<strong>だけ</strong>を表しています。コサインという関数は角度が90度なら<code>0</code>で、0度なら<code>1</code>になることを思いだして下さい。この性質を用いると、内積を計算することで2つのベクトルが<def>直交</def>するかどうか、あるいは<def>平行</def>であるかどうかを簡単に判定できます。<code>sin</code>や<code>cos</code>に興味がある場合、三角関数の基礎にかんするこの動画<a href="https://www.khanacademy.org/math/trigonometry/basic-trigonometry/basic_trig_ratios/v/basic-trigonometry" target="_blank">Khan Academy videos</a>をおすすめします。
+</p>
+
+<note>
+  You can also calculate the angle between two non-unit vectors, but then you'd have to divide the lengths of both vectors from the result to be left with \(cos \theta\).
+  単位ベクトルでないベクトルの内積からそれらのなす角を求めることもできますが、その場合、内積を2つのベクトルの長さで割る必要があります。
+</note>
+
+<p>
+  So how do we calculate the dot product? The dot product is a component-wise multiplication where we add the results together. It looks like this with two unit vectors (you can verify that both their lengths are exactly <code>1</code>):
+  ではどのようにして内積を計算するのでしょう。内積は各要素毎に積を取り、それらを足し合わせて計算できます。2つの単位ベクトルでは以下のようになります（各ベクトルの長さが<code>1</code>であることを確認してください）:
+  
+  \[ \begin{pmatrix} {\color{red}0.6} \\ -{\color{green}0.8} \\ {\color{blue}0} \end{pmatrix} \cdot \begin{pmatrix} {\color{red}0} \\ {\color{green}1} \\ {\color{blue}0} \end{pmatrix} = ({\color{red}0.6} * {\color{red}0}) + (-{\color{green}0.8} * {\color{green}1}) + ({\color{blue}0} * {\color{blue}0}) = -0.8 \]
+  
+  To calculate the degree between both these unit vectors we use the inverse of the cosine function \(cos^{-1}\) and this results in <code>143.1</code> degrees. We now effectively calculated the angle between these two vectors. The dot product proves very useful when doing lighting calculations later on.
+  2つのベクトルのなす角を求めるにはコサインの逆関数\(cos^{-1}\)を利用します。今回の場合この値は<code>143.1</code>度です。2つのベクトルのなす角度を効率よく計算できるようになりました。内積は後程でてくる照明の計算において非常に役立ちます。
+</p>
+
+<h3>Cross product</h3>
+<h3>外積</h3>
+<p>
+  The cross product is only defined in 3D space and takes two non-parallel vectors as input and produces a third vector that is orthogonal to both the input vectors. If both the input vectors are orthogonal to each other as well, a cross product would result in 3 orthogonal vectors; this will prove useful in the upcoming chapters. The following image shows what this looks like in 3D space:
+  外積は3次元空間においてのみ定義され、2つの平行でないベクトルからその両方に直交する3つめのベクトルを生成します。はじめの2つのベクトルが直交する場合、外積を取ることで3つの互いに直交するベクトルが得られます。この性質については次の章においてその利便性が明らかになります。次の図はここで述べたことを3次元空間に図示したものです:
+</p>
+
+<img src="/img/getting-started/vectors_crossproduct.png" class="clean"/>
+
+<p>
+  Unlike the other operations, the cross product isn't really intuitive without delving into linear algebra so it's best to just memorize the formula and you'll be fine (or don't, you'll probably be fine as well). Below you'll see the cross product between two orthogonal vectors A and B:
+  他の演算と違い、外積の計算は線形代数に踏み込まなければあまり直感的ではありません。とりあえず公式を暗記すれば十分です（覚えられなくてもおそらく大丈夫です）。以下の式は2つの直交するベクトルAとBの外積を表すものです:
+  
+  \[\begin{pmatrix} {\color{red}A_{x}} \\ {\color{green}A_{y}} \\ {\color{blue}A_{z}} \end{pmatrix} \times \begin{pmatrix} {\color{red}B_{x}} \\ {\color{green}B_{y}} \\ {\color{blue}B_{z}}  \end{pmatrix} = \begin{pmatrix} {\color{green}A_{y}} \cdot {\color{blue}B_{z}} - {\color{blue}A_{z}} \cdot {\color{green}B_{y}} \\ {\color{blue}A_{z}} \cdot {\color{red}B_{x}} - {\color{red}A_{x}} \cdot {\color{blue}B_{z}} \\ {\color{red}A_{x}} \cdot {\color{green}B_{y}} - {\color{green}A_{y}} \cdot {\color{red}B_{x}} \end{pmatrix} \]
+  
+  As you can see, it doesn't really seem to make sense. However, if you just follow these steps you'll get another vector that is orthogonal to your input vectors. 
+  これを見てもよく意味が分からないでしょう。しかしこの手順に従えば2つのベクトルからそれらに直交するベクトルが得られます。
+</p>
+
+<h1>Matrices</h1>
+<h1>行列</h1>
+<p>
+  Now that we've discussed almost all there is to vectors it is time to enter the matrix!
+  A matrix is a rectangular array of numbers, symbols and/or mathematical expressions. Each individual item in a matrix is called an <def>element</def> of the matrix. An example of a 2x3 matrix is shown below:
+  ベクトルに関してはだいたい見終わったので、次は行列の話に入りましょう。行列とは数字や記号、数式を四角形に並べたものです。行列を構成する個々の数字等は行列の<def>要素</def>と呼ばれます。2x3の行列の例を以下に挙げます:
+  
+  \[\begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{bmatrix}\]
+  
+  Matrices are indexed by <code>(i,j)</code> where <code>i</code> is the row and <code>j</code> is the column, that is why the above matrix is called a 2x3 matrix (3 columns and 2 rows, also known as the <def>dimensions</def> of the matrix). This is the opposite of what you're used to when indexing 2D graphs as <code>(x,y)</code>. To retrieve the value 4 we would index it as <code>(2,1)</code> (second row, first column).
+  行列の各要素は行を表わす<code>i</code>と列を表わす<code>j</code>を用いて<code>(i, j)</code>で参照できます。上の行列は2行3列なので2x3の行列と書きました。この2x3は行列の<def>型</def>と呼ばれます。これは2次元平面上で<code>(x, y)</code>を用いる場合と反対です。上の行列において4という要素を参照するには<code>(2, 1)</code>を利用します（2行目、1列目）。
+</p>
+
+<p>
+  Matrices are basically nothing more than that, just rectangular arrays of mathematical expressions. They do have a very nice set of mathematical properties and just like vectors we can define several operations on matrices, namely: addition, subtraction and multiplication.
+  行列は単にこれだけのものです。数式を四角形に並べたものでしかありません。しかし行列は数学的に非常に優れた性質を持っていて、ベクトルの場合と同様に和、差、積といった演算を定義できます。
+</p>
+
+<h2>Addition and subtraction</h2>
+<h2>行列の和、差</h2>
+<p>
+  Matrix addition and subtraction between two matrices is done on a per-element basis. So the same general rules apply that we're familiar with for normal numbers, but done on the elements of both matrices with the same index. This does mean that addition and subtraction is only defined for matrices of the same dimensions. A 3x2 matrix and a 2x3 matrix (or a 3x3 matrix and a 4x4 matrix) cannot be added or subtracted together. Let's see how matrix addition works on two 2x2 matrices:
+  2つの行列の和と差は要素毎に行われます。なので通常の数字と同じような規則が各要素毎に成り立ちます。要素毎に行われるため、和と差は同じ型の行列に対してのみ定義できます。3x2の行列と2x3の行列、あるいは3x3の行列と4x4の行列は足したり引いたりすることができません。2x2の行列どうしの足し算を以下に示します:
+  
+  \[\begin{bmatrix} {\color{red}1} & {\color{red}2} \\ {\color{green}3} & {\color{green}4} \end{bmatrix} + \begin{bmatrix} {\color{red}5} & {\color{red}6} \\ {\color{green}7} & {\color{green}8} \end{bmatrix} = \begin{bmatrix} {\color{red}1} + {\color{red}5} & {\color{red}2} + {\color{red}6} \\ {\color{green}3} + {\color{green}7} & {\color{green}4} + {\color{green}8} \end{bmatrix} = \begin{bmatrix} {\color{red}6} & {\color{red}8} \\ {\color{green}10} & {\color{green}12} \end{bmatrix} \]
+  
+The same rules apply for matrix subtraction:
+同様にして差は以下のようになります:
+  
+   \[\begin{bmatrix} {\color{red}4} & {\color{red}2} \\ {\color{green}1} & {\color{green}6} \end{bmatrix} - \begin{bmatrix} {\color{red}2} & {\color{red}4} \\ {\color{green}0} & {\color{green}1} \end{bmatrix} = \begin{bmatrix} {\color{red}4} - {\color{red}2} & {\color{red}2}  - {\color{red}4} \\ {\color{green}1} - {\color{green}0} & {\color{green}6} - {\color{green}1} \end{bmatrix} = \begin{bmatrix} {\color{red}2} & -{\color{red}2} \\ {\color{green}1} & {\color{green}5} \end{bmatrix} \]
+  
+</p>
+
+<h2>Matrix-scalar products</h2>
+<h2>行列とスカラの積</h2>
+<p>
+  A matrix-scalar product multiples each element of the matrix by a scalar. The following example illustrates the multiplication:
+  行列とスカラの積は行列の各要素にスカラを掛け合わせることとして定義されます。以下にこの積の例を示します:
+  
+  \[{\color{green}2} \cdot \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} = \begin{bmatrix} {\color{green}2} \cdot 1 & {\color{green}2} \cdot 2 \\ {\color{green}2} \cdot 3 & {\color{green}2} \cdot 4 \end{bmatrix} = \begin{bmatrix} 2 & 4 \\ 6 & 8 \end{bmatrix}\]
+  
+Now it also makes sense as to why those single numbers are called scalars. A scalar basically  <em>scales</em> all the elements of the matrix by its value. In the previous example, all elements were scaled by <code>2</code>. 
+これを見るとなぜ数字がスカラと呼ばれるのか分かります。スカラは行列の各要素をその値で<em>拡大、縮小</em>（英語でscaleと言います）するのです。前の例では各要素を<code>2</code>倍に拡大しています。
+</p>
+  
+<p>
+  So far so good, all of our cases weren't really too complicated. That is, until we start on matrix-matrix multiplication.
+  ここまではそんなに難しくはありません。続いてもう少し込み入った、行列どうしの積の話に移りましょう。
+</p>
+
+<h2>Matrix-matrix multiplication</h2>
+<h2>行列の積</h2>
+<p>
+  Multiplying matrices is not necessarily complex, but rather difficult to get comfortable with. Matrix multiplication basically means to follow a set of pre-defined rules when multiplying. There are a few restrictions though: 
+  2つの行列の積は必ずしも複雑ではありませんが、慣れるまで時間がかかります。行列の積はある規則に従った演算です。この演算にもある制約があります:
+  
+  <ol>
+    <li>You can only multiply two matrices if the number of columns on the left-hand side matrix is equal to the number of rows on the right-hand side matrix.</li>
+	<li>行列の積は、1つ目の行列の列の数と、2つ目の行列の行の数が一致する時に限り定義される。</li>
+    <li>Matrix multiplication is not <def>commutative</def> that is \(A \cdot B \neq B \cdot A\).</li>
+	<li>行列の積は<def>非可換</def>である。つまり、\(A \cdot B \neq B \cdot A\)。</li>
+  </ol>
+</p>
+
+<p>
+  Let's get started with an example of a matrix multiplication of 2 <code>2x2</code> matrices:
+  まずは2つの<code>2x2</code>の行列の積を例示しましょう:
+  
+  \[ \begin{bmatrix} {\color{red}1} & {\color{red}2} \\ {\color{green}3} & {\color{green}4} \end{bmatrix} \cdot \begin{bmatrix} {\color{blue}5} & {\color{purple}6} \\ {\color{blue}7} & {\color{purple}8} \end{bmatrix} = \begin{bmatrix} {\color{red}1} \cdot {\color{blue}5} + {\color{red}2} \cdot {\color{blue}7} & {\color{red}1} \cdot {\color{purple}6} + {\color{red}2} \cdot {\color{purple}8} \\ {\color{green}3} \cdot {\color{blue}5} + {\color{green}4} \cdot {\color{blue}7} & {\color{green}3} \cdot {\color{purple}6} + {\color{green}4} \cdot {\color{purple}8} \end{bmatrix} = \begin{bmatrix} 19 & 22 \\ 43 & 50 \end{bmatrix} \]
+  
+  Right now you're probably trying to figure out what the hell just happened? Matrix multiplication is a combination of normal multiplication and addition using the left-matrix's rows with the right-matrix's columns. Let's try discussing this with the following image:
+  いったい何ごとかと身構えることでしょう。行列の積は左の行列の行と右の行列の列を用いて通常の和と積を組み合わせることで計算されます。下図で説明します:
+</p>
+
+  <img src="/img/getting-started/matrix_multiplication.png" class="clean"/>
+  
+<p>
+ 	We first take the upper row of the left matrix and then take a column from the right matrix. The row and column that we picked decides which output value of the resulting <code>2x2</code> matrix we're going to calculate. If we take the first row of the left matrix the resulting value will end up in the first row of the result matrix, then we pick a column and if it's the first column the result value will end up in the first column of the result matrix. This is exactly the case of the red pathway. To calculate the bottom-right result we take the bottom row of the first matrix and the rightmost column of the second matrix.
+	まず左の行列から上の行を取り、次に右の行列から列を取ります。どの行とどの列を取ったかにより、結果となる<code>2x2</code>行列のどの要素を計算するのかが決まります。左の行列の1つ目の行を取ると、結果となる行列の1つ目の行を計算することになります。そして右の行列の1つ目の列を取ると、結果となる行列の1つ目の列を計算することになります。これは図において赤で囲ったものにあたります。右下の要素を計算するには、左の行列の下の行と、右の行列の右の列から計算します。
+</p>
+
+<p>
+  To calculate the resulting value we multiply the first element of the row and column together using normal multiplication, we do the same for the second elements, third, fourth etc. The results of the individual multiplications are then summed up and we have our result. Now it also makes sense that one of the requirements is that the size of the left-matrix's columns and the right-matrix's rows are equal, otherwise we can't finish the operations!
+  結果となる数値を得るためには左右の行列から取った行と列の1つ目の要素どうしを掛け、2つ目の要素どうしを掛け、3つ目、4つ目...、最後にこれらの掛け合わせた値を全て足し合わせます。この操作が必要なので、1つ目の制約である、左の行列の行の数と右の行列の列の数が等しくないといけないという意味が理解できるでしょう。この制約がないと、計算を完了できません。
+</p>
+
+<p>
+   The result is then a matrix that has dimensions of  (<code>n,m</code>) where <code>n</code> is equal to the number of rows of the left-hand side matrix and <code>m</code> is equal to the columns of the right-hand side matrix.
+   左の行列の行数を<code>n</code>、右の行列の列数を<code>m</code>とした場合、行列の積の結果得られる行列の型は<code>(n, m)</code>となります。
+</p>
+
+<p>
+  Don't worry if you have difficulties imagining the multiplications inside your head. Just keep trying to do the calculations by hand and return to this page whenever you have difficulties. Over time, matrix multiplication becomes second nature to you.
+  頭の中でこの積を想像するのが難しくても心配しないで下さい。紙に書いて計算をすればいいですし、忘れたらこのページに戻ってきてください。時間と共に慣れることでしょう。
+</p>
+
+<p>
+  Let's finish the discussion of matrix-matrix multiplication with a larger example. Try to visualize the pattern using the colors. As a useful exercise, see if you can come up with your own answer of the multiplication and then compare them with the resulting matrix (once you try to do a matrix multiplication by hand you'll quickly get the grasp of them).
+  もう少し大きな例で行列の積の議論を終えましょう。色分けにより計算法を可視化しています。いい演習として自分で行列の積を計算して答えを示し合わせて下さい。実際に手を動かすことで、計算の流れがよく掴めます。
+  
+  \[ \begin{bmatrix} {\color{red}4} & {\color{red}2} & {\color{red}0} \\ {\color{green}0} & {\color{green}8} & {\color{green}1} \\ {\color{blue}0} & {\color{blue}1} & {\color{blue}0} \end{bmatrix} \cdot \begin{bmatrix} {\color{red}4} & {\color{green}2} & {\color{blue}1} \\ {\color{red}2} & {\color{green}0} & {\color{blue}4} \\ {\color{red}9} & {\color{green}4} & {\color{blue}2} \end{bmatrix} = \begin{bmatrix} {\color{red}4} \cdot {\color{red}4} + {\color{red}2} \cdot {\color{red}2} + {\color{red}0} \cdot {\color{red}9} & {\color{red}4} \cdot {\color{green}2} + {\color{red}2} \cdot {\color{green}0} + {\color{red}0} \cdot {\color{green}4} & {\color{red}4} \cdot {\color{blue}1} + {\color{red}2} \cdot {\color{blue}4} + {\color{red}0} \cdot {\color{blue}2} \\ {\color{green}0} \cdot {\color{red}4} + {\color{green}8} \cdot {\color{red}2} + {\color{green}1} \cdot {\color{red}9} & {\color{green}0} \cdot {\color{green}2} + {\color{green}8} \cdot {\color{green}0} + {\color{green}1} \cdot {\color{green}4} & {\color{green}0} \cdot {\color{blue}1} + {\color{green}8} \cdot {\color{blue}4} + {\color{green}1} \cdot {\color{blue}2} \\ {\color{blue}0} \cdot {\color{red}4} + {\color{blue}1} \cdot {\color{red}2} + {\color{blue}0} \cdot {\color{red}9} & {\color{blue}0} \cdot {\color{green}2} + {\color{blue}1} \cdot {\color{green}0} + {\color{blue}0} \cdot {\color{green}4} & {\color{blue}0} \cdot {\color{blue}1} + {\color{blue}1} \cdot {\color{blue}4} + {\color{blue}0} \cdot {\color{blue}2} \end{bmatrix} 
+ \\ = \begin{bmatrix} 20 & 8 & 12 \\ 25 & 4 & 34 \\ 2 & 0 & 4 \end{bmatrix}\]
+</p>
+
+<p>
+  As you can see, matrix-matrix multiplication is quite a cumbersome process and very prone to errors (which is why we usually let computers do this) and this gets problematic real quick when the matrices become larger. If you're still thirsty for more and you're curious about some more of the mathematical properties of matrices I strongly suggest you take a look at these <a href="https://www.khanacademy.org/math/algebra2/algebra-matrices" target="_blank">Khan Academy videos</a> about matrices. 
+  ご覧のように行列の積は非常に面倒であり計算間違いも起こりやすく、特に大きいサイズの行列では大変ですので、通常この計算はコンピュータに任せます。行列の数学的な性質についてさらに知りたい方にはこの行列に関する動画<a href="https://www.khanacademy.org/math/algebra2/algebra-matrices" target="_blank">Khan Academy videos</a>を強くおすすめします。
+</p>
+
+<p>
+  Anyways, now that we know how to multiply matrices together, we can start getting to the good stuff.
+  ともあれ行列を掛け合わせることができるようになったので、面白いことができるようになりました。
+</p>
+
+<h1>Matrix-Vector multiplication</h1>
+<h1>行列とベクトルの積</h1>
+<p>
+  Up until now we've had our fair share of vectors. We used them to represent positions, colors and even texture coordinates. Let's move a bit further down the rabbit hole and tell you that a vector is basically a <code>Nx1</code> matrix where <code>N</code> is the vector's number of components (also known as an <def>N-dimensional</def> vector). If you think about it, it makes a lot of sense. Vectors are just like matrices an array of numbers, but with only 1 column. So, how does this new piece of information help us?  Well, if we have a <code>MxN</code> matrix we can multiply this matrix with our <code>Nx1</code> vector, since the columns of the matrix are equal to the number of rows of the vector, thus matrix multiplication is defined.
+  ここまでベクトルについはたくさん利用してきました。ベクトルを使って位置、色、そしてテクスチャ座標を表しました。もう少し踏み込むと、ベクトルは基本的には<code>Nx1</code>の行列だと言えます。ただし<code>N</code>はベクトルの要素数で、このベクトルは<def>N次元</def>であるとも言います。この見方をするとベクトルは行列と同じく数字の羅列であり、その列が1つだけのものだと言えます。つまり、<code>MxN</code>の行列を持ってくればこの行列を<code>Nx1</code>のベクトルに掛け合わせることができるということです。この行列の列の数が、ベクトルの行の数に一致するので、行列の積が定義できるためです。
+</p>
+
+<p>
+  But why do we care if we can multiply matrices with a vector? Well, it just so happens that there are lots of interesting 2D/3D transformations we can place inside a matrix, and multiplying that matrix with a vector then <em>transforms</em> that vector. In case you're still a bit confused, let's start with a few examples and you'll soon see what we mean.
+  しかし行列とベクトルの積が計算できてなにがいいのでしょう。実は2次元や3次元空間での座標変換に対応した行列をベクトルに掛けることでそのベクトルを<em>座標変換</em>することができるのです。まだ少し混乱している読者のためにいくつか例を挙げます。そのうち何が起こっているのか見えてくるでしょう。
+</p>
+
+<h2>Identity matrix</h2>
+<h2>単位行列</h2>
+<p>
+  In OpenGL we usually work with <code>4x4</code> transformation matrices for several reasons and one of them is that most of the vectors are of size 4. The most simple transformation matrix that we can think of is the <def>identity matrix</def>. The identity matrix is an <code>NxN</code> matrix with only 0s except on its diagonal. As you'll see, this transformation matrix leaves a vector completely unharmed:
+  OpenGLにおいては通常<code>4x4</code>の変換行列を利用します。そのひとつの理由はほとんどの場合4次元のベクトルを扱うからです。想像し得る最も単純な変換行列は<def>単位行列</def>です。単位行列は対角成分以外の要素が0である<code>NxN</code>の行列です。この変換行列は以下のようにベクトルを全く変化させません:
+  
+  \[ \begin{bmatrix} {\color{red}1} & {\color{red}0} & {\color{red}0} & {\color{red}0} \\ {\color{green}0} & {\color{green}1} & {\color{green}0} & {\color{green}0} \\ {\color{blue}0} & {\color{blue}0} & {\color{blue}1} & {\color{blue}0} \\ {\color{purple}0} & {\color{purple}0} & {\color{purple}0} & {\color{purple}1} \end{bmatrix} \cdot \begin{bmatrix} 1 \\ 2 \\ 3 \\ 4 \end{bmatrix} = \begin{bmatrix} {\color{red}1} \cdot 1 \\ {\color{green}1} \cdot 2 \\ {\color{blue}1} \cdot 3 \\ {\color{purple}1} \cdot 4 \end{bmatrix} = \begin{bmatrix} 1 \\ 2 \\ 3 \\ 4 \end{bmatrix} \]
+  
+  The vector is completely untouched. This becomes obvious from the rules of multiplication: the first result element is each individual element of the first row of the matrix multiplied with each element of the vector. Since each of the row's elements are 0 except the first one, we get: \({\color{red}1\cdot1} + {\color{red}0\cdot2} + {\color{red}0\cdot3} + {\color{red}0\cdot4} = 1\) and the same applies for the other 3 elements of the vector.
+  ベクトルは完全に元のままです。これは積の定義から明らかです。結果となるベクトルの1つ目の要素は行列の1行目にベクトルの各要素を掛けたものです。行列の一行目は1つめの要素を除いて0なので、得られる値は\({\color{red}1}\cdot1 + {\color{red}0}\cdot2 + {\color{red}0}\cdot3 + {\color{red}0}\cdot4 = 1\)となり、残りの3つの要素についても同様です。
+</p>
+
+<note>
+  You may be wondering what the use is of a transformation matrix that does not transform? The identity matrix is usually a starting point for generating other transformation matrices and if we dig even deeper into linear algebra, a very useful matrix for proving theorems and solving linear equations.
+  変換しない変換行列にどんな使い道があるのか疑問に思うかもしれません。単位行列は通常他の変換行列を生成する出発点となります。あるいは線形代数に踏み込むなら、定理を証明したり線形方程式を解いたりするのに役立ちます。
+</note>
+
+<h2>Scaling</h2>
+<h2>拡大</h2>
+<p>
+  When we're scaling a vector we are increasing the length of the arrow by the amount we'd like to scale, keeping its direction the same. Since we're working in either 2 or 3 dimensions we can define scaling by a vector of 2 or 3 scaling variables, each scaling one axis (<code>x</code>, <code>y</code> or <code>z</code>).
+  ベクトルを拡大するには矢印の方向を一定に保ったまま、長さに拡大率を掛ける必要があります。2次元あるいは3次元の空間を扱っているので、2または3の値を持つベクトルにより拡大を定義できます。そのベクトルの各要素がそれぞれ<code>x</code>、<code>y</code>、<code>z</code>軸をそれぞれ拡大します。
+</p>
+
+<p>
+  Let's try scaling the vector \({\color{red}\bar{v}} = (3,2)\). We will scale the vector along the x-axis by <code>0.5</code>, thus making it twice as narrow; and we'll scale the vector by <code>2</code> along the y-axis, making it twice as high. Let's see what it looks like if we scale the vector by <code>(0.5,2)</code> as \({\color{blue}\bar{s}}\):
+  \({\color{red}\bar{v}} = (3, 2)\)を拡大してみましょう。x軸方向に<code>0.5</code>倍、つまり半分に切り詰め、y軸方向に<code>2</code>倍、つまり倍に引き伸ばします。このベクトルを<code>(0.5, 2)</code>により拡大したベクトル\({\color{blue}\bar{s}}\)は以下のようになります:
+</p>
+
+
+<img src="/img/getting-started/vectors_scale.png" class="clean"/>
+
+<p>
+  Keep in mind that OpenGL usually operates in 3D space so for this 2D case we could set the z-axis scale to <code>1</code>, leaving it unharmed. The scaling operation we just performed is a <def>non-uniform</def> scale, because the scaling factor is not the same for each axis. If the scalar would be equal on all axes it would be called a <def>uniform scale</def>.
+  OpenGLは3次元を扱うので、この2次元の例においてはz軸方向の拡大率は<code>1</code>として、その軸は変化させていないことに注意してください。今回行った拡大は各要素に対する拡大率が違うので、<def>一様でない</def>拡大と呼ばれます。これに対して各軸の拡大率が同じ場合、<def>一様な</def>拡大と言います。
+</p>
+
+<p>
+  Let's start building a transformation matrix that does the scaling for us. We saw from the identity matrix that each of the diagonal elements were multiplied with its corresponding vector element. What if we were to change the <code>1</code>s in the identity matrix to <code>3</code>s? In that case, we would be multiplying each of the vector elements by a value of <code>3</code> and thus effectively uniformly scale the vector by 3. If we represent the scaling variables as \( ({\color{red}S_1}, {\color{green}S_2}, {\color{blue}S_3}) \) we can define a scaling matrix on any vector \((x,y,z)\) as:
+  それでは拡大を行う変換行列を作成してみましょう。先程単位行列を見た際、対角線上の各要素がそれに対応するベクトルの要素と掛け合わせられるのを確認しました。単位行列の対角成分を<code>1</code>ではなく<code>3</code>にしたらどうなるでしょう。この場合、ベクトルの各要素に<code>3</code>が掛けられ、ベクトルが一様に3倍になります。各軸に対する拡大率をそれぞれ\( ({\color{red}S_1}, {\color{green}S_2}, {\color{blue}S_3})\)とした場合、ベクトル\((x, y, z)\)に対する拡大行列は:
+  
+  \[\begin{bmatrix} {\color{red}S_1} & {\color{red}0} & {\color{red}0} & {\color{red}0} \\ {\color{green}0} & {\color{green}S_2} & {\color{green}0} & {\color{green}0} \\ {\color{blue}0} & {\color{blue}0} & {\color{blue}S_3} & {\color{blue}0} \\ {\color{purple}0} & {\color{purple}0} & {\color{purple}0} & {\color{purple}1} \end{bmatrix} \cdot \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix} = \begin{pmatrix} {\color{red}S_1} \cdot x \\ {\color{green}S_2} \cdot y \\ {\color{blue}S_3} \cdot z \\ 1 \end{pmatrix} \]
+  
+  Note that we keep the 4th scaling value <code>1</code>. The <code>w</code> component is used for other purposes as we'll see later on.
+  となります。4つ目の要素は<code>1</code>であることに注意して下さい。この<code>w</code>要素は後程別の用途に利用します。
+</p>
+
+<h2>Translation</h2>
+<h2>平行移動</h2>
+<p>
+  <def>Translation</def> is the process of adding another vector on top of the original vector to return a new vector with a different position, thus <em>moving</em> the vector based on a translation vector. We've already discussed vector addition so this shouldn't be too new.
+  <def>平行移動</def>とはあるベクトルに他のベクトルを足して新しいベクトルにすることで、元のベクトルを平行移動ベクトルにより<em>移動</em>させることです。既にベクトルの足し算については確認しているので、特に新しいことはありません。
+</p>
+  
+<p>
+  Just like the scaling matrix there are several locations on a 4-by-4 matrix that we can use to perform certain operations and for translation those are the top-3 values of the 4th column. If we represent the translation vector as \(({\color{red}T_x},{\color{green}T_y},{\color{blue}T_z})\) we can define the translation matrix by:
+  拡大行列と同様、4x4の行列のある部分を利用することで平行移動を実現できます。その部分とは4番目の列の上3つの要素です。平行移動ベクトルを\(({\color{red}T_x},{\color{green}T_y},{\color{blue}T_z})\)で表わすと、平行移動行列は:
+  
+  \[\begin{bmatrix}  {\color{red}1} & {\color{red}0} & {\color{red}0} & {\color{red}T_x} \\ {\color{green}0} & {\color{green}1} & {\color{green}0} & {\color{green}T_y} \\ {\color{blue}0} & {\color{blue}0} & {\color{blue}1} & {\color{blue}T_z} \\ {\color{purple}0} & {\color{purple}0} & {\color{purple}0} & {\color{purple}1} \end{bmatrix} \cdot \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix} = \begin{pmatrix} x + {\color{red}T_x} \\ y + {\color{green}T_y} \\ z + {\color{blue}T_z} \\ 1 \end{pmatrix} \]
+  
+  This works because all of the translation values are multiplied by the vector's <code>w</code> column and added to the vector's original values (remember the matrix-multiplication rules). This wouldn't have been possible with a 3-by-3 matrix.
+  のようになります。平行移動の値はベクトルの<code>w</code>要素に掛けられ、ベクトルの元の値に足し合せられます（行列の積の規則を思い出して下さい）。これは3x3の行列では実現できません。
+</p>
+
+<note>
+  <strong>Homogeneous coordinates</strong><br/>
+  <strong>同次座標</strong><br/>
+  The <code>w</code> component of a vector is also known as a <def>homogeneous coordinate</def>.
+  To get the 3D vector from a homogeneous vector we divide the <code>x</code>, <code>y</code> and <code>z</code> coordinate by its <code>w</code> coordinate. We usually do not notice this since the <code>w</code> component is <code>1.0</code> most of the time. Using homogeneous coordinates has several advantages: it allows us to do matrix translations on 3D vectors (without a <code>w</code> component we can't translate vectors) and in the next chapter we'll use the <code>w</code> value to create 3D perspective.<br/>
+  <br/>
+  Also, whenever the homogeneous coordinate is equal to <code>0</code>, the vector is specifically known as a <def>direction vector</def> since a vector with a <code>w</code> coordinate of <code>0</code> cannot be translated.
+  ベクトルの<code>w</code>要素は<def>同次座標</def>として知られます。同次ベクトルから3次元の座標を得るには<code>x</code>、<code>y</code>、<code>z</code>座標を<code>w</code>座標で割ります。多くの場合<code>w</code>座標は<code>1.0</code>なので、通常気にしなくてもかまいません。同次座標の利点は3次元のベクトルに対して行列を掛けることで平行移動できる（<code>w</code>要素がないと実現できません）ことや、次の章ででてきますが、<code>w</code>の値を利用して3次元空間の透視投影を行います。<br/><br/>
+  また、同次座標が<code>0</code>のベクトルは特別に<def>方向ベクトル</def>と呼ばれます。<code>w</code>要素が<code>0</code>のベクトルは平行移動できないためです。
+</note>
+
+<p>
+  With a translation matrix we can move objects in any of the 3 axis directions (<code>x</code>, <code>y</code>, <code>z</code>), making it a very useful transformation matrix for our transformation toolkit.
+	平行移動行列を利用して<code>x</code>、<code>y</code>、<code>z</code>の任意の方向に物体を動かすことができ、変換行列のひとつとして非常に有用です。
+</p>
+  
+<h2>Rotation</h2>
+<h2>回転</h2>
+<p>
+  The last few transformations were relatively easy to understand and visualize in 2D or 3D space, but rotations are a bit trickier. If you want to know exactly how these matrices are constructed I'd recommend that you watch the rotation items of Khan Academy's <a href="https://www.khanacademy.org/math/linear-algebra/matrix_transformations" target="_blank">linear algebra</a> videos.
+  ここまでの変換は理解し、2次元や3次元空間で可視化すること比較的簡単でしたでしたが、回転はもう少しトリッキーです。回転に用いる行列がどうしてそのような形になっているのかを正確に理解したい場合、Khan Academyによる<a href="https://www.khanacademy.org/math/linear-algebra/matrix_transformations" target="_blank">線形代数</a>の動画の、物体の回転の部分をご覧になるのがいいでしょう。
+</p>
+  
+<p>
+	First let's define what a rotation of a vector actually is. A rotation in 2D or 3D is represented with an <def>angle</def>. An angle could be in degrees or radians where a whole circle has 360 degrees or 2 <a href="http://en.wikipedia.org/wiki/Pi" target="_blank">PI</a> radians. I prefer explaining rotations using degrees as we're generally more accustomed to them.
+	まずはじめにベクトルの回転がどんなものなのかを定義しましょう。2次元あるいは3次元における回転は<def>角度</def>によって規定されます。角度は一周を360度とする度数法を用いた度または一周を2<a href="http://en.wikipedia.org/wiki/Pi" target="_blank">\(\pi\)</a>とする弧度法を用いたラジアンにより表わされます。度数法に慣れている人が多いでしょうから、ここでは度数法で説明します。
+  
+<note>
+  Most rotation functions require an angle in radians, but luckily degrees are easily converted to radians:  <br/>
+  <code>angle in degrees = angle in radians * (180 / PI) </code><br/>
+  <code>angle in radians = angle in degrees * (PI / 180) </code><br/>
+  Where <code>PI</code> equals (rounded) <code>3.14159265359</code>.
+  回転に用いる多くの関数はラジアンで角度を指定します。しかし度は簡単にラジアンに変換できます:<br/>
+  <code>度 = ラジアン * (180 / \(\pi\)) </code><br/>
+  <code>ラジアン = 度 * (\(\pi\) / 180) </code><br/>
+  ここで<code>\(\pi\)</code>はおよそ<code>3.14159265359</code>です。
+</note>
+  
+  Rotating half a circle rotates us 360/2 = 180 degrees and rotating 1/5th to the right means we rotate 360/5 = 72 degrees to the right. This is demonstrated for a basic 2D vector where \({\color{red}\bar{v}}\) is rotated 72 degrees to the right, or clockwise, from \({\color{green}\bar{k}}\):
+  半円分の回転は360/2 = 180度の回転を意味し、右に1/5回転させるのは360/5 = 72度時計回りに回転させることを意味します。以下にこの回転を2次元ベクトルで行ったものを図示します。\({\color{red}\bar{v}}\)は\({\color{green}\bar{k}}\)を時計回りに72度回転させたものです:
+</p>
+  
+  <img src="/img/getting-started/vectors_angle.png" class="clean" />
+
+<p>
+  Rotations in 3D are specified with an angle <strong>and</strong> a <def>rotation axis</def>. The angle specified will rotate the object along the rotation axis given. Try to visualize this by spinning your head a certain degree while continually looking down a single rotation axis. When rotating 2D vectors in a 3D world for example, we set the rotation axis to the z-axis (try to visualize this).
+  3次元空間における回転は角度に<strong>加え</strong><def>回転軸</def>により規定されます。物体は回転軸に沿って与えられた角度だけ回転します。ある回転軸を見たまま頭を一定の角度回転させて下さい。それが回転行列によるベクトルの回転です。3次元の回転を2次元に落として考える場合、回転軸をz軸に一致させます。
+</p>
+  
+<p>
+  Using trigonometry it is possible to transform vectors to newly rotated vectors given an angle. This is usually done via a smart combination of the <code>sine</code> and <code>cosine</code> functions (commonly abbreviated to <code>sin</code> and <code>cos</code>). A discussion of how the rotation matrices are generated is out of the scope of this chapter.
+  三角関数を利用すればあるベクトルを与えられた角度だけ回転させることができます。これは通常<code>sine</code>と<code>cosine</code>関数の組み合わせにより行われます（これらの関数は一般に<code>sin</code>、<code>cos</code>と略記されます）。回転行列の導出はこの章の範疇を越えます。
+</p>
+
+<p>
+  A rotation matrix is defined for each unit axis in 3D space where the angle is represented as the  theta symbol \(\theta\).
+  3次元空間における各座標軸に沿った角度\(\theta\)度の回転行列は以下のように表わされます:
+</p>
+  
+  <p>
+    Rotation around the X-axis:
+	x軸周りの回転:
+  
+  \[\begin{bmatrix} {\color{red}1} & {\color{red}0} & {\color{red}0} & {\color{red}0} \\ {\color{green}0} & {\color{green}\cos \theta} & - {\color{green}\sin \theta} & {\color{green}0} \\ {\color{blue}0} & {\color{blue}\sin \theta} & {\color{blue}\cos \theta} & {\color{blue}0} \\ {\color{purple}0} & {\color{purple}0} & {\color{purple}0} & {\color{purple}1} \end{bmatrix} \cdot \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix} = \begin{pmatrix} x \\ {\color{green}\cos \theta} \cdot y - {\color{green}\sin \theta} \cdot z \\ {\color{blue}\sin \theta} \cdot y + {\color{blue}\cos \theta} \cdot z \\ 1 \end{pmatrix}\]
+  </p>
+       
+   <p>
+    Rotation around the Y-axis:
+	y軸周りの回転:
+  
+  \[\begin{bmatrix} {\color{red}\cos \theta} & {\color{red}0} & {\color{red}\sin \theta} & {\color{red}0} \\ {\color{green}0} & {\color{green}1} & {\color{green}0} & {\color{green}0} \\ - {\color{blue}\sin \theta} & {\color{blue}0} & {\color{blue}\cos \theta} & {\color{blue}0} \\ {\color{purple}0} & {\color{purple}0} & {\color{purple}0} & {\color{purple}1} \end{bmatrix} \cdot \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix} = \begin{pmatrix} {\color{red}\cos \theta} \cdot x + {\color{red}\sin \theta} \cdot z \\ y \\ - {\color{blue}\sin \theta} \cdot x + {\color{blue}\cos \theta} \cdot z \\ 1 \end{pmatrix} \]
+  </p>
+  
+  <p>
+    Rotation around the Z-axis:
+	z軸周りの回転:
+  
+  \[\begin{bmatrix} {\color{red}\cos \theta} & - {\color{red}\sin \theta} & {\color{red}0} & {\color{red}0} \\ {\color{green}\sin \theta} & {\color{green}\cos \theta} & {\color{green}0} & {\color{green}0} \\ {\color{blue}0} & {\color{blue}0} & {\color{blue}1} & {\color{blue}0} \\ {\color{purple}0} & {\color{purple}0} & {\color{purple}0} & {\color{purple}1} \end{bmatrix} \cdot \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix} = \begin{pmatrix} {\color{red}\cos \theta} \cdot x - {\color{red}\sin \theta} \cdot y  \\ {\color{green}\sin \theta} \cdot x + {\color{green}\cos \theta} \cdot y \\ z \\ 1 \end{pmatrix} \]
+  </p>
+
+  
+  <p>
+    Using the rotation matrices we can transform our position vectors around one of the three unit axes. To rotate around an arbitrary 3D axis we can combine all 3 them by first rotating around the X-axis, then Y and then Z for example. However, this quickly introduces a problem called <def>Gimbal lock</def>. We won't discuss the details, but a better solution is to rotate around an arbitrary unit axis e.g. <code>(0.662,0.2,0.722)</code> (note that this is a unit vector) right away instead of combining the rotation matrices. Such a (verbose) matrix exists and is given below with \(({\color{red}R_x}, {\color{green}R_y}, {\color{blue}R_z})\) as the arbitrary rotation axis:
+	これらの回転行列により、位置ベクトルを座標軸に沿って回転させることができます。任意の回転軸に沿って回転させるにはこの3つの回転を組み合わせればいいのですが、これでは<def>ジンバルロック</def>と呼ばれる問題が生じます。この問題には深く立ち入りません。よりよい方法は任意の単位ベクトルに沿って回転させる回転行列を利用することです。そのような直接的な行列は確かに存在し、\(({\color{red}R_x}, {\color{green}R_y}, {\color{blue}R_z})\)を回転軸としたとき以下のように表わされます。
+    
+    \[\begin{bmatrix} \cos \theta + {\color{red}R_x}^2(1 - \cos \theta) & {\color{red}R_x}{\color{green}R_y}(1 - \cos \theta) - {\color{blue}R_z} \sin \theta & {\color{red}R_x}{\color{blue}R_z}(1 - \cos \theta) + {\color{green}R_y} \sin \theta & 0 \\ {\color{green}R_y}{\color{red}R_x} (1 - \cos \theta) + {\color{blue}R_z} \sin \theta & \cos \theta + {\color{green}R_y}^2(1 - \cos \theta) & {\color{green}R_y}{\color{blue}R_z}(1 - \cos \theta) - {\color{red}R_x} \sin \theta & 0 \\ {\color{blue}R_z}{\color{red}R_x}(1 - \cos \theta) - {\color{green}R_y} \sin \theta & {\color{blue}R_z}{\color{green}R_y}(1 - \cos \theta) + {\color{red}R_x} \sin \theta & \cos \theta + {\color{blue}R_z}^2(1 - \cos \theta) & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix}\]
+    
+    
+    A mathematical discussion of generating such a matrix is out of the scope of this chapter. Keep in mind that even this matrix does not completely prevent gimbal lock (although it gets a lot harder). To truly prevent Gimbal locks we have to represent rotations using <def>quaternions</def>, that are not only safer, but also more computationally friendly. However, a discussion of quaternions is out of this chapter's scope. 
+	この行列の数学的な導出はこの章の内容から逸脱しますので立ち入りません。またこの行列はジンバルロックを完全には解決しないことを頭の片隅に置いておいて下さい（むしろ問題はさらにややこしくなっています）。完全にジンバルロックを解消するには<def>四元数</def>を利用する必要があります。しかしこれは安全でない上に計算量も多くなります。いずれにせよこの章の範疇ではありませんのでここでは議論しません。
+  </p>
+
+<h2>Combining matrices</h2>
+<h2>行列の組み合わせ</h2>
+<p>
+ The true power from using matrices for transformations is that we can combine multiple transformations in a single matrix thanks to matrix-matrix multiplication. Let's see if we can generate a transformation matrix that combines several transformations. Say we have a vector <code>(x,y,z)</code> and we want to scale it by 2 and then translate it by <code>(1,2,3)</code>. We need a translation and a scaling matrix for our required steps. The resulting transformation matrix would then look like:
+ 座標変換に行列を利用する真のパワーは、行列の積のおかげで複数の変換をひとつの行列により表わすことができることです。いくつかの変換を組み合わせた変換行列の例を見てみましょう。ここにベクトル<code>(x, y, z)</code>があり、二倍に拡大した後<code>(1, 2, 3)</code>だけ平行移動させたいとしましょう。この操作のために平行移動の行列と拡大の行列が必要です。その結果変換行列は以下のようになります:
+    
+         \[Trans . Scale = \begin{bmatrix} {\color{red}1} & {\color{red}0} & {\color{red}0} & {\color{red}1} \\ {\color{green}0} & {\color{green}1} & {\color{green}0} & {\color{green}2} \\ {\color{blue}0} & {\color{blue}0} & {\color{blue}1} & {\color{blue}3} \\ {\color{purple}0} & {\color{purple}0} & {\color{purple}0} & {\color{purple}1} \end{bmatrix} . \begin{bmatrix} {\color{red}2} & {\color{red}0} & {\color{red}0} & {\color{red}0} \\ {\color{green}0} & {\color{green}2} & {\color{green}0} & {\color{green}0} \\ {\color{blue}0} & {\color{blue}0} & {\color{blue}2} & {\color{blue}0} \\ {\color{purple}0} & {\color{purple}0} & {\color{purple}0} & {\color{purple}1} \end{bmatrix} = \begin{bmatrix} {\color{red}2} & {\color{red}0} & {\color{red}0} & {\color{red}1} \\ {\color{green}0} & {\color{green}2} & {\color{green}0} & {\color{green}2} \\ {\color{blue}0} & {\color{blue}0} & {\color{blue}2} & {\color{blue}3} \\ {\color{purple}0} & {\color{purple}0} & {\color{purple}0} & {\color{purple}1} \end{bmatrix} \]
+    
+    Note that we first do a translation and then a scale transformation when multiplying matrices. Matrix multiplication is not commutative, which means their order is important. When multiplying matrices the right-most matrix is first multiplied with the vector so you should read the multiplications from right to left. It is advised to first do scaling operations, then rotations and lastly translations when combining matrices otherwise they may (negatively) affect each other. For example, if you would first do a translation and then scale, the translation vector would also scale!
+	行列の積において初めに平行移動をしてその後拡大をしていることに注意して下さい。行列の積は非可換なので順番が大切です。行列の積において、ベクトルに対してまず右側の行列から掛けられるので、行列の積は右から左に見ていかなければいけません。行列を組み合わせる際、まず拡大の操作を行い、その後平行移動の操作に移って下さい。そうしないとお互いに間違った効果が生じてしまいます。例えば平行移動を行った後に拡大すると、平行移動のベクトル自体に拡大の影響がでてしいます。
+  </p>
+  
+<p>
+  Running the final transformation matrix on our vector results in the following vector:
+  組み合わせた結果の変換行列をベクトルに掛けると以下のような結果が得られます:
+    
+	\[\begin{bmatrix} {\color{red}2} & {\color{red}0} & {\color{red}0} & {\color{red}1} \\ {\color{green}0} & {\color{green}2} & {\color{green}0} & {\color{green}2} \\ {\color{blue}0} & {\color{blue}0} & {\color{blue}2} & {\color{blue}3} \\ {\color{purple}0} & {\color{purple}0} & {\color{purple}0} & {\color{purple}1} \end{bmatrix} . \begin{bmatrix} x \\ y \\ z \\ 1 \end{bmatrix} = \begin{bmatrix} {\color{red}2}x + {\color{red}1} \\ {\color{green}2}y + {\color{green}2}  \\ {\color{blue}2}z + {\color{blue}3} \\ 1 \end{bmatrix} \]
+    
+  Great! The vector is first scaled by two and then translated by <code>(1,2,3)</code>.
+  ええやん。ベクトルはまず2倍に拡大され、<code>(1, 2, 3)</code>だけ平行いどうしました。
+  </p>
+  
+<h1>In practice</h1>
+<h1>実践</h1>
+<p>
+  Now that we've explained all the theory behind transformations, it's time to see how we can actually use this knowledge to our advantage. OpenGL does not have any form of matrix or vector knowledge built in, so we have to define our own mathematics classes and functions. In this book we'd rather abstract from all the tiny mathematical details and simply use pre-made mathematics libraries. Luckily, there is an easy-to-use and tailored-for-OpenGL mathematics library called GLM.
+  変換に関する理論は説明し終わったので、この知識を実際に利用してみましょう。OpenGLには行列やベクトルの概念が組込まれていないので、自分達で数学的なクラスや関数を定義しないといけません。ここでは自分達で数学的に込み入ったものを作成するのではなく、あらかじめ用意された数学のライブラリを利用することにします。ありがたいことに簡単に使えてOpenGLに特化したGLMというライブラリが存在します。
+  </p>
+
+  <h2>GLM</h2>
+  <h2>GLM</h2>
+<p>
+  <img src="/img/getting-started/glm.png" class="right"/>
+  GLM stands for Open<strong>GL</strong> <strong>M</strong>athematics and is a <em>header-only</em> library, which means that we only have to include the proper header files and we're done; no linking and compiling necessary.
+  GLM can be downloaded from their <a href="https://glm.g-truc.net/0.9.8/index.html" target="_blank">website</a>. Copy the root directory of the header files into your <em>includes</em> folder and let's get rolling.
+  GLMはOpen<strong>GL</strong> <strong>M</strong>athematicsの省略で、<em>ヘッダーのみ</em>のライブラリです。つまり必要なヘッダーファイルをインクルードするだけでリンクやコンパイルが必要ありません。GLMは彼らの<a href="https://glm.g-truc.net/0.9.8/index.html" target="_blank">ウェブサイト</a>からダウンロードできます。ヘッダーファイルのルートディレクトリを手元の<em>include</em>フォルダにコピーすればそれだけで利用できます。
+  </p>
+
+<!--<warning>
+  Since GLM version <code>0.9.9</code>, GLM default initializates matrix types to a 0-initalized matrix, instead of the identity matrix. From that version it is required to initialize matrix types as: <code>glm::mat4 mat = glm::mat4(1.0f)</code>. 
+  
+  For consistency with the tutorials' code it's advised to use a version of GLM lower than <code>0.9.9</code> or initialize all matrices as mentioned above.
+</warning>
+-->
+  
+  <p>
+    Most of GLM's functionality that we need can be found in 3 headers files that we'll include as follows:
+	ここで必要なほとんどのGLMの関数は以下の3つのヘッダーファイルに含まれます:
+  </p>
+  
+<pre><code>
+#include &lt;glm/glm.hpp&gt;
+#include &lt;glm/gtc/matrix_transform.hpp&gt;
+#include &lt;glm/gtc/type_ptr.hpp&gt;
+</code></pre>
+    
+  <p>
+    Let's see if we can put our transformation knowledge to good use by translating a vector of <code>(1,0,0)</code> by <code>(1,1,0)</code> (note that we define it as a <code>glm::vec4</code> with its homogeneous coordinate set to <code>1.0</code>:
+	さっそく座標変換の知識を利用して、ベクトル<code>(1, 0, 0)</code>を<code>(1, 1, 0)</code>だけ平行移動してみましょう。これらのベクトルを<code>glm::vec4</code>により定義し、同次座標を<code>1.0</code>にしていることに注意して下さい:
+  </p>
+  
+<pre><code>
+glm::vec4 vec(1.0f, 0.0f, 0.0f, 1.0f);
+glm::mat4 trans = glm::mat4(1.0f);
+trans = <function id='55'>glm::translate</function>(trans, glm::vec3(1.0f, 1.0f, 0.0f));
+vec = trans * vec;
+std::cout &lt;&lt; vec.x &lt;&lt; vec.y &lt;&lt; vec.z &lt;&lt; std::endl;
+</code></pre>
+  
+  <p>
+    We first define a vector named <code>vec</code> using GLM's built-in vector class. Next we define a <code>mat4</code> and explicitly initialize it to the identity matrix by initializing the matrix's diagonals to <code>1.0</code>; if we do not initialize it to the identity matrix the matrix would be a null matrix (all elements <code>0</code>) and all subsequent matrix operations would end up a null matrix as well.    
+	初めにGLMに組込まれたベクトルのクラスを用いて<code>vec</code>という名前のベクトルを定義します。次に<code>mat4</code>という行列を定義し、対角成分を<code>1.0</code>にすることで単位行列にしています。この操作をしなかった場合、行列は零行列（全ての要素が<code>0</code>の行列）になり、以降の操作は全て零行列を生成することになります。
+</p>
+
+<p>
+The next step is to create a transformation matrix by passing our identity matrix to the <code><function id='55'>glm::translate</function></code> function, together with a translation vector (the given matrix is then multiplied with a  translation matrix and the resulting matrix is returned). <br/>
+    Then we multiply our vector by the transformation matrix and output the result. If we still remember how matrix translation works then the resulting vector should be <code>(1+1,0+1,0+0)</code> which is <code>(2,1,0)</code>. This snippet of code outputs <code>210</code> so the translation matrix did its job.
+	次に今作った単位行列を平行移動ベクトルと共に<code><function id='55'>glm::translate</function></code>に渡すことで平行移動行列を作成します。これにより渡した行列に平行移動行列が乗じられ、その結果の行列が返ります。<br/>
+	得られた行列をベクトルに掛けることで、結果が得られます。平行移動の定義から、得られるベクトルは<code>(1 + 1, 0 + 1, 0 + 0)</code>つまり<code>(2, 1, 0)</code>であるはずです。このコードの出力は<code>210</code>なので、予想通り、平行移動の行列が機能しています。
+  </p>
+  
+  <p>
+    Let's do something more interesting and scale and rotate the container object from the previous chapter:
+	もう少し面白いことをしてみましょう。前章の箱を拡大、回転してみます:
+  </p>
+  
+<pre><code>
+glm::mat4 trans = glm::mat4(1.0f);
+trans = <function id='57'>glm::rotate</function>(trans, <function id='63'>glm::radians</function>(90.0f), glm::vec3(0.0, 0.0, 1.0));
+trans = <function id='56'>glm::scale</function>(trans, glm::vec3(0.5, 0.5, 0.5));  
+</code></pre>
+  
+<p>
+  First we scale the container by <code>0.5</code> on each axis and then rotate the container <code>90</code> degrees around the Z-axis. GLM expects its angles in radians so we convert the degrees to radians using <code><function id='63'>glm::radians</function></code>. Note that the textured rectangle is on the XY plane so we want to rotate around the Z-axis. Keep in mind that the axis that we rotate around should be a unit vector, so be sure to normalize the vector first if you're not rotating around the X, Y, or Z axis. Because we pass the matrix to each of GLM's functions, GLM automatically multiples the matrices together, resulting in a transformation matrix that combines all the transformations. 
+  まずは箱を各軸に沿って<code>0.5</code>倍に縮小し、z軸に沿って<code>90</code>度回転させます。GLMは角度としてラジアンを受け取りますので、<code><function id='63'>glm::radians</function></code>により変換します。テクスチャの付いた四角形はxy平面にあるので回転はz軸周りで行います。また回転軸は単位行列である必要がありますので、特にx、y、またはz軸に沿った回転でない場合に正規化するのを忘れないで下さい。行列をGLMの関数に渡せば、GLMは自動的に行列を掛け合わせ、全ての変換を組み合わせた変換行列が出力されます。
+  </p>   
+
+  <p>
+    The next big question is: how do we get the transformation matrix to the shaders? We shortly mentioned before that GLSL also has a <code>mat4</code> type. So we'll adapt the vertex shader to accept a <code>mat4</code> uniform variable and multiply the position vector by the matrix uniform:
+	次に起こる疑問はどのようにして変換行列をシェーダーに渡すのかというものです。以前説明しましたが、GLSLには<code>mat4</code>という型があります。そのため頂点シェーダーが<code>mat4</code>のユニフォームを受け容れるようにし、位置ベクトルにその行列のユニフォームを乗じます:
+  </p>
+  
+<pre><code>
+#version 330 core
+layout (location = 0) in vec3 aPos;
+layout (location = 1) in vec2 aTexCoord;
+
+out vec2 TexCoord;
+  
+uniform mat4 transform;
+
+void main()
+{
+    gl_Position = transform * vec4(aPos, 1.0f);
+    TexCoord = vec2(aTexCoord.x, aTexCoord.y);
+} 
+</code></pre>
+  
+<note>
+  GLSL also has <code>mat2</code> and <code>mat3</code> types that allow for swizzling-like operations just like vectors. All the aforementioned math operations (like scalar-matrix multiplication, matrix-vector multiplication and matrix-matrix multiplication) are allowed on the matrix types. Wherever special matrix operations are used we'll be sure to explain what's happening.
+GLSLには<code>mat2</code>や<code>mat3</code>といった型もあり、ベクトル同様、要素を入れ替えるスイズリングを利用できます。ここまで見て来た、スカラと行列の積、行列とベクトルの積、行列どうしの積といった演算は全てこの行列の型で利用することができます。特殊な行列の演算が出てきたら必ず詳細を説明するようにします。
+</note>
+
+  <p>
+    We added the uniform and multiplied the position vector with the transformation matrix before passing it to <var>gl_Position</var>. Our container should now be twice as small and rotated <code>90</code> degrees (tilted to the left). We still need to pass the transformation matrix to the shader though:
+	<var>gl_Position</var>に位置ベクトルを渡す前に、変換行列のユニフォームを作成し、それを掛けました。これで箱は半分の大きさになり、<code>90</code>度右に回転しするはずです。あとは変換行列をシェーダーに送信しなければいけません:
+  </p>
+
+<pre><code>
+unsigned int transformLoc = <function id='45'>glGetUniformLocation</function>(ourShader.ID, "transform");
+<function id='44'>glUniform</function>Matrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
+</code></pre>
+
+<p>
+  We first query the location of the uniform variable and then send the matrix data to the shaders using <fun><function id='44'>glUniform</function></fun> with <code>Matrix4fv</code> as its postfix. The first argument should be familiar by now which is the uniform's location. The second argument tells OpenGL how many matrices we'd like to send, which is <code>1</code>. The third argument asks us if we want to transpose our matrix, that is to swap the columns and rows. OpenGL developers often use an internal matrix layout called <def>column-major ordering</def> which is the default matrix layout in GLM so there is no need to transpose the matrices; we can keep it at <var>GL_FALSE</var>. The last parameter is the actual matrix data, but GLM stores their matrices' data in a way that doesn't always match OpenGL's expectations so we first convert the data with GLM's built-in function <fun>value_ptr</fun>. 
+  まずユニフォーム変数の場所を特定し<fun><function id='44'>glUniform</function></fun>の語尾に<code>Matrix4fv</code>をつけた関数を用いて行列のデータをシェーダーに送信します。1つ目の引数は今まで通りユニフォームの場所です。2つ目はいくつの行列を送信するのかをOpenGLに伝えるもので、今回は<code>1</code>です。3つ目の引数は送信する行列を転置するかどうかです。行列の転置とは、行と列を入れ替えることです。OpenGLの開発者は行列の構造として<def>列優先</def>の配置を用いることが多く、この配置はGLMの既定のものでもあるので、今回は転置を取る必要はありません。この引数は<var>GL_FALSE</var>にしておきます。最後の引数は実際の行列のデータですが、GLMにおける行列のデータはOpenGLが受け付けるものとは少し違うので、GLMの組込み関数<fun>value_ptr</fun>により変換する必要があります。
+</p>
+
+<p>
+  We created a transformation matrix, declared a uniform in the vertex shader and sent the matrix to the shaders where we transform our vertex coordinates. The result should look something like this:
+	ここまで変換行列を作成し、頂点シェーダーにおいてユニフォームを宣言し、行列のデータをシェーダーに送信し、そこで頂点座標を変換しました。その結果以下のようなものが得られるはずです:
+</p>
+  
+  <img src="/img/getting-started/transformations.png" class="clean" />
+  
+<p>
+  Perfect! Our container is indeed tilted to the left and twice as small so the transformation was successful. Let's get a little more funky and see if we can rotate the container over time, and for fun we'll also reposition the container at the bottom-right side of the window.
+To rotate the container over time we have to update the transformation matrix in the render loop because it needs to update each frame. We use GLFW's time function to get an angle over time:
+完璧です。画面の箱は確かに左に傾き、半分の大きさになりました。座標変換は成功です。さらにもう少しイカしたことをやってみましょう。時間と共に箱を回転させ、ウィンドウの右下に移動させることはできるでしょうか。時間と共に箱を回転させるためには変換行列をフレーム毎に更新する必要があるので、描画ループの中でその操作が必要です。時間に応じた回転角を設定するために、GLFWの時間に関する関数を利用します:
+</p>
+
+<pre><code>
+glm::mat4 trans = glm::mat4(1.0f);
+trans = <function id='55'>glm::translate</function>(trans, glm::vec3(0.5f, -0.5f, 0.0f));
+trans = <function id='57'>glm::rotate</function>(trans, (float)<function id='47'>glfwGetTime</function>(), glm::vec3(0.0f, 0.0f, 1.0f));
+</code></pre>
+
+<p>
+  Keep in mind that in the previous case we could declare the transformation matrix anywhere, but now we have to create it every iteration to continuously update the rotation. This means we have to re-create the transformation matrix in each iteration of the render loop. Usually when rendering scenes we have several transformation matrices that are re-created with new values each frame. 
+  以前は変換行列をどこで宣言してもよかったですが、今回連続的に回転角を更新するためにフレーム毎に変換行列を作成する必要があることに注意して下さい。つまり描画ループが一周する度に変換行列を再生成しないといけません。画面を描画する際は通常、いくつかの変換行列をフレーム毎に新しい値と共に再生成することになります。
+</p>
+
+<p>
+  Here we first rotate the container around the origin <code>(0,0,0)</code> and once it's rotated, we translate its rotated version to the bottom-right corner of the screen. Remember that the actual transformation order should be read in reverse: even though in code we first translate and then later rotate, the actual transformations first apply a rotation and then a translation. Understanding all these combinations of transformations and how they apply to objects is difficult to understand. Try and experiment with transformations like these and you'll quickly get a grasp of it.
+  原点<code>(0, 0, 0)</code>の周りで箱を回転させた後、平行移動により画面の右下に持って行きます。実際の変換の順番は逆から読むことを思い出して下さい。コードにおいてもまず平行移動し、その後回転させていますが、実際の変換は回転の後に平行移動です。この変換の組み合わせや、それがどのように物体に適応されるかを完全に理解するのは困難です。いろいろ実験してみて下さい。そうすればすぐに全容が掴めるはずです。
+</p>
+
+
+<p>
+  If you did things right you should get the following result:
+  ここまで正しくプログラムできていれば以下のようになるはずです:
+</p>
+
+<div class="video paused" onclick="ClickVideo(this)">
+  <video width="600" height="450" loop>
+    <source src="/video/getting-started/transformations.mp4" type="video/mp4" />
+    <img src="/img/getting-started/transformations2.png" class="clean"/>
+  </video>
+</div>
+
+
+  <p>
+    And there you have it. A translated container that's rotated over time, all done by a single transformation matrix! Now you can see why matrices are such a powerful construct in graphics land. We can define an infinite amount of transformations and combine them all in a single matrix that we can re-use as often as we'd like. Using transformations like this in the vertex shader saves us the effort of re-defining the vertex data and saves us some processing time as well, since we don't have to re-send our data all the time (which is quite slow); all we need to do is update the transformation uniform.
+	やりました。平行移動された箱が時間と共に回転しています。すべての変換がひとつの変換行列で行われました。グラフィックスの世界において行列がいかに強力な道具であるかということが理解できたでしょう。変換行列は好きなだけ定義してひとつにまとめることができ、その変換行列はいつでも再利用できます。このように頂点シェーダーにおいて変換行列を利用することで、いちいち頂点データを再定義する面倒を回避でき、またそのデータをシェーダーに再送する必要がなくなるので処理時間も短縮できます（データの送信は遅いのです）。必要なことは変換行列の更新だけです。
+  </p>
+
+<p>
+  If you didn't get the right result or you're stuck somewhere else, take a look at the <a href="/code_viewer_gh.php?code=src/1.getting_started/5.1.transformations/transformations.cpp" target="_blank">source code</a> and the updated <a href="https://learnopengl.com/code_viewer_gh.php?code=includes/learnopengl/shader_m.h" target="_blank">shader</a> class. 
+  正しい結果が得られなかったり、どこかで詰まったのであれば、<a href="/code_viewer_gh.php?code=src/1.getting_started/5.1.transformations/transformations.cpp" target="_blank">ソースコード</a>を確認して、<a href="https://learnopengl.com/code_viewer_gh.php?code=includes/learnopengl/shader_m.h" target="_blank">シェーダー</a>クラスを更新して下さい。
+</p>
+    
+  <p>
+    In the next chapter we'll discuss how we can use matrices to define different coordinate spaces for our vertices. This will be our first step into 3D graphics!
+	次章では行列を用いて頂点のための別の座標空間を定義する方法を議論します。3次元グラフィックスへの最初の一歩です。
+  </p>
+
+<h2>Further reading</h2>
+<h2>参考文献</h2>
+<ul>
+    <li><a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab" target="_blank">Essence of Linear Algebra</a>: great video tutorial series by Grant Sanderson about the underlying mathematics of transformations and linear algebra.</li>
+	<li><a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab" target="_blank">線形代数学の基本</a>: Grant Sandersonによる座標変換と線形代数学に関する入門的なすばらしい動画シリーズ。
+</ul>
+
+<h2>Exercises</h2>
+<h2>演習問題</h2>
+<p>
+  <ul>
+    <li>Using the last transformation on the container, try switching the order around by first rotating and then translating. See what happens and try to reason why this happens: <a href="/code_viewer_gh.php?code=src/1.getting_started/5.2.transformations_exercise1/transformations_exercise1.cpp" target="_blank">solution</a>.</li>
+	<li>箱に対して行った最後の変換において、変換の順序を入れ替えて、まず回転しその後平行移動して下さい。なにが起こるのか確認し、その理由を考えて下さい: <a href="/code_viewer_gh.php?code=src/1.getting_started/5.2.transformations_exercise1/transformations_exercise1.cpp" target="_blank">解答</a>。</li>
+    <li>Try drawing a second container with another call to <fun><function id='2'>glDrawElements</function></fun> but place it at a different position using transformations <strong>only</strong>. Make sure this second container is placed at the top-left of the window and instead of rotating, scale it over time (using the <code>sin</code> function is useful here; note that using <code>sin</code> will cause the object to invert as soon as a negative scale is applied): <a href="/code_viewer_gh.php?code=src/1.getting_started/5.2.transformations_exercise2/transformations_exercise2.cpp" target="_blank">solution</a>.</li>
+	<li><fun><function id='2'>glDrawElements</function></fun>をもう一度呼び出し、2つ目の箱を描いて下さい。ただし座標変換<strong>のみ</strong>を用いて別の場所に表示して下さい。この2つ目の箱は画面の左上に表示し、今回は回転させるのではなく時間と共に拡大縮小して下さい。拡大縮小には<code>sin</code>関数が便利です。<code>sin</code>を使うと拡大率が負になったときに物体が反転します:<a href="/code_viewer_gh.php?code=src/1.getting_started/5.2.transformations_exercise2/transformations_exercise2.cpp" target="_blank">解答</a>。</li>
+  </ul>
+</p>       
+
+    </div>
+</body>
+</html>
+	</main>
+</body>
+</html>

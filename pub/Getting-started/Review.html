@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ja"> 
+<head>
+    <meta charset="utf-8"/>
+    <title>LearnOpenGL</title>
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico"  />
+	<link rel="stylesheet" href="../static/style.css" />
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"> </script>
+	<script src="/static/functions.js"></script>
+</head>
+<body>
+	<nav>
+<ol>
+	<li id="Introduction">
+		<a href="https://learnopengl.com/Introduction">はじめに</a>
+	</li>
+	<li id="Getting-started">
+		<span class="closed">入門</span>
+		<ol>
+			<li id="Getting-started/OpenGL">
+				<a href="https://learnopengl.com/Getting-started/OpenGL">OpenGL </a>
+			</li>
+			<li id="Getting-started/Creating-a-window">
+				<a href="https://learnopengl.com/Getting-started/Creating-a-window">ウィンドウの作成</a>
+			</li>
+			<li id="Getting-started/Hello-Window">
+				<a href="https://learnopengl.com/Getting-started/Hello-Window">最初のウィンドウ</a>
+			</li>
+			<li id="Getting-started/Hello-Triangle">
+				<a href="https://learnopengl.com/Getting-started/Hello-Triangle">最初の三角形</a>
+			</li>
+			<li id="Getting-started/Shaders">
+				<a href="https://learnopengl.com/Getting-started/Shaders">シェーダー</a>
+			</li>
+			<li id="Getting-started/Textures">
+				<a href="https://learnopengl.com/Getting-started/Textures">テクスチャ</a>
+			</li>
+			<li id="Getting-started/Transformations">
+				<a href="https://learnopengl.com/Getting-started/Transformations">座標変換</a>
+			</li>
+			<li id="Getting-started/Coordinate-Systems">
+				<a href="https://learnopengl.com/Getting-started/Coordinate-Systems">座標系</a>
+			</li>
+			<li id="Getting-started/Camera">
+				<a href="https://learnopengl.com/Getting-started/Camera">カメラ</a>
+			</li>
+			<li id="Getting-started/Review">
+				<a href="https://learnopengl.com/Getting-started/Review">まとめ</a>
+			</li>
+		</ol>
+	</li>
+	<li id="Lighting">
+		<span class="closed">Lighting </span>
+		<ol>
+			<li id="Lighting/Colors">
+				<a href="https://learnopengl.com/Lighting/Colors">Colors </a>
+			</li>
+			<li id="Lighting/Basic-Lighting">
+				<a href="https://learnopengl.com/Lighting/Basic-Lighting">Basic Lighting </a>
+			</li>
+			<li id="Lighting/Materials">
+				<a href="https://learnopengl.com/Lighting/Materials">Materials </a>
+			</li>
+			<li id="Lighting/Lighting-maps">
+				<a href="https://learnopengl.com/Lighting/Lighting-maps">Lighting maps </a>
+			</li>
+			<li id="Lighting/Light-casters">
+				<a href="https://learnopengl.com/Lighting/Light-casters">Light casters </a>
+			</li>
+			<li id="Lighting/Multiple-lights">
+				<a href="https://learnopengl.com/Lighting/Multiple-lights">Multiple lights </a>
+			</li>
+			<li id="Lighting/Review">
+				<a href="https://learnopengl.com/Lighting/Review">Review </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Model-Loading">
+		<span class="closed">Model Loading </span>
+		<ol>
+			<li id="Model-Loading/Assimp">
+				<a href="https://learnopengl.com/Model-Loading/Assimp">Assimp </a>
+			</li>
+			<li id="Model-Loading/Mesh">
+				<a href="https://learnopengl.com/Model-Loading/Mesh">Mesh </a>
+			</li>
+			<li id="Model-Loading/Model">
+				<a href="https://learnopengl.com/Model-Loading/Model">Model </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Advanced-OpenGL">
+		<span class="closed">Advanced OpenGL </span>
+		<ol>
+			<li id="Advanced-OpenGL/Depth-testing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Depth-testing">Depth testing </a>
+			</li>
+			<li id="Advanced-OpenGL/Stencil-testing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Stencil-testing">Stencil testing </a>
+			</li>
+			<li id="Advanced-OpenGL/Blending">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Blending">Blending </a>
+			</li>
+			<li id="Advanced-OpenGL/Face-culling">
+				<a href="https://learnopengl.cm/Advanced-OpenGL/Face-culling">Face culling </a>
+			</li>
+			<li id="Advanced-OpenGL/Framebuffers">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Framebuffers">Framebuffers </a>
+			</li>
+			<li id="Advanced-OpenGL/Cubemaps">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Cubemaps">Cubemaps </a>
+			</li>
+			<li id="Advanced-OpenGL/Advanced-Data">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Advanced-Data">Advanced Data </a>
+			</li>
+			<li id="Advanced-OpenGL/Advanced-GLSL">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Advanced-GLSL">Advanced GLSL </a>
+			</li>
+			<li id="Advanced-OpenGL/Geometry-Shader">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Geometry-Shader">Geometry Shader </a>
+			</li>
+			<li id="Advanced-OpenGL/Instancing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Instancing">Instancing </a>
+			</li>
+			<li id="Advanced-OpenGL/Anti-Aliasing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Anti-Aliasing">Anti Aliasing </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Advanced-Lighting">
+		<span class="closed">Advanced Lighting </span>
+		<ol>
+			<li id="Advanced-Lighting/Advanced-Lighting">
+				<a href="https://learnopengl.com/Advanced-Lighting/Advanced-Lighting">Advanced Lighting </a>
+			</li>
+			<li id="Advanced-Lighting/Gamma-Correction">
+				<a href="https://learnopengl.com/Advanced-Lighting/Gamma-Correction">Gamma Correction </a>
+			</li>
+			<li id="Advanced-Lighting/Shadows">
+				<span class="closed">Shadows </span>
+				<ol>
+					<li id="Advanced-Lighting/Shadows/Shadow-Mapping">
+						<a href="https://learnopengl.com/Advanced-Lighting/Shadows/Shadow-Mapping">Shadow Mapping </a>
+					</li>
+					<li id="Advanced-Lighting/Shadows/Point-Shadows">
+						<a href="https://learnopengl.com/Advanced-Lighting/Shadows/Point-Shadows">Point Shadows </a>
+					</li>
+				</ol>
+			</li>
+			<li id="Advanced-Lighting/Normal-Mapping">
+				<a href="https://learnopengl.com/Advanced-Lighting/Normal-Mapping">Normal Mapping </a>
+			</li>
+			<li id="Advanced-Lighting/Parallax-Mapping">
+				<a href="https://learnopengl.com/Advanced-Lighting/Parallax-Mapping">Parallax Mapping </a>
+			</li>
+			<li id="Advanced-Lighting/HDR">
+				<a href="https://learnopengl.com/Advanced-Lighting/HDR">HDR </a>
+			</li>
+			<li id="Advanced-Lighting/Bloom">
+				<a href="https://learnopengl.com/Advanced-Lighting/Bloom">Bloom </a>
+			</li>
+			<li id="Advanced-Lighting/Deferred-Shading">
+				<a href="https://learnopengl.com/Advanced-Lighting/Deferred-Shading">Deferred Shading </a>
+			</li>
+			<li id="Advanced-Lighting/SSAO">
+				<a href="https://learnopengl.com/Advanced-Lighting/SSAO">SSAO </a>
+			</li>
+		</ol>
+	</li>
+	<li id="PBR">
+		<span class="closed">PBR </span>
+		<ol>
+			<li id="PBR/Theory">
+				<a href="https://learnopengl.com/PBR/Theory">Theory </a>
+			</li>
+			<li id="PBR/Lighting">
+				<a href="https://learnopengl.com/PBR/Lighting">Lighting </a>
+			</li>
+			<li id="PBR/IBL">
+				<span class="closed">IBL </span>
+				<ol>
+					<li id="PBR/IBL/Diffuse-irradiance">
+						<a href="https://learnopengl.com/PBR/IBL/Diffuse-irradiance">Diffuse irradiance </a>
+					</li>
+					<li id="PBR/IBL/Specular-IBL">
+						<a href="https://learnopengl.com/PBR/IBL/Specular-IBL">Specular IBL </a>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="In-Practice">
+		<span class="closed">In Practice </span>
+		<ol>
+			<li id="In-Practice/Debugging">
+				<a href="https://learnopengl.com/In-Practice/Debugging">Debugging </a>
+			</li>
+			<li id="In-Practice/Text-Rendering">
+				<a href="https://learnopengl.com/In-Practice/Text-Rendering">Text Rendering </a>
+			</li>
+			<li id="In-Practice/2D-Game">
+				<span class="closed">2D Game </span>
+				<ol>
+					<li id="In-Practice/2D-Game/Breakout">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Breakout">Breakout </a>
+					</li>
+					<li id="In-Practice/2D-Game/Setting-up">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Setting-up">Setting up </a>
+					</li>
+					<li id="In-Practice/2D-Game/Rendering-Sprites">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Rendering-Sprites">Rendering Sprites </a>
+					</li>
+					<li id="In-Practice/2D-Game/Levels">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Levels">Levels </a>
+					</li>
+					<li id="In-Practice/2D-Game/Collisions">
+						<span class="closed">Collisions </span>
+						<ol>
+							<li id="In-Practice/2D-Game/Collisions/Ball">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Ball">Ball </a>
+							</li>
+							<li id="In-Practice/2D-Game/Collisions/Collision-detection">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Collision-detection">Collision detection </a>
+							</li>
+							<li id="In-Practice/2D-Game/Collisions/Collision-resolution">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Collision-resolution">Collision resolution </a>
+							</li>
+						</ol>
+					</li>
+					<li id="In-Practice/2D-Game/Particles">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Particles">Particles </a>
+					</li>
+					<li id="In-Practice/2D-Game/Postprocessing">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Postprocessing">Postprocessing </a>
+					</li>
+					<li id="In-Practice/2D-Game/Powerups">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Powerups">Powerups </a>
+					</li>
+					<li id="In-Practice/2D-Game/Audio">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Audio">Audio </a>
+					</li>
+					<li id="In-Practice/2D-Game/Render-text">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Render-text">Render text </a>
+					</li>
+					<li id="In-Practice/2D-Game/Final-thoughts">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Final-thoughts">Final thoughts </a>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="Guest-Articles">
+		<span class="closed">Guest Articles </span>
+		<ol>
+			<li id="Guest-Articles/How-to-publish">
+				<a href="https://learnopengl.com/Guest-Articles/How-to-publish">How to publish </a>
+			</li>
+			<li id="Guest-Articles/2020">
+				<span class="closed">2020 </span>
+				<ol>
+					<li id="Guest-Articles/2020/OIT">
+						<span class="closed">OIT </span>
+						<ol>
+							<li id="Guest-Articles/2020/OIT/Introduction">
+								<a href="https://learnopengl.com/Guest-Articles/2020/OIT/Introduction">Introduction </a>
+							</li>
+							<li id="Guest-Articles/2020/OIT/Weighted-Blended">
+								<a href="https://learnopengl.com/Guest-Articles/2020/OIT/Weighted-Blended">Weighted Blended </a>
+							</li>
+						</ol>
+					</li>
+					<li id="Guest-Articles/2020/Skeletal-Animation">
+						<a href="https://learnopengl.com/Guest-Articles/2020/Skeletal-Animation">Skeletal Animation </a>
+					</li>
+				</ol>
+			</li>
+			<li id="Guest-Articles/2021">
+				<span class="closed">2021 </span>
+				<ol>
+					<li id="Guest-Articles/2021/CSM">
+						<a href="https://learnopengl.com/Guest-Articles/2021/CSM">CSM </a>
+					</li>
+					<li id="Guest-Articles/2021/Scene">
+						<span class="closed">Scene </span>
+						<ol>
+							<li id="Guest-Articles/2021/Scene/Scene-Graph">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Scene/Scene-Graph">Scene Graph </a>
+							</li>
+							<li id="Guest-Articles/2021/Scene/Frustum-Culling">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Scene/Frustum-Culling">Frustum Culling </a>
+							</li>
+						</ol>
+					</li>
+					<li id="Guest-Articles/2021/Tessellation">
+						<span class="closed">Tessellation </span>
+						<ol>
+							<li id="Guest-Articles/2021/Tessellation/Height-map">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Tessellation/Height-map">Height map </a>
+							</li>
+						</ol>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="Code-repository">
+		<a href="https://learnopengl.com/Code-repository">Code repository </a>
+	</li>
+	<li id="Translations">
+		<a href="https://learnopengl.com/Translations">Translations </a>
+	</li>
+	<li id="About">
+		<a href="https://learnopengl.com/About">About </a>
+	</li>
+</ol>
+	</nav>
+	<main>
+    <h1 id="content-title">Review</h1>
+    <h1 id="content-title">まとめ</h1>
+<h1 id="content-url" style='display:none;'>Getting-started/Review</h1>
+<p>
+  Congratulations on reaching the end of the <em>Getting started</em> chapters. By now you should be able to create a window, create and compile shaders, send vertex data to your shaders via buffer objects or uniforms, draw objects, use textures, understand vectors and matrices and combine all that knowledge to create a full 3D scene with a camera to play around with.
+おめでとうございます。これにて<em>入門</em>の節は完了です。ここまで読んだ方はウィンドウを作成し、シェーダーを作成及びコンパイルし、バッファオブジェクトやユニフォームを通して頂点のデータをシェーダーに送信し、物体を描画し、テクスチャを利用し、ベクトルや行列を理解しそれらを組み合わせて3次元の世界をカメラと共に作成することができるようになりました。
+</p>
+
+<p>
+  Phew, there is a lot that we learned these last few chapters. Try to play around with what you learned, experiment a bit or come up with your own ideas and solutions to some of the problems. As soon as you feel you got the hang of all the materials we've discussed it's time to move on to the <a href="https://learnopengl.com/Lighting/Colors" target="_blank">next</a> Lighting chapters.
+  ここまで多くのことを学びました。学んだことを確認、実験し、あるいは各自のアイデアを試し、ぶつかった問題を解決して下さい。この節で学んだことを自分の物にできたら、<a href="https://learnopengl.com/Lighting/Colors" target="_blank">次</a>の照明の節に進みましょう。
+</p>
+
+<h2>Glossary</h2>
+<h2>用語集</h2>
+<p>
+  <ul>
+    <li><code>OpenGL</code>: a formal specification of a graphics API that defines the layout and output of each function. </li>
+    <li><code>OpenGL</code>: グラフィックAPIの正式な仕様。各関数の入出力を定義したもの。</li>
+    <li><code>GLAD</code>: an extension loading library that loads and sets all OpenGL's function pointers for us so we can use all (modern) OpenGL's functions.   </li>
+    <li><code>GLAD</code>: 拡張機能を読み込むライブラリ。OpenGLの関数のポイタを設定し、それらを利用可能な状態にするもの。</li>
+    <li><code>Viewport</code>: the 2D window region where we render to.  </li>
+    <li><code>可視領域（Viewport）</code>: 映像を描画するウィンドウの2次元領域。</li>
+    <li><code>Graphics Pipeline</code>: the entire process vertices have to walk through before ending up as one or more pixels on the screen.  </li>
+    <li><code>グラフィックパイプライン（Graphics Pipeline）</code>: 頂点データが画面上のピクセルに変換されるまでに行われる処理。</li>
+    <li><code>Shader</code>: a small program that runs on the graphics card. Several stages of the graphics pipeline can use user-made shaders to replace existing functionality.</li>
+    <li><code>シェーダ（Shader）</code>: グラフィックカード上で実行される小さなプログラム。グラフィックパイプライン上のいくつかの処理はユーザーが独自に作成したシェーダにより置き換えることが出来る。</li>
+    <li><code>Vertex</code>: a collection of data that represent a single point. </li>
+    <li><code>頂点（Vertex）</code>: 点を表わすデータの集合。</li>
+    <li><code>Normalized Device Coordinates</code>: the coordinate system your vertices end up in after perspective division is performed on clip coordinates. All vertex positions in NDC between <code>-1.0</code> and <code>1.0</code> will not be discarded or clipped and end up visible. </li>
+	<li><code>正規化デバイス座標（Normalized Device Coordinates）</code>: クリップ座標における透視除算の後に頂点が納まるべき座標系。各要素が<code>-1.0</code>と<code>1.0</code>の間にあれば切り落されずに残り、画面上に表示される。</li>
+    <li><code>Vertex Buffer Object</code>: a buffer object that allocates memory on the GPU and stores all the vertex data there for the graphics card to use.  </li>
+    <li><code>頂点バッファオブジェクト（Vertex Buffer Object）</code>: GPU上のメモリを確保しそこに頂点データを保存するバッファオブジェクト。</li>
+    <li><code>Vertex Array Object</code>: stores buffer and vertex attribute state information.</li>
+    <li><code>頂点配列オブジェクト（Vertex Array Object）</code>: バッファと頂点属性の状態を保存する。</li>
+    <li><code>Element Buffer Object</code>: a buffer object that stores indices on the GPU for indexed drawing. </li>
+	<li><code>要素バッファオブジェクト（Element Buffer Object）</code>: インデックスによる描画に利用するインデックスをGPUに保存するバッファオブジェクト。</li>
+    <li><code>Uniform</code>: a special type of GLSL variable that is global (each shader in a shader program can access this uniform variable) and only has to be set once.   </li>
+    <li><code>ユニフォーム（Uniform）</code>: GLSLの特別な変数。大域的（シェーダープログラム中の各シェーダーからこの変数にアクセスできる）で一度値が決まれば変更できない。</li>
+    <li><code>Texture</code>: a special type of image used in shaders and usually wrapped around objects, giving the illusion an object is extremely detailed.  </li>
+    <li><code>テクスチャ（Texture）</code>: シェーダーで利用される画像。通常物体に貼り付けられその物体を微細に描くために用いられる。</li>
+    <li><code>Texture Wrapping</code>: defines the mode that specifies how OpenGL should sample  textures when texture coordinates are outside the range: (<code>0</code>, <code>1</code>).  </li>
+	<li><code>テクスチャの繰り返し（Texture Wrapping）</code>: <code>0</code>と<code>1</code>の外のテクスチャ座標においてOpenGLがどのようにテクスチャをサンプリングするかを定める。</li>
+    <li><code>Texture Filtering</code>: defines the mode that specifies how OpenGL should sample the texture when there are several texels (texture pixels) to choose from. This usually occurs when a texture is magnified.  </li>
+    <li><code>テクスチャフィルタリング（Texture Filtering）</code>: テクスチャのピクセルであるテクセルが複数ある場合にどのようにサンプリングするかを定める。テクスチャが拡大される時に利用される。</li>
+    <li><code>Mipmaps</code>: stored smaller versions of a texture where the appropriate sized version is chosen based on the distance to the viewer. </li>
+    <li><code>ミップマップ（Mipmaps）</code>: テクスチャを縮小したものを保存。カメラからの距離に応じて適切なサイズのテクスチャを選ぶために利用。</li>
+    <li><code>stb_image</code>: image loading library.  </li>
+    <li><code>stb_image</code>: 画像を読み込むためのライブラリ。</li>
+    <li><code>Texture Units）</code>: allows for multiple textures on a single shader program by binding multiple textures, each to a different texture unit.  </li>
+    <li><code>テクスチャユニット（Texture Units）</code>: 単一のシェーダープログラムに対して複数のテクスチャを紐付けるためのもの。それぞれのテクスチャをそれぞれのテクスチャユニットに割り当てる。</li>
+	<li><code>Vector</code>: a mathematical entity that defines directions and/or positions in any dimension. </li>
+	<li><code>ベクトル（Vector）</code>: 任意の次元の空間において方向や位置を定める数学の道具。</li>
+    <li><code>Matrix</code>: a rectangular array of mathematical expressions with useful transformation properties.  </li>
+    <li><code>行列（Matrix）</code>: 数式を四角に並べたもの。座標変換において便利。</li>
+    <li><code>GLM</code>: a mathematics library tailored for OpenGL.  </li>
+	<li><code>GLM</code>: OpenGLに特化した数学ライブラリ。</li>
+    <li><code>Local Space</code>: the space an object begins in. All coordinates relative to an object's origin.  </li>
+    <li><code>局所空間（Local Space）</code>: 各物体に固有の座標空間。</li>
+    <li><code>World Space</code>: all coordinates relative to a global origin.  </li>
+    <li><code>大域空間（World Space）</code>: 大域的な原点に相対的な座標。</li>
+    <li><code>View Space</code>: all coordinates as viewed from a camera's perspective.  </li>
+    <li><code>視野空間（View Space）</code>: カメラから見た座標。</li>
+    <li><code>Clip Space</code>: all coordinates as viewed from the camera's perspective but with projection applied. This is the space the vertex coordinates should end up in, as output of the vertex shader. OpenGL does the rest (clipping/perspective division).  </li>
+    <li><code>クリップ空間（Clip Space）</code>: カメラから見た座標を投影したもの。頂点座標は最終的にこの座標に変換されシェーダーからの出力となる。この後OpenGLがクリッピングと透視除算を行う。</li>
+	<li><code>Screen Space</code>: all coordinates as viewed from the screen. Coordinates range from <code>0</code> to screen width/height.  </li>
+	<li><code>スクリーン空間（Screen Space）</code>: スクリーンから見た座標。座標は<code>0</code>とスクリーンの幅、高さの間。</li>
+    <li><code>LookAt</code>: a special type of view matrix  that creates a coordinate system where all coordinates are rotated and translated in such a way that the user is looking at a given target from a given position.  </li>
+    <li><code>視点行列（LookAt）</code>: 視野行列のひとつ。与えられた場所から与えられた位置を見つめるように座標変換するもの。</li>
+	<li><code>Euler Angles</code>: defined as <code>yaw</code>, <code>pitch</code> and <code>roll</code> that allow us to form any 3D direction vector from these 3 values.  </li>      
+	<li><code>オイラー角（Euler Angles）</code>: <code>yaw</code>（方位角）、<code>pitch</code>（仰角）、<code>roll</code>（傾斜角）によって3次元空間のあらゆる方向を定める。</li>
+  </ul>
+</p>       
+
+    </div>
+</body>
+</html>
+	</main>
+</body>
+</html>

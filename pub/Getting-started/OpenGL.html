@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ja"> 
+<head>
+    <meta charset="utf-8"/>
+    <title>LearnOpenGL</title>
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico"  />
+	<link rel="stylesheet" href="../static/style.css" />
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"> </script>
+	<script src="/static/functions.js"></script>
+</head>
+<body>
+	<nav>
+<ol>
+	<li id="Introduction">
+		<a href="https://learnopengl.com/Introduction">はじめに</a>
+	</li>
+	<li id="Getting-started">
+		<span class="closed">入門</span>
+		<ol>
+			<li id="Getting-started/OpenGL">
+				<a href="https://learnopengl.com/Getting-started/OpenGL">OpenGL </a>
+			</li>
+			<li id="Getting-started/Creating-a-window">
+				<a href="https://learnopengl.com/Getting-started/Creating-a-window">ウィンドウの作成</a>
+			</li>
+			<li id="Getting-started/Hello-Window">
+				<a href="https://learnopengl.com/Getting-started/Hello-Window">最初のウィンドウ</a>
+			</li>
+			<li id="Getting-started/Hello-Triangle">
+				<a href="https://learnopengl.com/Getting-started/Hello-Triangle">最初の三角形</a>
+			</li>
+			<li id="Getting-started/Shaders">
+				<a href="https://learnopengl.com/Getting-started/Shaders">シェーダー</a>
+			</li>
+			<li id="Getting-started/Textures">
+				<a href="https://learnopengl.com/Getting-started/Textures">テクスチャ</a>
+			</li>
+			<li id="Getting-started/Transformations">
+				<a href="https://learnopengl.com/Getting-started/Transformations">座標変換</a>
+			</li>
+			<li id="Getting-started/Coordinate-Systems">
+				<a href="https://learnopengl.com/Getting-started/Coordinate-Systems">座標系</a>
+			</li>
+			<li id="Getting-started/Camera">
+				<a href="https://learnopengl.com/Getting-started/Camera">カメラ</a>
+			</li>
+			<li id="Getting-started/Review">
+				<a href="https://learnopengl.com/Getting-started/Review">まとめ</a>
+			</li>
+		</ol>
+	</li>
+	<li id="Lighting">
+		<span class="closed">Lighting </span>
+		<ol>
+			<li id="Lighting/Colors">
+				<a href="https://learnopengl.com/Lighting/Colors">Colors </a>
+			</li>
+			<li id="Lighting/Basic-Lighting">
+				<a href="https://learnopengl.com/Lighting/Basic-Lighting">Basic Lighting </a>
+			</li>
+			<li id="Lighting/Materials">
+				<a href="https://learnopengl.com/Lighting/Materials">Materials </a>
+			</li>
+			<li id="Lighting/Lighting-maps">
+				<a href="https://learnopengl.com/Lighting/Lighting-maps">Lighting maps </a>
+			</li>
+			<li id="Lighting/Light-casters">
+				<a href="https://learnopengl.com/Lighting/Light-casters">Light casters </a>
+			</li>
+			<li id="Lighting/Multiple-lights">
+				<a href="https://learnopengl.com/Lighting/Multiple-lights">Multiple lights </a>
+			</li>
+			<li id="Lighting/Review">
+				<a href="https://learnopengl.com/Lighting/Review">Review </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Model-Loading">
+		<span class="closed">Model Loading </span>
+		<ol>
+			<li id="Model-Loading/Assimp">
+				<a href="https://learnopengl.com/Model-Loading/Assimp">Assimp </a>
+			</li>
+			<li id="Model-Loading/Mesh">
+				<a href="https://learnopengl.com/Model-Loading/Mesh">Mesh </a>
+			</li>
+			<li id="Model-Loading/Model">
+				<a href="https://learnopengl.com/Model-Loading/Model">Model </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Advanced-OpenGL">
+		<span class="closed">Advanced OpenGL </span>
+		<ol>
+			<li id="Advanced-OpenGL/Depth-testing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Depth-testing">Depth testing </a>
+			</li>
+			<li id="Advanced-OpenGL/Stencil-testing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Stencil-testing">Stencil testing </a>
+			</li>
+			<li id="Advanced-OpenGL/Blending">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Blending">Blending </a>
+			</li>
+			<li id="Advanced-OpenGL/Face-culling">
+				<a href="https://learnopengl.cm/Advanced-OpenGL/Face-culling">Face culling </a>
+			</li>
+			<li id="Advanced-OpenGL/Framebuffers">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Framebuffers">Framebuffers </a>
+			</li>
+			<li id="Advanced-OpenGL/Cubemaps">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Cubemaps">Cubemaps </a>
+			</li>
+			<li id="Advanced-OpenGL/Advanced-Data">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Advanced-Data">Advanced Data </a>
+			</li>
+			<li id="Advanced-OpenGL/Advanced-GLSL">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Advanced-GLSL">Advanced GLSL </a>
+			</li>
+			<li id="Advanced-OpenGL/Geometry-Shader">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Geometry-Shader">Geometry Shader </a>
+			</li>
+			<li id="Advanced-OpenGL/Instancing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Instancing">Instancing </a>
+			</li>
+			<li id="Advanced-OpenGL/Anti-Aliasing">
+				<a href="https://learnopengl.com/Advanced-OpenGL/Anti-Aliasing">Anti Aliasing </a>
+			</li>
+		</ol>
+	</li>
+	<li id="Advanced-Lighting">
+		<span class="closed">Advanced Lighting </span>
+		<ol>
+			<li id="Advanced-Lighting/Advanced-Lighting">
+				<a href="https://learnopengl.com/Advanced-Lighting/Advanced-Lighting">Advanced Lighting </a>
+			</li>
+			<li id="Advanced-Lighting/Gamma-Correction">
+				<a href="https://learnopengl.com/Advanced-Lighting/Gamma-Correction">Gamma Correction </a>
+			</li>
+			<li id="Advanced-Lighting/Shadows">
+				<span class="closed">Shadows </span>
+				<ol>
+					<li id="Advanced-Lighting/Shadows/Shadow-Mapping">
+						<a href="https://learnopengl.com/Advanced-Lighting/Shadows/Shadow-Mapping">Shadow Mapping </a>
+					</li>
+					<li id="Advanced-Lighting/Shadows/Point-Shadows">
+						<a href="https://learnopengl.com/Advanced-Lighting/Shadows/Point-Shadows">Point Shadows </a>
+					</li>
+				</ol>
+			</li>
+			<li id="Advanced-Lighting/Normal-Mapping">
+				<a href="https://learnopengl.com/Advanced-Lighting/Normal-Mapping">Normal Mapping </a>
+			</li>
+			<li id="Advanced-Lighting/Parallax-Mapping">
+				<a href="https://learnopengl.com/Advanced-Lighting/Parallax-Mapping">Parallax Mapping </a>
+			</li>
+			<li id="Advanced-Lighting/HDR">
+				<a href="https://learnopengl.com/Advanced-Lighting/HDR">HDR </a>
+			</li>
+			<li id="Advanced-Lighting/Bloom">
+				<a href="https://learnopengl.com/Advanced-Lighting/Bloom">Bloom </a>
+			</li>
+			<li id="Advanced-Lighting/Deferred-Shading">
+				<a href="https://learnopengl.com/Advanced-Lighting/Deferred-Shading">Deferred Shading </a>
+			</li>
+			<li id="Advanced-Lighting/SSAO">
+				<a href="https://learnopengl.com/Advanced-Lighting/SSAO">SSAO </a>
+			</li>
+		</ol>
+	</li>
+	<li id="PBR">
+		<span class="closed">PBR </span>
+		<ol>
+			<li id="PBR/Theory">
+				<a href="https://learnopengl.com/PBR/Theory">Theory </a>
+			</li>
+			<li id="PBR/Lighting">
+				<a href="https://learnopengl.com/PBR/Lighting">Lighting </a>
+			</li>
+			<li id="PBR/IBL">
+				<span class="closed">IBL </span>
+				<ol>
+					<li id="PBR/IBL/Diffuse-irradiance">
+						<a href="https://learnopengl.com/PBR/IBL/Diffuse-irradiance">Diffuse irradiance </a>
+					</li>
+					<li id="PBR/IBL/Specular-IBL">
+						<a href="https://learnopengl.com/PBR/IBL/Specular-IBL">Specular IBL </a>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="In-Practice">
+		<span class="closed">In Practice </span>
+		<ol>
+			<li id="In-Practice/Debugging">
+				<a href="https://learnopengl.com/In-Practice/Debugging">Debugging </a>
+			</li>
+			<li id="In-Practice/Text-Rendering">
+				<a href="https://learnopengl.com/In-Practice/Text-Rendering">Text Rendering </a>
+			</li>
+			<li id="In-Practice/2D-Game">
+				<span class="closed">2D Game </span>
+				<ol>
+					<li id="In-Practice/2D-Game/Breakout">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Breakout">Breakout </a>
+					</li>
+					<li id="In-Practice/2D-Game/Setting-up">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Setting-up">Setting up </a>
+					</li>
+					<li id="In-Practice/2D-Game/Rendering-Sprites">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Rendering-Sprites">Rendering Sprites </a>
+					</li>
+					<li id="In-Practice/2D-Game/Levels">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Levels">Levels </a>
+					</li>
+					<li id="In-Practice/2D-Game/Collisions">
+						<span class="closed">Collisions </span>
+						<ol>
+							<li id="In-Practice/2D-Game/Collisions/Ball">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Ball">Ball </a>
+							</li>
+							<li id="In-Practice/2D-Game/Collisions/Collision-detection">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Collision-detection">Collision detection </a>
+							</li>
+							<li id="In-Practice/2D-Game/Collisions/Collision-resolution">
+								<a href="https://learnopengl.com/In-Practice/2D-Game/Collisions/Collision-resolution">Collision resolution </a>
+							</li>
+						</ol>
+					</li>
+					<li id="In-Practice/2D-Game/Particles">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Particles">Particles </a>
+					</li>
+					<li id="In-Practice/2D-Game/Postprocessing">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Postprocessing">Postprocessing </a>
+					</li>
+					<li id="In-Practice/2D-Game/Powerups">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Powerups">Powerups </a>
+					</li>
+					<li id="In-Practice/2D-Game/Audio">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Audio">Audio </a>
+					</li>
+					<li id="In-Practice/2D-Game/Render-text">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Render-text">Render text </a>
+					</li>
+					<li id="In-Practice/2D-Game/Final-thoughts">
+						<a href="https://learnopengl.com/In-Practice/2D-Game/Final-thoughts">Final thoughts </a>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="Guest-Articles">
+		<span class="closed">Guest Articles </span>
+		<ol>
+			<li id="Guest-Articles/How-to-publish">
+				<a href="https://learnopengl.com/Guest-Articles/How-to-publish">How to publish </a>
+			</li>
+			<li id="Guest-Articles/2020">
+				<span class="closed">2020 </span>
+				<ol>
+					<li id="Guest-Articles/2020/OIT">
+						<span class="closed">OIT </span>
+						<ol>
+							<li id="Guest-Articles/2020/OIT/Introduction">
+								<a href="https://learnopengl.com/Guest-Articles/2020/OIT/Introduction">Introduction </a>
+							</li>
+							<li id="Guest-Articles/2020/OIT/Weighted-Blended">
+								<a href="https://learnopengl.com/Guest-Articles/2020/OIT/Weighted-Blended">Weighted Blended </a>
+							</li>
+						</ol>
+					</li>
+					<li id="Guest-Articles/2020/Skeletal-Animation">
+						<a href="https://learnopengl.com/Guest-Articles/2020/Skeletal-Animation">Skeletal Animation </a>
+					</li>
+				</ol>
+			</li>
+			<li id="Guest-Articles/2021">
+				<span class="closed">2021 </span>
+				<ol>
+					<li id="Guest-Articles/2021/CSM">
+						<a href="https://learnopengl.com/Guest-Articles/2021/CSM">CSM </a>
+					</li>
+					<li id="Guest-Articles/2021/Scene">
+						<span class="closed">Scene </span>
+						<ol>
+							<li id="Guest-Articles/2021/Scene/Scene-Graph">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Scene/Scene-Graph">Scene Graph </a>
+							</li>
+							<li id="Guest-Articles/2021/Scene/Frustum-Culling">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Scene/Frustum-Culling">Frustum Culling </a>
+							</li>
+						</ol>
+					</li>
+					<li id="Guest-Articles/2021/Tessellation">
+						<span class="closed">Tessellation </span>
+						<ol>
+							<li id="Guest-Articles/2021/Tessellation/Height-map">
+								<a href="https://learnopengl.com/Guest-Articles/2021/Tessellation/Height-map">Height map </a>
+							</li>
+						</ol>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li id="Code-repository">
+		<a href="https://learnopengl.com/Code-repository">Code repository </a>
+	</li>
+	<li id="Translations">
+		<a href="https://learnopengl.com/Translations">Translations </a>
+	</li>
+	<li id="About">
+		<a href="https://learnopengl.com/About">About </a>
+	</li>
+</ol>
+	</nav>
+	<main>
+    <h1 id="content-title">OpenGL</h1>
+<h1 id="content-url" style='display:none;'>Getting-started/OpenGL</h1>
+<p>学習をはじめる前にOpenGLとは何かを確認しておきましょう。OpenGLとはグラフィックや画像を操作するための関数を多数提供するAPI（<def>アプリケーションプログラミングインターフェース</def>）だと考えられています。しかしOpenGLそのものはAPIではなく、<a href="http://www.khronos.org/" target="_blank">Khronos Group</a>により開発及びメンテナンスされている仕様です。</p>
+
+<img src="/img/getting-started/opengl.jpg" class="right" alt="Image of OpenGL's logo"/>
+
+<p>
+OpenGLの仕様は各関数がどのようにふるまい、どのような結果を残し、あるいどんな出力を返すのかを正確に規定しています。これらの関数をどのようにして仕様どおりに機能させるかは、開発者の<em>実装</em>に任されています。OpenGLの仕様は実装についての詳細を規定していないので、得られる結果が仕様通りである（つまりユーザーから見て同じである）限り、様々な実装が可能です。
+</p>
+
+<p>
+OpenGLのライブラリを開発しているのは、おもにグラフィックカードの製造者です。あなたが購入したグラフィックカードはその製品（あるいはそのシリーズ）に特化したOpenGLのバージョンをサポートしています。AppleのシステムではOpenGLのライブラリはApple自身によりメンテナンスされており、Linuxにおいてはグラフィックカードの製造者によるライブラリや、趣味の開発者によるものもあります。つまりOpenGLがおかしな挙動をする場合はたいていグラフィックカードの製造者（またはライブラリの開発に関わった誰か）のミスです。
+</p>
+
+<note>
+ほとんどの実装はグラフィックカードの製造者によるものなので、バグが見付かった場合はビデオカードのドライバをアップデートすることでたいてい解決します。最新のドライバにはそのグラフィックカードがサポートする最新のOpenGLが含まれているからです。グラフィックドライバをときどきアップデートするべき理由のひとつです。
+</note>
+
+<p>
+KhronosはすべてのOpenGLのバージョンの仕様に関するドキュメントを公開しています。興味がある読者はこれからみなさんが利用するバージョン3.3の仕様を<a href="https://www.opengl.org/registry/doc/glspec33.core.20100311.withchanges.pdf" target="_blank">ここ</a>で確認できます。このページはOpenGLの詳細を理解するのに非常に役立ちます（実装ではなく結果ばかりが記述されていることを確認してください）。OpenGLの仕様は関数の<strong>正確な</strong>ふるまいを確認する文献としても重要です。
+</p>
+
+
+<h2>Core-profileと即席モード</h2>
+<p>
+もともと、OpenGLを利用するとは<def>即席モード</def>（<def>固定関数パイプライン</def>とも）で開発するということでした。即席モードはグラフィックを描写する簡易な方法です。OpenGLのほとんどの機能はライブラリのなかに隠され、開発者は演算の方法にまで深くは踏み込めませんでした。開発者はしだいに柔軟性を求めるようになり、それに伴い仕様のほうも柔軟になりました。開発者がグラフィックの描画方法にに関してより多くのことを操作できるようになったのです。即席モードは理解し使用するのは非常に簡単ですが、効率はかなり悪いです。そのため仕様はバージョン3.2から即席モードの廃止に向かい、<def>core-profile</def>モードを推奨しはじめました。core-profileモードでは廃止された古い機能がすべて取り除かれています。
+</p>
+
+<p>
+Core-profileを使うには新しい方法に従う必要があります。廃止された関数を使おうとするとOpenGLがエラーを出して描画を停止します。新しい方法の利点は柔軟性の高さと効率のよさです。ただしその分習得するのが難しいです。即席モードはOpenGLがおこなっている<strong>実際の</strong>操作の多くを抽象化しているので習得するのが簡単な一方、OpenGLが実際になにをおこなっているかを把握するのは難しいです。新しい方法ではOpenGLやグラフィックスプログラミングについての深い理解が必要であるのですこし難解ではあるものの、柔軟性や効率のよさ、そして一番重要なことですが、グラフィックスプログラミングに関するよりよい理解が得られます。
+</p>
+
+<p>
+そのためこの本ではOpenGLバージョン3.3のcore-profileについて重点的に解説します。理解するのは大変ですが、努力する価値は十分にあります。
+</p>
+
+<p>
+今日、OpenGLのもっと新しいバージョンが利用できます（執筆時点での最新は4.6）。にも関わらずバージョン3.3を学習する意味があるのかと疑問に思うかもしれませんが、その答えは比較的簡単です。バージョン3.3より新しいものはすべて、このバージョンに便利な機能を追加したものであり、OpenGLの核となる部分は変更されません。新しいバージョンのものは以前と同じことをするうえでより効率がいい、あるいはより使いやすい方法を導入しただけです。考え方ややり方はバージョン3.3以降変わらないので、このバージョンを学ぶことが有効なのです。バージョン3.3でOpenGLに慣れ親しめば、より新しいバージョンの機能を利用することは簡単です。
+</p>
+
+<warning>
+最新のOpenGLを使って開発したアプリケーションは、最新のグラフィックカード以外では動作しません。そのためほとんどの開発者は古いバージョンのOpenGLで開発し、新しいバージョンの機能は対応するグラフィックカードへのオプションとして組込みます。
+</warning>
+
+<p>
+一部の章ではことわったうえで新しい機能を利用することがあります。
+</p>
+
+<h2>拡張機能</h2>
+<p>
+OpenGLの大きな特徴に、拡張機能があります。グラフィックカードの製造者が新しい技術を導入したり、描画を大幅に最適化した場合、それらの機能はドライバに実装される<def>拡張機能</def>によって提供されることが多いです。アプリケーションが動作しているハードウェアがそういった拡張機能をサポートしていれば、開発者はそれらを利用し先進的な、あるいは効率のいい方法でグラフィックを描画することができます。このような最新の機能は、グラフィックカードによりサポートされているかどうかを確認するだけで利用できるので、開発者はOpenGLにその機能が組込まれるのを待つ必要がありません。ある拡張機能が人気になり、あるいは便利であれば将来のOpenGLのバージョンに組込まれることになります。
+</p>
+
+<p>
+上記のようなグラフィックカードに特有の（あるいはOpenGL自身の）拡張機能を利用する前に、その機能が利用可能かどうかを確かめる必要があります。こうすることで、拡張機能が利用可能かどうかに応じてより効率のよいプログラムを書くことができます:
+</p>
+
+<pre><code>
+if(GL_ARB_extension_name)
+{
+	// 最新の機能を利用したクールなコード
+}
+else
+{
+	// 拡張機能がサポートされていない場合: 従来の方法を利用したコード
+}
+</code></pre>
+<p>
+OpenGLバージョン3.3において拡張機能はほとんど必要ありませんが、利用する場合は解説を付けます。
+</p>
+
+<h2>状態機械</h2>
+<p>
+OpenGLはひとつの大きな状態機械だといえます: 各時点におけるOpenGLの動作を規定する変数の集まりだという意味です。OpenGLの状態は<def>コンテクスト</def>と呼ばれます。OpenGLでは、オプションの設定やバッファの操作により状態を変化させ、その時点のコンテクストを利用して描画をおこないます。
+</p>
+
+<p>
+例えば描画するものを三角形から直線に変更するためには、コンテクストの変数のうち描画する図形を規定するものを変更することでOpenGLの状態を変化させることになります。そのようにコンテクストを変更すれば、以降の描画命令では三角形ではなく直線が描かれます。
+</p>
+  
+<p>
+OpenGLでの開発において、コンテクストを変更する<def>状態変更</def>関数や、現在の状態にもとづいてなんらかの操作をおこなう<def>状態利用</def>関数を利用することになります。OpenGLが大きな状態機械であるということを頭にいれておけば、さまざまな機能を理解するのが楽になります。
+</p>
+
+<h2>オブジェクト</h2>
+<p>
+OpenGLのライブラリはC言語で記述されています。ほかの言語への派生も存在しますが、核となる部分はC言語のライブラリのままです。C言語の言語構造は他の高水準の言語にうまく翻訳できないので、OpenGLはいくつかの抽象的な概念を念頭に開発されました。<def>オブジェクト</def>の概念がそのひとつです。
+</p>
+
+<p>
+OpenGLにおいて<def>オブジェクト</def>とは、OpenGLの状態をあらわしたオプションのあつまりです。たとえばウィンドウの描画に係る設定をまとめたオブジェクトを作ることができます。このオブジェクトを通して、ウィンドウの大きさや表示できる色の数等を設定することができます。オブジェクトはC言語の構造体のようなものとしてとらえることができます:
+</p>
+
+<pre><code>
+struct object_name {
+    float  option1;
+    int    option2;
+    char[] name;
+};
+</code></pre>
+
+<p>
+オブジェクトはたいてい以下のようなかたちで利用することになります（前半の部分はOpenGLのコンテクストを大きな構造体として記述したものです）:
+</p>
+
+<pre><code>
+// OpenGLの状態
+struct OpenGL_Context {
+  	...
+  	object_name* object_Window_Target;
+  	...  	
+};
+</code></pre>
+  
+<pre><code>
+// オブジェクトの作成
+unsigned int objectId = 0;
+glGenObject(1, &amp;objectId);
+// コンテクストに対してオブジェクトを紐付け
+glBindObject(GL_WINDOW_TARGET, objectId);
+// 現在GL_WINDOW_TARGETに紐付いているオブジェクトのオプションを設定
+glSetObjectOption(GL_WINDOW_TARGET, GL_OPTION_WINDOW_WIDTH,  800);
+glSetObjectOption(GL_WINDOW_TARGET, GL_OPTION_WINDOW_HEIGHT, 600);
+// コンテクストの紐付けを解除
+glBindObject(GL_WINDOW_TARGET, 0);。
+</code></pre>
+
+<p>
+上のような記述はOpenGLで開発をしているとよくみかけます。まずオブジェクトを作成しそれを参照するためのIDを記憶しておきます（オブジェクトの実際のデータは開発者からは見えません）。つぎに記憶したIDによりオブジェクトをコンテクストのうち設定したいものに紐付けます（上の例では<var>GL_WINDOW_TARGET</var>に紐付けています）。そしてウィンドウのオプションを設定し、最後に<var>GL_WINDOW_TARGET</var>と紐付いたオブジェクトのIDを<code>0</code>にすることで、オブジェクトとコンテクストの紐付けを解除します。設定したオプションは<var>objectID</var>によって参照されるオブジェクトに保持され、オブジェクトを<var>GL_WINDOW_TARGET</var>と紐付けることでいつでも復元できます。
+</p>
+
+<warning>
+ここまでのサンプルコードはOpenGLの操作をおおまかに記述したものです。以降では実際に動作するサンプルコードを多く提供します。
+</warning>
+
+<p>
+オブジェクトを利用する大きな利点は、複数のオブジェクトを定義、設定しておけば、OpenGLの状態を利用してなにかするときにそれらのオブジェクトのなかから用途にあわせたものを選べることです。例えば家やキャラクター等の3Dモデルのデータを保持した複数のオブジェクトを定義しておけば、各オブジェクトを紐付けるだけで、そのオブジェクトが保持している3Dモデルが描画できます（最初に各3Dモデルに対してオブジェクトを作成し、必要なオプションを設定すればいいのです）。こうすることでたくさんのモデルを描画するときにいちいちオプションを設定しなおさなくてすみます。
+</p>
+
+<h2>さあ、始めましょう</h2>
+<p>
+ここまでOpenGLについてざっくりと学びました。OpenGLが仕様であり、ライブラリであること。OpenGLの内部がどのように機能するのか、またOpenGLをどのように扱うのか。すべてを理解できていなくても心配はいりません。この本では各段階においてOpenGLを理解するのに十分な例が提示されます。
+</p>
+  
+<h2>参考</h2>
+<ul>
+  <li><a href="https://www.opengl.org/" target="_blank">opengl.org</a>: OpenGLの公式ウェブサイト。</li>
+  <li><a href="https://www.opengl.org/registry/" target="_blank">OpenGL registry</a>: OpenGLのすべてのバージョンの仕様と拡張機能が確認できるサイト。</li>
+</ul>
+        
+
+    </div>
+</body>
+</html>
+	</main>
+</body>
+</html>

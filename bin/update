@@ -1,0 +1,9 @@
+#!/bin/sh
+cd $(dirname $0)/..
+
+# apply template to html files
+find man -type f | grep html$ | sed 's;^man/;;' | 
+	xargs -I@ sh -c 'f=@; mkdir -p pub/$(dirname $f); sed -n "/<\!--content-->/!p; /<\!--content-->/r man/@" templates/base.html > pub/@'
+
+# copy non-html files
+find man -type f | grep -v html$ | sed 's;^man/;;' | xargs -I@ sh -c 'f=@; mkdir -p pub/$(dirname $f); cp man/@ pub/@'
